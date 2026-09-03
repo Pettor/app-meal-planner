@@ -6,11 +6,11 @@ export default defineConfig({
   workers: 1,
   reporter: "list",
   use: {
-    baseURL: "http://localhost:9050",
+    baseURL: "http://localhost:9090",
   },
   webServer: {
     command: "pnpm -w run storybook:nopen",
-    url: "http://localhost:9050",
+    url: "http://localhost:9090",
     reuseExistingServer: true,
     timeout: 120_000,
     stdout: "pipe",

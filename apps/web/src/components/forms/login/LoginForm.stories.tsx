@@ -28,7 +28,6 @@ type Story = StoryObj<typeof meta>;
 const defaultArgs: Props = {
   loading: false,
   onForgotPassword: () => console.log("handleForgotPassword"),
-  onSignUp: () => console.log("handleSignUp"),
   onSubmit: () => console.log("onSubmit"),
 };
 

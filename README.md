@@ -1,9 +1,9 @@
-# React Web Enterprise Application Template
+# Meal Planner
 
-[![GitHub](https://img.shields.io/badge/license-MIT-green)](https://github.com/Pettor/template-web-app-react-enterprise/blob/main/LICENSE)
+[![GitHub](https://img.shields.io/badge/license-MIT-green)](https://github.com/Pettor/meal-planner/blob/main/LICENSE)
 [![Actions Main](../../actions/workflows/main.yml/badge.svg)](../../actions/workflows/main.yml)
 [![Coverage](https://img.shields.io/badge/coverage-%E2%89%A580%25-brightgreen)](../../actions/workflows/ci.yml)
-[![Storybook](https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg)](https://pettor.github.io/template-web-app-react-enterprise/storybook/)
+[![Storybook](https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg)](https://pettor.github.io/meal-planner/storybook/)
 
 A modern, production-ready React web application template designed to jumpstart your next enterprise project with industry best practices, comprehensive tooling, and a robust development workflow.
 
@@ -11,8 +11,8 @@ A modern, production-ready React web application template designed to jumpstart 
 
 Experience the template in action:
 
-- **[Live Application Demo](https://pettor.github.io/template-web-app-react-enterprise/app/)** - See the main application
-- **[Storybook Component Library](https://pettor.github.io/template-web-app-react-enterprise/storybook/)** - Explore the component documentation
+- **[Live Application Demo](https://pettor.github.io/meal-planner/app/)** - See the main application
+- **[Storybook Component Library](https://pettor.github.io/meal-planner/storybook/)** - Explore the component documentation
 
 ## ✨ Key Features
 
@@ -73,8 +73,8 @@ Get up and running in minutes:
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/Pettor/template-web-app-react.git
-   cd template-web-app-react
+   git clone https://github.com/Pettor/meal-planner.git
+   cd meal-planner
    ```
 
 2. **Enable corepack for package manager**
@@ -94,7 +94,7 @@ Get up and running in minutes:
    pnpm dev
    ```
 
-Your application will be available at `http://localhost:5173` with hot reload enabled.
+Your application will be available at `https://localhost:5240` with hot reload enabled.
 
 ### Available Scripts
 
@@ -157,12 +157,6 @@ Set up automatic deployment:
 - [`docs/patterns.md`](./docs/patterns.md) — Controller pattern, route hooks, atom co-location
 - [`docs/packages.md`](./docs/packages.md) — workspace package tour
 
-## 🔗 Related Templates
-
-Expand your development stack:
-
-- **[.NET 9 Backend Template](https://github.com/Pettor/template-web-api-dotnet)** - Fully integrated C# backend template designed to work seamlessly with this React frontend
-
 ## 🤝 Contributing
 
 We welcome contributions! Here's how to get involved:
@@ -186,9 +180,9 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ## 🆘 Support
 
-- **Issues**: [GitHub Issues](https://github.com/Pettor/template-web-app-react/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/Pettor/template-web-app-react/discussions)
-- **Documentation**: [Storybook Documentation](https://pettor.github.io/template-web-app-react/storybook/)
+- **Issues**: [GitHub Issues](https://github.com/Pettor/meal-planner/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/Pettor/meal-planner/discussions)
+- **Documentation**: [Storybook Documentation](https://pettor.github.io/meal-planner/storybook/)
 
 ---
 

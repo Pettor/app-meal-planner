@@ -8,8 +8,8 @@ export const loginFormMessages = defineMessages({
   },
   emailPlaceholder: {
     description: "LoginForm: placeholder - email input",
-    defaultMessage: "Email",
-    id: "rs4OwB",
+    defaultMessage: "you@example.com",
+    id: "y/G/gt",
   },
   passwordLabel: {
     description: "LoginForm: label - password input",
@@ -18,8 +18,8 @@ export const loginFormMessages = defineMessages({
   },
   passwordPlaceholder: {
     description: "LoginForm: placeholder - password input",
-    defaultMessage: "Password",
-    id: "M//qVi",
+    defaultMessage: "Your password",
+    id: "ZpHKaX",
   },
   togglePasswordVisibility: {
     description: "LoginForm: aria-label - toggle password visibility button",
@@ -28,8 +28,8 @@ export const loginFormMessages = defineMessages({
   },
   rememberMe: {
     description: "LoginForm: label - remember me checkbox",
-    defaultMessage: "Remember me",
-    id: "c2o/01",
+    defaultMessage: "Keep me signed in",
+    id: "m+a4+W",
   },
   forgotPassword: {
     description: "LoginForm: link - forgot password",
@@ -38,12 +38,7 @@ export const loginFormMessages = defineMessages({
   },
   submit: {
     description: "LoginForm: button - submit login",
-    defaultMessage: "Login",
-    id: "ihPsbT",
-  },
-  signUpLink: {
-    description: "LoginForm: link - sign up prompt",
-    defaultMessage: "Don't have an account? Sign up",
-    id: "G5tm22",
+    defaultMessage: "Sign in",
+    id: "INr4Gn",
   },
 });

@@ -30,8 +30,14 @@
 
 /* Theme extensions from design tokens */
 @theme {
+  /* Brand gradient stops — exposed so `bg-brand-*` / `text-brand-*` utilities exist */
+  --color-brand-start: var(--brand-start);
+  --color-brand-middle: var(--brand-middle);
+  --color-brand-end: var(--brand-end);
+
   /* Typography */
   --font-family-primary: var(--typography-font-family-primary);
+  --font-family-display: var(--typography-font-family-display);
   
   --font-weight-light: var(--typography-font-weight-light);
   --font-weight-regular: var(--typography-font-weight-regular);
@@ -44,4 +50,36 @@
 
 body {
   font-family: var(--typography-font-family-primary);
+}
+
+/*
+ * Design-system utilities.
+ *
+ * `bg-ambient-wash` is the warm brand wash used behind full-page layouts.
+ * `text-gradient-brand` paints text with the signature brand gradient.
+ */
+@utility bg-ambient-wash {
+  background-image:
+    radial-gradient(ellipse 60% 50% at 82% -10%, color-mix(in oklch, var(--danger) 16%, transparent), transparent 70%),
+    radial-gradient(ellipse 55% 45% at 8% 4%, color-mix(in oklch, var(--accent) 14%, transparent), transparent 72%),
+    radial-gradient(ellipse 90% 40% at 50% 100%, color-mix(in oklch, var(--warning) 10%, transparent), transparent 75%);
+}
+
+@utility text-gradient-brand {
+  background-image: var(--brand-gradient);
+  background-clip: text;
+  color: transparent;
+}
+
+/*
+ * Page and section titles are set in the display serif. Kept in the base layer
+ * so `font-family-primary` (or any font utility) still wins on a per-element basis.
+ */
+@layer base {
+  h1,
+  h2 {
+    font-family: var(--typography-font-family-display);
+    font-weight: var(--typography-font-weight-regular);
+    letter-spacing: -0.005em;
+  }
 }

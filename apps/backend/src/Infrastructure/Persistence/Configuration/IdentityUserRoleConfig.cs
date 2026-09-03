@@ -1,0 +1,13 @@
+﻿using Finbuckle.MultiTenant;
+using Finbuckle.MultiTenant.EntityFrameworkCore.Extensions;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace Backend.Infrastructure.Persistence.Configuration;
+
+public class IdentityUserRoleConfig : IEntityTypeConfiguration<IdentityUserRole<string>>
+{
+    public void Configure(EntityTypeBuilder<IdentityUserRole<string>> builder) =>
+        builder.ToTable("UserRoles", SchemaNames.Identity).IsMultiTenant();
+}

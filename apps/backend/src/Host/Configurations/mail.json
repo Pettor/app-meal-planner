@@ -1,0 +1,10 @@
+{
+  "MailSettings": {
+    "DisplayName": "DisplayName",
+    "From": "name@email.com",
+    "Host": "smtp.host.email",
+    "Password": "password",
+    "Port": 587,
+    "UserName": "first.last@email.com"
+  }
+}

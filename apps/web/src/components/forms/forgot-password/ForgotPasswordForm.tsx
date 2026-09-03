@@ -54,7 +54,9 @@ export function ForgotPasswordForm({ loading, onSubmit }: ForgotPasswordFormProp
             field={field}
             type="email"
             fullWidth
+            autoComplete="email"
             label={intl.formatMessage(forgotPasswordFormMessages.emailLabel)}
+            placeholder={intl.formatMessage(forgotPasswordFormMessages.emailPlaceholder)}
             startContent={<EnvelopeIcon className="h-5 w-5" />}
             data-testid="forgot-password-form__email-input"
           />
@@ -64,11 +66,12 @@ export function ForgotPasswordForm({ loading, onSubmit }: ForgotPasswordFormProp
         selector={(state) => [state.canSubmit]}
         children={([canSubmit]) => (
           <Button
+            fullWidth
             isDisabled={!canSubmit || loading}
             variant="primary"
             type="submit"
             size="lg"
-            className="mt-2 w-full"
+            onPress={() => form.handleSubmit()}
             aria-label={intl.formatMessage(forgotPasswordFormMessages.submitAriaLabel)}
             data-testid="forgot-password-form__submit-button"
           >

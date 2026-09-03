@@ -84,7 +84,11 @@ components/
 │   └── theme-selector/         # Radio-style theme switcher
 │
 ├── display/
-│   └── grid-item/              # Small card for list/grid contexts
+│   ├── auth-layout/            # Split shell for the public auth screens
+│   ├── gauge/                  # Circular progress gauge
+│   ├── grid-item/              # Small card for list/grid contexts
+│   ├── password-strength/      # Strength meter for new-password fields
+│   └── sparkline/              # Compact inline trend chart
 │
 ├── feedback/
 │   ├── about-details/          # About modal content

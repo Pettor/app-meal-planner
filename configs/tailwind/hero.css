@@ -43,6 +43,10 @@
     --danger: var(--color-theme-light-danger-default);
     --danger-foreground: var(--color-theme-light-danger-foreground);
 
+    --brand-start: var(--color-theme-light-brand-start);
+    --brand-middle: var(--color-theme-light-brand-middle);
+    --brand-end: var(--color-theme-light-brand-end);
+
     --focus: var(--color-theme-light-focus);
     --border: var(--color-theme-light-border);
     --separator: var(--color-theme-light-separator);
@@ -88,6 +92,10 @@
     --danger: var(--color-theme-dark-danger-default);
     --danger-foreground: var(--color-theme-dark-danger-foreground);
 
+    --brand-start: var(--color-theme-dark-brand-start);
+    --brand-middle: var(--color-theme-dark-brand-middle);
+    --brand-end: var(--color-theme-dark-brand-end);
+
     --focus: var(--color-theme-dark-focus);
     --border: var(--color-theme-dark-border);
     --separator: var(--color-theme-dark-separator);
@@ -97,6 +105,14 @@
     --field-placeholder: var(--color-theme-dark-field-placeholder);
 
     --disabled-opacity: var(--layout-disabled-opacity);
+  }
+
+  /*
+   * Signature brand gradient — composed from the per-theme stops above so it
+   * follows the active theme without being redeclared in each block.
+   */
+  :root {
+    --brand-gradient: linear-gradient(100deg, var(--brand-start) 5%, var(--brand-middle) 65%, var(--brand-end) 100%);
   }
 
   html {

@@ -9,7 +9,7 @@ import type { SignUpViewProps } from "~/views/sign-up/SignUpView";
 export function useSignUpRoute(): SignUpViewProps {
   const navigate = useNavigate();
   const intl = useIntl();
-  const { appNameCapital } = useAppInfo();
+  const { appName } = useAppInfo();
   const { isPending, mutateAsync: submit } = usePostSelfRegister();
 
   function handleOnBack(): void {
@@ -57,7 +57,7 @@ export function useSignUpRoute(): SignUpViewProps {
   }
 
   return {
-    appName: appNameCapital,
+    appName,
     onBack: handleOnBack,
     signUpForm: {
       loading: isPending,

@@ -24,7 +24,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const defaultArgs = {
-  appName: "My App",
+  appName: "Meal Planner",
   resetForm: {
     loading: false,
     onSubmit: () => console.log("onSubmit"),
@@ -34,6 +34,14 @@ const defaultArgs = {
 
 export const Fullscreen: Story = {
   args: defaultArgs,
+  parameters: { viewport: { value: "full" } },
+};
+
+export const LinkSent: Story = {
+  args: {
+    ...defaultArgs,
+    sentToEmail: "you@example.com",
+  },
   parameters: { viewport: { value: "full" } },
 };
 

@@ -90,7 +90,11 @@ test.describe("auth.forgotpassword", () => {
     await page.getByTestId("forgot-password-form__email-input").fill("user@example.com");
     await page.getByTestId("forgot-password-form__submit-button").click();
 
-    // After successful submission the route navigates to "/" which redirects to login (unauthenticated)
+    // The view swaps the form for a confirmation instead of navigating away
+    await expect(page.getByTestId("forgot-password-view__sent")).toBeVisible();
+
+    await page.getByTestId("forgot-password-view__back-to-sign-in").click();
+
     await expect(async () => {
       expect(await page.title()).toBe("Login");
     }).toPass();
@@ -102,7 +106,7 @@ test.describe("auth.signup", () => {
     await mocksClient.useRouteVariant("Tokens_Refresh:400-json-status-400-no-error");
   });
 
-  test("shows validation error when passwords do not match", async ({ page }) => {
+  test("shows validation error when the terms are not accepted", async ({ page }) => {
     await page.goto("/#/sign-up");
 
     await expect(async () => {
@@ -112,7 +116,6 @@ test.describe("auth.signup", () => {
     await page.getByTestId("sign-up-form__username-input").fill("testuser");
     await page.getByTestId("sign-up-form__email-input").fill("test@example.com");
     await page.getByTestId("sign-up-form__password-input").fill("password123");
-    await page.getByTestId("sign-up-form__confirmpassword-input").fill("differentpassword");
     await page.getByTestId("sign-up-form__submit-button").click();
 
     // After failed validation, canSubmit becomes false and button is disabled
@@ -132,7 +135,7 @@ test.describe("auth.signup", () => {
     await page.getByTestId("sign-up-form__username-input").fill("newuser");
     await page.getByTestId("sign-up-form__email-input").fill("newuser@example.com");
     await page.getByTestId("sign-up-form__password-input").fill("securepassword");
-    await page.getByTestId("sign-up-form__confirmpassword-input").fill("securepassword");
+    await page.getByTestId("sign-up-form__terms-checkbox").click();
     await page.getByTestId("sign-up-form__submit-button").click();
 
     // After successful signup the route navigates to "/" which redirects to login (unauthenticated)

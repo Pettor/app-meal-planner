@@ -5,6 +5,11 @@
         "$type": "fontFamily",
         "$value": ["Rubik", "sans-serif", "system-ui"],
         "$description": "Primary font family for the application"
+      },
+      "display": {
+        "$type": "fontFamily",
+        "$value": ["Instrument Serif", "Georgia", "serif"],
+        "$description": "Display font family for headings and editorial titles"
       }
     },
     "font-weight": {

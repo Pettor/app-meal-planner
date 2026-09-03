@@ -24,14 +24,14 @@ export default defineConfig({
   workers: 1,
   testDir: "src",
   use: {
-    baseURL: "https://localhost:4173",
+    baseURL: "https://localhost:4240",
     screenshot: "only-on-failure",
     video: "retain-on-failure",
     trace: "retain-on-failure",
   },
   webServer: {
     command: "pnpm -w run test:e2e:env:coverage",
-    url: "https://localhost:4173",
+    url: "https://localhost:4240",
     reuseExistingServer: true,
     ignoreHTTPSErrors: true,
     timeout: 30000,

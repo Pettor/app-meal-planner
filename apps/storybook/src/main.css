@@ -1,4 +1,4 @@
-/* Font */
+/* Body font */
 @import "@fontsource/rubik";
 @import "@fontsource/rubik/300.css";
 @import "@fontsource/rubik/400.css";
@@ -7,6 +7,10 @@
 @import "@fontsource/rubik/700.css";
 @import "@fontsource/rubik/800.css";
 @import "@fontsource/rubik/900.css";
+
+/* Display font — headings (Instrument Serif ships a single 400 weight) */
+@import "@fontsource/instrument-serif/400.css";
+@import "@fontsource/instrument-serif/400-italic.css";
 
 /* Tailwind configuration */
 @import "../node_modules/@config/tailwind/tailwind.css";

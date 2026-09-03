@@ -18,10 +18,10 @@ This file is the **rules** layer (what you must do); `docs/` is the **reference*
 
 ### Development
 
-- `pnpm dev` - Start development server (main app at https://localhost:5173)
+- `pnpm dev` - Start development server (main app at https://localhost:5240)
 - `pnpm dev:mocks` - Start development with mock server enabled (API on port 3100)
 - `pnpm dev:mocks:cli` - Start standalone mock server only
-- `pnpm storybook` - Start Storybook development server (localhost:9050)
+- `pnpm storybook` - Start Storybook development server (localhost:9090)
 
 ### Build & Deploy
 
@@ -83,21 +83,21 @@ root/
 
 ### `apps/web` — Main React Application
 
-- **URL**: https://localhost:5173 (HTTPS enabled via `vite-plugin-basic-ssl`)
+- **URL**: https://localhost:5240 (HTTPS enabled via `vite-plugin-basic-ssl`)
 - **Stack**: React 19, React Router v6, Vite 8, Tailwind CSS 4, HeroUI, React Query 5, Jotai 2, React Intl 10, Zod 4, TanStack Form
 - **Features**: PWA (workbox), offline support, dark/light theme, i18n, hash-based routing, lazy-loaded routes
 
 ### `apps/storybook` — Component Documentation
 
-- **URL**: localhost:9050
+- **URL**: localhost:9090
 - **Stack**: Storybook 10 with React/Vite builder, addon-vitest (Playwright/Chromium), addon-a11y, addon-docs, addon-mcp
-- **MCP Server**: Available at `http://localhost:9050/mcp` when Storybook dev server is running (enables AI agents to query component docs and run story tests)
+- **MCP Server**: Available at `http://localhost:9090/mcp` when Storybook dev server is running (enables AI agents to query component docs and run story tests)
 - **Stories**: Pulls from `@app/web` and `@package/ui` node_modules
 
 ### `apps/e2e` — End-to-End Tests
 
 - **Stack**: Playwright 1.58, Chromium, JUnit XML reporter
-- **Config**: `apps/e2e/playwright.config.ts`, base URL https://localhost:5173, 1 retry, screenshots/traces on failure
+- **Config**: `apps/e2e/playwright.config.ts`, base URL https://localhost:4240, 1 retry, screenshots/traces on failure
 
 ### `apps/mock` — API Mock Server
 
@@ -116,6 +116,7 @@ Key exports:
 - `ServiceError`, `createServiceError` — Typed error handling
 
 > **Security note**: `TokenStorage` is intentionally NOT exported. The access token lives only in worker memory — `TokenStorage.ts` is excluded from the public barrel and must only be imported from worker-scope modules.
+
 - API endpoint services: `Login`, `Logout`, `RefreshToken`, `ForgotPassword`, `SelfRegister`, `ApplicationInfo`, `PersonalProfile`
 - Types (Zod schemas + inferred DTOs + domain types co-located in `Types.ts`), Converters, Fetch utilities
 
@@ -127,7 +128,7 @@ Key exports: `useDocumentTitle`, `useLocalStorage`, `useMediaQuery`, `useBreakpo
 
 ### `@package/ui` — Shared UI Components
 
-Key exports: `Logo`, `LogoFull`, `GithubIcon`, `LinkedInIcon`, `BasicLayout`, `NavbarLayout`, `BlueFadeBackground`, `GridBackground`, `Navbar`
+Key exports: `Logo`, `LogoFull`, `GithubIcon`, `LinkedInIcon`, `BasicLayout`, `NavbarLayout`, `AmbientBackground`, `BlueFadeBackground`, `GridBackground`, `Navbar`
 
 ### `@package/mocks` — Mock Data & Test Utilities
 
@@ -218,13 +219,13 @@ Files prefixed with `-` are ignored by TanStack Router. Detail: [`docs/patterns.
 
 ### State Management
 
-| Scope | Mechanism | Location |
-| --- | --- | --- |
-| Global, persisted UI state | Jotai atoms + `atomEffect` | `core/<feature>/XxxAtoms.ts` |
-| Feature-local UI state | Jotai atoms | next to the component (e.g. `components/actions/command-palette/CommandPaletteAtoms.ts`) |
-| Server state | `@tanstack/react-query` | `packages/api` hooks; route loaders |
-| Auth state | Jotai atoms + initializer | `core/auth/` |
-| Component-local state | `useState`, `useReducer` | inline |
+| Scope                      | Mechanism                  | Location                                                                                 |
+| -------------------------- | -------------------------- | ---------------------------------------------------------------------------------------- |
+| Global, persisted UI state | Jotai atoms + `atomEffect` | `core/<feature>/XxxAtoms.ts`                                                             |
+| Feature-local UI state     | Jotai atoms                | next to the component (e.g. `components/actions/command-palette/CommandPaletteAtoms.ts`) |
+| Server state               | `@tanstack/react-query`    | `packages/api` hooks; route loaders                                                      |
+| Auth state                 | Jotai atoms + initializer  | `core/auth/`                                                                             |
+| Component-local state      | `useState`, `useReducer`   | inline                                                                                   |
 
 **Atoms co-locate with their consumer.** There is no central `src/atoms/` folder. See [`docs/patterns.md#atoms-co-location`](./docs/patterns.md#atoms-co-location).
 
@@ -244,20 +245,20 @@ Files prefixed with `-` are ignored by TanStack Router. Detail: [`docs/patterns.
 
 ## Naming & File Conventions
 
-| Thing | Convention | Example |
-| --- | --- | --- |
-| React components | PascalCase file + function declaration | `LoginView.tsx`, `function LoginView()` |
-| Component folders | `kebab-case` | `command-palette/`, `input-field/` |
-| Hooks | PascalCase file with `Use` prefix | `UseAuth.ts`, `UseDocumentTitle.ts` |
-| Route files | `route.tsx` (TanStack requirement) | `routes/_public/login/route.tsx` |
-| Route hooks | `-Use<Name>Route.ts` (leading `-` hides from router) | `-UseLoginRoute.ts` |
-| Controllers | `<Component>Controller.tsx` + `Use<Component>Controller.ts(x)` | `SettingsModalController.tsx` |
-| Utilities / classes | PascalCase | `TokenStorage.ts`, `JwtToken.ts` |
-| Jotai atom files | `PascalCaseAtoms.ts` | `ThemeAtoms.ts`, `AuthAtoms.ts` |
-| Jotai atom exports | `camelCase + Atom` suffix | `themeModeAtom` |
-| Views | `<Name>View.tsx` under `views/<name>/` | `LoginView.tsx`, `DashboardView.tsx` |
-| Stories | Co-located `<Component>.stories.tsx` | `Logo.stories.tsx` |
-| Props interfaces | `<ComponentName>Props` | `NavbarProps` |
+| Thing               | Convention                                                     | Example                                 |
+| ------------------- | -------------------------------------------------------------- | --------------------------------------- |
+| React components    | PascalCase file + function declaration                         | `LoginView.tsx`, `function LoginView()` |
+| Component folders   | `kebab-case`                                                   | `command-palette/`, `input-field/`      |
+| Hooks               | PascalCase file with `Use` prefix                              | `UseAuth.ts`, `UseDocumentTitle.ts`     |
+| Route files         | `route.tsx` (TanStack requirement)                             | `routes/_public/login/route.tsx`        |
+| Route hooks         | `-Use<Name>Route.ts` (leading `-` hides from router)           | `-UseLoginRoute.ts`                     |
+| Controllers         | `<Component>Controller.tsx` + `Use<Component>Controller.ts(x)` | `SettingsModalController.tsx`           |
+| Utilities / classes | PascalCase                                                     | `TokenStorage.ts`, `JwtToken.ts`        |
+| Jotai atom files    | `PascalCaseAtoms.ts`                                           | `ThemeAtoms.ts`, `AuthAtoms.ts`         |
+| Jotai atom exports  | `camelCase + Atom` suffix                                      | `themeModeAtom`                         |
+| Views               | `<Name>View.tsx` under `views/<name>/`                         | `LoginView.tsx`, `DashboardView.tsx`    |
+| Stories             | Co-located `<Component>.stories.tsx`                           | `Logo.stories.tsx`                      |
+| Props interfaces    | `<ComponentName>Props`                                         | `NavbarProps`                           |
 
 **Function style**: Prefer **function declarations** over arrow functions for components and named utilities. Arrow functions are acceptable for callbacks and inline handlers. (ESLint enforces this.)
 
@@ -288,7 +289,7 @@ Files prefixed with `-` are ignored by TanStack Router. Detail: [`docs/patterns.
 
 - Located in `apps/e2e/src/**/*.spec.ts`
 - Dev server auto-starts on test run
-- Uses `https://localhost:5173` with HTTPS certificate bypass
+- Uses `https://localhost:4240` with HTTPS certificate bypass
 - Screenshots, videos, and traces captured on failure
 - Run: `pnpm test:e2e` (Playwright UI) or `pnpm test:e2e:ci` (headless, for CI)
 
@@ -315,7 +316,7 @@ Turborepo caches outputs; use `--force` to bypass cache when debugging build iss
 | ------------------- | ------------------ | ------------------ |
 | `VITE_APP_VERSION`  | `0.6.0`            | `0.6.0`            |
 | `VITE_CONNECT_HOST` | `http://localhost` | `http://127.0.0.1` |
-| `VITE_CONNECT_PORT` | `5000`             | `3100`             |
+| `VITE_CONNECT_PORT` | `5060`             | `3100`             |
 
 - `.env` — development defaults
 - `.env.mocks` — overrides for mock server mode
@@ -405,15 +406,15 @@ Hooks for panel-local state (filter, sort, range selection, derived totals) live
 
 ### When to Use HeroUI Components
 
-| Need | HeroUI Component |
-|---|---|
-| Buttons | `Button`, `ButtonGroup` |
-| Forms | `Input`, `Textarea`, `Select`, `Checkbox`, `Radio`, `RadioGroup`, `Switch` |
-| Layout | `Card`, `Divider`, `Spacer` |
-| Navigation | `Navbar`, `Tabs`, `Breadcrumbs`, `Link`, `Pagination` |
-| Feedback | `Modal`, `Popover`, `Tooltip`, `Alert`, `Spinner`, `Progress`, `Skeleton` |
-| Data display | `Table`, `Chip`, `Badge`, `Avatar`, `Accordion`, `Listbox` |
-| Overlay | `Dropdown`, `Modal`, `Drawer` |
+| Need         | HeroUI Component                                                           |
+| ------------ | -------------------------------------------------------------------------- |
+| Buttons      | `Button`, `ButtonGroup`                                                    |
+| Forms        | `Input`, `Textarea`, `Select`, `Checkbox`, `Radio`, `RadioGroup`, `Switch` |
+| Layout       | `Card`, `Divider`, `Spacer`                                                |
+| Navigation   | `Navbar`, `Tabs`, `Breadcrumbs`, `Link`, `Pagination`                      |
+| Feedback     | `Modal`, `Popover`, `Tooltip`, `Alert`, `Spinner`, `Progress`, `Skeleton`  |
+| Data display | `Table`, `Chip`, `Badge`, `Avatar`, `Accordion`, `Listbox`                 |
+| Overlay      | `Dropdown`, `Modal`, `Drawer`                                              |
 
 Always check the LLM docs first — HeroUI v3 may have components not listed here.
 
@@ -466,6 +467,7 @@ export function MyComponent(): ReactElement {
 ### Story Discovery
 
 Stories are discovered by Storybook from:
+
 - `apps/web/src/**/*.stories.tsx` (via node_modules symlink)
 - `packages/ui/src/**/*.stories.tsx` (via node_modules symlink)
 
@@ -473,12 +475,12 @@ Stories are discovered by Storybook from:
 
 Use these skills to follow established patterns when adding to the project:
 
-| Skill | Purpose |
-|---|---|
-| `/add-component` | Add a new UI component with HeroUI v3, Tailwind, React, and Storybook story |
-| `/add-e2e-test` | Add Playwright E2E tests, with optional new API services and mock definitions |
-| `/add-component-test` | Add component tests using Storybook play functions |
-| `/add-api-test` | Add unit tests for API schemas, converters, and utilities in `packages/api/` |
+| Skill                 | Purpose                                                                       |
+| --------------------- | ----------------------------------------------------------------------------- |
+| `/add-component`      | Add a new UI component with HeroUI v3, Tailwind, React, and Storybook story   |
+| `/add-e2e-test`       | Add Playwright E2E tests, with optional new API services and mock definitions |
+| `/add-component-test` | Add component tests using Storybook play functions                            |
+| `/add-api-test`       | Add unit tests for API schemas, converters, and utilities in `packages/api/`  |
 
 ## Important Notes
 

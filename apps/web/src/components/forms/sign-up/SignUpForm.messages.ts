@@ -8,33 +8,13 @@ export const signUpFormMessages = defineMessages({
   },
   userNameLabel: {
     description: "SignUpForm: label - username input",
-    defaultMessage: "Username",
-    id: "DzoWHY",
+    defaultMessage: "Name",
+    id: "XvNWOi",
   },
   userNamePlaceholder: {
     description: "SignUpForm: placeholder - username input",
     defaultMessage: "What should we call you?",
     id: "Tij9Hh",
-  },
-  firstNameLabel: {
-    description: "SignUpForm: label - first name input",
-    defaultMessage: "First name",
-    id: "dspt4+",
-  },
-  firstNamePlaceholder: {
-    description: "SignUpForm: placeholder - first name input",
-    defaultMessage: "First name",
-    id: "ktZJD7",
-  },
-  lastNameLabel: {
-    description: "SignUpForm: label - last name input",
-    defaultMessage: "Last name",
-    id: "tDfDKz",
-  },
-  lastNamePlaceholder: {
-    description: "SignUpForm: placeholder - last name input",
-    defaultMessage: "Last name",
-    id: "q2rApT",
   },
   emailLabel: {
     description: "SignUpForm: label - email input",
@@ -43,18 +23,8 @@ export const signUpFormMessages = defineMessages({
   },
   emailPlaceholder: {
     description: "SignUpForm: placeholder - email input",
-    defaultMessage: "What's your email?",
-    id: "PL1rZQ",
-  },
-  phoneNumberLabel: {
-    description: "SignUpForm: label - phone number input",
-    defaultMessage: "Phone number",
-    id: "aoE2EM",
-  },
-  phoneNumberPlaceholder: {
-    description: "SignUpForm: placeholder - phone number input",
-    defaultMessage: "What's your phone number?",
-    id: "13SjPR",
+    defaultMessage: "you@example.com",
+    id: "YqgzbB",
   },
   passwordLabel: {
     description: "SignUpForm: label - password input",
@@ -63,22 +33,27 @@ export const signUpFormMessages = defineMessages({
   },
   passwordPlaceholder: {
     description: "SignUpForm: placeholder - password input",
-    defaultMessage: "Create a password",
-    id: "CEK26g",
+    defaultMessage: "At least 8 characters",
+    id: "n+a27x",
   },
-  confirmPasswordLabel: {
-    description: "SignUpForm: label - confirm password input",
-    defaultMessage: "Confirm password",
-    id: "73NIXh",
+  togglePasswordVisibility: {
+    description: "SignUpForm: aria-label - toggle password visibility button",
+    defaultMessage: "Toggle password visibility",
+    id: "QwECCi",
   },
-  confirmPasswordPlaceholder: {
-    description: "SignUpForm: placeholder - confirm password input",
-    defaultMessage: "Confirm password",
-    id: "0pEka7",
+  terms: {
+    description: "SignUpForm: label - terms and privacy consent checkbox",
+    defaultMessage: "I agree to the terms and privacy policy.",
+    id: "9HQ90e",
+  },
+  termsRequired: {
+    description: "SignUpForm: error - terms must be accepted",
+    defaultMessage: "Please accept the terms to continue",
+    id: "oyHEdk",
   },
   submit: {
     description: "SignUpForm: button - submit sign up",
-    defaultMessage: "Sign Up",
-    id: "Bq3FT2",
+    defaultMessage: "Create account",
+    id: "7+S5V5",
   },
 });

@@ -26,13 +26,11 @@ export interface FormLogin {
 
 export interface LoginFormProps {
   loading: boolean;
-  error?: string;
   onForgotPassword(): void;
-  onSignUp(): void;
   onSubmit: (data: FormLogin) => void;
 }
 
-export function LoginForm({ loading, error, onForgotPassword, onSignUp, onSubmit }: LoginFormProps): ReactElement {
+export function LoginForm({ loading, onForgotPassword, onSubmit }: LoginFormProps): ReactElement {
   const intl = useIntl();
   const { emailSchema, passwordSchema } = useFormValidation();
   const [isVisible, setIsVisible] = useState(false);
@@ -51,7 +49,7 @@ export function LoginForm({ loading, error, onForgotPassword, onSignUp, onSubmit
     defaultValues: {
       email: "",
       password: "",
-      remember: false,
+      remember: true,
     },
     validators: {
       onSubmit: schema,
@@ -113,23 +111,23 @@ export function LoginForm({ loading, error, onForgotPassword, onSignUp, onSubmit
           />
         )}
       />
-      <div className="flex w-full items-center justify-between px-1 py-2">
+      <div className="flex w-full items-center justify-between gap-3">
         <form.Field
           name="remember"
           children={(field) => (
             <Checkbox id="remember" isSelected={field.state.value} onChange={(value) => field.handleChange(value)}>
-              <CheckboxControl>
-                <CheckboxIndicator />
-              </CheckboxControl>
-              <CheckboxContent>
-                <Label htmlFor="remember" className="text-xs sm:text-sm">
+              <CheckboxContent className="gap-2.5">
+                <CheckboxControl>
+                  <CheckboxIndicator />
+                </CheckboxControl>
+                <Label htmlFor="remember" className="text-muted text-sm whitespace-nowrap">
                   {intl.formatMessage(loginFormMessages.rememberMe)}
                 </Label>
               </CheckboxContent>
             </Checkbox>
           )}
         />
-        <Link className="cursor-pointer text-xs sm:text-sm" onPress={onForgotPassword}>
+        <Link className="cursor-pointer text-sm" onPress={onForgotPassword} data-testid="login-form__forgot-link">
           {intl.formatMessage(loginFormMessages.forgotPassword)}
         </Link>
       </div>
@@ -140,6 +138,7 @@ export function LoginForm({ loading, error, onForgotPassword, onSignUp, onSubmit
             fullWidth
             isDisabled={!canSubmit || loading}
             variant="primary"
+            size="lg"
             type="submit"
             onPress={() => form.handleSubmit()}
             data-testid="login-form__submit-button"
@@ -148,12 +147,6 @@ export function LoginForm({ loading, error, onForgotPassword, onSignUp, onSubmit
           </Button>
         )}
       />
-      {error && <div className="text-danger text-sm">{error}</div>}
-      <p className="text-center text-sm">
-        <Link className="cursor-pointer" onPress={onSignUp}>
-          {intl.formatMessage(loginFormMessages.signUpLink)}
-        </Link>
-      </p>
     </Form>
   );
 }

@@ -2,12 +2,15 @@ import type { ReactElement } from "react";
 import logoUrl from "../assets/template-512x512.svg";
 
 export interface LogoProps {
-  size: "small" | "medium" | "large";
+  size: "xsmall" | "small" | "medium" | "large";
 }
 
 export function Logo({ size = "large" }: LogoProps): ReactElement {
   let xy = 0;
   switch (size) {
+    case "xsmall":
+      xy = 28;
+      break;
     case "small":
       xy = 60;
       break;

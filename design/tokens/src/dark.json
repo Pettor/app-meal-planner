@@ -4,156 +4,173 @@
       "dark": {
         "background": {
           "$type": "color",
-          "$value": "oklch(12% 0.005 285.823)",
+          "$value": "oklch(0.168 0.012 56)",
           "$description": "Background color for dark theme"
         },
         "foreground": {
           "$type": "color",
-          "$value": "oklch(0.9911 0 0)",
+          "$value": "oklch(0.968 0.012 88)",
           "$description": "Foreground color for dark theme"
         },
         "surface": {
           "DEFAULT": {
             "$type": "color",
-            "$value": "oklch(0.2103 0.0059 285.89)",
+            "$value": "oklch(0.222 0.014 56)",
             "$description": "Surface background for dark theme"
           },
           "foreground": {
             "$type": "color",
-            "$value": "oklch(0.9911 0 0)",
+            "$value": "oklch(0.968 0.012 88)",
             "$description": "Surface foreground for dark theme"
           }
         },
         "surface-secondary": {
           "DEFAULT": {
             "$type": "color",
-            "$value": "oklch(0.257 0.0037 286.14)",
+            "$value": "oklch(0.258 0.016 56)",
             "$description": "Secondary surface background for dark theme"
           },
           "foreground": {
             "$type": "color",
-            "$value": "oklch(0.9911 0 0)",
+            "$value": "oklch(0.968 0.012 88)",
             "$description": "Secondary surface foreground for dark theme"
           }
         },
         "surface-tertiary": {
           "DEFAULT": {
             "$type": "color",
-            "$value": "oklch(0.2721 0.0024 247.91)",
+            "$value": "oklch(0.292 0.018 56)",
             "$description": "Tertiary surface background for dark theme"
           },
           "foreground": {
             "$type": "color",
-            "$value": "oklch(0.9911 0 0)",
+            "$value": "oklch(0.968 0.012 88)",
             "$description": "Tertiary surface foreground for dark theme"
           }
         },
         "overlay": {
           "DEFAULT": {
             "$type": "color",
-            "$value": "oklch(0.2103 0.0059 285.89)",
+            "$value": "oklch(0.222 0.014 56)",
             "$description": "Overlay background for dark theme"
           },
           "foreground": {
             "$type": "color",
-            "$value": "oklch(0.9911 0 0)",
+            "$value": "oklch(0.968 0.012 88)",
             "$description": "Overlay foreground for dark theme"
           }
         },
         "muted": {
           "$type": "color",
-          "$value": "oklch(70.5% 0.015 286.067)",
+          "$value": "oklch(0.735 0.022 70)",
           "$description": "Muted text color for dark theme"
         },
         "default": {
           "DEFAULT": {
             "$type": "color",
-            "$value": "oklch(27.4% 0.006 286.033)",
+            "$value": "oklch(0.284 0.016 56)",
             "$description": "Default color for dark theme"
           },
           "foreground": {
             "$type": "color",
-            "$value": "oklch(0.9911 0 0)",
+            "$value": "oklch(0.968 0.012 88)",
             "$description": "Default foreground color for dark theme"
           }
         },
         "accent": {
           "DEFAULT": {
             "$type": "color",
-            "$value": "oklch(0.6204 0.195 253.83)",
+            "$value": "oklch(0.665 0.115 158)",
             "$description": "Accent color for dark theme"
           },
           "foreground": {
             "$type": "color",
-            "$value": "oklch(0.9911 0 0)",
+            "$value": "oklch(0.16 0.02 150)",
             "$description": "Accent foreground color for dark theme"
           }
         },
         "success": {
           "DEFAULT": {
             "$type": "color",
-            "$value": "oklch(0.7329 0.1935 150.81)",
+            "$value": "oklch(0.72 0.15 148)",
             "$description": "Success color for dark theme"
           },
           "foreground": {
             "$type": "color",
-            "$value": "oklch(0.2103 0.0059 285.89)",
+            "$value": "oklch(0.22 0.03 150)",
             "$description": "Success foreground color for dark theme"
           }
         },
         "warning": {
           "DEFAULT": {
             "$type": "color",
-            "$value": "oklch(0.8203 0.1388 76.34)",
+            "$value": "oklch(0.83 0.145 78)",
             "$description": "Warning color for dark theme"
           },
           "foreground": {
             "$type": "color",
-            "$value": "oklch(0.2103 0.0059 285.89)",
+            "$value": "oklch(0.22 0.04 60)",
             "$description": "Warning foreground color for dark theme"
           }
         },
         "danger": {
           "DEFAULT": {
             "$type": "color",
-            "$value": "oklch(0.594 0.1967 24.63)",
+            "$value": "oklch(0.645 0.185 30)",
             "$description": "Danger color for dark theme"
           },
           "foreground": {
             "$type": "color",
-            "$value": "oklch(0.9911 0 0)",
+            "$value": "oklch(0.985 0.012 90)",
             "$description": "Danger foreground color for dark theme"
+          }
+        },
+        "brand": {
+          "start": {
+            "$type": "color",
+            "$value": "{color.theme.dark.accent.DEFAULT}",
+            "$description": "Brand gradient start stop for dark theme"
+          },
+          "middle": {
+            "$type": "color",
+            "$value": "oklch(0.72 0.152 50)",
+            "$description": "Brand gradient middle stop for dark theme"
+          },
+          "end": {
+            "$type": "color",
+            "$value": "oklch(0.685 0.178 32)",
+            "$description": "Brand gradient end stop for dark theme"
           }
         },
         "focus": {
           "$type": "color",
-          "$value": "oklch(0.6204 0.195 253.83)",
+          "$value": "{color.theme.dark.accent.DEFAULT}",
           "$description": "Focus ring color for dark theme"
         },
         "border": {
           "$type": "color",
-          "$value": "oklch(28% 0.006 286.033)",
+          "$value": "oklch(0.305 0.016 56)",
           "$description": "Border color for dark theme"
         },
         "separator": {
           "$type": "color",
-          "$value": "oklch(25% 0.006 286.033)",
+          "$value": "oklch(0.278 0.014 56)",
           "$description": "Separator color for dark theme"
         },
         "field": {
           "background": {
             "$type": "color",
-            "$value": "oklch(0.2103 0.0059 285.89)",
+            "$value": "oklch(0.202 0.014 56)",
             "$description": "Form field background for dark theme"
           },
           "foreground": {
             "$type": "color",
-            "$value": "oklch(0.9911 0 0)",
+            "$value": "oklch(0.968 0.012 88)",
             "$description": "Form field foreground for dark theme"
           },
           "placeholder": {
             "$type": "color",
-            "$value": "oklch(70.5% 0.015 286.067)",
+            "$value": "oklch(0.7 0.022 70)",
             "$description": "Form field placeholder for dark theme"
           }
         }

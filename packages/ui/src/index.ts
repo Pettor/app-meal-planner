@@ -2,6 +2,7 @@ export * from "./Branding/Logo/Logo";
 export * from "./Branding/LogoFull/LogoFull";
 export * from "./Icons/Social/GithubIcon";
 export * from "./Icons/Social/LinkedInIcon";
+export * from "./Layout/Background/AmbientBackground";
 export * from "./Layout/Background/BlueFadeBackground";
 export * from "./Layout/Background/GridBackground";
 export * from "./Layout/BasicLayout/BasicLayout";

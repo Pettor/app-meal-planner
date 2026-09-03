@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { toast } from "@heroui/react";
 import { isServiceError, usePostForgotPasswordMutate } from "@package/api";
 import { useNavigate } from "@tanstack/react-router";
@@ -11,6 +12,7 @@ export function useForgotPasswordRoute(): ForgotPasswordViewProps {
   const navigate = useNavigate();
   const intl = useIntl();
   const { isPending, mutateAsync: submit } = usePostForgotPasswordMutate();
+  const [sentToEmail, setSentToEmail] = useState<string>("");
 
   function handleOnBack(): void {
     navigate({ to: "/login" });
@@ -45,7 +47,7 @@ export function useForgotPasswordRoute(): ForgotPasswordViewProps {
 
     try {
       await submit(email);
-      navigate({ to: "/" });
+      setSentToEmail(email);
     } catch (error) {
       toast(getForgotPasswordErrorMessage(error));
     }
@@ -53,6 +55,7 @@ export function useForgotPasswordRoute(): ForgotPasswordViewProps {
 
   return {
     appName,
+    sentToEmail,
     onBack: handleOnBack,
     resetForm: {
       loading: isPending,

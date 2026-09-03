@@ -19,6 +19,7 @@ node_modules
 build/
 coverage/
 dev-dist/
+.tanstack/
 dist/
 test-results/
 out/

@@ -1,16 +1,9 @@
-import { BasicLayout, BlueFadeBackground, GridBackground } from "@package/ui";
+import { AmbientBackground, BasicLayout } from "@package/ui";
 import type { Decorator } from "@storybook/react-vite";
 
 export function BasicLayoutDecorator(): Decorator {
   return (Story) => (
-    <BasicLayout
-      backgroundElement={
-        <>
-          <BlueFadeBackground />
-          <GridBackground />
-        </>
-      }
-    >
+    <BasicLayout backgroundElement={<AmbientBackground />}>
       <Story />
     </BasicLayout>
   );

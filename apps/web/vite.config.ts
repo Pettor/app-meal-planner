@@ -38,7 +38,7 @@ export default defineConfig(({ mode, command }) => {
           cors: true,
           // basicSsl() below provides the self-signed cert; https: true signals intent
           https: true,
-          port: 5173,
+          port: 5240,
         },
         plugins: [
           basicSsl(),

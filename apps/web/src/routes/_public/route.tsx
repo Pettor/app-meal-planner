@@ -1,6 +1,6 @@
 import type { ReactElement } from "react";
 import { Suspense } from "react";
-import { BasicLayout, BlueFadeBackground, GridBackground } from "@package/ui";
+import { AmbientBackground, BasicLayout } from "@package/ui";
 import { Outlet, createFileRoute, redirect } from "@tanstack/react-router";
 import { RouteLoading } from "~/core/routes/logic/RouteLoading";
 
@@ -18,14 +18,7 @@ export const Route = createFileRoute("/_public")({
 
 function PublicLayout(): ReactElement {
   return (
-    <BasicLayout
-      backgroundElement={
-        <>
-          <BlueFadeBackground />
-          <GridBackground />
-        </>
-      }
-    >
+    <BasicLayout backgroundElement={<AmbientBackground />}>
       <Suspense fallback={<RouteLoading />}>
         <Outlet />
       </Suspense>

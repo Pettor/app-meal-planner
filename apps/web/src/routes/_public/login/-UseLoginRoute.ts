@@ -76,13 +76,13 @@ export function useLoginRoute(): LoginViewProps {
 
   return {
     appName,
+    error: loginError,
     loginForm: {
       loading: loginLoading,
-      error: loginError,
-      onSignUp: handleSignUp,
       onForgotPassword: handleForgotPassword,
       onSubmit: handleSubmit,
     },
     onSettings: handleOnSettings,
+    onSignUp: handleSignUp,
   };
 }

@@ -24,18 +24,26 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const defaultArgs = {
-  appName: "My App",
+  appName: "Meal Planner",
   loginForm: {
     loading: false,
     onForgotPassword: () => console.log("handleForgotPassword"),
-    onSignUp: () => console.log("handleSignUp"),
     onSubmit: () => console.log("onSubmit"),
   },
   onSettings: () => console.log("onSettings"),
+  onSignUp: () => console.log("handleSignUp"),
 } satisfies Props;
 
 export const Fullscreen: Story = {
   args: defaultArgs,
+  parameters: { viewport: { value: "full" } },
+};
+
+export const WithError: Story = {
+  args: {
+    ...defaultArgs,
+    error: "Incorrect username or password.",
+  },
   parameters: { viewport: { value: "full" } },
 };
 
