@@ -40,9 +40,8 @@ export function createNavMenuItems(intl: IntlShape): NavMenuItem[] {
         defaultMessage: "Plan",
         id: "DmSF9w",
       }),
-      href: "#/",
+      href: "#/plan",
       icon: <SparklesIcon className="h-[18px] w-[18px]" />,
-      disabled: true,
     },
     {
       id: "week",

@@ -14,6 +14,7 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as PublicRouteRouteImport } from './routes/_public/route'
 import { Route as AuthenticatedIndexRouteRouteImport } from './routes/_authenticated/index/route'
 import { Route as AuthenticatedDashboardRouteRouteImport } from './routes/_authenticated/dashboard/route'
+import { Route as AuthenticatedPlanRouteRouteImport } from './routes/_authenticated/plan/route'
 import { Route as PublicForgotPasswordRouteRouteImport } from './routes/_public/forgot-password/route'
 import { Route as PublicLoginRouteRouteImport } from './routes/_public/login/route'
 import { Route as PublicSignUpRouteRouteImport } from './routes/_public/sign-up/route'
@@ -44,6 +45,11 @@ const AuthenticatedDashboardRouteRoute =
     path: '/dashboard',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedPlanRouteRoute = AuthenticatedPlanRouteRouteImport.update({
+  id: '/plan',
+  path: '/plan',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const PublicForgotPasswordRouteRoute =
   PublicForgotPasswordRouteRouteImport.update({
     id: '/forgot-password',
@@ -77,6 +83,7 @@ export interface FileRoutesByFullPath {
   '/$': typeof SplatRouteRoute
   '/': typeof AuthenticatedIndexRouteRoute
   '/dashboard': typeof AuthenticatedDashboardRouteRoute
+  '/plan': typeof AuthenticatedPlanRouteRoute
   '/forgot-password': typeof PublicForgotPasswordRouteRoute
   '/login': typeof PublicLoginRouteRoute
   '/sign-up': typeof PublicSignUpRouteRoute
@@ -87,6 +94,7 @@ export interface FileRoutesByTo {
   '/$': typeof SplatRouteRoute
   '/': typeof AuthenticatedIndexRouteRoute
   '/dashboard': typeof AuthenticatedDashboardRouteRoute
+  '/plan': typeof AuthenticatedPlanRouteRoute
   '/forgot-password': typeof PublicForgotPasswordRouteRoute
   '/login': typeof PublicLoginRouteRoute
   '/sign-up': typeof PublicSignUpRouteRoute
@@ -100,6 +108,7 @@ export interface FileRoutesById {
   '/_public': typeof PublicRouteRouteWithChildren
   '/_authenticated/': typeof AuthenticatedIndexRouteRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRouteRoute
+  '/_authenticated/plan': typeof AuthenticatedPlanRouteRoute
   '/_public/forgot-password': typeof PublicForgotPasswordRouteRoute
   '/_public/login': typeof PublicLoginRouteRoute
   '/_public/sign-up': typeof PublicSignUpRouteRoute
@@ -112,6 +121,7 @@ export interface FileRouteTypes {
     | '/$'
     | '/'
     | '/dashboard'
+    | '/plan'
     | '/forgot-password'
     | '/login'
     | '/sign-up'
@@ -122,6 +132,7 @@ export interface FileRouteTypes {
     | '/$'
     | '/'
     | '/dashboard'
+    | '/plan'
     | '/forgot-password'
     | '/login'
     | '/sign-up'
@@ -134,6 +145,7 @@ export interface FileRouteTypes {
     | '/_public'
     | '/_authenticated/'
     | '/_authenticated/dashboard'
+    | '/_authenticated/plan'
     | '/_public/forgot-password'
     | '/_public/login'
     | '/_public/sign-up'
@@ -184,6 +196,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDashboardRouteRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/plan': {
+      id: '/_authenticated/plan'
+      path: '/plan'
+      fullPath: '/plan'
+      preLoaderRoute: typeof AuthenticatedPlanRouteRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_public/forgot-password': {
       id: '/_public/forgot-password'
       path: '/forgot-password'
@@ -225,6 +244,7 @@ declare module '@tanstack/react-router' {
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedIndexRouteRoute: typeof AuthenticatedIndexRouteRoute
   AuthenticatedDashboardRouteRoute: typeof AuthenticatedDashboardRouteRoute
+  AuthenticatedPlanRouteRoute: typeof AuthenticatedPlanRouteRoute
   AuthenticatedRecipesRecipeIdRouteRoute: typeof AuthenticatedRecipesRecipeIdRouteRoute
   AuthenticatedRecipesEditRecipeIdRouteRoute: typeof AuthenticatedRecipesEditRecipeIdRouteRoute
 }
@@ -232,6 +252,7 @@ interface AuthenticatedRouteRouteChildren {
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedIndexRouteRoute: AuthenticatedIndexRouteRoute,
   AuthenticatedDashboardRouteRoute: AuthenticatedDashboardRouteRoute,
+  AuthenticatedPlanRouteRoute: AuthenticatedPlanRouteRoute,
   AuthenticatedRecipesRecipeIdRouteRoute:
     AuthenticatedRecipesRecipeIdRouteRoute,
   AuthenticatedRecipesEditRecipeIdRouteRoute:

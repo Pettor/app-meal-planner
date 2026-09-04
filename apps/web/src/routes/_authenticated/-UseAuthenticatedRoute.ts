@@ -20,11 +20,14 @@ export function useAuthenticatedRoute(): UseAuthenticatedRouteResult {
   const sessionContent = useAppSessionContent();
   const socialLinks = useAppSocialLinks(GITHUB_LINK, LINKEDIN_LINK);
 
-  const activeTab = pathname === "/" || pathname.startsWith("/recipes") ? "recipes" : "";
+  const activeTab =
+    pathname === "/" || pathname.startsWith("/recipes") ? "recipes" : pathname.startsWith("/plan") ? "plan" : "";
 
   function handleTabChange(id: string): void {
     if (id === "recipes") {
       navigate({ to: "/" });
+    } else if (id === "plan") {
+      navigate({ to: "/plan" });
     }
   }
 
