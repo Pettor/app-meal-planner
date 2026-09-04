@@ -6,9 +6,6 @@ export const NavbarContentCommonData: NavbarContentProps = {
     onLogout: () => console.log("onLogout"),
     onSearch: () => console.log("onSearch"),
   },
-  socialLinks: {
-    github: "https://github.com",
-    linkedIn: "https://linkedin.com",
-  },
   avatarName: "John Doe",
+  avatarEmail: "john.doe@example.com",
 };

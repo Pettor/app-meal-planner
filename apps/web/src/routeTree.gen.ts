@@ -17,6 +17,8 @@ import { Route as AuthenticatedDashboardRouteRouteImport } from './routes/_authe
 import { Route as PublicForgotPasswordRouteRouteImport } from './routes/_public/forgot-password/route'
 import { Route as PublicLoginRouteRouteImport } from './routes/_public/login/route'
 import { Route as PublicSignUpRouteRouteImport } from './routes/_public/sign-up/route'
+import { Route as AuthenticatedRecipesRecipeIdRouteRouteImport } from './routes/_authenticated/recipes/$recipeId/route'
+import { Route as AuthenticatedRecipesEditRecipeIdRouteRouteImport } from './routes/_authenticated/recipes/edit/$recipeId/route'
 
 const SplatRouteRoute = SplatRouteRouteImport.update({
   id: '/$',
@@ -58,6 +60,18 @@ const PublicSignUpRouteRoute = PublicSignUpRouteRouteImport.update({
   path: '/sign-up',
   getParentRoute: () => PublicRouteRoute,
 } as any)
+const AuthenticatedRecipesRecipeIdRouteRoute =
+  AuthenticatedRecipesRecipeIdRouteRouteImport.update({
+    id: '/recipes/$recipeId',
+    path: '/recipes/$recipeId',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedRecipesEditRecipeIdRouteRoute =
+  AuthenticatedRecipesEditRecipeIdRouteRouteImport.update({
+    id: '/recipes/edit/$recipeId',
+    path: '/recipes/edit/$recipeId',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/$': typeof SplatRouteRoute
@@ -66,6 +80,8 @@ export interface FileRoutesByFullPath {
   '/forgot-password': typeof PublicForgotPasswordRouteRoute
   '/login': typeof PublicLoginRouteRoute
   '/sign-up': typeof PublicSignUpRouteRoute
+  '/recipes/$recipeId': typeof AuthenticatedRecipesRecipeIdRouteRoute
+  '/recipes/edit/$recipeId': typeof AuthenticatedRecipesEditRecipeIdRouteRoute
 }
 export interface FileRoutesByTo {
   '/$': typeof SplatRouteRoute
@@ -74,6 +90,8 @@ export interface FileRoutesByTo {
   '/forgot-password': typeof PublicForgotPasswordRouteRoute
   '/login': typeof PublicLoginRouteRoute
   '/sign-up': typeof PublicSignUpRouteRoute
+  '/recipes/$recipeId': typeof AuthenticatedRecipesRecipeIdRouteRoute
+  '/recipes/edit/$recipeId': typeof AuthenticatedRecipesEditRecipeIdRouteRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -85,13 +103,30 @@ export interface FileRoutesById {
   '/_public/forgot-password': typeof PublicForgotPasswordRouteRoute
   '/_public/login': typeof PublicLoginRouteRoute
   '/_public/sign-up': typeof PublicSignUpRouteRoute
+  '/_authenticated/recipes/$recipeId': typeof AuthenticatedRecipesRecipeIdRouteRoute
+  '/_authenticated/recipes/edit/$recipeId': typeof AuthenticatedRecipesEditRecipeIdRouteRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/$' | '/' | '/dashboard' | '/forgot-password' | '/login' | '/sign-up'
+    | '/$'
+    | '/'
+    | '/dashboard'
+    | '/forgot-password'
+    | '/login'
+    | '/sign-up'
+    | '/recipes/$recipeId'
+    | '/recipes/edit/$recipeId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/$' | '/' | '/dashboard' | '/forgot-password' | '/login' | '/sign-up'
+  to:
+    | '/$'
+    | '/'
+    | '/dashboard'
+    | '/forgot-password'
+    | '/login'
+    | '/sign-up'
+    | '/recipes/$recipeId'
+    | '/recipes/edit/$recipeId'
   id:
     | '__root__'
     | '/$'
@@ -102,6 +137,8 @@ export interface FileRouteTypes {
     | '/_public/forgot-password'
     | '/_public/login'
     | '/_public/sign-up'
+    | '/_authenticated/recipes/$recipeId'
+    | '/_authenticated/recipes/edit/$recipeId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -168,17 +205,37 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicSignUpRouteRouteImport
       parentRoute: typeof PublicRouteRoute
     }
+    '/_authenticated/recipes/$recipeId': {
+      id: '/_authenticated/recipes/$recipeId'
+      path: '/recipes/$recipeId'
+      fullPath: '/recipes/$recipeId'
+      preLoaderRoute: typeof AuthenticatedRecipesRecipeIdRouteRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/recipes/edit/$recipeId': {
+      id: '/_authenticated/recipes/edit/$recipeId'
+      path: '/recipes/edit/$recipeId'
+      fullPath: '/recipes/edit/$recipeId'
+      preLoaderRoute: typeof AuthenticatedRecipesEditRecipeIdRouteRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedIndexRouteRoute: typeof AuthenticatedIndexRouteRoute
   AuthenticatedDashboardRouteRoute: typeof AuthenticatedDashboardRouteRoute
+  AuthenticatedRecipesRecipeIdRouteRoute: typeof AuthenticatedRecipesRecipeIdRouteRoute
+  AuthenticatedRecipesEditRecipeIdRouteRoute: typeof AuthenticatedRecipesEditRecipeIdRouteRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedIndexRouteRoute: AuthenticatedIndexRouteRoute,
   AuthenticatedDashboardRouteRoute: AuthenticatedDashboardRouteRoute,
+  AuthenticatedRecipesRecipeIdRouteRoute:
+    AuthenticatedRecipesRecipeIdRouteRoute,
+  AuthenticatedRecipesEditRecipeIdRouteRoute:
+    AuthenticatedRecipesEditRecipeIdRouteRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =

@@ -1,5 +1,5 @@
 import type { ChangeEvent, ReactElement } from "react";
-import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import type { InputProps } from "@heroui/react";
 import { InputGroup, InputGroupInput, InputGroupPrefix, TextField } from "@heroui/react";
 

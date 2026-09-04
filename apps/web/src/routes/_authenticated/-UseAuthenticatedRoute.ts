@@ -12,8 +12,6 @@ export interface UseAuthenticatedRouteResult {
   onTabChange: (id: string) => void;
   sessionContent: AppSessionContent;
   socialLinks: AppSocialLinks;
-  githubLink: string;
-  linkedInLink: string;
 }
 
 export function useAuthenticatedRoute(): UseAuthenticatedRouteResult {
@@ -22,14 +20,12 @@ export function useAuthenticatedRoute(): UseAuthenticatedRouteResult {
   const sessionContent = useAppSessionContent();
   const socialLinks = useAppSocialLinks(GITHUB_LINK, LINKEDIN_LINK);
 
-  const activeTab = pathname.startsWith("/dashboard") ? "dashboard" : "home";
+  const activeTab = pathname === "/" || pathname.startsWith("/recipes") ? "recipes" : "";
 
   function handleTabChange(id: string): void {
-    if (id === "dashboard") {
-      navigate({ to: "/dashboard" });
-      return;
+    if (id === "recipes") {
+      navigate({ to: "/" });
     }
-    navigate({ to: "/" });
   }
 
   return {
@@ -37,7 +33,5 @@ export function useAuthenticatedRoute(): UseAuthenticatedRouteResult {
     onTabChange: handleTabChange,
     sessionContent,
     socialLinks,
-    githubLink: GITHUB_LINK,
-    linkedInLink: LINKEDIN_LINK,
   };
 }

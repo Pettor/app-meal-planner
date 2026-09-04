@@ -1,8 +1,17 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
+import { mocksClient } from "@package/mocks";
 import { expect, test as base, type Page } from "@playwright/test";
+import { MOCK_ADMIN_API_PORT } from "../wait-for-port";
 
 export { expect };
+
+/**
+ * Point the admin API client at this project's mock server — it defaults to the
+ * 3110 the config moves away from. Configured here because every spec imports
+ * this module.
+ */
+mocksClient.configClient({ port: MOCK_ADMIN_API_PORT });
 
 /**
  * Custom Playwright test fixture that collects Istanbul coverage data from

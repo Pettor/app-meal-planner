@@ -19,7 +19,7 @@ This file is the **rules** layer (what you must do); `docs/` is the **reference*
 ### Development
 
 - `pnpm dev` - Start development server (main app at https://localhost:5240)
-- `pnpm dev:mocks` - Start development with mock server enabled (API on port 3100)
+- `pnpm dev:mocks` - Start development with mock server enabled (API on port 3200)
 - `pnpm dev:mocks:cli` - Start standalone mock server only
 - `pnpm storybook` - Start Storybook development server (localhost:9090)
 
@@ -101,8 +101,8 @@ root/
 
 ### `apps/mock` — API Mock Server
 
-- **Stack**: Mocks Server 4.1, runs on port 3100
-- **Activation**: `pnpm dev:mocks` sets `--mode mocks` which switches `VITE_CONNECT_PORT` to 3100
+- **Stack**: Mocks Server 4.1, runs on port 3200 (admin API on 3210)
+- **Activation**: `pnpm dev:mocks` sets `--mode mocks` which switches `VITE_CONNECT_PORT` to 3200
 
 ## Packages
 
@@ -316,7 +316,7 @@ Turborepo caches outputs; use `--force` to bypass cache when debugging build iss
 | ------------------- | ------------------ | ------------------ |
 | `VITE_APP_VERSION`  | `0.6.0`            | `0.6.0`            |
 | `VITE_CONNECT_HOST` | `http://localhost` | `http://127.0.0.1` |
-| `VITE_CONNECT_PORT` | `5060`             | `3100`             |
+| `VITE_CONNECT_PORT` | `5060`             | `3200`             |
 
 - `.env` — development defaults
 - `.env.mocks` — overrides for mock server mode
