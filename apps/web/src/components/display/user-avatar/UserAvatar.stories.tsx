@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { UserAvatar as Component } from "./UserAvatar";
 import type { UserAvatarProps as ComponentProps } from "./UserAvatar";
-import avatarImgSrc from "~/assets/images/recipes/risotto.png";
+import avatarImgSrc from "~/assets/images/recipes/risotto.jpg";
 
 const meta: Meta<typeof Component> = {
   title: "Display/User Avatar",

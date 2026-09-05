@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { RecipePhoto as Component } from "./RecipePhoto";
 import type { RecipePhotoProps as Props } from "./RecipePhoto";
-import dalImgSrc from "~/assets/images/recipes/dal.png";
+import dalImgSrc from "~/assets/images/recipes/dal.jpg";
 
 const meta: Meta<typeof Component> = {
   component: Component,

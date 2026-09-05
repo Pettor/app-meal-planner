@@ -1,8 +1,8 @@
-import dalPhotoSrc from "~/assets/images/recipes/dal.png";
-import risottoPhotoSrc from "~/assets/images/recipes/risotto.png";
-import sheetpanPhotoSrc from "~/assets/images/recipes/sheetpan.png";
-import skewersPhotoSrc from "~/assets/images/recipes/skewers.png";
-import tacosPhotoSrc from "~/assets/images/recipes/tacos.png";
+import dalPhotoSrc from "~/assets/images/recipes/dal.jpg";
+import risottoPhotoSrc from "~/assets/images/recipes/risotto.jpg";
+import sheetpanPhotoSrc from "~/assets/images/recipes/sheetpan.jpg";
+import skewersPhotoSrc from "~/assets/images/recipes/skewers.jpg";
+import tacosPhotoSrc from "~/assets/images/recipes/tacos.jpg";
 import type { Recipe, RecipeAuthor, RecipeTagCategory, ScannedRecipe } from "~/core/recipes/RecipeTypes";
 
 /**
