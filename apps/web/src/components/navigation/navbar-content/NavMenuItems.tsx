@@ -55,9 +55,8 @@ export function createNavMenuItems(intl: IntlShape): NavMenuItem[] {
         defaultMessage: "Week",
         id: "/4Y51F",
       }),
-      href: "#/",
+      href: "#/week",
       icon: <CalendarIcon className="h-[18px] w-[18px]" />,
-      disabled: true,
     },
     {
       id: "shop",
@@ -71,9 +70,8 @@ export function createNavMenuItems(intl: IntlShape): NavMenuItem[] {
         defaultMessage: "Shopping",
         id: "aAqsh5",
       }),
-      href: "#/",
+      href: "#/shopping",
       icon: <ShoppingCartIcon className="h-[18px] w-[18px]" />,
-      disabled: true,
     },
     {
       id: "community",

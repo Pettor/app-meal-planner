@@ -15,23 +15,19 @@ import {
   type SavedPlan,
 } from "~/core/plan/PlanTypes";
 import {
-  buildCalendarWeeks,
   buildPlanSlots,
   clonePlanDraft,
   emptyPlanDraft,
   filledSlotCount,
-  firstOfMonth,
   formatWeekRange,
   generatePlanSlots,
   isoWeekNumber,
   parseWeekKey,
   rerollRecipeId,
-  shiftMonth,
-  thisWeekKey,
-  weekKeyOf,
   weekOffset,
 } from "~/core/plan/PlanUtils";
-import type { PlanCalendarWeekRow } from "~/core/plan/PlanUtils";
+import { UseWeekPicker } from "~/core/plan/UseWeekPicker";
+import type { UseWeekPickerResult } from "~/core/plan/UseWeekPicker";
 import type { Recipe, RecipeTagCategory } from "~/core/recipes/RecipeTypes";
 import { collectTags } from "~/core/recipes/RecipeUtils";
 import { planDayName, planDayShortName, planMealName } from "~/views/plan/PlanDayLabels";
@@ -74,22 +70,6 @@ export interface PlanSlotViewModel {
   onReroll: () => void;
   onSwap: () => void;
   onClear: () => void;
-}
-
-export interface PlanCalendarDayViewModel {
-  dayNumber: number;
-  isCurrentMonth: boolean;
-  isToday: boolean;
-  hasPlannedMeal: boolean;
-}
-
-export interface PlanCalendarWeekViewModel {
-  weekNumber: number;
-  statusDotClassName: string;
-  mealsLabel: string;
-  isSelected: boolean;
-  days: PlanCalendarDayViewModel[];
-  onSelect: () => void;
 }
 
 function formatTagCount(n: number): string {
@@ -138,14 +118,7 @@ export interface UsePlanWizardResult {
   hasExistingPlanForWeek: boolean;
   onOpenWeekPicker: () => void;
 
-  isWeekPickerOpen: boolean;
-  onCloseWeekPicker: () => void;
-  calendarTitle: string;
-  onCalendarPrevMonth: () => void;
-  onCalendarNextMonth: () => void;
-  onCalendarToday: () => void;
-  calendarDayNames: string[];
-  calendarWeeks: PlanCalendarWeekViewModel[];
+  weekPicker: UseWeekPickerResult;
 
   dayRows: PlanDayRowViewModel[];
   mealSummary: string;
@@ -198,20 +171,37 @@ export interface UsePlanWizardResult {
   onCloseSwap: () => void;
 }
 
+export interface UsePlanWizardOptions {
+  /** The cook's own recipe pool — what the planner draws from. */
+  recipes: Recipe[];
+  tagCatalogue: RecipeTagCategory[];
+  /** Tags offered first when setting quotas for a week. */
+  pinnedTags: string[];
+  /** Weeks already saved, so the wizard can reopen one instead of starting over. */
+  plans: Record<string, SavedPlan>;
+  /** The week the wizard opens on — the one the rest of the app is looking at. */
+  initialWeekKey: string;
+  onWeekSaved: (weekKey: string, status: PlanStatus, draft: PlanDraft) => void;
+}
+
 /** All the state and derived view-model data behind the "Plan a week" wizard. */
-export function UsePlanWizard(
-  recipes: Recipe[],
-  tagCatalogue: RecipeTagCategory[],
-  initialPinnedTags: string[],
-  onWeekSaved: (weekKey: string, status: PlanStatus) => void
-): UsePlanWizardResult {
+export function UsePlanWizard({
+  recipes,
+  tagCatalogue,
+  pinnedTags: initialPinnedTags,
+  plans,
+  initialWeekKey,
+  onWeekSaved,
+}: UsePlanWizardOptions): UsePlanWizardResult {
   const intl = useIntl();
   const locale = intl.locale || "en-GB";
 
-  const [weekKey, setWeekKey] = useState(() => thisWeekKey());
+  const [weekKey, setWeekKey] = useState(initialWeekKey);
   const [step, setStep] = useState<PlanWizardStep>(1);
-  const [draft, setDraft] = useState<PlanDraft>(() => emptyPlanDraft());
-  const [plans, setPlans] = useState<Record<string, SavedPlan>>({});
+  const [draft, setDraft] = useState<PlanDraft>(() => {
+    const saved = plans[initialWeekKey];
+    return saved ? clonePlanDraft(saved.draft) : emptyPlanDraft();
+  });
   const [layout, setLayout] = useState<PlanLayout>("rows");
   const [pinnedTags, setPinnedTags] = useState<string[]>(initialPinnedTags);
 
@@ -223,9 +213,6 @@ export function UsePlanWizard(
   const [isEditDefaultTagsOpen, setIsEditDefaultTagsOpen] = useState(false);
   const [isBrowseQuotaTagsOpen, setIsBrowseQuotaTagsOpen] = useState(false);
 
-  const [isWeekPickerOpen, setIsWeekPickerOpen] = useState(false);
-  const [calendarMonthKey, setCalendarMonthKey] = useState<string | null>(null);
-
   function selectWeek(key: string): void {
     setWeekKey(key);
     setStep(1);
@@ -236,8 +223,7 @@ export function UsePlanWizard(
 
   // ── step navigation
   function commit(status: PlanStatus): void {
-    setPlans((current) => ({ ...current, [weekKey]: { status, draft: clonePlanDraft(draft) } }));
-    onWeekSaved(weekKey, status);
+    onWeekSaved(weekKey, status, draft);
   }
 
   function generate(): void {
@@ -319,6 +305,13 @@ export function UsePlanWizard(
               { description: "UsePlanWizard: week - in n weeks", defaultMessage: "In {count} weeks", id: "Dr2bxg" },
               { count: offset }
             );
+
+  const weekPicker = UseWeekPicker(
+    weekKey,
+    plans,
+    selectWeek,
+    PLAN_DAY_ORDER.map((day) => planDayShortName(intl, day))
+  );
 
   const existingPlan = plans[weekKey];
   const stepEyebrow = intl.formatMessage(
@@ -632,37 +625,8 @@ export function UsePlanWizard(
 
     weekLine,
     hasExistingPlanForWeek: !!existingPlan,
-    onOpenWeekPicker: () => {
-      setCalendarMonthKey(weekKeyOf(firstOfMonth(monday)));
-      setIsWeekPickerOpen(true);
-    },
-
-    isWeekPickerOpen,
-    onCloseWeekPicker: () => setIsWeekPickerOpen(false),
-    calendarTitle: (calendarMonthKey ? parseWeekKey(calendarMonthKey) : firstOfMonth(monday)).toLocaleDateString(
-      locale,
-      {
-        month: "long",
-        year: "numeric",
-      }
-    ),
-    onCalendarPrevMonth: () =>
-      setCalendarMonthKey(
-        weekKeyOf(shiftMonth(calendarMonthKey ? parseWeekKey(calendarMonthKey) : firstOfMonth(monday), -1))
-      ),
-    onCalendarNextMonth: () =>
-      setCalendarMonthKey(
-        weekKeyOf(shiftMonth(calendarMonthKey ? parseWeekKey(calendarMonthKey) : firstOfMonth(monday), 1))
-      ),
-    onCalendarToday: () => {
-      selectWeek(thisWeekKey());
-      setCalendarMonthKey(weekKeyOf(firstOfMonth(new Date())));
-      setIsWeekPickerOpen(false);
-    },
-    calendarDayNames: PLAN_DAY_ORDER.map((day) => planDayShortName(intl, day)),
-    calendarWeeks: buildCalendarWeeks(calendarMonthKey ? parseWeekKey(calendarMonthKey) : firstOfMonth(monday)).map(
-      (row) => buildCalendarWeekViewModel(row, plans, weekKey, filledWord, selectWeek, () => setIsWeekPickerOpen(false))
-    ),
+    onOpenWeekPicker: weekPicker.onOpen,
+    weekPicker,
 
     dayRows,
     mealSummary,
@@ -740,35 +704,5 @@ export function UsePlanWizard(
       },
     })),
     onCloseSwap: () => setSwapSlotIndex(null),
-  };
-}
-
-function buildCalendarWeekViewModel(
-  row: PlanCalendarWeekRow,
-  plans: Record<string, SavedPlan>,
-  selectedWeekKey: string,
-  filledWord: string,
-  selectWeek: (key: string) => void,
-  closeCalendar: () => void
-): PlanCalendarWeekViewModel {
-  const saved = plans[row.weekKey];
-  const filled = saved ? filledSlotCount(saved.draft.slots) : 0;
-  const plannedDays = new Set(saved ? saved.draft.slots.filter((slot) => slot.recipeId).map((slot) => slot.day) : []);
-  return {
-    weekNumber: row.weekNumber,
-    statusDotClassName: !saved ? "bg-default-300" : saved.status === "final" ? "bg-success" : "bg-warning",
-    mealsLabel: filled ? `${filled} ${filledWord}` : "",
-    isSelected: row.weekKey === selectedWeekKey,
-    // `row.days[i]` was built from `PLAN_DAY_ORDER[i]` in buildCalendarWeeks, so the indices line up.
-    days: row.days.map((day, i) => ({
-      dayNumber: day.dayNumber,
-      isCurrentMonth: day.isCurrentMonth,
-      isToday: day.isToday,
-      hasPlannedMeal: plannedDays.has(PLAN_DAY_ORDER[i] as PlanDayId),
-    })),
-    onSelect: () => {
-      selectWeek(row.weekKey);
-      closeCalendar();
-    },
   };
 }

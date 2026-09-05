@@ -3,9 +3,9 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { Button, Modal } from "@heroui/react";
 import clsx from "clsx";
 import { useIntl } from "react-intl";
-import type { PlanCalendarWeekViewModel } from "~/views/plan/UsePlanWizard";
+import type { PlanCalendarWeekViewModel } from "~/core/plan/PlanTypes";
 
-export interface PlanWeekPickerDialogProps {
+export interface WeekPickerDialogProps {
   isOpen: boolean;
   title: string;
   dayNames: string[];
@@ -17,7 +17,7 @@ export interface PlanWeekPickerDialogProps {
 }
 
 /** "Pick a week" — a month calendar showing every week's plan status at a glance. */
-export function PlanWeekPickerDialog({
+export function WeekPickerDialog({
   isOpen,
   title,
   dayNames,
@@ -26,13 +26,13 @@ export function PlanWeekPickerDialog({
   onNextMonth,
   onToday,
   onClose,
-}: PlanWeekPickerDialogProps): ReactElement {
+}: WeekPickerDialogProps): ReactElement {
   const intl = useIntl();
 
   const heading = intl.formatMessage({
-    description: "PlanWeekPickerDialog: heading - schedule",
+    description: "WeekPickerDialog: heading - schedule",
     defaultMessage: "Schedule",
-    id: "NmRcuK",
+    id: "Uw9myv",
   });
 
   return (
@@ -46,9 +46,9 @@ export function PlanWeekPickerDialog({
                   <Modal.Heading>{heading}</Modal.Heading>
                   <p className="text-default-500 mt-1 text-sm">
                     {intl.formatMessage({
-                      description: "PlanWeekPickerDialog: body - schedule description",
+                      description: "WeekPickerDialog: body - schedule description",
                       defaultMessage: "Everything already planned, at a glance. Click a week to work on it.",
-                      id: "WNaLyn",
+                      id: "xdYQG7",
                     })}
                   </p>
                 </div>
@@ -61,9 +61,9 @@ export function PlanWeekPickerDialog({
                   isIconOnly
                   onPress={onPrevMonth}
                   aria-label={intl.formatMessage({
-                    description: "PlanWeekPickerDialog: aria-label - previous month",
+                    description: "WeekPickerDialog: aria-label - previous month",
                     defaultMessage: "Previous month",
-                    id: "oTyAIm",
+                    id: "pH5X6L",
                   })}
                 >
                   <ChevronLeftIcon className="h-4 w-4" />
@@ -75,18 +75,18 @@ export function PlanWeekPickerDialog({
                   isIconOnly
                   onPress={onNextMonth}
                   aria-label={intl.formatMessage({
-                    description: "PlanWeekPickerDialog: aria-label - next month",
+                    description: "WeekPickerDialog: aria-label - next month",
                     defaultMessage: "Next month",
-                    id: "8onAi3",
+                    id: "1vJ1Jw",
                   })}
                 >
                   <ChevronRightIcon className="h-4 w-4" />
                 </Button>
                 <Button variant="ghost" size="sm" className="text-accent ml-auto px-0" onPress={onToday}>
                   {intl.formatMessage({
-                    description: "PlanWeekPickerDialog: button - back to this week",
+                    description: "WeekPickerDialog: button - back to this week",
                     defaultMessage: "Back to this week",
-                    id: "Ri4B7Y",
+                    id: "kBIiR8",
                   })}
                 </Button>
               </div>

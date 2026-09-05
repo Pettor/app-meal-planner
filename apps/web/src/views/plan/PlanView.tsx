@@ -1,14 +1,14 @@
 import type { ReactElement } from "react";
 import { useIntl } from "react-intl";
 import { TagBrowserDialog } from "~/components/feedback/tag-browser-dialog/TagBrowserDialog";
-import type { PlanStatus } from "~/core/plan/PlanTypes";
+import { WeekPickerDialog } from "~/components/feedback/week-picker-dialog/WeekPickerDialog";
+import type { PlanDraft, PlanStatus, SavedPlan } from "~/core/plan/PlanTypes";
 import type { Recipe, RecipeTagCategory } from "~/core/recipes/RecipeTypes";
 import { PlanDaysStepPanel } from "~/views/plan/PlanDaysStepPanel";
 import { PlanGenerateStepPanel } from "~/views/plan/PlanGenerateStepPanel";
 import { PlanQuotasStepPanel } from "~/views/plan/PlanQuotasStepPanel";
 import { PlanRecipeSwapDialog } from "~/views/plan/PlanRecipeSwapDialog";
 import { PlanResultsStepPanel } from "~/views/plan/PlanResultsStepPanel";
-import { PlanWeekPickerDialog } from "~/views/plan/PlanWeekPickerDialog";
 import { PlanWizardHeader } from "~/views/plan/PlanWizardHeader";
 import { UsePlanWizard } from "~/views/plan/UsePlanWizard";
 
@@ -18,13 +18,24 @@ export interface PlanViewProps {
   tagCatalogue: RecipeTagCategory[];
   /** Tags offered first when setting quotas for a week. */
   pinnedTags: string[];
-  onWeekSaved: (weekKey: string, status: PlanStatus) => void;
+  /** Weeks already saved, so reopening one edits it instead of starting over. */
+  plans: Record<string, SavedPlan>;
+  /** The week the wizard opens on — the one the rest of the app is looking at. */
+  initialWeekKey: string;
+  onWeekSaved: (weekKey: string, status: PlanStatus, draft: PlanDraft) => void;
 }
 
 /** The "Plan a week" wizard: days and people, quotas, generate, then refine and save. */
-export function PlanView({ recipes, tagCatalogue, pinnedTags, onWeekSaved }: PlanViewProps): ReactElement {
+export function PlanView({
+  recipes,
+  tagCatalogue,
+  pinnedTags,
+  plans,
+  initialWeekKey,
+  onWeekSaved,
+}: PlanViewProps): ReactElement {
   const intl = useIntl();
-  const wizard = UsePlanWizard(recipes, tagCatalogue, pinnedTags, onWeekSaved);
+  const wizard = UsePlanWizard({ recipes, tagCatalogue, pinnedTags, plans, initialWeekKey, onWeekSaved });
 
   return (
     <div className="mx-auto w-full max-w-[77.5rem] px-6 py-9">
@@ -89,16 +100,7 @@ export function PlanView({ recipes, tagCatalogue, pinnedTags, onWeekSaved }: Pla
         />
       )}
 
-      <PlanWeekPickerDialog
-        isOpen={wizard.isWeekPickerOpen}
-        title={wizard.calendarTitle}
-        dayNames={wizard.calendarDayNames}
-        weeks={wizard.calendarWeeks}
-        onPrevMonth={wizard.onCalendarPrevMonth}
-        onNextMonth={wizard.onCalendarNextMonth}
-        onToday={wizard.onCalendarToday}
-        onClose={wizard.onCloseWeekPicker}
-      />
+      <WeekPickerDialog {...wizard.weekPicker} />
 
       <PlanRecipeSwapDialog
         isOpen={wizard.isSwapOpen}

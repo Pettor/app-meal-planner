@@ -21,13 +21,21 @@ export function useAuthenticatedRoute(): UseAuthenticatedRouteResult {
   const socialLinks = useAppSocialLinks(GITHUB_LINK, LINKEDIN_LINK);
 
   const activeTab =
-    pathname === "/" || pathname.startsWith("/recipes") ? "recipes" : pathname.startsWith("/plan") ? "plan" : "";
+    pathname === "/" || pathname.startsWith("/recipes")
+      ? "recipes"
+      : pathname.startsWith("/plan")
+        ? "plan"
+        : pathname.startsWith("/week")
+          ? "week"
+          : "";
 
   function handleTabChange(id: string): void {
     if (id === "recipes") {
       navigate({ to: "/" });
     } else if (id === "plan") {
       navigate({ to: "/plan" });
+    } else if (id === "week") {
+      navigate({ to: "/week" });
     }
   }
 

@@ -61,4 +61,24 @@ export type PlanStatus = "draft" | "final";
 export interface SavedPlan {
   status: PlanStatus;
   draft: PlanDraft;
+  /** When the week was last saved, `YYYY-MM-DD`. */
+  savedAt: string;
+}
+
+/** One day cell in the week-picker calendar. */
+export interface PlanCalendarDayViewModel {
+  dayNumber: number;
+  isCurrentMonth: boolean;
+  isToday: boolean;
+  hasPlannedMeal: boolean;
+}
+
+/** One selectable week row in the week-picker calendar. */
+export interface PlanCalendarWeekViewModel {
+  weekNumber: number;
+  statusDotClassName: string;
+  mealsLabel: string;
+  isSelected: boolean;
+  days: PlanCalendarDayViewModel[];
+  onSelect: () => void;
 }

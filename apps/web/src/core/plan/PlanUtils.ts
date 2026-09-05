@@ -164,6 +164,20 @@ export function thisWeekKey(): string {
   return weekKeyOf(mondayOf(new Date()));
 }
 
+/**
+ * The week "Plan a new week" should open on: the first week from this one
+ * forward that has nothing saved yet, falling back to next week.
+ */
+export function nextUnplannedWeekKey(plannedWeekKeys: string[]): string {
+  const planned = new Set(plannedWeekKeys);
+  const monday = mondayOf(new Date());
+  for (let offset = 0; offset < 52; offset++) {
+    const key = weekKeyOf(addDays(monday, offset * 7));
+    if (!planned.has(key)) return key;
+  }
+  return weekKeyOf(addDays(monday, 7));
+}
+
 export function offsetWeekKey(offsetWeeks: number): string {
   return weekKeyOf(addDays(mondayOf(new Date()), offsetWeeks * 7));
 }

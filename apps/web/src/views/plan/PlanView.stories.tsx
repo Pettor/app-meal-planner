@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { fn } from "storybook/test";
 import { PlanView as Component } from "./PlanView";
 import type { PlanViewProps as Props } from "./PlanView";
-import { DefaultPinnedTags } from "~/core/plan/PlanUtils";
+import { DefaultPinnedTags, thisWeekKey } from "~/core/plan/PlanUtils";
 import { SampleRecipes, SampleTagCatalogue } from "~/core/recipes/RecipeSampleData";
 import { NavbarLayoutDecorator } from "~/storybook/decorators/NavbarLayoutDecorator";
 
@@ -23,6 +23,8 @@ const defaultArgs = {
   recipes: SampleRecipes.filter((recipe) => recipe.isSaved),
   tagCatalogue: SampleTagCatalogue,
   pinnedTags: DefaultPinnedTags,
+  plans: {},
+  initialWeekKey: thisWeekKey(),
   onWeekSaved: fn(),
 } satisfies Props;
 

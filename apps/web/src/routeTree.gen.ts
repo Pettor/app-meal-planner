@@ -15,6 +15,8 @@ import { Route as PublicRouteRouteImport } from './routes/_public/route'
 import { Route as AuthenticatedIndexRouteRouteImport } from './routes/_authenticated/index/route'
 import { Route as AuthenticatedDashboardRouteRouteImport } from './routes/_authenticated/dashboard/route'
 import { Route as AuthenticatedPlanRouteRouteImport } from './routes/_authenticated/plan/route'
+import { Route as AuthenticatedShoppingRouteRouteImport } from './routes/_authenticated/shopping/route'
+import { Route as AuthenticatedWeekRouteRouteImport } from './routes/_authenticated/week/route'
 import { Route as PublicForgotPasswordRouteRouteImport } from './routes/_public/forgot-password/route'
 import { Route as PublicLoginRouteRouteImport } from './routes/_public/login/route'
 import { Route as PublicSignUpRouteRouteImport } from './routes/_public/sign-up/route'
@@ -48,6 +50,17 @@ const AuthenticatedDashboardRouteRoute =
 const AuthenticatedPlanRouteRoute = AuthenticatedPlanRouteRouteImport.update({
   id: '/plan',
   path: '/plan',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedShoppingRouteRoute =
+  AuthenticatedShoppingRouteRouteImport.update({
+    id: '/shopping',
+    path: '/shopping',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedWeekRouteRoute = AuthenticatedWeekRouteRouteImport.update({
+  id: '/week',
+  path: '/week',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const PublicForgotPasswordRouteRoute =
@@ -84,6 +97,8 @@ export interface FileRoutesByFullPath {
   '/': typeof AuthenticatedIndexRouteRoute
   '/dashboard': typeof AuthenticatedDashboardRouteRoute
   '/plan': typeof AuthenticatedPlanRouteRoute
+  '/shopping': typeof AuthenticatedShoppingRouteRoute
+  '/week': typeof AuthenticatedWeekRouteRoute
   '/forgot-password': typeof PublicForgotPasswordRouteRoute
   '/login': typeof PublicLoginRouteRoute
   '/sign-up': typeof PublicSignUpRouteRoute
@@ -95,6 +110,8 @@ export interface FileRoutesByTo {
   '/': typeof AuthenticatedIndexRouteRoute
   '/dashboard': typeof AuthenticatedDashboardRouteRoute
   '/plan': typeof AuthenticatedPlanRouteRoute
+  '/shopping': typeof AuthenticatedShoppingRouteRoute
+  '/week': typeof AuthenticatedWeekRouteRoute
   '/forgot-password': typeof PublicForgotPasswordRouteRoute
   '/login': typeof PublicLoginRouteRoute
   '/sign-up': typeof PublicSignUpRouteRoute
@@ -109,6 +126,8 @@ export interface FileRoutesById {
   '/_authenticated/': typeof AuthenticatedIndexRouteRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRouteRoute
   '/_authenticated/plan': typeof AuthenticatedPlanRouteRoute
+  '/_authenticated/shopping': typeof AuthenticatedShoppingRouteRoute
+  '/_authenticated/week': typeof AuthenticatedWeekRouteRoute
   '/_public/forgot-password': typeof PublicForgotPasswordRouteRoute
   '/_public/login': typeof PublicLoginRouteRoute
   '/_public/sign-up': typeof PublicSignUpRouteRoute
@@ -122,6 +141,8 @@ export interface FileRouteTypes {
     | '/'
     | '/dashboard'
     | '/plan'
+    | '/shopping'
+    | '/week'
     | '/forgot-password'
     | '/login'
     | '/sign-up'
@@ -133,6 +154,8 @@ export interface FileRouteTypes {
     | '/'
     | '/dashboard'
     | '/plan'
+    | '/shopping'
+    | '/week'
     | '/forgot-password'
     | '/login'
     | '/sign-up'
@@ -146,6 +169,8 @@ export interface FileRouteTypes {
     | '/_authenticated/'
     | '/_authenticated/dashboard'
     | '/_authenticated/plan'
+    | '/_authenticated/shopping'
+    | '/_authenticated/week'
     | '/_public/forgot-password'
     | '/_public/login'
     | '/_public/sign-up'
@@ -203,6 +228,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedPlanRouteRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/shopping': {
+      id: '/_authenticated/shopping'
+      path: '/shopping'
+      fullPath: '/shopping'
+      preLoaderRoute: typeof AuthenticatedShoppingRouteRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/week': {
+      id: '/_authenticated/week'
+      path: '/week'
+      fullPath: '/week'
+      preLoaderRoute: typeof AuthenticatedWeekRouteRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_public/forgot-password': {
       id: '/_public/forgot-password'
       path: '/forgot-password'
@@ -245,6 +284,8 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedIndexRouteRoute: typeof AuthenticatedIndexRouteRoute
   AuthenticatedDashboardRouteRoute: typeof AuthenticatedDashboardRouteRoute
   AuthenticatedPlanRouteRoute: typeof AuthenticatedPlanRouteRoute
+  AuthenticatedShoppingRouteRoute: typeof AuthenticatedShoppingRouteRoute
+  AuthenticatedWeekRouteRoute: typeof AuthenticatedWeekRouteRoute
   AuthenticatedRecipesRecipeIdRouteRoute: typeof AuthenticatedRecipesRecipeIdRouteRoute
   AuthenticatedRecipesEditRecipeIdRouteRoute: typeof AuthenticatedRecipesEditRecipeIdRouteRoute
 }
@@ -253,6 +294,8 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedIndexRouteRoute: AuthenticatedIndexRouteRoute,
   AuthenticatedDashboardRouteRoute: AuthenticatedDashboardRouteRoute,
   AuthenticatedPlanRouteRoute: AuthenticatedPlanRouteRoute,
+  AuthenticatedShoppingRouteRoute: AuthenticatedShoppingRouteRoute,
+  AuthenticatedWeekRouteRoute: AuthenticatedWeekRouteRoute,
   AuthenticatedRecipesRecipeIdRouteRoute:
     AuthenticatedRecipesRecipeIdRouteRoute,
   AuthenticatedRecipesEditRecipeIdRouteRoute:

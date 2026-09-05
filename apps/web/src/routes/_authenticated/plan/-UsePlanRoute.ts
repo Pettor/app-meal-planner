@@ -1,14 +1,15 @@
 import { toast } from "@heroui/react";
 import { useNavigate } from "@tanstack/react-router";
 import { useIntl } from "react-intl";
-import type { PlanStatus } from "~/core/plan/PlanTypes";
+import type { PlanDraft, PlanStatus } from "~/core/plan/PlanTypes";
 import { DefaultPinnedTags } from "~/core/plan/PlanUtils";
+import { UsePlans } from "~/core/plan/UsePlans";
 import { SampleRecipes, SampleTagCatalogue } from "~/core/recipes/RecipeSampleData";
 import type { Recipe } from "~/core/recipes/RecipeTypes";
 import type { PlanViewProps } from "~/views/plan/PlanView";
 
 /**
- * Wires the plan wizard to navigation.
+ * Wires the plan wizard to the saved weeks and to navigation.
  *
  * `recipes` comes from placeholder data until there is a recipes service —
  * swap `SampleRecipes` for a route loader and the view stays unchanged. Only
@@ -17,10 +18,13 @@ import type { PlanViewProps } from "~/views/plan/PlanView";
 export function UsePlanRoute(): PlanViewProps {
   const navigate = useNavigate();
   const intl = useIntl();
+  const { plans, selectedWeekKey, selectWeek, savePlan } = UsePlans();
 
   const recipes: Recipe[] = SampleRecipes.filter((recipe) => recipe.isSaved);
 
-  function handleWeekSaved(weekKey: string, status: PlanStatus): void {
+  function handleWeekSaved(weekKey: string, status: PlanStatus, draft: PlanDraft): void {
+    savePlan(weekKey, status, draft);
+    selectWeek(weekKey);
     toast(
       status === "final"
         ? intl.formatMessage({
@@ -34,14 +38,15 @@ export function UsePlanRoute(): PlanViewProps {
             id: "seJTd5",
           })
     );
-    console.info("Save week plan", weekKey, status);
-    void navigate({ to: "/" });
+    void navigate({ to: "/week" });
   }
 
   return {
     recipes,
     tagCatalogue: SampleTagCatalogue,
     pinnedTags: DefaultPinnedTags,
+    plans,
+    initialWeekKey: selectedWeekKey,
     onWeekSaved: handleWeekSaved,
   };
 }
