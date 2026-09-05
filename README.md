@@ -11,8 +11,8 @@ A modern, production-ready React web application template designed to jumpstart 
 
 Experience the template in action:
 
-- **[Live Application Demo](https://pettor.github.io/meal-planner/app/)** - See the main application
-- **[Storybook Component Library](https://pettor.github.io/meal-planner/storybook/)** - Explore the component documentation
+- **[Live Application Demo](https://pettor.github.io/app-meal-planner/app/)** - See the main application
+- **[Storybook Component Library](https://pettor.github.io/app-meal-planner/storybook/)** - Explore the component documentation
 
 ## ✨ Key Features
 
