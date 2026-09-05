@@ -230,14 +230,14 @@ export function PlanQuotasStepPanel({
                 </div>
               </div>
               <div className="flex flex-wrap items-center justify-between gap-2.5">
-                <Button variant="ghost" size="sm" className="text-accent px-0" onPress={onOpenEditDefaultTags}>
+                <Button variant="ghost" size="sm" className="text-accent -ml-3" onPress={onOpenEditDefaultTags}>
                   {intl.formatMessage({
                     description: "PlanQuotasStepPanel: button - edit default tags",
                     defaultMessage: "Edit your default tags",
                     id: "/nm29K",
                   })}
                 </Button>
-                <Button variant="ghost" size="sm" className="text-accent px-0" onPress={onOpenBrowseQuotaTags}>
+                <Button variant="ghost" size="sm" className="text-accent -mr-3" onPress={onOpenBrowseQuotaTags}>
                   {intl.formatMessage({
                     description: "PlanQuotasStepPanel: button - browse all tags",
                     defaultMessage: "Browse all tags",

@@ -80,7 +80,7 @@ export function RecipeEditTagsPanel({
       </div>
 
       <div className="mt-2.5">
-        <Button variant="ghost" size="sm" className="text-accent px-0" onPress={onBrowseAllTags}>
+        <Button variant="ghost" size="sm" className="text-accent -ml-3" onPress={onBrowseAllTags}>
           {intl.formatMessage({
             description: "RecipeEditTagsPanel: button - browse all tags",
             defaultMessage: "Browse all tags",

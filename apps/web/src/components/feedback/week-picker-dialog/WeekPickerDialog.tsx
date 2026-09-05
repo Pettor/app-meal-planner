@@ -82,7 +82,7 @@ export function WeekPickerDialog({
                 >
                   <ChevronRightIcon className="h-4 w-4" />
                 </Button>
-                <Button variant="ghost" size="sm" className="text-accent ml-auto px-0" onPress={onToday}>
+                <Button variant="ghost" size="sm" className="text-accent -mr-3 ml-auto" onPress={onToday}>
                   {intl.formatMessage({
                     description: "WeekPickerDialog: button - back to this week",
                     defaultMessage: "Back to this week",

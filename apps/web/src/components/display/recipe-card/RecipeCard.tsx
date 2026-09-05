@@ -128,7 +128,7 @@ export function RecipeCard({ recipe, showSaveAction, onOpen, onSave, onRemove }:
             <Button
               variant="ghost"
               size="sm"
-              className="text-danger px-0"
+              className="text-danger -ml-3"
               onPress={() => onRemove?.(recipe.id)}
               data-testid={`recipe-card__remove--${recipe.id}`}
             >

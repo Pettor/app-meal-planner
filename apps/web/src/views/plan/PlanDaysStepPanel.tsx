@@ -58,7 +58,7 @@ export function PlanDaysStepPanel({
         <Button
           variant="ghost"
           size="sm"
-          className="text-accent ml-auto px-0"
+          className="text-accent -mr-3 ml-auto"
           onPress={onOpenWeekPicker}
           data-testid="plan__pick-week"
         >
@@ -122,7 +122,7 @@ export function PlanDaysStepPanel({
 
         <div className="bg-surface-secondary flex flex-wrap items-center justify-between gap-3 px-6 py-4">
           <span className="text-default-500 text-sm">{mealSummary}</span>
-          <Button variant="ghost" size="sm" className="text-accent px-0" onPress={onApplyFirstDayToAll}>
+          <Button variant="ghost" size="sm" className="text-accent -mr-3" onPress={onApplyFirstDayToAll}>
             {intl.formatMessage({
               description: "PlanDaysStepPanel: button - copy first day to all",
               defaultMessage: "Copy Monday's setup to all days",

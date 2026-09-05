@@ -33,7 +33,7 @@ export function RecipeEditIngredientsPanel({
         <Button
           variant="ghost"
           size="sm"
-          className="text-accent px-0"
+          className="text-accent -mr-3"
           onPress={onAdd}
           data-testid="recipe-edit__add-ingredient"
         >

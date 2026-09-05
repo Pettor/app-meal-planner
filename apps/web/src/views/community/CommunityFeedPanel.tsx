@@ -84,7 +84,7 @@ export function CommunityFeedPanel({
           ))}
 
           {feed.hasTagFilter && (
-            <Button variant="ghost" size="sm" className="text-accent px-2" onPress={feed.clearTags}>
+            <Button variant="ghost" size="sm" className="text-accent" onPress={feed.clearTags}>
               {intl.formatMessage({
                 description: "CommunityFeedPanel: button - clear the tag filter",
                 defaultMessage: "Clear",
