@@ -86,12 +86,15 @@ test.describe("recipes.library", () => {
     const dialog = page.getByRole("dialog", { name: "New recipe" });
     await expect(dialog).toBeVisible();
 
-    // A new recipe has no tags yet, so saving is refused and the form stays open.
+    // A new recipe has no tags yet, so saving is refused and says why.
     await page.getByTestId("recipe-edit__save").click();
     await expect(dialog).toBeVisible();
+    await expect(page.getByTestId("recipe-edit__tag-error")).toBeVisible();
 
-    // Picking a tag lets the save through.
+    // Picking a tag clears the error and lets the save through.
     await dialog.getByRole("button", { name: "vegetarian", exact: true }).click();
+    await expect(page.getByTestId("recipe-edit__tag-error")).toBeHidden();
+
     await page.getByTestId("recipe-edit__save").click();
     await expect(dialog).toBeHidden();
 

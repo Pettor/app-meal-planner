@@ -128,10 +128,11 @@ test.describe("week.planned", () => {
     const dialog = page.getByRole("dialog", { name: "Schedule" });
     await expect(dialog).toBeVisible();
 
-    // A finalised week carries a green status dot in the calendar, and each of
-    // its planned days is dotted underneath.
+    // A finalised week carries a green status dot in the calendar, each of its
+    // planned days is dotted underneath, and the row says how much is filled.
     await expect(dialog.locator("span.bg-success").first()).toBeVisible();
     await expect(dialog.locator("span.bg-accent.opacity-100")).toHaveCount(7);
+    await expect(dialog.getByText("7 filled")).toBeVisible();
 
     await dialog.getByRole("button", { name: /^\d+ / }).first().click();
     await expect(dialog).toBeHidden();

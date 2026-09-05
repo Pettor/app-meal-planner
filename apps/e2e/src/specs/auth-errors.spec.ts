@@ -102,4 +102,44 @@ test.describe("auth.forgotpassword", () => {
       expect(await page.title()).toBe("Login");
     }).toPass();
   });
+
+  test("says so when the reset request is refused", async ({ page }) => {
+    await mocksClient.useRouteVariant("Users_ForgotPassword:400-json-status-400-no-error");
+
+    await page.goto("/#/forgot-password");
+    await expect(async () => {
+      expect(await page.title()).toBe("Forgot Password");
+    }).toPass();
+
+    await page.getByTestId("forgot-password-form__email-input").fill("root@admin.com");
+    await page.getByTestId("forgot-password-form__submit-button").click();
+
+    // A refused request must not be reported as a mail on its way.
+    await expect(page.getByText("Something went wrong. Please try again.").first()).toBeVisible();
+    await expect(page.getByTestId("forgot-password-view__sent")).toBeHidden();
+  });
+});
+
+test.describe("auth.signuperrors", () => {
+  test.beforeEach(async () => {
+    await mocksClient.useRouteVariant("Tokens_Refresh:400-json-status-400-no-error");
+    await mocksClient.useRouteVariant("Users_SelfRegister:400-json-status-400-no-error");
+  });
+
+  test("says so when the sign-up is refused", async ({ page }) => {
+    await page.goto("/#/sign-up");
+    await expect(async () => {
+      expect(await page.title()).toBe("Sign Up");
+    }).toPass();
+
+    await page.getByTestId("sign-up-form__username-input").fill("new@user.com");
+    await page.getByTestId("sign-up-form__email-input").fill("new@user.com");
+    await page.getByTestId("sign-up-form__password-input").fill("password123");
+    await page.getByTestId("sign-up-form__terms-checkbox").click({ force: true });
+    await page.getByTestId("sign-up-form__submit-button").click();
+
+    // The failure is reported and the cook stays on the form, not signed in.
+    await expect(page.getByText("Something went wrong. Please try again.").first()).toBeVisible();
+    expect(await page.title()).toBe("Sign Up");
+  });
 });

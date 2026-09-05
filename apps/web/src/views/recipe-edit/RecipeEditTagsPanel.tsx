@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { ReactElement } from "react";
-import { Button, FieldError, Label } from "@heroui/react";
+import { Button, Label } from "@heroui/react";
 import { useIntl } from "react-intl";
 import { TextInputField } from "~/components/input/input-field/TextInputField";
 import { ToggleChip } from "~/components/input/toggle-chip/ToggleChip";
@@ -89,14 +89,19 @@ export function RecipeEditTagsPanel({
         </Button>
       </div>
 
+      {/*
+       * The tag chips are not a form field, so HeroUI's `FieldError` has no
+       * field context to render into and would silently show nothing. This is
+       * the same standalone-error markup the sign-up form's terms checkbox uses.
+       */}
       {hasTagError && (
-        <FieldError className="mt-2 block">
+        <span className="text-danger mt-2 block text-xs" role="alert" data-testid="recipe-edit__tag-error">
           {intl.formatMessage({
             description: "RecipeEditTagsPanel: error - at least one tag required",
             defaultMessage: "Pick at least one tag. The planner needs them.",
             id: "4pleys",
           })}
-        </FieldError>
+        </span>
       )}
 
       <p className="text-default-500 mt-2 text-xs">

@@ -114,9 +114,17 @@ export function WeekPickerDialog({
                     week.isSelected ? "bg-accent/10 border-accent/45" : "border-transparent"
                   )}
                 >
-                  <span className="flex items-center gap-1.5 pl-0.5">
-                    <span className={clsx("h-1.5 w-1.5 rounded-full", week.statusDotClassName)} />
-                    <span className="text-default-500 text-xs font-medium">{week.weekNumber}</span>
+                  <span className="flex flex-col gap-0.5 pl-0.5">
+                    <span className="flex items-center gap-1.5">
+                      <span className={clsx("h-1.5 w-1.5 rounded-full", week.statusDotClassName)} />
+                      <span className="text-default-500 text-xs font-medium">{week.weekNumber}</span>
+                    </span>
+                    {/* Empty for a week with nothing on it, so the row keeps its single-line height. */}
+                    {week.mealsLabel && (
+                      <span className="text-default-400 text-[10px] leading-none whitespace-nowrap">
+                        {week.mealsLabel}
+                      </span>
+                    )}
                   </span>
                   {week.days.map((day, index) => (
                     <span key={index} className="flex flex-col items-center gap-0.5 py-0.5">

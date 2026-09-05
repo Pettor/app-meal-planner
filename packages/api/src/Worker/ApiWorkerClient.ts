@@ -27,6 +27,22 @@ export function isFetchError(error: unknown): error is FetchError {
   return error instanceof FetchError;
 }
 
+/**
+ * Passes an ok response through, and turns a failed one into a `FetchError`.
+ *
+ * A non-ok response is still a resolved `fetch`, so without this every 4xx and
+ * 5xx would travel back to the app as an ordinary `ApiResponse` and read as
+ * success — a rejected sign-up would look like a completed one. The worker
+ * catches `FetchError` and reports its status, which is what the route hooks
+ * map onto the message the user sees.
+ */
+function throwOnFailure(response: Response): Response {
+  if (!response.ok) {
+    throw new FetchError(`HTTP error! status: ${response.status}`, response.status, response.statusText, response);
+  }
+  return response;
+}
+
 export class ApiWorkerClient {
   private readonly TOKEN_API_URL = "/api/tokens";
   private readonly REFRESH_TOKEN_API_URL = "/api/tokens/refresh";
@@ -61,9 +77,7 @@ export class ApiWorkerClient {
       body: JSON.stringify(data),
     });
 
-    if (!response.ok) {
-      throw new FetchError(`HTTP error! status: ${response.status}`, response.status, response.statusText, response);
-    }
+    throwOnFailure(response);
 
     const responseData = await response.json();
     const { token } = await tokenSchema.parseAsync(responseData);
@@ -100,9 +114,7 @@ export class ApiWorkerClient {
       headers: this._defaultHeaders,
     });
 
-    if (!response.ok) {
-      throw new FetchError(`HTTP error! status: ${response.status}`, response.status, response.statusText, response);
-    }
+    throwOnFailure(response);
 
     const responseData = await response.json();
     const { token } = await tokenSchema.parseAsync(responseData);
@@ -166,6 +178,8 @@ export class ApiWorkerClient {
 
     // If unauthorized and not already a refresh token request, try to refresh and retry
     if (response.status === 401 && !url.includes(this.REFRESH_TOKEN_API_URL)) {
+      let retried: Response;
+
       try {
         await this.refreshToken();
 
@@ -178,14 +192,18 @@ export class ApiWorkerClient {
           },
         };
 
-        return await this._client.request(url, retryOptions);
+        retried = await this._client.request(url, retryOptions);
       } catch {
-        // If refresh fails, return the original 401 response
-        return response;
+        // The refresh failed, so the original 401 is the real answer.
+        return throwOnFailure(response);
       }
+
+      // Outside the catch, so a failed retry is reported as itself rather than
+      // being mistaken for a failed refresh.
+      return throwOnFailure(retried);
     }
 
-    return response;
+    return throwOnFailure(response);
   }
 
   private createConfig(): Record<string, unknown> {
