@@ -1,4 +1,5 @@
 import { useMemo, useState, type ReactElement } from "react";
+import { InboxIcon, UserCircleIcon } from "@heroicons/react/24/outline";
 import { Popover } from "@heroui/react";
 import clsx from "clsx";
 import { useIntl } from "react-intl";
@@ -13,6 +14,12 @@ export interface NavbarContentProps {
   avatarEmail?: string;
   activeTab?: string;
   onTabChange?: (id: string) => void;
+  /** Community entries in the account dropdown, with the inbox's unread count. */
+  accountMenu?: {
+    unreadCount: number;
+    onOpenProfile: () => void;
+    onOpenInbox: () => void;
+  };
 }
 
 function navigateToHash(href: string): void {
@@ -42,6 +49,7 @@ export function NavbarContent({
   avatarEmail,
   activeTab = "recipes",
   onTabChange,
+  accountMenu,
 }: NavbarContentProps): ReactElement {
   const intl = useIntl();
   const [isAccountOpen, setIsAccountOpen] = useState(false);
@@ -139,6 +147,54 @@ export function NavbarContent({
                       {handle && <span className="text-muted truncate text-xs">{handle}</span>}
                     </span>
                   </div>
+                  {accountMenu && (
+                    <div className="border-separator flex flex-col border-b p-2">
+                      <button
+                        type="button"
+                        className="hover:bg-surface-secondary flex cursor-pointer items-center gap-2.5 rounded-md px-2.5 py-2 text-sm"
+                        onClick={() => {
+                          setIsAccountOpen(false);
+                          accountMenu.onOpenProfile();
+                        }}
+                        data-testid="navbar__my-profile"
+                      >
+                        <UserCircleIcon className="h-[18px] w-[18px]" />
+                        {intl.formatMessage({
+                          description: "NavbarContent: menu-item - open your own community profile",
+                          defaultMessage: "My profile",
+                          id: "izLyKM",
+                        })}
+                      </button>
+                      <button
+                        type="button"
+                        className="hover:bg-surface-secondary flex cursor-pointer items-center gap-2.5 rounded-md px-2.5 py-2 text-sm"
+                        onClick={() => {
+                          setIsAccountOpen(false);
+                          accountMenu.onOpenInbox();
+                        }}
+                        data-testid="navbar__inbox"
+                      >
+                        <InboxIcon className="h-[18px] w-[18px]" />
+                        {intl.formatMessage({
+                          description: "NavbarContent: menu-item - open the recommendations inbox",
+                          defaultMessage: "Inbox",
+                          id: "TsXLmk",
+                        })}
+                        {accountMenu.unreadCount > 0 && (
+                          <span className="bg-accent text-accent-foreground ml-auto rounded-full px-2 py-0.5 text-[10px] font-semibold">
+                            {intl.formatMessage(
+                              {
+                                description: "NavbarContent: badge - unread recommendations",
+                                defaultMessage: "{count} new",
+                                id: "co8SjV",
+                              },
+                              { count: accountMenu.unreadCount }
+                            )}
+                          </span>
+                        )}
+                      </button>
+                    </div>
+                  )}
                   <div className="p-2">
                     <QuickMenu
                       onSettings={() => {

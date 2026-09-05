@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
-import { SampleRecipes, SampleScannedRecipe, SampleTagCatalogue, SuggestedTags } from "~/core/recipes/RecipeSampleData";
-import type { Recipe } from "~/core/recipes/RecipeTypes";
+import { SampleScannedRecipe, SampleTagCatalogue, SuggestedTags } from "~/core/recipes/RecipeSampleData";
+import { UseRecipes } from "~/core/recipes/UseRecipes";
 import { emptyRecipeDraft } from "~/views/recipe-edit/RecipeDraft";
 import type { RecipeLibraryViewProps } from "~/views/recipe-library/RecipeLibraryView";
 
 /**
  * Wires the recipe library to navigation.
  *
- * `recipes` comes from placeholder data until there is a recipes service —
- * swap `SampleRecipes` for a route loader and the view stays unchanged.
+ * The recipes themselves come from placeholder data until there is a recipes
+ * service; which of them are the cook's own is real state, held by `UseRecipes`.
  *
  * "Add recipe" opens as a modal over the library (matching the design)
  * rather than navigating to a separate page, so its open state lives here.
@@ -17,15 +17,14 @@ import type { RecipeLibraryViewProps } from "~/views/recipe-library/RecipeLibrar
 export function UseRecipeLibraryRoute(): RecipeLibraryViewProps {
   const navigate = useNavigate();
   const [isAddRecipeOpen, setIsAddRecipeOpen] = useState(false);
-
-  const recipes: Recipe[] = SampleRecipes;
+  const { recipes, saveRecipe, removeRecipe } = UseRecipes();
 
   return {
     recipes,
     onOpenRecipe: (recipeId) => void navigate({ to: "/recipes/$recipeId", params: { recipeId } }),
     onAddRecipe: () => setIsAddRecipeOpen(true),
-    onSaveRecipe: (recipeId) => console.info("Save recipe", recipeId),
-    onRemoveRecipe: (recipeId) => console.info("Remove recipe", recipeId),
+    onSaveRecipe: saveRecipe,
+    onRemoveRecipe: removeRecipe,
     addRecipeModal: {
       isOpen: isAddRecipeOpen,
       initialDraft: emptyRecipeDraft(),

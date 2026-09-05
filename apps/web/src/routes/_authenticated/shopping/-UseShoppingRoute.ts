@@ -1,6 +1,5 @@
 import { UsePlans } from "~/core/plan/UsePlans";
-import { SampleRecipes } from "~/core/recipes/RecipeSampleData";
-import type { Recipe } from "~/core/recipes/RecipeTypes";
+import { UseRecipes } from "~/core/recipes/UseRecipes";
 import { UseShoppingList } from "~/core/shopping/UseShoppingList";
 import type { ShoppingViewProps } from "~/views/shopping/ShoppingView";
 
@@ -14,7 +13,7 @@ export function UseShoppingRoute(): ShoppingViewProps {
   const { plans, selectedWeekKey } = UsePlans();
   const { checkedLines, toggleLine } = UseShoppingList();
 
-  const recipes: Recipe[] = SampleRecipes;
+  const { recipes } = UseRecipes();
 
   return {
     weekKey: selectedWeekKey,

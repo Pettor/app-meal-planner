@@ -1,0 +1,225 @@
+import type { CommunityPerson, InboxItem, SharedWeek } from "~/core/community/CommunityTypes";
+
+/**
+ * Placeholder content for the community views.
+ *
+ * The app has no community service yet, so routes and stories both read from
+ * here. Replacing it with a loader is a one-line change in each route hook.
+ */
+
+/** Everyone the signed-in cook can see in the community. */
+export const SampleCommunityPeople: CommunityPerson[] = [
+  {
+    id: "p1",
+    name: "Elin Håkansson",
+    handle: "@elin",
+    avatarUrl: null,
+    color: "oklch(0.62 0.195 253.8)",
+    bio: "Weeknight cooking for four. Fish at least twice a week.",
+    followsMe: true,
+  },
+  {
+    id: "p2",
+    name: "Marcus Reid",
+    handle: "@marcus",
+    avatarUrl: null,
+    color: "oklch(0.60 0.20 25)",
+    bio: "Grill all summer, braise all winter. Nothing in between.",
+    followsMe: true,
+  },
+  {
+    id: "p3",
+    name: "Priya Raman",
+    handle: "@priya",
+    avatarUrl: null,
+    color: "oklch(0.60 0.14 155)",
+    bio: "Vegetarian by default, spice-forward, no compromises.",
+    followsMe: true,
+  },
+  {
+    id: "p4",
+    name: "Tomas Lind",
+    handle: "@tomas",
+    avatarUrl: null,
+    color: "oklch(0.65 0.15 65)",
+    bio: "Cheap, fast, feeds two teenagers twice over.",
+    followsMe: false,
+  },
+  {
+    id: "p5",
+    name: "Sara Okafor",
+    handle: "@sara",
+    avatarUrl: null,
+    color: "oklch(0.55 0.19 300)",
+    bio: "Batch cooks on Sunday, eats well until Friday.",
+    followsMe: true,
+  },
+];
+
+/** Who the cook follows before they change anything. */
+export const DefaultFollowing: string[] = ["p1", "p3"];
+
+/** Weeks published to the community, newest first once sorted by `daysAgo`. */
+export const SampleSharedWeeks: SharedWeek[] = [
+  {
+    id: "w1",
+    ownerId: "p3",
+    daysAgo: 2,
+    uses: 31,
+    people: 4,
+    title: "Meatless, still filling",
+    note: "Seven dinners, no meat, and nobody at the table noticed until Thursday.",
+    recipeIds: ["c1", "c2", "r1", "c13", "c14", "c3", "r6"],
+  },
+  {
+    id: "w2",
+    ownerId: "p2",
+    daysAgo: 4,
+    uses: 18,
+    people: 4,
+    title: "Grill and smoke week",
+    note: "Built around one long Saturday cook. Everything after that is leftovers with intent.",
+    recipeIds: ["c5", "r2", "c4", "c10", "c6", "c12", "r4"],
+  },
+  {
+    id: "w3",
+    ownerId: "p1",
+    daysAgo: 1,
+    uses: 44,
+    people: 4,
+    title: "Fish twice, cheap the rest",
+    note: "Two proper fish nights, then five dinners that cost almost nothing.",
+    recipeIds: ["c7", "c8", "c11", "r5", "c9", "r4", "c2"],
+  },
+  {
+    id: "w4",
+    ownerId: "p5",
+    daysAgo: 6,
+    uses: 12,
+    people: 5,
+    title: "Sunday batch cook",
+    note: "Cook two big pots on Sunday and the weeknights take twenty minutes each.",
+    recipeIds: ["c12", "c13", "c14", "c10", "r3", "c2", "r4"],
+  },
+  {
+    id: "w5",
+    ownerId: "p1",
+    daysAgo: 3,
+    uses: 27,
+    people: 4,
+    title: "Twenty minutes flat",
+    note: "Nothing here takes longer than the rice. Written for the weeks that get away from you.",
+    recipeIds: ["c16", "c27", "c22", "c24", "c8", "c25", "c11"],
+  },
+  {
+    id: "w6",
+    ownerId: "p1",
+    daysAgo: 7,
+    uses: 39,
+    people: 4,
+    title: "One roast, five dinners",
+    note: "Sunday chicken carries Monday and Tuesday. The rest is cheap on purpose.",
+    recipeIds: ["c15", "c30", "c19", "c28", "c16", "c31", "c7"],
+  },
+  {
+    id: "w7",
+    ownerId: "p1",
+    daysAgo: 10,
+    uses: 15,
+    people: 4,
+    title: "Cold week, warm food",
+    note: "Everything braised, baked or in a bowl. No salads until March.",
+    recipeIds: ["c26", "c31", "c19", "c9", "c30", "c10", "c23"],
+  },
+  {
+    id: "w8",
+    ownerId: "p1",
+    daysAgo: 13,
+    uses: 22,
+    people: 4,
+    title: "Fish four times",
+    note: "Pushed it as far as the family would go. Thursday was the argument.",
+    recipeIds: ["c7", "c20", "c24", "c29", "c22", "c21", "c25"],
+  },
+  {
+    id: "w9",
+    ownerId: "p1",
+    daysAgo: 16,
+    uses: 8,
+    people: 2,
+    title: "Cooking for two",
+    note: "Halved everything and stopped pretending we eat leftovers.",
+    recipeIds: ["c29", "c27", "c17", "c22", "c16", "c25", "c21"],
+  },
+  {
+    id: "w10",
+    ownerId: "p1",
+    daysAgo: 19,
+    uses: 33,
+    people: 4,
+    title: "Under sixty kronor a head",
+    note: "A tight week that still ends with something worth sitting down for.",
+    recipeIds: ["c19", "c28", "c27", "c2", "c31", "c11", "c16"],
+  },
+  {
+    id: "w11",
+    ownerId: "p1",
+    daysAgo: 23,
+    uses: 11,
+    people: 6,
+    title: "Feeding six",
+    note: "Two batch dishes, one pie, and a Friday that cooks itself.",
+    recipeIds: ["c26", "c30", "c12", "c23", "c15", "c19", "c28"],
+  },
+  {
+    id: "w12",
+    ownerId: "p1",
+    daysAgo: 29,
+    uses: 19,
+    people: 4,
+    title: "Late summer, mostly grilled",
+    note: "Written the week the garden gave up everything at once.",
+    recipeIds: ["c5", "c29", "c25", "c20", "c21", "c8", "c27"],
+  },
+  {
+    id: "w13",
+    ownerId: "p1",
+    daysAgo: 35,
+    uses: 6,
+    people: 4,
+    title: "Meat once, and you won't miss it",
+    note: "One chicken night. The other six lean on eggs, beans and cheese.",
+    recipeIds: ["c28", "c25", "c22", "c13", "c15", "c19", "c14"],
+  },
+];
+
+/** Recommendations waiting in the cook's inbox. */
+export const SampleInboxItems: InboxItem[] = [
+  {
+    id: "n1",
+    kind: "week",
+    fromId: "p2",
+    refId: "w2",
+    daysAgo: 1,
+    isRead: false,
+    note: "Thought of you when I put this week together. The Tuesday one is the winner.",
+  },
+  {
+    id: "n2",
+    kind: "recipe",
+    fromId: "p1",
+    refId: "c7",
+    daysAgo: 3,
+    isRead: false,
+    note: "Twenty-five minutes and it tastes like you tried much harder.",
+  },
+  {
+    id: "n3",
+    kind: "recipe",
+    fromId: "p4",
+    refId: "c11",
+    daysAgo: 8,
+    isRead: true,
+    note: "Cheap, and both kids ate it without negotiating.",
+  },
+];

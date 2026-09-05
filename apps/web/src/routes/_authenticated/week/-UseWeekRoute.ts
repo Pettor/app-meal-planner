@@ -1,8 +1,7 @@
 import { useNavigate } from "@tanstack/react-router";
 import { nextUnplannedWeekKey } from "~/core/plan/PlanUtils";
 import { UsePlans } from "~/core/plan/UsePlans";
-import { SampleRecipes } from "~/core/recipes/RecipeSampleData";
-import type { Recipe } from "~/core/recipes/RecipeTypes";
+import { UseRecipes } from "~/core/recipes/UseRecipes";
 import type { WeekViewProps } from "~/views/week/WeekView";
 
 /**
@@ -15,7 +14,7 @@ export function UseWeekRoute(): WeekViewProps {
   const navigate = useNavigate();
   const { plans, selectedWeekKey, selectWeek, publishPlan } = UsePlans();
 
-  const recipes: Recipe[] = SampleRecipes;
+  const { recipes } = UseRecipes();
 
   return {
     weekKey: selectedWeekKey,

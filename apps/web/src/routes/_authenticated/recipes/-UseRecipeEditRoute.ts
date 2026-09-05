@@ -1,5 +1,6 @@
 import { useNavigate } from "@tanstack/react-router";
-import { SampleRecipes, SampleScannedRecipe, SampleTagCatalogue, SuggestedTags } from "~/core/recipes/RecipeSampleData";
+import { SampleScannedRecipe, SampleTagCatalogue, SuggestedTags } from "~/core/recipes/RecipeSampleData";
+import { UseRecipes } from "~/core/recipes/UseRecipes";
 import type { RecipeDraft } from "~/views/recipe-edit/RecipeDraft";
 import { emptyRecipeDraft, recipeToDraft } from "~/views/recipe-edit/RecipeDraft";
 import type { RecipeEditViewProps } from "~/views/recipe-edit/RecipeEditView";
@@ -13,7 +14,8 @@ import type { RecipeEditViewProps } from "~/views/recipe-edit/RecipeEditView";
 export function UseRecipeEditRoute(recipeId: string): Omit<RecipeEditViewProps, "isOpen"> {
   const navigate = useNavigate();
 
-  const existing = SampleRecipes.find((recipe) => recipe.id === recipeId);
+  const { recipes } = UseRecipes();
+  const existing = recipes.find((recipe) => recipe.id === recipeId);
   const initialDraft: RecipeDraft = existing ? recipeToDraft(existing) : emptyRecipeDraft();
 
   function goBack(): void {

@@ -22,6 +22,8 @@ export interface PlanViewProps {
   plans: Record<string, SavedPlan>;
   /** The week the wizard opens on — the one the rest of the app is looking at. */
   initialWeekKey: string;
+  /** A shared week loaded from the community, opened straight on the review step. */
+  initialDraft?: PlanDraft | null;
   onWeekSaved: (weekKey: string, status: PlanStatus, draft: PlanDraft) => void;
 }
 
@@ -32,10 +34,19 @@ export function PlanView({
   pinnedTags,
   plans,
   initialWeekKey,
+  initialDraft,
   onWeekSaved,
 }: PlanViewProps): ReactElement {
   const intl = useIntl();
-  const wizard = UsePlanWizard({ recipes, tagCatalogue, pinnedTags, plans, initialWeekKey, onWeekSaved });
+  const wizard = UsePlanWizard({
+    recipes,
+    tagCatalogue,
+    pinnedTags,
+    plans,
+    initialWeekKey,
+    initialDraft,
+    onWeekSaved,
+  });
 
   return (
     <div className="mx-auto w-full max-w-[77.5rem] px-6 py-9">

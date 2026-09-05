@@ -85,9 +85,8 @@ export function createNavMenuItems(intl: IntlShape): NavMenuItem[] {
         defaultMessage: "Friends",
         id: "YfA5jn",
       }),
-      href: "#/",
+      href: "#/community",
       icon: <UsersIcon className="h-[18px] w-[18px]" />,
-      disabled: true,
     },
   ];
 }

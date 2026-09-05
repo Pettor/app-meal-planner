@@ -181,6 +181,12 @@ export interface UsePlanWizardOptions {
   plans: Record<string, SavedPlan>;
   /** The week the wizard opens on — the one the rest of the app is looking at. */
   initialWeekKey: string;
+  /**
+   * A week handed in from elsewhere — someone else's shared week the cook chose
+   * to load. It opens straight on the review step, since the days and meals are
+   * already decided; the cook is here to change them, not to start over.
+   */
+  initialDraft?: PlanDraft | null;
   onWeekSaved: (weekKey: string, status: PlanStatus, draft: PlanDraft) => void;
 }
 
@@ -191,14 +197,16 @@ export function UsePlanWizard({
   pinnedTags: initialPinnedTags,
   plans,
   initialWeekKey,
+  initialDraft = null,
   onWeekSaved,
 }: UsePlanWizardOptions): UsePlanWizardResult {
   const intl = useIntl();
   const locale = intl.locale || "en-GB";
 
   const [weekKey, setWeekKey] = useState(initialWeekKey);
-  const [step, setStep] = useState<PlanWizardStep>(1);
+  const [step, setStep] = useState<PlanWizardStep>(initialDraft ? 4 : 1);
   const [draft, setDraft] = useState<PlanDraft>(() => {
+    if (initialDraft) return clonePlanDraft(initialDraft);
     const saved = plans[initialWeekKey];
     return saved ? clonePlanDraft(saved.draft) : emptyPlanDraft();
   });

@@ -37,6 +37,8 @@ export interface Recipe {
   servings: number;
   timeMinutes: number;
   photoUrl: string | null;
+  /** How long ago it was published, in days. Orders the community feed. */
+  daysAgo?: number;
   ingredients: RecipeIngredient[];
   steps: string[];
   author: RecipeAuthor;

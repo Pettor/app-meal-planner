@@ -1,11 +1,14 @@
+import { useEffect, useState } from "react";
 import { toast } from "@heroui/react";
 import { useNavigate } from "@tanstack/react-router";
+import { useAtom } from "jotai";
 import { useIntl } from "react-intl";
+import { pendingSharedPlanAtom } from "~/core/community/CommunityAtoms";
 import type { PlanDraft, PlanStatus } from "~/core/plan/PlanTypes";
 import { DefaultPinnedTags } from "~/core/plan/PlanUtils";
 import { UsePlans } from "~/core/plan/UsePlans";
-import { SampleRecipes, SampleTagCatalogue } from "~/core/recipes/RecipeSampleData";
-import type { Recipe } from "~/core/recipes/RecipeTypes";
+import { SampleTagCatalogue } from "~/core/recipes/RecipeSampleData";
+import { UseRecipes } from "~/core/recipes/UseRecipes";
 import type { PlanViewProps } from "~/views/plan/PlanView";
 
 /**
@@ -19,8 +22,19 @@ export function UsePlanRoute(): PlanViewProps {
   const navigate = useNavigate();
   const intl = useIntl();
   const { plans, selectedWeekKey, selectWeek, savePlan } = UsePlans();
+  const [pendingSharedPlan, setPendingSharedPlan] = useAtom(pendingSharedPlanAtom);
 
-  const recipes: Recipe[] = SampleRecipes.filter((recipe) => recipe.isSaved);
+  /*
+   * A shared week is handed over once. Taking a copy and clearing the atom
+   * means a later visit to the planner opens on the cook's own week again
+   * rather than replaying someone else's.
+   */
+  const [initialDraft] = useState(pendingSharedPlan);
+  useEffect(() => {
+    if (pendingSharedPlan) setPendingSharedPlan(null);
+  }, [pendingSharedPlan, setPendingSharedPlan]);
+
+  const { savedRecipes } = UseRecipes();
 
   function handleWeekSaved(weekKey: string, status: PlanStatus, draft: PlanDraft): void {
     savePlan(weekKey, status, draft);
@@ -42,11 +56,12 @@ export function UsePlanRoute(): PlanViewProps {
   }
 
   return {
-    recipes,
+    recipes: savedRecipes,
     tagCatalogue: SampleTagCatalogue,
     pinnedTags: DefaultPinnedTags,
     plans,
     initialWeekKey: selectedWeekKey,
+    initialDraft,
     onWeekSaved: handleWeekSaved,
   };
 }
