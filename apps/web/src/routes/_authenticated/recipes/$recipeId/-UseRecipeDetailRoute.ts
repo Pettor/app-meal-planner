@@ -1,6 +1,6 @@
 import { useNavigate } from "@tanstack/react-router";
 import type { Recipe } from "~/core/recipes/RecipeTypes";
-import { UseRecipes } from "~/core/recipes/UseRecipes";
+import { useRecipes } from "~/core/recipes/UseRecipes";
 import type { RecipeDetailViewProps } from "~/views/recipe-detail/RecipeDetailView";
 
 /**
@@ -8,10 +8,10 @@ import type { RecipeDetailViewProps } from "~/views/recipe-detail/RecipeDetailVi
  *
  * The recipe is looked up in placeholder data until there is a recipes service.
  */
-export function UseRecipeDetailRoute(recipeId: string): RecipeDetailViewProps | null {
+export function useRecipeDetailRoute(recipeId: string): RecipeDetailViewProps | null {
   const navigate = useNavigate();
 
-  const { recipes } = UseRecipes();
+  const { recipes } = useRecipes();
   const recipe: Recipe | undefined = recipes.find((candidate) => candidate.id === recipeId);
   if (!recipe) return null;
 

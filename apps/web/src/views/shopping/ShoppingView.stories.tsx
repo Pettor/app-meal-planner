@@ -80,11 +80,11 @@ export const TicksOffALine: Story = {
   play: async ({ args, canvasElement }) => {
     const canvas = within(canvasElement);
 
-    const rows = await canvas.findAllByTestId("shopping-list__row");
-    await expect(rows.length).toBeGreaterThan(0);
+    const lines = await canvas.findAllByRole("checkbox");
+    await expect(lines.length).toBeGreaterThan(0);
 
-    await expect(rows[0]).toHaveAttribute("aria-checked", "false");
-    await userEvent.click(rows[0] as HTMLElement);
+    await expect(lines[0]).not.toBeChecked();
+    await userEvent.click(lines[0] as HTMLElement);
 
     await expect(args.onToggleLine).toHaveBeenCalledTimes(1);
   },

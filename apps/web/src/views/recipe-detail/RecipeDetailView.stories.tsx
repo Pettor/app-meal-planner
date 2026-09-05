@@ -7,7 +7,7 @@ import { NavbarLayoutDecorator } from "~/storybook/decorators/NavbarLayoutDecora
 
 const meta: Meta<typeof Component> = {
   component: Component,
-  title: "Views/Recipe Detail",
+  title: "Views/Recipes/Detail",
   tags: ["!test"],
   parameters: {
     layout: "fullscreen",

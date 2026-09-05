@@ -1,7 +1,7 @@
 import type { ReactElement } from "react";
 import { useDocumentTitle } from "@package/react";
 import { createFileRoute, notFound } from "@tanstack/react-router";
-import { UseRecipeDetailRoute } from "./-UseRecipeDetailRoute";
+import { useRecipeDetailRoute } from "./-UseRecipeDetailRoute";
 import { CommandPaletteController } from "~/components/actions/command-palette/CommandPaletteController";
 import { SettingsModalController } from "~/components/feedback/settings-modal/SettingsModalController";
 import { RouteError } from "~/core/routes/logic/RouteError";
@@ -14,7 +14,7 @@ export const Route = createFileRoute("/_authenticated/recipes/$recipeId")({
 
 function RecipeDetailPageRoute(): ReactElement {
   const { recipeId } = Route.useParams();
-  const props = UseRecipeDetailRoute(recipeId);
+  const props = useRecipeDetailRoute(recipeId);
 
   useDocumentTitle(props?.recipe.title ?? "Recipe");
 

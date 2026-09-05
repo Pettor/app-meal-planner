@@ -1,10 +1,10 @@
 import { useIntl } from "react-intl";
 import type { IntlShape } from "react-intl";
+import { planDayName, planMealName } from "~/core/plan/PlanDayLabels";
 import { PLAN_DAY_ORDER } from "~/core/plan/PlanTypes";
 import type { PlanDayId, SavedPlan } from "~/core/plan/PlanTypes";
 import { addDays, formatWeekRange, isoWeekNumber, parseWeekKey, weekKeyOf, weekOffset } from "~/core/plan/PlanUtils";
 import type { Recipe } from "~/core/recipes/RecipeTypes";
-import { planDayName, planMealName } from "~/views/plan/PlanDayLabels";
 import type { WeekStatAccent } from "~/views/week/WeekStatCard";
 
 export interface WeekMealViewModel {
@@ -75,7 +75,7 @@ function relativeWeekLabel(intl: IntlShape, offset: number, weekNumber: number):
 }
 
 /** Everything the "This week" page renders, derived from the week in view and its saved plan. */
-export function UseWeekOverview(
+export function useWeekOverview(
   weekKey: string,
   plan: SavedPlan | null,
   recipes: Recipe[],

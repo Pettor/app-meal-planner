@@ -7,8 +7,9 @@ import { SharedWeekCard } from "~/components/display/shared-week-card/SharedWeek
 import { UserAvatar } from "~/components/display/user-avatar/UserAvatar";
 import { ToggleChip } from "~/components/input/toggle-chip/ToggleChip";
 import type { CommunityPerson, ProfileTab, SharedWeek } from "~/core/community/CommunityTypes";
+import { useDayShortNames } from "~/core/plan/PlanDayLabels";
 import type { Recipe } from "~/core/recipes/RecipeTypes";
-import { buildSharedWeekCard, communityCounts, UseDayShortNames } from "~/views/community/UseCommunityCards";
+import { buildSharedWeekCard, communityCounts } from "~/views/community/UseCommunityCards";
 
 export interface ProfileViewProps {
   person: CommunityPerson;
@@ -51,7 +52,7 @@ export function ProfileView({
   onUseWeek,
 }: ProfileViewProps): ReactElement {
   const intl = useIntl();
-  const dayNames = UseDayShortNames();
+  const dayNames = useDayShortNames();
 
   return (
     <div className="mx-auto w-full max-w-[77.5rem] px-6 py-9">

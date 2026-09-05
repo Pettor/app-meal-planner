@@ -12,7 +12,7 @@ export interface UseTagBrowserResult {
 }
 
 /** Search state for the community tag catalogue. */
-export function UseTagBrowser(catalogue: RecipeTagCategory[]): UseTagBrowserResult {
+export function useTagBrowser(catalogue: RecipeTagCategory[]): UseTagBrowserResult {
   const [query, setQuery] = useState("");
 
   const groups = useMemo(() => {

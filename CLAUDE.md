@@ -433,7 +433,7 @@ export function MyComponent(): ReactElement {
   return (
     <Button>
       {intl.formatMessage({
-        description: "MyComponent - Submit button label",
+        description: "MyComponent: button - submit",
         defaultMessage: "Submit",
         id: "uniqueId",
       })}
@@ -446,7 +446,9 @@ export function MyComponent(): ReactElement {
 
 - Use `useIntl()` hook to get the `intl` object
 - Use `intl.formatMessage({ description, defaultMessage, id })` for all visible strings
-- **`description`**: Context for translators — format as `"ComponentName - What this string is"`
+- **`description`**: Context for translators — format as `"ComponentName: <kind> - <what it is>"`, e.g.
+  `"RecipeCard: button - save to my recipes"`, `"WeekSwitcher: aria-label - previous week"`. All 600+ existing
+  call sites follow this shape; keep the component name in PascalCase so it still names the file it lives in.
 - **`defaultMessage`**: The English fallback text shown to users
 - **`id`**: A unique identifier for the message (use a short hash or descriptive key)
 - This applies to: labels, placeholders, button text, headings, error messages, tooltips, aria-labels, validation messages, and any other user-facing text

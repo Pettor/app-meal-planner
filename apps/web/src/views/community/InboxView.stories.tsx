@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, fn } from "storybook/test";
-import type { InboxCardViewModel } from "./InboxCard";
 import { InboxView as Component } from "./InboxView";
 import type { InboxViewProps as Props } from "./InboxView";
+import type { InboxCardViewModel } from "~/components/display/inbox-card/InboxCard";
 import { SampleCommunityPeople, SampleSharedWeeks } from "~/core/community/CommunitySampleData";
 import { sharedWeekDays, sharedWeekTags } from "~/core/community/CommunityUtils";
 import { SampleRecipes } from "~/core/recipes/RecipeSampleData";
@@ -10,8 +10,7 @@ import { NavbarLayoutDecorator } from "~/storybook/decorators/NavbarLayoutDecora
 
 const meta: Meta<typeof Component> = {
   component: Component,
-  title: "Views/Community Inbox",
-  tags: ["!test"],
+  title: "Views/Community/Inbox",
   parameters: {
     layout: "fullscreen",
   },

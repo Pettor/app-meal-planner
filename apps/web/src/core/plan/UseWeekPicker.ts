@@ -32,7 +32,7 @@ export interface UseWeekPickerResult {
  * Shared by the planner wizard and the week page so both show the same status
  * dots and land on the same week when one is picked.
  */
-export function UseWeekPicker(
+export function useWeekPicker(
   selectedWeekKey: string,
   plans: Record<string, SavedPlan>,
   onSelectWeek: (weekKey: string) => void,

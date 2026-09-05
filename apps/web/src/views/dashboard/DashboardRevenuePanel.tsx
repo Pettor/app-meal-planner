@@ -6,7 +6,7 @@ import type { DashboardChartPoint } from "@package/api";
 import { useIntl } from "react-intl";
 import { DashboardRevenueChart } from "~/views/dashboard/DashboardRevenueChart";
 import { formatCurrency } from "~/views/dashboard/DashboardUtils";
-import { RANGE_TABS, UseRevenuePanel } from "~/views/dashboard/UseRevenuePanel";
+import { RANGE_TABS, useRevenuePanel } from "~/views/dashboard/UseRevenuePanel";
 
 export interface DashboardRevenuePanelProps {
   chartData: DashboardChartPoint[];
@@ -14,7 +14,7 @@ export interface DashboardRevenuePanelProps {
 
 export function DashboardRevenuePanel({ chartData }: DashboardRevenuePanelProps): ReactElement {
   const intl = useIntl();
-  const { range, setRange, slice, totals } = UseRevenuePanel(chartData);
+  const { range, setRange, slice, totals } = useRevenuePanel(chartData);
 
   const revenueLabel = intl.formatMessage({
     description: "DashboardRevenuePanel: legend - revenue",

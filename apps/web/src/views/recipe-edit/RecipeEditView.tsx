@@ -14,8 +14,8 @@ import { RecipeEditPhotoField } from "~/views/recipe-edit/RecipeEditPhotoField";
 import { RecipeEditScanBanner } from "~/views/recipe-edit/RecipeEditScanBanner";
 import { RecipeEditStepsPanel } from "~/views/recipe-edit/RecipeEditStepsPanel";
 import { RecipeEditTagsPanel } from "~/views/recipe-edit/RecipeEditTagsPanel";
-import { UseRecipeEditForm } from "~/views/recipe-edit/UseRecipeEditForm";
-import { UseRecipeScan } from "~/views/recipe-edit/UseRecipeScan";
+import { useRecipeEditForm } from "~/views/recipe-edit/UseRecipeEditForm";
+import { useRecipeScan } from "~/views/recipe-edit/UseRecipeScan";
 
 export interface RecipeEditViewProps {
   isOpen: boolean;
@@ -45,8 +45,8 @@ export function RecipeEditView({
   onDelete,
 }: RecipeEditViewProps): ReactElement {
   const intl = useIntl();
-  const form = UseRecipeEditForm(initialDraft);
-  const scan = UseRecipeScan(sampleScanResult);
+  const form = useRecipeEditForm(initialDraft);
+  const scan = useRecipeScan(sampleScanResult);
   const [isTagBrowserOpen, setIsTagBrowserOpen] = useState(false);
 
   // The chips show the recipe's own tags first, then the suggestions it doesn't have.

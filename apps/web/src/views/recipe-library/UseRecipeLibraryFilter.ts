@@ -19,7 +19,7 @@ export interface UseRecipeLibraryFilterResult {
  * Filter state for the recipe library: which pool you are looking at, the
  * search box, and the tag chips. All three narrow the same list.
  */
-export function UseRecipeLibraryFilter(recipes: Recipe[], initialScope: RecipeScope): UseRecipeLibraryFilterResult {
+export function useRecipeLibraryFilter(recipes: Recipe[], initialScope: RecipeScope): UseRecipeLibraryFilterResult {
   const [scope, setScope] = useState<RecipeScope>(initialScope);
   const [query, setQuery] = useState("");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);

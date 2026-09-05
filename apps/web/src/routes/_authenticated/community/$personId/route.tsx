@@ -1,7 +1,7 @@
 import type { ReactElement } from "react";
 import { useDocumentTitle } from "@package/react";
 import { createFileRoute, notFound } from "@tanstack/react-router";
-import { UseProfileRoute } from "./-UseProfileRoute";
+import { useProfileRoute } from "./-UseProfileRoute";
 import { CommandPaletteController } from "~/components/actions/command-palette/CommandPaletteController";
 import { LoadWeekDialogController } from "~/components/feedback/load-week-dialog/LoadWeekDialogController";
 import { RecommendDialogController } from "~/components/feedback/recommend-dialog/RecommendDialogController";
@@ -16,7 +16,7 @@ export const Route = createFileRoute("/_authenticated/community/$personId")({
 
 function ProfilePageRoute(): ReactElement {
   const { personId } = Route.useParams();
-  const props = UseProfileRoute(personId);
+  const props = useProfileRoute(personId);
 
   useDocumentTitle(props?.person.name ?? "Profile");
 

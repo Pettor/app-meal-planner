@@ -2,8 +2,8 @@ import type { ReactElement } from "react";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import { Button, Card } from "@heroui/react";
 import { useIntl } from "react-intl";
-import type { InboxCardViewModel } from "~/views/community/InboxCard";
-import { InboxCard } from "~/views/community/InboxCard";
+import type { InboxCardViewModel } from "~/components/display/inbox-card/InboxCard";
+import { InboxCard } from "~/components/display/inbox-card/InboxCard";
 
 export interface InboxViewProps {
   items: InboxCardViewModel[];

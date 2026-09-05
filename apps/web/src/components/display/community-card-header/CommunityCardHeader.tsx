@@ -1,4 +1,5 @@
 import type { ReactElement } from "react";
+import { Link } from "@heroui/react";
 import clsx from "clsx";
 import { UserAvatar } from "~/components/display/user-avatar/UserAvatar";
 import type { CommunityPerson } from "~/core/community/CommunityTypes";
@@ -41,16 +42,15 @@ export function CommunityCardHeader({
       <UserAvatar name={person.name} avatarUrl={person.avatarUrl} color={person.color} size="md" />
 
       <span className={clsx("flex min-w-0 flex-1", showHandle ? "flex-col" : "flex-wrap items-baseline gap-1.5")}>
-        <button
-          type="button"
-          onClick={onOpenProfile}
+        <Link
+          onPress={onOpenProfile}
           className={clsx(
-            "hover:text-accent cursor-pointer text-sm font-semibold transition-colors",
+            "text-foreground hover:text-accent rounded-none text-sm font-semibold hover:no-underline",
             showHandle && "text-left"
           )}
         >
           {person.name}
-        </button>
+        </Link>
         {showHandle ? (
           <span className="text-default-500 text-xs">{person.handle}</span>
         ) : (

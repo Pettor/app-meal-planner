@@ -6,7 +6,7 @@ import { RecipeDetailHeader } from "~/views/recipe-detail/RecipeDetailHeader";
 import { RecipeDetailIngredients } from "~/views/recipe-detail/RecipeDetailIngredients";
 import { RecipeDetailMethod } from "~/views/recipe-detail/RecipeDetailMethod";
 import { RecipeDetailToolbar } from "~/views/recipe-detail/RecipeDetailToolbar";
-import { UseRecipeServings } from "~/views/recipe-detail/UseRecipeServings";
+import { useRecipeServings } from "~/views/recipe-detail/UseRecipeServings";
 
 export interface RecipeDetailViewProps {
   recipe: Recipe;
@@ -30,7 +30,7 @@ export function RecipeDetailView({
   onPrint,
   onOpenAuthor,
 }: RecipeDetailViewProps): ReactElement {
-  const { servings, increase, decrease, scaled } = UseRecipeServings(recipe.ingredients, recipe.servings);
+  const { servings, increase, decrease, scaled } = useRecipeServings(recipe.ingredients, recipe.servings);
 
   return (
     <div className="mx-auto w-full max-w-[77.5rem] px-6 py-9">

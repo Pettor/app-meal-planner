@@ -5,7 +5,7 @@ import type { SavedPlan } from "~/core/plan/PlanTypes";
 import type { Recipe } from "~/core/recipes/RecipeTypes";
 import { ShoppingListRow } from "~/views/shopping/ShoppingListRow";
 import { ShoppingPageHeader } from "~/views/shopping/ShoppingPageHeader";
-import { UseShoppingOverview } from "~/views/shopping/UseShoppingOverview";
+import { useShoppingOverview } from "~/views/shopping/UseShoppingOverview";
 
 export interface ShoppingViewProps {
   /** The week in view, keyed by its Monday (`YYYY-MM-DD`). */
@@ -30,7 +30,7 @@ export function ShoppingView({
   onPrint,
 }: ShoppingViewProps): ReactElement {
   const intl = useIntl();
-  const shopping = UseShoppingOverview(weekKey, plan, recipes, checkedLines);
+  const shopping = useShoppingOverview(weekKey, plan, recipes, checkedLines);
 
   return (
     <div className="mx-auto w-full max-w-[77.5rem] px-6 py-9">

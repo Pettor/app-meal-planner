@@ -24,7 +24,7 @@ export interface UseShoppingOverviewResult {
 }
 
 /** Everything the shopping page renders, derived from the week in view and its saved plan. */
-export function UseShoppingOverview(
+export function useShoppingOverview(
   weekKey: string,
   plan: SavedPlan | null,
   recipes: Recipe[],

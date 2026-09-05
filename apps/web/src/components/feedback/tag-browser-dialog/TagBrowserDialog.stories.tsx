@@ -8,6 +8,7 @@ import { SampleTagCatalogue } from "~/core/recipes/RecipeSampleData";
 const meta: Meta<typeof Component> = {
   component: Component,
   title: "Feedback/Tag Browser Dialog",
+  tags: ["autodocs"],
   parameters: {
     layout: "fullscreen",
   },

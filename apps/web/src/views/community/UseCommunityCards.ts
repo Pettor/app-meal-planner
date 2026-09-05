@@ -1,12 +1,8 @@
-import { useMemo } from "react";
 import type { IntlShape } from "react-intl";
-import { useIntl } from "react-intl";
 import type { SharedWeekCardViewModel } from "~/components/display/shared-week-card/SharedWeekCard";
 import type { SharedWeek } from "~/core/community/CommunityTypes";
 import { sharedWeekDays, sharedWeekPhotos, sharedWeekTags } from "~/core/community/CommunityUtils";
-import { PLAN_DAY_ORDER } from "~/core/plan/PlanTypes";
 import type { Recipe } from "~/core/recipes/RecipeTypes";
-import { planDayShortName } from "~/views/plan/PlanDayLabels";
 
 /** How long ago something was shared, as the community writes it. */
 export function communityAgo(intl: IntlShape, daysAgo: number): string {
@@ -86,12 +82,6 @@ export function communityAction(intl: IntlShape, kind: "week" | "recipe", isReco
         defaultMessage: "added a recipe",
         id: "PbLvJV",
       });
-}
-
-/** The three-letter day names the seven-day strips are labelled with. */
-export function UseDayShortNames(): string[] {
-  const intl = useIntl();
-  return useMemo(() => PLAN_DAY_ORDER.map((day) => planDayShortName(intl, day)), [intl]);
 }
 
 /** Resolves a shared week against a recipe pool into everything its card renders. */

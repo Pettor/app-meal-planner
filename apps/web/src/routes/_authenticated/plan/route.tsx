@@ -1,7 +1,7 @@
 import type { ReactElement } from "react";
 import { useDocumentTitle } from "@package/react";
 import { createFileRoute } from "@tanstack/react-router";
-import { UsePlanRoute } from "./-UsePlanRoute";
+import { usePlanRoute } from "./-UsePlanRoute";
 import { CommandPaletteController } from "~/components/actions/command-palette/CommandPaletteController";
 import { SettingsModalController } from "~/components/feedback/settings-modal/SettingsModalController";
 import { RouteError } from "~/core/routes/logic/RouteError";
@@ -14,7 +14,7 @@ export const Route = createFileRoute("/_authenticated/plan")({
 
 function PlanPageRoute(): ReactElement {
   useDocumentTitle("Plan");
-  const props = UsePlanRoute();
+  const props = usePlanRoute();
 
   return (
     <>

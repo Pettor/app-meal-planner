@@ -21,7 +21,7 @@ export interface UseRecipeEditFormResult {
 }
 
 /** All the editing state behind the recipe form. */
-export function UseRecipeEditForm(initialDraft: RecipeDraft): UseRecipeEditFormResult {
+export function useRecipeEditForm(initialDraft: RecipeDraft): UseRecipeEditFormResult {
   const [draft, setDraft] = useState<RecipeDraft>(initialDraft);
   const [hasTagError, setHasTagError] = useState(false);
 

@@ -101,7 +101,7 @@ export function RecipeCard({ recipe, showSaveAction, onOpen, onSave, onRemove }:
             <Button
               variant="secondary"
               size="sm"
-              className="w-full"
+              fullWidth
               onPress={() => onSave?.(recipe.id)}
               data-testid={`recipe-card__save--${recipe.id}`}
             >

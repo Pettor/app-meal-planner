@@ -1,5 +1,8 @@
+import { useMemo } from "react";
 import type { IntlShape } from "react-intl";
+import { useIntl } from "react-intl";
 import type { PlanDayId, PlanMeal } from "~/core/plan/PlanTypes";
+import { PLAN_DAY_ORDER } from "~/core/plan/PlanTypes";
 
 /** Full and short day names, translated — day identity itself stays the English `PlanDayId`. */
 export function planDayName(intl: IntlShape, day: PlanDayId): string {
@@ -88,4 +91,10 @@ export function planMealName(intl: IntlShape, meal: PlanMeal): string {
   return meal === "lunch"
     ? intl.formatMessage({ description: "PlanDayLabels: meal - lunch", defaultMessage: "Lunch", id: "NJ6Rr+" })
     : intl.formatMessage({ description: "PlanDayLabels: meal - dinner", defaultMessage: "Dinner", id: "lnYkRl" });
+}
+
+/** The three-letter day names the seven-day strips are labelled with. */
+export function useDayShortNames(): string[] {
+  const intl = useIntl();
+  return useMemo(() => PLAN_DAY_ORDER.map((day) => planDayShortName(intl, day)), [intl]);
 }

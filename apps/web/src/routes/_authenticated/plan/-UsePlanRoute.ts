@@ -6,9 +6,9 @@ import { useIntl } from "react-intl";
 import { pendingSharedPlanAtom } from "~/core/community/CommunityAtoms";
 import type { PlanDraft, PlanStatus } from "~/core/plan/PlanTypes";
 import { DefaultPinnedTags } from "~/core/plan/PlanUtils";
-import { UsePlans } from "~/core/plan/UsePlans";
+import { usePlans } from "~/core/plan/UsePlans";
 import { SampleTagCatalogue } from "~/core/recipes/RecipeSampleData";
-import { UseRecipes } from "~/core/recipes/UseRecipes";
+import { useRecipes } from "~/core/recipes/UseRecipes";
 import type { PlanViewProps } from "~/views/plan/PlanView";
 
 /**
@@ -18,10 +18,10 @@ import type { PlanViewProps } from "~/views/plan/PlanView";
  * swap `SampleRecipes` for a route loader and the view stays unchanged. Only
  * the cook's own saved recipes are offered, matching what the planner draws from.
  */
-export function UsePlanRoute(): PlanViewProps {
+export function usePlanRoute(): PlanViewProps {
   const navigate = useNavigate();
   const intl = useIntl();
-  const { plans, selectedWeekKey, selectWeek, savePlan } = UsePlans();
+  const { plans, selectedWeekKey, selectWeek, savePlan } = usePlans();
   const [pendingSharedPlan, setPendingSharedPlan] = useAtom(pendingSharedPlanAtom);
 
   /*
@@ -34,7 +34,7 @@ export function UsePlanRoute(): PlanViewProps {
     if (pendingSharedPlan) setPendingSharedPlan(null);
   }, [pendingSharedPlan, setPendingSharedPlan]);
 
-  const { savedRecipes } = UseRecipes();
+  const { savedRecipes } = useRecipes();
 
   function handleWeekSaved(weekKey: string, status: PlanStatus, draft: PlanDraft): void {
     savePlan(weekKey, status, draft);

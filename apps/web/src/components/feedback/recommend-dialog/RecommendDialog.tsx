@@ -1,10 +1,13 @@
 import type { ChangeEvent, ReactElement } from "react";
 import { CheckIcon } from "@heroicons/react/24/outline";
-import { Button, Label, Modal, TextArea, TextField } from "@heroui/react";
+import { Button, Label, ListBox, Modal, TextArea, TextField } from "@heroui/react";
 import clsx from "clsx";
 import { useIntl } from "react-intl";
 import { UserAvatar } from "~/components/display/user-avatar/UserAvatar";
 import type { CommunityPerson } from "~/core/community/CommunityTypes";
+
+/** What `ListBox` hands back on selection — re-exported here to avoid depending on react-aria directly. */
+type TargetSelection = NonNullable<ListBox["Props"]["selectedKeys"]>;
 
 export interface RecommendDialogProps {
   isOpen: boolean;
@@ -39,6 +42,23 @@ export function RecommendDialog({
     defaultMessage: "Recommend",
     id: "htLdoI",
   });
+
+  const sendToLabel = intl.formatMessage({
+    description: "RecommendDialog: label - who to send to",
+    defaultMessage: "Send to",
+    id: "jtywGX",
+  });
+
+  /**
+   * `ListBox` reports the whole selection; the dialog's contract is a per-person
+   * toggle, so replay the difference as individual toggles.
+   */
+  function onSelectionChange(keys: TargetSelection): void {
+    const next = keys === "all" ? targets.map((person) => person.id) : Array.from(keys, String);
+    const added = next.filter((id) => !selectedIds.includes(id));
+    const removed = selectedIds.filter((id) => !next.includes(id));
+    [...added, ...removed].forEach((personId) => onToggleTarget(personId));
+  }
 
   return (
     <Modal isOpen={isOpen} onOpenChange={(open) => !open && onClose()}>
@@ -75,39 +95,42 @@ export function RecommendDialog({
               </TextField>
 
               <div>
-                <span className="mb-2.5 block text-sm font-medium">
-                  {intl.formatMessage({
-                    description: "RecommendDialog: label - who to send to",
-                    defaultMessage: "Send to",
-                    id: "jtywGX",
-                  })}
-                </span>
+                <span className="mb-2.5 block text-sm font-medium">{sendToLabel}</span>
 
-                <div className="flex flex-col gap-2">
-                  {targets.map((person) => {
-                    const isSelected = selectedIds.includes(person.id);
-                    return (
-                      <button
-                        key={person.id}
-                        type="button"
-                        onClick={() => onToggleTarget(person.id)}
-                        aria-pressed={isSelected}
-                        className={clsx(
-                          "flex cursor-pointer items-center gap-[11px] rounded-lg border px-3 py-2.5 text-left transition-colors",
-                          isSelected ? "border-accent bg-accent/8" : "border-border hover:bg-surface-secondary"
-                        )}
-                        data-testid={`recommend-dialog__target--${person.id}`}
-                      >
-                        <UserAvatar name={person.name} avatarUrl={person.avatarUrl} color={person.color} size="md" />
-                        <span className="flex min-w-0 flex-1 flex-col">
-                          <span className="text-sm font-medium">{person.name}</span>
-                          <span className="text-default-500 text-xs">{person.handle}</span>
-                        </span>
-                        {isSelected && <CheckIcon className="text-accent h-4.5 w-4.5" strokeWidth={2} />}
-                      </button>
-                    );
-                  })}
-                </div>
+                <ListBox
+                  aria-label={sendToLabel}
+                  selectionMode="multiple"
+                  selectedKeys={selectedIds}
+                  onSelectionChange={onSelectionChange}
+                  // `.list-box` spaces children with `mt-1`; the design uses a flex gap instead.
+                  className="flex flex-col gap-2 p-0 [&>*+*]:mt-0"
+                >
+                  {targets.map((person) => (
+                    <ListBox.Item
+                      key={person.id}
+                      id={person.id}
+                      textValue={person.name}
+                      className={clsx(
+                        "gap-[11px] rounded-lg border px-3 py-2.5 text-left transition-colors",
+                        selectedIds.includes(person.id)
+                          ? "border-accent bg-accent/8"
+                          : "border-border hover:bg-surface-secondary"
+                      )}
+                      data-testid={`recommend-dialog__target--${person.id}`}
+                    >
+                      <UserAvatar name={person.name} avatarUrl={person.avatarUrl} color={person.color} size="md" />
+                      <span className="flex min-w-0 flex-1 flex-col">
+                        <span className="text-sm font-medium">{person.name}</span>
+                        <span className="text-default-500 text-xs">{person.handle}</span>
+                      </span>
+                      <ListBox.Item.Indicator>
+                        {({ isSelected }) =>
+                          isSelected ? <CheckIcon className="text-accent h-4.5 w-4.5" strokeWidth={2} /> : null
+                        }
+                      </ListBox.Item.Indicator>
+                    </ListBox.Item>
+                  ))}
+                </ListBox>
 
                 {targets.length === 0 && (
                   <p className="text-default-500 text-sm">

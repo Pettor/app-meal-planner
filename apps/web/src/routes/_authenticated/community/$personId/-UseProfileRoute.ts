@@ -3,9 +3,9 @@ import { useNavigate } from "@tanstack/react-router";
 import { useSetAtom } from "jotai";
 import { loadWeekTargetAtom, recommendTargetAtom } from "~/core/community/CommunityAtoms";
 import type { ProfileTab, SharedWeek } from "~/core/community/CommunityTypes";
-import { UseCommunity } from "~/core/community/UseCommunity";
+import { useCommunity } from "~/core/community/UseCommunity";
 import type { Recipe } from "~/core/recipes/RecipeTypes";
-import { UseRecipes } from "~/core/recipes/UseRecipes";
+import { useRecipes } from "~/core/recipes/UseRecipes";
 import { settingsModalAtom } from "~/core/settings/SettingsAtoms";
 import type { ProfileViewProps } from "~/views/community/ProfileView";
 
@@ -15,13 +15,13 @@ import type { ProfileViewProps } from "~/views/community/ProfileView";
  * Returns `null` when nobody matches the id, so the route can render a
  * not-found rather than a profile for a person who isn't there.
  */
-export function UseProfileRoute(personId: string): ProfileViewProps | null {
+export function useProfileRoute(personId: string): ProfileViewProps | null {
   const navigate = useNavigate();
-  const { me, weeks, isFollowing, toggleFollow, personById } = UseCommunity();
+  const { me, weeks, isFollowing, toggleFollow, personById } = useCommunity();
   const setRecommendTarget = useSetAtom(recommendTargetAtom);
   const setLoadWeekTarget = useSetAtom(loadWeekTargetAtom);
   const openSettings = useSetAtom(settingsModalAtom);
-  const { recipes } = UseRecipes();
+  const { recipes } = useRecipes();
 
   const [tab, setTab] = useState<ProfileTab>("weeks");
 

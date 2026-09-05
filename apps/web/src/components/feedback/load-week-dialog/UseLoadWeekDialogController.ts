@@ -6,11 +6,11 @@ import type { LoadWeekDialogProps } from "./LoadWeekDialog";
 import { loadWeekTargetAtom } from "~/core/community/CommunityAtoms";
 import type { CommunityPerson } from "~/core/community/CommunityTypes";
 import { sharedWeekDays, sharedWeekRecipes } from "~/core/community/CommunityUtils";
-import { UseCommunity } from "~/core/community/UseCommunity";
+import { useCommunity } from "~/core/community/UseCommunity";
+import { useDayShortNames } from "~/core/plan/PlanDayLabels";
 import { isoWeekNumber, parseWeekKey } from "~/core/plan/PlanUtils";
-import { UsePlans } from "~/core/plan/UsePlans";
-import { UseRecipes } from "~/core/recipes/UseRecipes";
-import { UseDayShortNames } from "~/views/community/UseCommunityCards";
+import { usePlans } from "~/core/plan/UsePlans";
+import { useRecipes } from "~/core/recipes/UseRecipes";
 
 /** Stands in for an owner that has gone missing, so the dialog can still close. */
 const unknownOwner: CommunityPerson = {
@@ -29,13 +29,13 @@ const unknownOwner: CommunityPerson = {
  * recipes it needs into the cook's pool — the planner only draws from what
  * they own, so a week loaded without them would arrive half empty.
  */
-export function UseLoadWeekDialogController(): LoadWeekDialogProps {
+export function useLoadWeekDialogController(): LoadWeekDialogProps {
   const intl = useIntl();
   const navigate = useNavigate();
-  const dayNames = UseDayShortNames();
-  const { weekById, personById, loadSharedWeek } = UseCommunity();
-  const { recipes, saveRecipes } = UseRecipes();
-  const { selectedWeekKey } = UsePlans();
+  const dayNames = useDayShortNames();
+  const { weekById, personById, loadSharedWeek } = useCommunity();
+  const { recipes, saveRecipes } = useRecipes();
+  const { selectedWeekKey } = usePlans();
   const [weekId, setWeekId] = useAtom(loadWeekTargetAtom);
 
   const week = weekId ? weekById(weekId) : null;

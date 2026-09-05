@@ -1,7 +1,7 @@
 import type { ReactElement } from "react";
 import { useDocumentTitle } from "@package/react";
 import { createFileRoute } from "@tanstack/react-router";
-import { UseCommunityRoute } from "./-UseCommunityRoute";
+import { useCommunityRoute } from "./-UseCommunityRoute";
 import { CommandPaletteController } from "~/components/actions/command-palette/CommandPaletteController";
 import { LoadWeekDialogController } from "~/components/feedback/load-week-dialog/LoadWeekDialogController";
 import { RecommendDialogController } from "~/components/feedback/recommend-dialog/RecommendDialogController";
@@ -16,7 +16,7 @@ export const Route = createFileRoute("/_authenticated/community/")({
 
 function CommunityPageRoute(): ReactElement {
   useDocumentTitle("Community");
-  const props = UseCommunityRoute();
+  const props = useCommunityRoute();
 
   return (
     <>

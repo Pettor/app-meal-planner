@@ -21,7 +21,7 @@ export interface UseCommunityFeedResult {
  * to. Scope is applied before the tag counts so the chips describe what is
  * actually on screen rather than the whole community.
  */
-export function UseCommunityFeed(weeks: SharedWeek[], recipes: Recipe[], following: string[]): UseCommunityFeedResult {
+export function useCommunityFeed(weeks: SharedWeek[], recipes: Recipe[], following: string[]): UseCommunityFeedResult {
   const [scope, setScope] = useState<FeedScope>("all");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
 

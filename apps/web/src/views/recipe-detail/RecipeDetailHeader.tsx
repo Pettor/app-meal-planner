@@ -1,6 +1,6 @@
 import type { ReactElement } from "react";
 import { ClockIcon, UserGroupIcon } from "@heroicons/react/24/outline";
-import { Chip } from "@heroui/react";
+import { Chip, Link } from "@heroui/react";
 import { useIntl } from "react-intl";
 import { TagChip } from "~/components/display/tag-chip/TagChip";
 import { UserAvatar } from "~/components/display/user-avatar/UserAvatar";
@@ -28,13 +28,12 @@ export function RecipeDetailHeader({ recipe, servings, onOpenAuthor }: RecipeDet
           size="md"
         />
         <span className="flex flex-col">
-          <button
-            type="button"
-            className="hover:text-accent cursor-pointer text-left text-sm font-medium transition-colors"
-            onClick={() => onOpenAuthor(recipe.author.id)}
+          <Link
+            className="text-foreground hover:text-accent rounded-none text-left text-sm font-medium hover:no-underline"
+            onPress={() => onOpenAuthor(recipe.author.id)}
           >
             {recipe.author.name}
-          </button>
+          </Link>
           <span className="text-default-500 text-xs">{recipe.author.handle}</span>
         </span>
         {recipe.isSaved && !isMine && (

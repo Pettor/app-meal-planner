@@ -4,16 +4,16 @@ import { useAtom } from "jotai";
 import { useIntl } from "react-intl";
 import type { RecommendDialogProps } from "./RecommendDialog";
 import { recommendTargetAtom } from "~/core/community/CommunityAtoms";
-import { UseCommunity } from "~/core/community/UseCommunity";
+import { useCommunity } from "~/core/community/UseCommunity";
 
 /**
  * Builds the recommend dialog's props from the community store. Only the
  * people the cook follows can be sent to — recommending to a stranger is not
  * a thing the design offers.
  */
-export function UseRecommendDialogController(): RecommendDialogProps {
+export function useRecommendDialogController(): RecommendDialogProps {
   const intl = useIntl();
-  const { people, following } = UseCommunity();
+  const { people, following } = useCommunity();
   const [target, setTarget] = useAtom(recommendTargetAtom);
 
   const [note, setNote] = useState("");

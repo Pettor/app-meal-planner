@@ -3,13 +3,14 @@ import { toast } from "@heroui/react";
 import { useNavigate } from "@tanstack/react-router";
 import { useSetAtom } from "jotai";
 import { useIntl } from "react-intl";
+import type { InboxCardViewModel } from "~/components/display/inbox-card/InboxCard";
 import { loadWeekTargetAtom } from "~/core/community/CommunityAtoms";
 import { sharedWeekDays, sharedWeekTags } from "~/core/community/CommunityUtils";
-import { UseCommunity } from "~/core/community/UseCommunity";
-import { UseRecipes } from "~/core/recipes/UseRecipes";
-import type { InboxCardViewModel } from "~/views/community/InboxCard";
+import { useCommunity } from "~/core/community/UseCommunity";
+import { useDayShortNames } from "~/core/plan/PlanDayLabels";
+import { useRecipes } from "~/core/recipes/UseRecipes";
 import type { InboxViewProps } from "~/views/community/InboxView";
-import { communityAction, communityAgo, UseDayShortNames } from "~/views/community/UseCommunityCards";
+import { communityAction, communityAgo } from "~/views/community/UseCommunityCards";
 
 /**
  * Wires the inbox to the community store.
@@ -18,19 +19,18 @@ import { communityAction, communityAgo, UseDayShortNames } from "~/views/communi
  * to get the cook here, not to survive the visit. Accepting a recipe saves it;
  * accepting a week hands over to the same confirmation the feed uses.
  */
-export function UseInboxRoute(): InboxViewProps {
+export function useInboxRoute(): InboxViewProps {
   const intl = useIntl();
   const navigate = useNavigate();
-  const dayNames = UseDayShortNames();
-  const { inbox, personById, weekById, markInboxRead, removeInboxItem } = UseCommunity();
-  const { recipes, saveRecipe } = UseRecipes();
+  const dayNames = useDayShortNames();
+  const { inbox, personById, weekById, markInboxRead, removeInboxItem } = useCommunity();
+  const { recipes, saveRecipe } = useRecipes();
   const setLoadWeekTarget = useSetAtom(loadWeekTargetAtom);
 
+  // Runs once per visit — `markInboxRead` is stable and a no-op when nothing is unread.
   useEffect(() => {
     markInboxRead();
-    // Runs once per visit — `markInboxRead` is a no-op when nothing is unread.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [markInboxRead]);
 
   const items = useMemo<InboxCardViewModel[]>(
     () =>

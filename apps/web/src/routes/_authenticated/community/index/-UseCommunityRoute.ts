@@ -3,9 +3,9 @@ import { useNavigate } from "@tanstack/react-router";
 import { useSetAtom } from "jotai";
 import { loadWeekTargetAtom, recommendTargetAtom } from "~/core/community/CommunityAtoms";
 import type { CommunityTab, SharedWeek } from "~/core/community/CommunityTypes";
-import { UseCommunity } from "~/core/community/UseCommunity";
+import { useCommunity } from "~/core/community/UseCommunity";
 import type { Recipe } from "~/core/recipes/RecipeTypes";
-import { UseRecipes } from "~/core/recipes/UseRecipes";
+import { useRecipes } from "~/core/recipes/UseRecipes";
 import type { CommunityViewProps } from "~/views/community/CommunityView";
 
 /**
@@ -15,12 +15,12 @@ import type { CommunityViewProps } from "~/views/community/CommunityView";
  * the whole pool is passed in, not just the cook's own, because a shared week
  * is built from other people's recipes.
  */
-export function UseCommunityRoute(): CommunityViewProps {
+export function useCommunityRoute(): CommunityViewProps {
   const navigate = useNavigate();
-  const { people, weeks, following, toggleFollow, personById } = UseCommunity();
+  const { people, weeks, following, toggleFollow, personById } = useCommunity();
   const setRecommendTarget = useSetAtom(recommendTargetAtom);
   const setLoadWeekTarget = useSetAtom(loadWeekTargetAtom);
-  const { recipes } = UseRecipes();
+  const { recipes } = useRecipes();
 
   const [tab, setTab] = useState<CommunityTab>("feed");
 

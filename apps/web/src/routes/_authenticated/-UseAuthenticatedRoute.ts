@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "@tanstack/react-router";
-import { UseCommunity } from "~/core/community/UseCommunity";
+import { useCommunity } from "~/core/community/UseCommunity";
 import type { AppSessionContent } from "~/core/session/AppSessionContent";
 import { useAppSessionContent } from "~/core/session/UseAppSessionContent";
 import type { AppSocialLinks } from "~/core/social-links/AppSocialLinks";
@@ -42,7 +42,7 @@ export function useAuthenticatedRoute(): UseAuthenticatedRouteResult {
   const pathname = useLocation({ select: (state) => state.pathname });
   const sessionContent = useAppSessionContent();
   const socialLinks = useAppSocialLinks(GITHUB_LINK, LINKEDIN_LINK);
-  const { me, unreadCount } = UseCommunity();
+  const { me, unreadCount } = useCommunity();
 
   const activeTab = TAB_ROUTES.find((route) => route.matches(pathname))?.id ?? "";
 

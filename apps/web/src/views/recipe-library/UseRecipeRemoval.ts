@@ -10,7 +10,7 @@ export interface UseRecipeRemovalResult {
 }
 
 /** Holds the "are you sure?" step between clicking remove and actually removing. */
-export function UseRecipeRemoval(
+export function useRecipeRemoval(
   recipes: Recipe[],
   onRemoveRecipe: (recipeId: string) => void
 ): UseRecipeRemovalResult {

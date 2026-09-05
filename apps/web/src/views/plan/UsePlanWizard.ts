@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { useIntl } from "react-intl";
 import type { IntlShape } from "react-intl";
+import { planDayName, planDayShortName, planMealName } from "~/core/plan/PlanDayLabels";
 import {
   PLAN_DAY_ORDER,
   type PlanDay,
@@ -26,11 +27,10 @@ import {
   rerollRecipeId,
   weekOffset,
 } from "~/core/plan/PlanUtils";
-import { UseWeekPicker } from "~/core/plan/UseWeekPicker";
+import { useWeekPicker } from "~/core/plan/UseWeekPicker";
 import type { UseWeekPickerResult } from "~/core/plan/UseWeekPicker";
 import type { Recipe, RecipeTagCategory } from "~/core/recipes/RecipeTypes";
 import { collectTags } from "~/core/recipes/RecipeUtils";
-import { planDayName, planDayShortName, planMealName } from "~/views/plan/PlanDayLabels";
 
 export interface PlanDayRowViewModel {
   day: string;
@@ -191,7 +191,7 @@ export interface UsePlanWizardOptions {
 }
 
 /** All the state and derived view-model data behind the "Plan a week" wizard. */
-export function UsePlanWizard({
+export function usePlanWizard({
   recipes,
   tagCatalogue,
   pinnedTags: initialPinnedTags,
@@ -314,7 +314,7 @@ export function UsePlanWizard({
               { count: offset }
             );
 
-  const weekPicker = UseWeekPicker(
+  const weekPicker = useWeekPicker(
     weekKey,
     plans,
     selectWeek,

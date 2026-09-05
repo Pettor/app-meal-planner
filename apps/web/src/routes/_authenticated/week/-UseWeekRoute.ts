@@ -1,7 +1,9 @@
 import { useNavigate } from "@tanstack/react-router";
+import { useDayShortNames } from "~/core/plan/PlanDayLabels";
 import { nextUnplannedWeekKey } from "~/core/plan/PlanUtils";
-import { UsePlans } from "~/core/plan/UsePlans";
-import { UseRecipes } from "~/core/recipes/UseRecipes";
+import { usePlans } from "~/core/plan/UsePlans";
+import { useWeekPicker } from "~/core/plan/UseWeekPicker";
+import { useRecipes } from "~/core/recipes/UseRecipes";
 import type { WeekViewProps } from "~/views/week/WeekView";
 
 /**
@@ -10,16 +12,18 @@ import type { WeekViewProps } from "~/views/week/WeekView";
  * `recipes` comes from placeholder data until there is a recipes service —
  * swap `SampleRecipes` for a route loader and the view stays unchanged.
  */
-export function UseWeekRoute(): WeekViewProps {
+export function useWeekRoute(): WeekViewProps {
   const navigate = useNavigate();
-  const { plans, selectedWeekKey, selectWeek, publishPlan } = UsePlans();
+  const { plans, selectedWeekKey, selectWeek, publishPlan } = usePlans();
 
-  const { recipes } = UseRecipes();
+  const { recipes } = useRecipes();
+  const dayNames = useDayShortNames();
+  const weekPicker = useWeekPicker(selectedWeekKey, plans, selectWeek, dayNames);
 
   return {
     weekKey: selectedWeekKey,
     plan: plans[selectedWeekKey] ?? null,
-    plans,
+    weekPicker,
     recipes,
     onSelectWeek: selectWeek,
     onOpenRecipe: (recipeId) => void navigate({ to: "/recipes/$recipeId", params: { recipeId } }),

@@ -10,7 +10,7 @@ import { PlanQuotasStepPanel } from "~/views/plan/PlanQuotasStepPanel";
 import { PlanRecipeSwapDialog } from "~/views/plan/PlanRecipeSwapDialog";
 import { PlanResultsStepPanel } from "~/views/plan/PlanResultsStepPanel";
 import { PlanWizardHeader } from "~/views/plan/PlanWizardHeader";
-import { UsePlanWizard } from "~/views/plan/UsePlanWizard";
+import { usePlanWizard } from "~/views/plan/UsePlanWizard";
 
 export interface PlanViewProps {
   /** The cook's own recipe pool — what the planner draws from. */
@@ -38,7 +38,7 @@ export function PlanView({
   onWeekSaved,
 }: PlanViewProps): ReactElement {
   const intl = useIntl();
-  const wizard = UsePlanWizard({
+  const wizard = usePlanWizard({
     recipes,
     tagCatalogue,
     pinnedTags,

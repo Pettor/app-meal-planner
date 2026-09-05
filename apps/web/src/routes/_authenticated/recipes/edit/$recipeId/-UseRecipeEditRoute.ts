@@ -1,6 +1,6 @@
 import { useNavigate } from "@tanstack/react-router";
 import { SampleScannedRecipe, SampleTagCatalogue, SuggestedTags } from "~/core/recipes/RecipeSampleData";
-import { UseRecipes } from "~/core/recipes/UseRecipes";
+import { useRecipes } from "~/core/recipes/UseRecipes";
 import type { RecipeDraft } from "~/views/recipe-edit/RecipeDraft";
 import { emptyRecipeDraft, recipeToDraft } from "~/views/recipe-edit/RecipeDraft";
 import type { RecipeEditViewProps } from "~/views/recipe-edit/RecipeEditView";
@@ -11,10 +11,10 @@ import type { RecipeEditViewProps } from "~/views/recipe-edit/RecipeEditView";
  *
  * Saving and deleting are logged until there is a recipes service.
  */
-export function UseRecipeEditRoute(recipeId: string): Omit<RecipeEditViewProps, "isOpen"> {
+export function useRecipeEditRoute(recipeId: string): Omit<RecipeEditViewProps, "isOpen"> {
   const navigate = useNavigate();
 
-  const { recipes } = UseRecipes();
+  const { recipes } = useRecipes();
   const existing = recipes.find((recipe) => recipe.id === recipeId);
   const initialDraft: RecipeDraft = existing ? recipeToDraft(existing) : emptyRecipeDraft();
 

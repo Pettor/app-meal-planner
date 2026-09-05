@@ -9,8 +9,7 @@ import { NavbarLayoutDecorator } from "~/storybook/decorators/NavbarLayoutDecora
 
 const meta: Meta<typeof Component> = {
   component: Component,
-  title: "Views/Community",
-  tags: ["!test"],
+  title: "Views/Community/Feed",
   parameters: {
     layout: "fullscreen",
   },
@@ -55,7 +54,6 @@ export const SharedWeeks: Story = {
 
 export const OpensInbox: Story = {
   args: defaultArgs,
-  tags: ["!autodocs"],
   play: async ({ args, canvas, userEvent }) => {
     await userEvent.click(canvas.getByTestId("community__open-inbox"));
     await expect(args.onOpenInbox).toHaveBeenCalled();

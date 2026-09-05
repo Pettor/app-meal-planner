@@ -14,7 +14,7 @@ export interface UsePlansResult {
 }
 
 /** Read and write the saved weeks, plus which week the app is currently on. */
-export function UsePlans(): UsePlansResult {
+export function usePlans(): UsePlansResult {
   const plans = useAtomValue(savedPlansAtom);
   const setPlans = useSetAtom(savedPlansAtom);
   const [selectedWeekKey, selectWeek] = useAtom(selectedWeekKeyAtom);

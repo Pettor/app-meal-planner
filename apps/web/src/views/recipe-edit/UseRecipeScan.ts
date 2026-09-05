@@ -27,7 +27,7 @@ export interface UseRecipeScanResult {
  * `sampleResult`. The state machine is the real one, so wiring it up later means
  * replacing the two timers with the service call.
  */
-export function UseRecipeScan(sampleResult: ScannedRecipe): UseRecipeScanResult {
+export function useRecipeScan(sampleResult: ScannedRecipe): UseRecipeScanResult {
   const [isOpen, setIsOpen] = useState(false);
   const [stage, setStage] = useState<RecipeScanStage>("capture");
   const [scansRemaining, setScansRemaining] = useState(DAILY_SCAN_ALLOWANCE);

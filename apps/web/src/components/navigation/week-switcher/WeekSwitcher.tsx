@@ -42,13 +42,15 @@ export function WeekSwitcher({
       >
         <ChevronLeftIcon className="h-4 w-4" />
       </Button>
+      {/*
+       * The Button is the tooltip trigger itself — wrapping it in `Tooltip.Trigger`
+       * nests a `role="button"` around a real button, which axe rejects.
+       */}
       <Tooltip>
-        <Tooltip.Trigger>
-          <Button variant="ghost" size="sm" className="gap-1.5 px-2 font-medium" onPress={onOpenPicker}>
-            <span className={clsx("h-1.5 w-1.5 rounded-full", statusDotClassName)} />
-            {label}
-          </Button>
-        </Tooltip.Trigger>
+        <Button variant="ghost" size="sm" className="gap-1.5 px-2 font-medium" onPress={onOpenPicker}>
+          <span className={clsx("h-1.5 w-1.5 rounded-full", statusDotClassName)} />
+          {label}
+        </Button>
         <Tooltip.Content>{hint}</Tooltip.Content>
       </Tooltip>
       <Button

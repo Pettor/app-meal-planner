@@ -8,7 +8,7 @@ export interface UseShoppingListResult {
 }
 
 /** Read and write which shopping lines are ticked off. */
-export function UseShoppingList(): UseShoppingListResult {
+export function useShoppingList(): UseShoppingListResult {
   const [checkedLines, setCheckedLines] = useAtom(checkedShoppingLinesAtom);
 
   function toggleLine(key: string): void {

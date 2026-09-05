@@ -7,14 +7,10 @@ import { SharedWeekCard } from "~/components/display/shared-week-card/SharedWeek
 import { ToggleChip } from "~/components/input/toggle-chip/ToggleChip";
 import type { CommunityPerson, SharedWeek } from "~/core/community/CommunityTypes";
 import { findRecipe } from "~/core/community/CommunityUtils";
+import { useDayShortNames } from "~/core/plan/PlanDayLabels";
 import type { Recipe } from "~/core/recipes/RecipeTypes";
-import {
-  buildSharedWeekCard,
-  communityAction,
-  communityAgo,
-  UseDayShortNames,
-} from "~/views/community/UseCommunityCards";
-import { UseCommunityFeed } from "~/views/community/UseCommunityFeed";
+import { buildSharedWeekCard, communityAction, communityAgo } from "~/views/community/UseCommunityCards";
+import { useCommunityFeed } from "~/views/community/UseCommunityFeed";
 
 export interface CommunityFeedPanelProps {
   weeks: SharedWeek[];
@@ -41,8 +37,8 @@ export function CommunityFeedPanel({
   onUseWeek,
 }: CommunityFeedPanelProps): ReactElement {
   const intl = useIntl();
-  const dayNames = UseDayShortNames();
-  const feed = UseCommunityFeed(weeks, recipes, following);
+  const dayNames = useDayShortNames();
+  const feed = useCommunityFeed(weeks, recipes, following);
 
   return (
     <>

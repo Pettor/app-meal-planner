@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { useAtom, useSetAtom } from "jotai";
 import { followingAtom, inboxAtom, pendingSharedPlanAtom } from "~/core/community/CommunityAtoms";
 import { SampleCommunityPeople, SampleSharedWeeks } from "~/core/community/CommunitySampleData";
@@ -36,7 +37,7 @@ const me: CommunityPerson = {
 };
 
 /** Read and write who the cook follows, plus their inbox of recommendations. */
-export function UseCommunity(): UseCommunityResult {
+export function useCommunity(): UseCommunityResult {
   const [following, setFollowing] = useAtom(followingAtom);
   const [inbox, setInbox] = useAtom(inboxAtom);
   const setPendingSharedPlan = useSetAtom(pendingSharedPlanAtom);
@@ -60,11 +61,12 @@ export function UseCommunity(): UseCommunityResult {
     return SampleSharedWeeks.find((week) => week.id === weekId) ?? null;
   }
 
-  function markInboxRead(): void {
+  // Stable so the inbox route can mark-as-read from an effect without lying about its deps.
+  const markInboxRead = useCallback((): void => {
     setInbox((current) =>
       current.some((item) => !item.isRead) ? current.map((item) => ({ ...item, isRead: true })) : current
     );
-  }
+  }, [setInbox]);
 
   function removeInboxItem(itemId: string): void {
     setInbox((current) => current.filter((item) => item.id !== itemId));

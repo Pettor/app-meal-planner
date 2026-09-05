@@ -23,7 +23,7 @@ export interface UseRecipesResult {
  * cook's own is real state — saving someone else's recipe has to stick — so
  * that half lives in an atom and is layered over the sample data here.
  */
-export function UseRecipes(): UseRecipesResult {
+export function useRecipes(): UseRecipesResult {
   const [savedIds, setSavedIds] = useAtom(savedRecipeIdsAtom);
 
   const recipes = useMemo(

@@ -2,12 +2,10 @@ import type { ReactElement } from "react";
 import { Card } from "@heroui/react";
 import { useIntl } from "react-intl";
 import { WeekPickerDialog } from "~/components/feedback/week-picker-dialog/WeekPickerDialog";
-import { PLAN_DAY_ORDER } from "~/core/plan/PlanTypes";
 import type { SavedPlan } from "~/core/plan/PlanTypes";
-import { UseWeekPicker } from "~/core/plan/UseWeekPicker";
+import type { UseWeekPickerResult } from "~/core/plan/UseWeekPicker";
 import type { Recipe } from "~/core/recipes/RecipeTypes";
-import { planDayShortName } from "~/views/plan/PlanDayLabels";
-import { UseWeekOverview } from "~/views/week/UseWeekOverview";
+import { useWeekOverview } from "~/views/week/UseWeekOverview";
 import { WeekDayCard } from "~/views/week/WeekDayCard";
 import { WeekDraftBanner } from "~/views/week/WeekDraftBanner";
 import { WeekPageHeader } from "~/views/week/WeekPageHeader";
@@ -18,8 +16,8 @@ export interface WeekViewProps {
   weekKey: string;
   /** The saved plan for that week, or `null` when it has never been planned. */
   plan: SavedPlan | null;
-  /** Every saved week, so the picker can show each one's status. */
-  plans: Record<string, SavedPlan>;
+  /** The "pick a week" calendar, assembled by the route. */
+  weekPicker: UseWeekPickerResult;
   /** The cook's own recipe pool — what the planned meals resolve against. */
   recipes: Recipe[];
   onSelectWeek: (weekKey: string) => void;
@@ -34,7 +32,7 @@ export interface WeekViewProps {
 export function WeekView({
   weekKey,
   plan,
-  plans,
+  weekPicker,
   recipes,
   onSelectWeek,
   onOpenRecipe,
@@ -44,13 +42,7 @@ export function WeekView({
   onPrint,
 }: WeekViewProps): ReactElement {
   const intl = useIntl();
-  const week = UseWeekOverview(weekKey, plan, recipes, onOpenRecipe);
-  const weekPicker = UseWeekPicker(
-    weekKey,
-    plans,
-    onSelectWeek,
-    PLAN_DAY_ORDER.map((day) => planDayShortName(intl, day))
-  );
+  const week = useWeekOverview(weekKey, plan, recipes, onOpenRecipe);
 
   return (
     <div className="mx-auto w-full max-w-[77.5rem] px-6 py-9">

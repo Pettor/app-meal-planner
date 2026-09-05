@@ -1,6 +1,6 @@
-import { UsePlans } from "~/core/plan/UsePlans";
-import { UseRecipes } from "~/core/recipes/UseRecipes";
-import { UseShoppingList } from "~/core/shopping/UseShoppingList";
+import { usePlans } from "~/core/plan/UsePlans";
+import { useRecipes } from "~/core/recipes/UseRecipes";
+import { useShoppingList } from "~/core/shopping/UseShoppingList";
 import type { ShoppingViewProps } from "~/views/shopping/ShoppingView";
 
 /**
@@ -9,11 +9,11 @@ import type { ShoppingViewProps } from "~/views/shopping/ShoppingView";
  * `recipes` comes from placeholder data until there is a recipes service —
  * swap `SampleRecipes` for a route loader and the view stays unchanged.
  */
-export function UseShoppingRoute(): ShoppingViewProps {
-  const { plans, selectedWeekKey } = UsePlans();
-  const { checkedLines, toggleLine } = UseShoppingList();
+export function useShoppingRoute(): ShoppingViewProps {
+  const { plans, selectedWeekKey } = usePlans();
+  const { checkedLines, toggleLine } = useShoppingList();
 
-  const { recipes } = UseRecipes();
+  const { recipes } = useRecipes();
 
   return {
     weekKey: selectedWeekKey,

@@ -2,13 +2,12 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { fn } from "storybook/test";
 import { RecipeLibraryView as Component } from "./RecipeLibraryView";
 import type { RecipeLibraryViewProps as Props } from "./RecipeLibraryView";
-import { SampleRecipes, SampleScannedRecipe, SampleTagCatalogue, SuggestedTags } from "~/core/recipes/RecipeSampleData";
+import { SampleRecipes } from "~/core/recipes/RecipeSampleData";
 import { NavbarLayoutDecorator } from "~/storybook/decorators/NavbarLayoutDecorator";
-import { emptyRecipeDraft } from "~/views/recipe-edit/RecipeDraft";
 
 const meta: Meta<typeof Component> = {
   component: Component,
-  title: "Views/Recipe Library",
+  title: "Views/Recipes/Library",
   tags: ["!test"],
   parameters: {
     layout: "fullscreen",
@@ -25,23 +24,7 @@ const defaultArgs = {
   onAddRecipe: fn(),
   onSaveRecipe: fn(),
   onRemoveRecipe: fn(),
-  addRecipeModal: {
-    isOpen: false,
-    initialDraft: emptyRecipeDraft(),
-    isExistingRecipe: false,
-    suggestedTags: SuggestedTags,
-    tagCatalogue: SampleTagCatalogue,
-    sampleScanResult: SampleScannedRecipe,
-    onSave: fn(),
-    onCancel: fn(),
-    onDelete: fn(),
-  },
 } satisfies Props;
-
-export const AddRecipeModalOpen: Story = {
-  args: { ...defaultArgs, addRecipeModal: { ...defaultArgs.addRecipeModal, isOpen: true } },
-  parameters: { viewport: { value: "full" } },
-};
 
 export const Fullscreen: Story = {
   args: defaultArgs,

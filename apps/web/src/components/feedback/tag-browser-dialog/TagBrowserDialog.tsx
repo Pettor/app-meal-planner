@@ -1,7 +1,7 @@
 import type { ReactElement } from "react";
 import { Button, Modal } from "@heroui/react";
 import { useIntl } from "react-intl";
-import { UseTagBrowser } from "./UseTagBrowser";
+import { useTagBrowser } from "./UseTagBrowser";
 import { SearchField } from "~/components/input/input-field/SearchField";
 import { ToggleChip } from "~/components/input/toggle-chip/ToggleChip";
 import type { RecipeTagCategory } from "~/core/recipes/RecipeTypes";
@@ -26,7 +26,7 @@ export function TagBrowserDialog({
   onClose,
 }: TagBrowserDialogProps): ReactElement {
   const intl = useIntl();
-  const { query, setQuery, groups, hasResults, creatableTag } = UseTagBrowser(catalogue);
+  const { query, setQuery, groups, hasResults, creatableTag } = useTagBrowser(catalogue);
 
   const title = intl.formatMessage({
     description: "TagBrowserDialog: heading - title",

@@ -11,7 +11,7 @@ export interface UseRecipeServingsResult {
 }
 
 /** The servings stepper on a recipe, and the ingredient amounts that follow from it. */
-export function UseRecipeServings(ingredients: RecipeIngredient[], writtenFor: number): UseRecipeServingsResult {
+export function useRecipeServings(ingredients: RecipeIngredient[], writtenFor: number): UseRecipeServingsResult {
   const [servings, setServings] = useState(writtenFor);
 
   const scaled = useMemo(

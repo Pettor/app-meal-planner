@@ -40,7 +40,7 @@ export const WithHandle: Story = {
 export const OpensProfileOnClick: Story = {
   args: defaultArgs,
   play: async ({ args, canvas, userEvent }) => {
-    await userEvent.click(canvas.getByRole("button", { name: person.name }));
+    await userEvent.click(canvas.getByRole("link", { name: person.name }));
     await expect(args.onOpenProfile).toHaveBeenCalled();
   },
 };

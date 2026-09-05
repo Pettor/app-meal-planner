@@ -51,7 +51,11 @@ export function RecipeEditIngredientsPanel({
             <TextInputField
               value={ingredient.quantity}
               onChange={(quantity) => onUpdate(ingredient.id, { quantity })}
-              placeholder="200"
+              placeholder={intl.formatMessage({
+                description: "RecipeEditIngredientsPanel: placeholder - quantity example",
+                defaultMessage: "200",
+                id: "6U5ByL",
+              })}
               ariaLabel={intl.formatMessage(
                 {
                   description: "RecipeEditIngredientsPanel: aria-label - quantity",
@@ -64,7 +68,11 @@ export function RecipeEditIngredientsPanel({
             <TextInputField
               value={ingredient.unit}
               onChange={(unit) => onUpdate(ingredient.id, { unit })}
-              placeholder="g"
+              placeholder={intl.formatMessage({
+                description: "RecipeEditIngredientsPanel: placeholder - unit example",
+                defaultMessage: "g",
+                id: "npl4Um",
+              })}
               ariaLabel={intl.formatMessage(
                 {
                   description: "RecipeEditIngredientsPanel: aria-label - unit",

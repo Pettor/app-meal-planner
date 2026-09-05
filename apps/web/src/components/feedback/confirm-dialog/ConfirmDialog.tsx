@@ -33,7 +33,7 @@ export function ConfirmDialog({
     <Modal isOpen={isOpen} onOpenChange={(open) => !open && onCancel()}>
       <Modal.Backdrop variant="blur">
         <Modal.Container size="sm">
-          <Modal.Dialog aria-label={title}>
+          <Modal.Dialog>
             <Modal.Body className="flex flex-row gap-4 pt-6">
               <span
                 className={
@@ -45,7 +45,9 @@ export function ConfirmDialog({
                 <ExclamationTriangleIcon className="h-5 w-5" />
               </span>
               <div className="min-w-0">
-                <h3 className="mb-1.5 text-lg">{title}</h3>
+                {/* `Modal.Heading` renders an h2, which the base layer sets in the display serif;
+                    this dialog's title stays in the body font, as the design has it. */}
+                <Modal.Heading className="font-family-primary mb-1.5 text-lg font-normal">{title}</Modal.Heading>
                 {subject && <p className="mb-2 text-base font-semibold">{subject}</p>}
                 <p className="text-default-500 text-sm leading-relaxed">{body}</p>
               </div>

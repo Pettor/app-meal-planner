@@ -3,8 +3,9 @@ import { useIntl } from "react-intl";
 import { CommunityCardHeader } from "~/components/display/community-card-header/CommunityCardHeader";
 import { SharedWeekCard } from "~/components/display/shared-week-card/SharedWeekCard";
 import type { CommunityPerson, SharedWeek } from "~/core/community/CommunityTypes";
+import { useDayShortNames } from "~/core/plan/PlanDayLabels";
 import type { Recipe } from "~/core/recipes/RecipeTypes";
-import { buildSharedWeekCard, communityAgo, UseDayShortNames } from "~/views/community/UseCommunityCards";
+import { buildSharedWeekCard, communityAgo } from "~/views/community/UseCommunityCards";
 
 export interface CommunityWeeksPanelProps {
   weeks: SharedWeek[];
@@ -25,7 +26,7 @@ export function CommunityWeeksPanel({
   onUseWeek,
 }: CommunityWeeksPanelProps): ReactElement {
   const intl = useIntl();
-  const dayNames = UseDayShortNames();
+  const dayNames = useDayShortNames();
 
   return (
     <div className="mx-auto mt-5 grid max-w-[72.5rem] grid-cols-[repeat(auto-fill,minmax(23.125rem,1fr))] gap-4">
