@@ -1,6 +1,6 @@
 import { useIntl } from "react-intl";
 import type { IntlShape } from "react-intl";
-import { planDayName, planMealName } from "~/core/plan/PlanDayLabels";
+import { planDayName, planMealName, planPeopleLabel } from "~/core/plan/PlanDayLabels";
 import { PLAN_DAY_ORDER } from "~/core/plan/PlanTypes";
 import type { PlanDayId, SavedPlan } from "~/core/plan/PlanTypes";
 import { addDays, formatWeekRange, isoWeekNumber, parseWeekKey, weekKeyOf, weekOffset } from "~/core/plan/PlanUtils";
@@ -204,7 +204,7 @@ export function useWeekOverview(
           dayLabel: planDayName(intl, row.day),
           dateNumber: String(date.getDate()),
           monthLabel: date.toLocaleDateString(locale, { month: "short" }),
-          peopleLabel: peopleLabel(intl, row.people),
+          peopleLabel: planPeopleLabel(intl, row.people),
           isToday: weekKeyOf(date) === todayKey,
           meals: plan.draft.slots
             .filter((slot) => slot.day === row.day)
@@ -215,7 +215,7 @@ export function useWeekOverview(
                 {
                   mealLabel: planMealName(intl, slot.meal),
                   isDinner: slot.meal === "dinner",
-                  peopleLabel: peopleLabel(intl, slot.people),
+                  peopleLabel: planPeopleLabel(intl, slot.people),
                   title: recipe.title,
                   tags: recipe.tags,
                   photoUrl: recipe.photoUrl,
@@ -241,11 +241,4 @@ export function useWeekOverview(
     previousWeekKey: weekKeyOf(addDays(monday, -7)),
     nextWeekKey: weekKeyOf(addDays(monday, 7)),
   };
-}
-
-function peopleLabel(intl: IntlShape, people: number): string {
-  return intl.formatMessage(
-    { description: "UseWeekOverview: label - n people", defaultMessage: "{count} people", id: "2aOCU6" },
-    { count: people }
-  );
 }

@@ -18,7 +18,7 @@ export function PlanSlotRow({ slot, isFirst }: PlanSlotRowProps): ReactElement {
 
   return (
     <div className={clsx("flex flex-wrap items-center gap-4 px-6 py-3.5", !isFirst && "border-separator border-t")}>
-      <div className="w-36 shrink-0">
+      <div className="w-40 shrink-0">
         <div className="text-sm font-medium">{slot.dayLabel}</div>
         <div className="text-default-500 text-xs">{slot.mealLine}</div>
       </div>

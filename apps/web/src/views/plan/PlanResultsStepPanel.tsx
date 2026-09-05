@@ -2,11 +2,12 @@ import type { ReactElement } from "react";
 import { ArrowPathIcon } from "@heroicons/react/24/outline";
 import { Button, Card } from "@heroui/react";
 import { useIntl } from "react-intl";
+import { DayColumn } from "~/components/display/day-column/DayColumn";
 import { ToggleChip } from "~/components/input/toggle-chip/ToggleChip";
 import type { PlanLayout } from "~/core/plan/PlanTypes";
 import { PlanSlotCard } from "~/views/plan/PlanSlotCard";
 import { PlanSlotRow } from "~/views/plan/PlanSlotRow";
-import type { PlanSlotViewModel } from "~/views/plan/UsePlanWizard";
+import type { PlanGridDayViewModel, PlanSlotViewModel } from "~/views/plan/UsePlanWizard";
 
 export interface PlanResultsStepPanelProps {
   layout: PlanLayout;
@@ -14,7 +15,7 @@ export interface PlanResultsStepPanelProps {
   quotaStatus: string;
   onRerollAll: () => void;
   slotRows: PlanSlotViewModel[];
-  gridDays: { dayLabel: string; slots: PlanSlotViewModel[] }[];
+  gridDays: PlanGridDayViewModel[];
 }
 
 /** Step 4: the filled week, swappable and rerollable before it's saved. */
@@ -78,23 +79,30 @@ export function PlanResultsStepPanel({
           ))}
         </Card>
       ) : (
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(9.5rem,1fr))] gap-3">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(13.25rem,1fr))] gap-3.5">
           {gridDays.map((day) => (
-            <Card key={day.dayLabel} className="gap-2.5 p-3">
-              <div className="text-default-500 text-xs font-semibold tracking-wider uppercase">{day.dayLabel}</div>
+            <DayColumn
+              key={day.dayLabel}
+              dayLabel={day.dayLabel}
+              dateNumber={day.dateNumber}
+              monthLabel={day.monthLabel}
+              peopleLabel={day.peopleLabel}
+              isToday={day.isToday}
+            >
               {day.slots.map((slot) => (
                 <PlanSlotCard key={`${slot.day}-${slot.mealLine}`} slot={slot} />
               ))}
+
               {day.slots.length === 0 && (
-                <div className="text-default-500 px-0.5 py-1.5 text-xs">
+                <span className="border-separator bg-surface-secondary text-default-500 flex flex-1 items-center justify-center border-t [background-image:radial-gradient(color-mix(in_oklch,var(--muted)_30%,transparent)_1px,transparent_1px)] [background-size:12px_12px] px-3.5 py-6.5 text-xs">
                   {intl.formatMessage({
                     description: "PlanResultsStepPanel: body - no meals",
                     defaultMessage: "No meals",
                     id: "+qTdy8",
                   })}
-                </div>
+                </span>
               )}
-            </Card>
+            </DayColumn>
           ))}
         </div>
       )}

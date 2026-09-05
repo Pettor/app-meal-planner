@@ -98,3 +98,11 @@ export function useDayShortNames(): string[] {
   const intl = useIntl();
   return useMemo(() => PLAN_DAY_ORDER.map((day) => planDayShortName(intl, day)), [intl]);
 }
+
+/** "4 people" — how many are eating, on a day or on a single meal. */
+export function planPeopleLabel(intl: IntlShape, people: number): string {
+  return intl.formatMessage(
+    { description: "PlanDayLabels: label - n people", defaultMessage: "{count} people", id: "Ra9U50" },
+    { count: people }
+  );
+}

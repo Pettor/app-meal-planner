@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { useIntl } from "react-intl";
 import type { IntlShape } from "react-intl";
-import { planDayName, planDayShortName, planMealName } from "~/core/plan/PlanDayLabels";
+import { planDayName, planDayShortName, planMealName, planPeopleLabel } from "~/core/plan/PlanDayLabels";
 import {
   PLAN_DAY_ORDER,
   type PlanDay,
@@ -16,6 +16,7 @@ import {
   type SavedPlan,
 } from "~/core/plan/PlanTypes";
 import {
+  addDays,
   buildPlanSlots,
   clonePlanDraft,
   emptyPlanDraft,
@@ -25,6 +26,7 @@ import {
   isoWeekNumber,
   parseWeekKey,
   rerollRecipeId,
+  weekKeyOf,
   weekOffset,
 } from "~/core/plan/PlanUtils";
 import { useWeekPicker } from "~/core/plan/UseWeekPicker";
@@ -62,7 +64,12 @@ export interface PlanTagPickViewModel {
 export interface PlanSlotViewModel {
   day: PlanDayId;
   dayLabel: string;
+  /** "Dinner · 4p" — the one-line form the list layout puts under the day. */
   mealLine: string;
+  mealLabel: string;
+  /** Dinner and lunch are colour-coded so a day reads at a glance. */
+  isDinner: boolean;
+  peopleLabel: string;
   title: string;
   isFilled: boolean;
   tags: string[];
@@ -70,6 +77,16 @@ export interface PlanSlotViewModel {
   onReroll: () => void;
   onSwap: () => void;
   onClear: () => void;
+}
+
+/** One day column of the week-grid review, shaped like a day on the planned week. */
+export interface PlanGridDayViewModel {
+  dayLabel: string;
+  dateNumber: string;
+  monthLabel: string;
+  peopleLabel: string;
+  isToday: boolean;
+  slots: PlanSlotViewModel[];
 }
 
 function formatTagCount(n: number): string {
@@ -158,7 +175,7 @@ export interface UsePlanWizardResult {
   quotaStatus: string;
   onRerollAll: () => void;
   slotRows: PlanSlotViewModel[];
-  gridDays: { dayLabel: string; slots: PlanSlotViewModel[] }[];
+  gridDays: PlanGridDayViewModel[];
 
   isSwapOpen: boolean;
   swapTitle: string;
@@ -289,6 +306,7 @@ export function usePlanWizard({
   });
 
   const monday = parseWeekKey(weekKey);
+  const todayKey = weekKeyOf(new Date());
   const offset = weekOffset(weekKey);
   const relativeLabel =
     offset === 0
@@ -517,6 +535,9 @@ export function usePlanWizard({
       day: slot.day,
       dayLabel: planDayName(intl, slot.day),
       mealLine: `${planMealName(intl, slot.meal)} · ${slot.people}p`,
+      mealLabel: planMealName(intl, slot.meal),
+      isDinner: slot.meal === "dinner",
+      peopleLabel: planPeopleLabel(intl, slot.people),
       title: recipe ? recipe.title : `— ${emptyWord} —`,
       isFilled: !!recipe,
       tags: recipe?.tags ?? [],
@@ -528,10 +549,17 @@ export function usePlanWizard({
   }
 
   const slotRows = draft.slots.map(buildSlotViewModel);
-  const gridDays = PLAN_DAY_ORDER.map((day) => ({
-    dayLabel: planDayShortName(intl, day),
-    slots: slotRows.filter((slot) => slot.day === day),
-  }));
+  const gridDays: PlanGridDayViewModel[] = draft.days.map((row) => {
+    const date = addDays(monday, PLAN_DAY_ORDER.indexOf(row.day));
+    return {
+      dayLabel: planDayName(intl, row.day),
+      dateNumber: String(date.getDate()),
+      monthLabel: date.toLocaleDateString(locale, { month: "short" }),
+      peopleLabel: planPeopleLabel(intl, row.people),
+      isToday: weekKeyOf(date) === todayKey,
+      slots: slotRows.filter((slot) => slot.day === row.day),
+    };
+  });
 
   const filledCounts: Record<string, number> = {};
   draft.slots.forEach((slot) => {

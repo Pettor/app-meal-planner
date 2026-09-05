@@ -5,7 +5,7 @@ import clsx from "clsx";
 export interface RecipePhotoProps {
   photoUrl: string | null;
   alt: string;
-  /** Tailwind height for the photo band, e.g. `h-34` on cards, `h-75` on the sheet. */
+  /** Tailwind box for the photo band, e.g. `h-34` on cards, `h-10 w-13` for a row thumbnail. */
   className?: string;
   /** Height used when there is no photo — placeholders are usually shorter. */
   placeholderClassName?: string;
@@ -25,13 +25,17 @@ export function RecipePhoto({
   placeholderContent,
 }: RecipePhotoProps): ReactElement {
   if (photoUrl) {
-    return <img src={photoUrl} alt={alt} className={clsx("w-full object-cover", className)} />;
+    return (
+      <div className={clsx("overflow-hidden", className)}>
+        <img src={photoUrl} alt={alt} className="h-full w-full object-cover" />
+      </div>
+    );
   }
 
   return (
     <div
       className={clsx(
-        "bg-surface-secondary text-default-400 flex w-full flex-col items-center justify-center gap-2",
+        "bg-surface-secondary text-default-400 flex flex-col items-center justify-center gap-2 overflow-hidden",
         "[background-image:radial-gradient(color-mix(in_oklch,var(--muted)_30%,transparent)_1px,transparent_1px)] [background-size:12px_12px]",
         placeholderClassName ?? className
       )}
