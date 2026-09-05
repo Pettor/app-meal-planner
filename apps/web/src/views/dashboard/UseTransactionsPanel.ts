@@ -16,7 +16,7 @@ export interface TransactionsPanelState {
   counts: Record<string, number>;
 }
 
-export function UseTransactionsPanel(transactions: DashboardTransaction[]): TransactionsPanelState {
+export function useTransactionsPanel(transactions: DashboardTransaction[]): TransactionsPanelState {
   const [filter, setFilter] = useState<TxFilter>("all");
   const [sort, setSort] = useState<{ key: SortKey; dir: SortDir }>({ key: "date", dir: "desc" });
   const [query, setQuery] = useState("");

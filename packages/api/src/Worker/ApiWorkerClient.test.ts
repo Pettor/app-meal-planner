@@ -368,7 +368,7 @@ describe("ApiWorkerClient", () => {
       expect(response.status).toBe(200);
     });
 
-    it("returns the original 401 response when refresh also fails", async () => {
+    it("surfaces the original 401 when refresh also fails", async () => {
       const unauthorizedResponse = {
         ok: false,
         status: 401,
@@ -389,9 +389,82 @@ describe("ApiWorkerClient", () => {
       const mockClient = { request: mockRequest } as unknown as FetchClient;
       const workerClient = new ApiWorkerClient(mockClient, ALLOWED);
 
-      const result = await workerClient.get("/api/application/info");
+      await expect(workerClient.get("/api/application/info")).rejects.toMatchObject({
+        name: "FetchError",
+        status: 401,
+      });
+    });
 
-      expect(result.status).toBe(401);
+    it("reports a failed retry as itself, not as the original 401", async () => {
+      const mockRequest = vi
+        .fn()
+        .mockResolvedValueOnce({
+          ok: false,
+          status: 401,
+          statusText: "Unauthorized",
+          json: vi.fn(),
+        } as unknown as Response)
+        .mockResolvedValueOnce({
+          // The refresh succeeds...
+          ok: true,
+          status: 200,
+          json: vi.fn().mockResolvedValue({ token: "fresh-token", refreshTokenExpiryTime: "2027-01-01" }),
+        } as unknown as Response)
+        // ...but the retried request is rejected on its own terms.
+        .mockResolvedValueOnce({
+          ok: false,
+          status: 403,
+          statusText: "Forbidden",
+          json: vi.fn(),
+        } as unknown as Response);
+
+      const mockClient = { request: mockRequest } as unknown as FetchClient;
+      const workerClient = new ApiWorkerClient(mockClient, ALLOWED);
+
+      await expect(workerClient.get("/api/application/info")).rejects.toMatchObject({ status: 403 });
+    });
+  });
+
+  describe("failed responses", () => {
+    /*
+     * A non-ok response is still a resolved fetch. These guard the boundary
+     * that turns one into an error, so a rejected request cannot reach the app
+     * looking like a successful one.
+     */
+    const methods = ["get", "delete"] as const;
+
+    methods.forEach((method) => {
+      it(`rejects a failed ${method.toUpperCase()} with a FetchError carrying the status`, async () => {
+        const mockClient = makeMockClient({ ok: false, status: 400, statusText: "Bad Request" });
+        const workerClient = new ApiWorkerClient(mockClient, ALLOWED);
+
+        await expect(workerClient[method]("/api/personal/profile")).rejects.toMatchObject({
+          name: "FetchError",
+          status: 400,
+          statusText: "Bad Request",
+        });
+      });
+    });
+
+    const bodyMethods = ["post", "put", "patch"] as const;
+
+    bodyMethods.forEach((method) => {
+      it(`rejects a failed ${method.toUpperCase()} with a FetchError carrying the status`, async () => {
+        const mockClient = makeMockClient({ ok: false, status: 409, statusText: "Conflict" });
+        const workerClient = new ApiWorkerClient(mockClient, ALLOWED);
+
+        await expect(workerClient[method]("/api/users/self-register", {})).rejects.toMatchObject({
+          name: "FetchError",
+          status: 409,
+        });
+      });
+    });
+
+    it("passes a 204 through rather than treating an empty body as a failure", async () => {
+      const mockClient = makeMockClient({ ok: true, status: 204, statusText: "No Content" });
+      const workerClient = new ApiWorkerClient(mockClient, ALLOWED);
+
+      await expect(workerClient.delete("/api/personal/profile")).resolves.toMatchObject({ status: 204 });
     });
   });
 });

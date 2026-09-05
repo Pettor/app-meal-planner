@@ -10,7 +10,7 @@ test.describe("general.settings", () => {
     await page.goto("/");
 
     await expect(async () => {
-      expect(await page.title()).toBe("Home");
+      expect(await page.title()).toBe("Recipes");
     }).toPass();
 
     // Open quick menu via avatar button, then open settings
@@ -62,7 +62,7 @@ test.describe("general.commandpalette", () => {
     await page.goto("/");
 
     await expect(async () => {
-      expect(await page.title()).toBe("Home");
+      expect(await page.title()).toBe("Recipes");
     }).toPass();
 
     // Open command palette via quick menu
@@ -87,7 +87,7 @@ test.describe("general.commandpalette", () => {
     await page.goto("/");
 
     await expect(async () => {
-      expect(await page.title()).toBe("Home");
+      expect(await page.title()).toBe("Recipes");
     }).toPass();
 
     // Open command palette via quick menu
@@ -110,7 +110,7 @@ test.describe("general.commandpalette", () => {
     await page.goto("/");
 
     await expect(async () => {
-      expect(await page.title()).toBe("Home");
+      expect(await page.title()).toBe("Recipes");
     }).toPass();
 
     // Open command palette via quick menu

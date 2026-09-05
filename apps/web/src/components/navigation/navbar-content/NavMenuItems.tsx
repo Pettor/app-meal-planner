@@ -1,42 +1,92 @@
 import type { ReactElement } from "react";
-import { ChartBarSquareIcon, HomeIcon } from "@heroicons/react/20/solid";
+import { BookOpenIcon, CalendarIcon, ShoppingCartIcon, SparklesIcon, UsersIcon } from "@heroicons/react/24/outline";
 import type { IntlShape } from "react-intl";
 
 export interface NavMenuItem {
   id: string;
   name: string;
+  shortName: string;
   href: string;
   icon: ReactElement;
-  external?: boolean;
-  children?: NavMenuItem[];
+  disabled?: boolean;
 }
 
-export interface NavMenuSocialLinks {
-  github: string;
-  linkedIn: string;
-}
-
-export function createNavMenuItems(_socialLinks: NavMenuSocialLinks, intl: IntlShape): NavMenuItem[] {
+export function createNavMenuItems(intl: IntlShape): NavMenuItem[] {
   return [
     {
-      id: "home",
+      id: "recipes",
       name: intl.formatMessage({
-        description: "NavMenuItems: menu-item - home",
-        defaultMessage: "Home",
-        id: "dygLxQ",
+        description: "NavMenuItems: menu-item - recipes",
+        defaultMessage: "Recipes",
+        id: "BpvAE5",
+      }),
+      shortName: intl.formatMessage({
+        description: "NavMenuItems: menu-item - recipes (short, mobile tab bar)",
+        defaultMessage: "Recipes",
+        id: "lzH6R6",
       }),
       href: "#/",
-      icon: <HomeIcon className="h-5 w-5" />,
+      icon: <BookOpenIcon className="h-[18px] w-[18px]" />,
     },
     {
-      id: "dashboard",
+      id: "plan",
       name: intl.formatMessage({
-        description: "NavMenuItems: menu-item - dashboard",
-        defaultMessage: "Dashboard",
-        id: "boO2/q",
+        description: "NavMenuItems: menu-item - plan",
+        defaultMessage: "Plan",
+        id: "SIwWzu",
       }),
-      href: "#/dashboard",
-      icon: <ChartBarSquareIcon className="h-5 w-5" />,
+      shortName: intl.formatMessage({
+        description: "NavMenuItems: menu-item - plan (short, mobile tab bar)",
+        defaultMessage: "Plan",
+        id: "DmSF9w",
+      }),
+      href: "#/plan",
+      icon: <SparklesIcon className="h-[18px] w-[18px]" />,
+    },
+    {
+      id: "week",
+      name: intl.formatMessage({
+        description: "NavMenuItems: menu-item - this week",
+        defaultMessage: "This week",
+        id: "myl/z5",
+      }),
+      shortName: intl.formatMessage({
+        description: "NavMenuItems: menu-item - this week (short, mobile tab bar)",
+        defaultMessage: "Week",
+        id: "/4Y51F",
+      }),
+      href: "#/week",
+      icon: <CalendarIcon className="h-[18px] w-[18px]" />,
+    },
+    {
+      id: "shop",
+      name: intl.formatMessage({
+        description: "NavMenuItems: menu-item - shopping",
+        defaultMessage: "Shopping",
+        id: "LS5BYx",
+      }),
+      shortName: intl.formatMessage({
+        description: "NavMenuItems: menu-item - shopping (short, mobile tab bar)",
+        defaultMessage: "Shopping",
+        id: "aAqsh5",
+      }),
+      href: "#/shopping",
+      icon: <ShoppingCartIcon className="h-[18px] w-[18px]" />,
+    },
+    {
+      id: "community",
+      name: intl.formatMessage({
+        description: "NavMenuItems: menu-item - community",
+        defaultMessage: "Community",
+        id: "b6ZYZt",
+      }),
+      shortName: intl.formatMessage({
+        description: "NavMenuItems: menu-item - community (short, mobile tab bar)",
+        defaultMessage: "Friends",
+        id: "YfA5jn",
+      }),
+      href: "#/community",
+      icon: <UsersIcon className="h-[18px] w-[18px]" />,
     },
   ];
 }

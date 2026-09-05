@@ -14,9 +14,17 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as PublicRouteRouteImport } from './routes/_public/route'
 import { Route as AuthenticatedIndexRouteRouteImport } from './routes/_authenticated/index/route'
 import { Route as AuthenticatedDashboardRouteRouteImport } from './routes/_authenticated/dashboard/route'
+import { Route as AuthenticatedPlanRouteRouteImport } from './routes/_authenticated/plan/route'
+import { Route as AuthenticatedShoppingRouteRouteImport } from './routes/_authenticated/shopping/route'
+import { Route as AuthenticatedWeekRouteRouteImport } from './routes/_authenticated/week/route'
 import { Route as PublicForgotPasswordRouteRouteImport } from './routes/_public/forgot-password/route'
 import { Route as PublicLoginRouteRouteImport } from './routes/_public/login/route'
 import { Route as PublicSignUpRouteRouteImport } from './routes/_public/sign-up/route'
+import { Route as AuthenticatedCommunityIndexRouteRouteImport } from './routes/_authenticated/community/index/route'
+import { Route as AuthenticatedCommunityPersonIdRouteRouteImport } from './routes/_authenticated/community/$personId/route'
+import { Route as AuthenticatedCommunityInboxRouteRouteImport } from './routes/_authenticated/community/inbox/route'
+import { Route as AuthenticatedRecipesRecipeIdRouteRouteImport } from './routes/_authenticated/recipes/$recipeId/route'
+import { Route as AuthenticatedRecipesEditRecipeIdRouteRouteImport } from './routes/_authenticated/recipes/edit/$recipeId/route'
 
 const SplatRouteRoute = SplatRouteRouteImport.update({
   id: '/$',
@@ -42,6 +50,22 @@ const AuthenticatedDashboardRouteRoute =
     path: '/dashboard',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedPlanRouteRoute = AuthenticatedPlanRouteRouteImport.update({
+  id: '/plan',
+  path: '/plan',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedShoppingRouteRoute =
+  AuthenticatedShoppingRouteRouteImport.update({
+    id: '/shopping',
+    path: '/shopping',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedWeekRouteRoute = AuthenticatedWeekRouteRouteImport.update({
+  id: '/week',
+  path: '/week',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const PublicForgotPasswordRouteRoute =
   PublicForgotPasswordRouteRouteImport.update({
     id: '/forgot-password',
@@ -58,22 +82,68 @@ const PublicSignUpRouteRoute = PublicSignUpRouteRouteImport.update({
   path: '/sign-up',
   getParentRoute: () => PublicRouteRoute,
 } as any)
+const AuthenticatedCommunityIndexRouteRoute =
+  AuthenticatedCommunityIndexRouteRouteImport.update({
+    id: '/community/',
+    path: '/community',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedCommunityPersonIdRouteRoute =
+  AuthenticatedCommunityPersonIdRouteRouteImport.update({
+    id: '/community/$personId',
+    path: '/community/$personId',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedCommunityInboxRouteRoute =
+  AuthenticatedCommunityInboxRouteRouteImport.update({
+    id: '/community/inbox',
+    path: '/community/inbox',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedRecipesRecipeIdRouteRoute =
+  AuthenticatedRecipesRecipeIdRouteRouteImport.update({
+    id: '/recipes/$recipeId',
+    path: '/recipes/$recipeId',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedRecipesEditRecipeIdRouteRoute =
+  AuthenticatedRecipesEditRecipeIdRouteRouteImport.update({
+    id: '/recipes/edit/$recipeId',
+    path: '/recipes/edit/$recipeId',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/$': typeof SplatRouteRoute
   '/': typeof AuthenticatedIndexRouteRoute
   '/dashboard': typeof AuthenticatedDashboardRouteRoute
+  '/plan': typeof AuthenticatedPlanRouteRoute
+  '/shopping': typeof AuthenticatedShoppingRouteRoute
+  '/week': typeof AuthenticatedWeekRouteRoute
   '/forgot-password': typeof PublicForgotPasswordRouteRoute
   '/login': typeof PublicLoginRouteRoute
   '/sign-up': typeof PublicSignUpRouteRoute
+  '/community/': typeof AuthenticatedCommunityIndexRouteRoute
+  '/community/$personId': typeof AuthenticatedCommunityPersonIdRouteRoute
+  '/community/inbox': typeof AuthenticatedCommunityInboxRouteRoute
+  '/recipes/$recipeId': typeof AuthenticatedRecipesRecipeIdRouteRoute
+  '/recipes/edit/$recipeId': typeof AuthenticatedRecipesEditRecipeIdRouteRoute
 }
 export interface FileRoutesByTo {
   '/$': typeof SplatRouteRoute
   '/': typeof AuthenticatedIndexRouteRoute
   '/dashboard': typeof AuthenticatedDashboardRouteRoute
+  '/plan': typeof AuthenticatedPlanRouteRoute
+  '/shopping': typeof AuthenticatedShoppingRouteRoute
+  '/week': typeof AuthenticatedWeekRouteRoute
   '/forgot-password': typeof PublicForgotPasswordRouteRoute
   '/login': typeof PublicLoginRouteRoute
   '/sign-up': typeof PublicSignUpRouteRoute
+  '/community': typeof AuthenticatedCommunityIndexRouteRoute
+  '/community/$personId': typeof AuthenticatedCommunityPersonIdRouteRoute
+  '/community/inbox': typeof AuthenticatedCommunityInboxRouteRoute
+  '/recipes/$recipeId': typeof AuthenticatedRecipesRecipeIdRouteRoute
+  '/recipes/edit/$recipeId': typeof AuthenticatedRecipesEditRecipeIdRouteRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -82,16 +152,51 @@ export interface FileRoutesById {
   '/_public': typeof PublicRouteRouteWithChildren
   '/_authenticated/': typeof AuthenticatedIndexRouteRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRouteRoute
+  '/_authenticated/plan': typeof AuthenticatedPlanRouteRoute
+  '/_authenticated/shopping': typeof AuthenticatedShoppingRouteRoute
+  '/_authenticated/week': typeof AuthenticatedWeekRouteRoute
   '/_public/forgot-password': typeof PublicForgotPasswordRouteRoute
   '/_public/login': typeof PublicLoginRouteRoute
   '/_public/sign-up': typeof PublicSignUpRouteRoute
+  '/_authenticated/community/': typeof AuthenticatedCommunityIndexRouteRoute
+  '/_authenticated/community/$personId': typeof AuthenticatedCommunityPersonIdRouteRoute
+  '/_authenticated/community/inbox': typeof AuthenticatedCommunityInboxRouteRoute
+  '/_authenticated/recipes/$recipeId': typeof AuthenticatedRecipesRecipeIdRouteRoute
+  '/_authenticated/recipes/edit/$recipeId': typeof AuthenticatedRecipesEditRecipeIdRouteRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/$' | '/' | '/dashboard' | '/forgot-password' | '/login' | '/sign-up'
+    | '/$'
+    | '/'
+    | '/dashboard'
+    | '/plan'
+    | '/shopping'
+    | '/week'
+    | '/forgot-password'
+    | '/login'
+    | '/sign-up'
+    | '/community/'
+    | '/community/$personId'
+    | '/community/inbox'
+    | '/recipes/$recipeId'
+    | '/recipes/edit/$recipeId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/$' | '/' | '/dashboard' | '/forgot-password' | '/login' | '/sign-up'
+  to:
+    | '/$'
+    | '/'
+    | '/dashboard'
+    | '/plan'
+    | '/shopping'
+    | '/week'
+    | '/forgot-password'
+    | '/login'
+    | '/sign-up'
+    | '/community'
+    | '/community/$personId'
+    | '/community/inbox'
+    | '/recipes/$recipeId'
+    | '/recipes/edit/$recipeId'
   id:
     | '__root__'
     | '/$'
@@ -99,9 +204,17 @@ export interface FileRouteTypes {
     | '/_public'
     | '/_authenticated/'
     | '/_authenticated/dashboard'
+    | '/_authenticated/plan'
+    | '/_authenticated/shopping'
+    | '/_authenticated/week'
     | '/_public/forgot-password'
     | '/_public/login'
     | '/_public/sign-up'
+    | '/_authenticated/community/'
+    | '/_authenticated/community/$personId'
+    | '/_authenticated/community/inbox'
+    | '/_authenticated/recipes/$recipeId'
+    | '/_authenticated/recipes/edit/$recipeId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -147,6 +260,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDashboardRouteRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/plan': {
+      id: '/_authenticated/plan'
+      path: '/plan'
+      fullPath: '/plan'
+      preLoaderRoute: typeof AuthenticatedPlanRouteRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/shopping': {
+      id: '/_authenticated/shopping'
+      path: '/shopping'
+      fullPath: '/shopping'
+      preLoaderRoute: typeof AuthenticatedShoppingRouteRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/week': {
+      id: '/_authenticated/week'
+      path: '/week'
+      fullPath: '/week'
+      preLoaderRoute: typeof AuthenticatedWeekRouteRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_public/forgot-password': {
       id: '/_public/forgot-password'
       path: '/forgot-password'
@@ -168,17 +302,71 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicSignUpRouteRouteImport
       parentRoute: typeof PublicRouteRoute
     }
+    '/_authenticated/community/': {
+      id: '/_authenticated/community/'
+      path: '/community'
+      fullPath: '/community/'
+      preLoaderRoute: typeof AuthenticatedCommunityIndexRouteRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/community/$personId': {
+      id: '/_authenticated/community/$personId'
+      path: '/community/$personId'
+      fullPath: '/community/$personId'
+      preLoaderRoute: typeof AuthenticatedCommunityPersonIdRouteRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/community/inbox': {
+      id: '/_authenticated/community/inbox'
+      path: '/community/inbox'
+      fullPath: '/community/inbox'
+      preLoaderRoute: typeof AuthenticatedCommunityInboxRouteRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/recipes/$recipeId': {
+      id: '/_authenticated/recipes/$recipeId'
+      path: '/recipes/$recipeId'
+      fullPath: '/recipes/$recipeId'
+      preLoaderRoute: typeof AuthenticatedRecipesRecipeIdRouteRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/recipes/edit/$recipeId': {
+      id: '/_authenticated/recipes/edit/$recipeId'
+      path: '/recipes/edit/$recipeId'
+      fullPath: '/recipes/edit/$recipeId'
+      preLoaderRoute: typeof AuthenticatedRecipesEditRecipeIdRouteRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedIndexRouteRoute: typeof AuthenticatedIndexRouteRoute
   AuthenticatedDashboardRouteRoute: typeof AuthenticatedDashboardRouteRoute
+  AuthenticatedPlanRouteRoute: typeof AuthenticatedPlanRouteRoute
+  AuthenticatedShoppingRouteRoute: typeof AuthenticatedShoppingRouteRoute
+  AuthenticatedWeekRouteRoute: typeof AuthenticatedWeekRouteRoute
+  AuthenticatedCommunityIndexRouteRoute: typeof AuthenticatedCommunityIndexRouteRoute
+  AuthenticatedCommunityPersonIdRouteRoute: typeof AuthenticatedCommunityPersonIdRouteRoute
+  AuthenticatedCommunityInboxRouteRoute: typeof AuthenticatedCommunityInboxRouteRoute
+  AuthenticatedRecipesRecipeIdRouteRoute: typeof AuthenticatedRecipesRecipeIdRouteRoute
+  AuthenticatedRecipesEditRecipeIdRouteRoute: typeof AuthenticatedRecipesEditRecipeIdRouteRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedIndexRouteRoute: AuthenticatedIndexRouteRoute,
   AuthenticatedDashboardRouteRoute: AuthenticatedDashboardRouteRoute,
+  AuthenticatedPlanRouteRoute: AuthenticatedPlanRouteRoute,
+  AuthenticatedShoppingRouteRoute: AuthenticatedShoppingRouteRoute,
+  AuthenticatedWeekRouteRoute: AuthenticatedWeekRouteRoute,
+  AuthenticatedCommunityIndexRouteRoute: AuthenticatedCommunityIndexRouteRoute,
+  AuthenticatedCommunityPersonIdRouteRoute:
+    AuthenticatedCommunityPersonIdRouteRoute,
+  AuthenticatedCommunityInboxRouteRoute: AuthenticatedCommunityInboxRouteRoute,
+  AuthenticatedRecipesRecipeIdRouteRoute:
+    AuthenticatedRecipesRecipeIdRouteRoute,
+  AuthenticatedRecipesEditRecipeIdRouteRoute:
+    AuthenticatedRecipesEditRecipeIdRouteRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =

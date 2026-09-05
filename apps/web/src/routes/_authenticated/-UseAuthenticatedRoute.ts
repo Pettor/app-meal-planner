@@ -1,4 +1,5 @@
 import { useLocation, useNavigate } from "@tanstack/react-router";
+import { useCommunity } from "~/core/community/UseCommunity";
 import type { AppSessionContent } from "~/core/session/AppSessionContent";
 import { useAppSessionContent } from "~/core/session/UseAppSessionContent";
 import type { AppSocialLinks } from "~/core/social-links/AppSocialLinks";
@@ -12,24 +13,42 @@ export interface UseAuthenticatedRouteResult {
   onTabChange: (id: string) => void;
   sessionContent: AppSessionContent;
   socialLinks: AppSocialLinks;
-  githubLink: string;
-  linkedInLink: string;
+  /** Where each account-menu entry goes, plus the inbox's unread count. */
+  accountMenu: {
+    unreadCount: number;
+    onOpenProfile: () => void;
+    onOpenInbox: () => void;
+  };
 }
+
+/**
+ * Which nav tab each route belongs to. A profile and the inbox both live under
+ * Community, so the tab stays lit while the cook is inside that section.
+ */
+const TAB_ROUTES: { id: string; path: string; matches: (pathname: string) => boolean }[] = [
+  {
+    id: "recipes",
+    path: "/",
+    matches: (pathname) => pathname === "/" || pathname.startsWith("/recipes"),
+  },
+  { id: "plan", path: "/plan", matches: (pathname) => pathname.startsWith("/plan") },
+  { id: "week", path: "/week", matches: (pathname) => pathname.startsWith("/week") },
+  { id: "shop", path: "/shopping", matches: (pathname) => pathname.startsWith("/shopping") },
+  { id: "community", path: "/community", matches: (pathname) => pathname.startsWith("/community") },
+];
 
 export function useAuthenticatedRoute(): UseAuthenticatedRouteResult {
   const navigate = useNavigate();
   const pathname = useLocation({ select: (state) => state.pathname });
   const sessionContent = useAppSessionContent();
   const socialLinks = useAppSocialLinks(GITHUB_LINK, LINKEDIN_LINK);
+  const { me, unreadCount } = useCommunity();
 
-  const activeTab = pathname.startsWith("/dashboard") ? "dashboard" : "home";
+  const activeTab = TAB_ROUTES.find((route) => route.matches(pathname))?.id ?? "";
 
   function handleTabChange(id: string): void {
-    if (id === "dashboard") {
-      navigate({ to: "/dashboard" });
-      return;
-    }
-    navigate({ to: "/" });
+    const route = TAB_ROUTES.find((candidate) => candidate.id === id);
+    if (route) void navigate({ to: route.path });
   }
 
   return {
@@ -37,7 +56,10 @@ export function useAuthenticatedRoute(): UseAuthenticatedRouteResult {
     onTabChange: handleTabChange,
     sessionContent,
     socialLinks,
-    githubLink: GITHUB_LINK,
-    linkedInLink: LINKEDIN_LINK,
+    accountMenu: {
+      unreadCount,
+      onOpenProfile: () => void navigate({ to: "/community/$personId", params: { personId: me.id } }),
+      onOpenInbox: () => void navigate({ to: "/community/inbox" }),
+    },
   };
 }

@@ -1,22 +1,26 @@
 import type { ReactElement } from "react";
 import { useDocumentTitle } from "@package/react";
 import { createFileRoute } from "@tanstack/react-router";
+import { useRecipeLibraryRoute } from "./-UseRecipeLibraryRoute";
 import { CommandPaletteController } from "~/components/actions/command-palette/CommandPaletteController";
 import { SettingsModalController } from "~/components/feedback/settings-modal/SettingsModalController";
 import { RouteError } from "~/core/routes/logic/RouteError";
-import { HomeView } from "~/views/home/HomeView";
+import { RecipeEditView } from "~/views/recipe-edit/RecipeEditView";
+import { RecipeLibraryView } from "~/views/recipe-library/RecipeLibraryView";
 
 export const Route = createFileRoute("/_authenticated/")({
-  component: HomePageRoute,
+  component: RecipeLibraryPageRoute,
   errorComponent: ({ error }) => <RouteError error={error} />,
 });
 
-function HomePageRoute(): ReactElement {
-  useDocumentTitle("Home");
+function RecipeLibraryPageRoute(): ReactElement {
+  useDocumentTitle("Recipes");
+  const { library, addRecipeModal } = useRecipeLibraryRoute();
 
   return (
     <>
-      <HomeView />
+      <RecipeLibraryView {...library} />
+      {addRecipeModal.isOpen && <RecipeEditView {...addRecipeModal} />}
       <SettingsModalController />
       <CommandPaletteController />
     </>

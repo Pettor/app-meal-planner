@@ -18,7 +18,7 @@ test.describe("auth.loggedin", () => {
     await page.getByTestId("login-form__submit-button").click();
 
     await expect(async () => {
-      expect(await page.title()).toBe("Home");
+      expect(await page.title()).toBe("Recipes");
     }).toPass();
   });
 });
@@ -32,7 +32,7 @@ test.describe("auth.refreshtoken", () => {
     await page.goto("/");
 
     await expect(async () => {
-      expect(await page.title()).toBe("Home");
+      expect(await page.title()).toBe("Recipes");
     }).toPass();
   });
 });
@@ -46,7 +46,7 @@ test.describe("auth.logout", () => {
     await page.goto("/");
 
     await expect(async () => {
-      expect(await page.title()).toBe("Home");
+      expect(await page.title()).toBe("Recipes");
     }).toPass();
 
     await page.getByTestId("home-page__menu-button").click();

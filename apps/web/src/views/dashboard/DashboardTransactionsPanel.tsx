@@ -15,7 +15,7 @@ import type { DashboardTransaction } from "@package/api";
 import { useIntl } from "react-intl";
 import { SearchField } from "~/components/input/input-field/SearchField";
 import { avatarColor, avatarInitials } from "~/views/dashboard/DashboardUtils";
-import { UseTransactionsPanel } from "~/views/dashboard/UseTransactionsPanel";
+import { useTransactionsPanel } from "~/views/dashboard/UseTransactionsPanel";
 import type { SortKey, TxFilter } from "~/views/dashboard/UseTransactionsPanel";
 
 export interface DashboardTransactionsPanelProps {
@@ -24,7 +24,7 @@ export interface DashboardTransactionsPanelProps {
 
 export function DashboardTransactionsPanel({ transactions }: DashboardTransactionsPanelProps): ReactElement {
   const intl = useIntl();
-  const { filter, setFilter, sort, toggleSort, query, setQuery, filtered, counts } = UseTransactionsPanel(transactions);
+  const { filter, setFilter, sort, toggleSort, query, setQuery, filtered, counts } = useTransactionsPanel(transactions);
 
   function filterLabel(f: TxFilter): string {
     switch (f) {

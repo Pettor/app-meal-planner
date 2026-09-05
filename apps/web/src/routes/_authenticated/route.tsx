@@ -24,10 +24,11 @@ export const Route = createFileRoute("/_authenticated")({
 
 function AuthenticatedLayout(): ReactElement {
   const intl = useIntl();
-  const { activeTab, onTabChange, sessionContent, socialLinks, githubLink, linkedInLink } = useAuthenticatedRoute();
+  const { activeTab, onTabChange, sessionContent, socialLinks, accountMenu } = useAuthenticatedRoute();
 
   return (
     <NavbarLayout
+      reserveMobileNavSpace
       footer
       footerText={intl.formatMessage({
         description: "AuthenticatedLayout: footer - attribution",
@@ -46,10 +47,11 @@ function AuthenticatedLayout(): ReactElement {
             onLogout: sessionContent.onLogout,
             onSearch: sessionContent.onSearch,
           }}
-          socialLinks={{ github: githubLink, linkedIn: linkedInLink }}
           avatarName={sessionContent.name}
+          avatarEmail={sessionContent.email}
           activeTab={activeTab}
           onTabChange={onTabChange}
+          accountMenu={accountMenu}
         />
       }
       footerContent={

@@ -1,5 +1,6 @@
 import type { ReactElement, ReactNode } from "react";
 import { Surface } from "@heroui/react";
+import clsx from "clsx";
 import { Logo } from "../../Branding/Logo/Logo";
 
 export interface NavbarLayoutProps {
@@ -9,6 +10,8 @@ export interface NavbarLayoutProps {
   footerText?: string;
   footerCopyright?: string;
   footerContent?: ReactNode;
+  /** Reserves space below the page content for a fixed mobile bottom navigation bar rendered by `navbarElement`. */
+  reserveMobileNavSpace?: boolean;
   children?: ReactNode;
 }
 
@@ -19,10 +22,17 @@ export function NavbarLayout({
   footerText,
   footerCopyright,
   footerContent,
+  reserveMobileNavSpace,
   children,
 }: NavbarLayoutProps): ReactElement {
   return (
-    <Surface className="relative flex min-h-screen flex-col" variant="default">
+    <Surface
+      className={clsx(
+        "relative flex min-h-screen flex-col",
+        reserveMobileNavSpace && "pb-[calc(62px+env(safe-area-inset-bottom))] sm:pb-0"
+      )}
+      variant="default"
+    >
       {backgroundElement}
       {navbarElement}
       <main className="container mx-auto flex-1 p-4">{children}</main>

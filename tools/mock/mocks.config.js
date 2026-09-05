@@ -14,8 +14,11 @@ module.exports = {
     //register: [],
     proxyRoutesHandler: {},
     adminApi: {
-      // Port number for the admin API server to be listening at
-      //port: 3110,
+      // Port number for the admin API server to be listening at.
+      // Moved off the 3110 default so it does not clash with another checkout of
+      // the template running its own mock server. Keep in step with `server.port`
+      // below and with the port `apps/e2e/global-setup.ui.ts` waits on.
+      port: 3210,
       // Host for the admin API server
       //host: "0.0.0.0",
       https: {
@@ -54,8 +57,11 @@ module.exports = {
     },
   },
   server: {
-    // Port number for the server to be listening at
-    //port: 3100,
+    // Port number for the server to be listening at.
+    // Moved off the 3100 default so it does not clash with another checkout of
+    // the template running its own mock server. Keep in step with
+    // `VITE_CONNECT_PORT` in `apps/web/.env.mocks`.
+    port: 3200,
     // Host for the server
     //host: "0.0.0.0",
     cors: {

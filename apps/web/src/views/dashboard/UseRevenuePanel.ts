@@ -20,7 +20,7 @@ export interface RevenuePanelState {
   totals: RevenueTotals;
 }
 
-export function UseRevenuePanel(chartData: DashboardChartPoint[]): RevenuePanelState {
+export function useRevenuePanel(chartData: DashboardChartPoint[]): RevenuePanelState {
   const [range, setRange] = useState<RangeValue>("6m");
   const slice = useMemo(() => sliceByRange(chartData, range), [chartData, range]);
   const totals = useMemo<RevenueTotals>(() => {

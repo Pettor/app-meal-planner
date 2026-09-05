@@ -19,7 +19,7 @@ This file is the **rules** layer (what you must do); `docs/` is the **reference*
 ### Development
 
 - `pnpm dev` - Start development server (main app at https://localhost:5240)
-- `pnpm dev:mocks` - Start development with mock server enabled (API on port 3100)
+- `pnpm dev:mocks` - Start development with mock server enabled (API on port 3200)
 - `pnpm dev:mocks:cli` - Start standalone mock server only
 - `pnpm storybook` - Start Storybook development server (localhost:9090)
 
@@ -101,8 +101,8 @@ root/
 
 ### `apps/mock` — API Mock Server
 
-- **Stack**: Mocks Server 4.1, runs on port 3100
-- **Activation**: `pnpm dev:mocks` sets `--mode mocks` which switches `VITE_CONNECT_PORT` to 3100
+- **Stack**: Mocks Server 4.1, runs on port 3200 (admin API on 3210)
+- **Activation**: `pnpm dev:mocks` sets `--mode mocks` which switches `VITE_CONNECT_PORT` to 3200
 
 ## Packages
 
@@ -316,7 +316,7 @@ Turborepo caches outputs; use `--force` to bypass cache when debugging build iss
 | ------------------- | ------------------ | ------------------ |
 | `VITE_APP_VERSION`  | `0.6.0`            | `0.6.0`            |
 | `VITE_CONNECT_HOST` | `http://localhost` | `http://127.0.0.1` |
-| `VITE_CONNECT_PORT` | `5060`             | `3100`             |
+| `VITE_CONNECT_PORT` | `5060`             | `3200`             |
 
 - `.env` — development defaults
 - `.env.mocks` — overrides for mock server mode
@@ -433,7 +433,7 @@ export function MyComponent(): ReactElement {
   return (
     <Button>
       {intl.formatMessage({
-        description: "MyComponent - Submit button label",
+        description: "MyComponent: button - submit",
         defaultMessage: "Submit",
         id: "uniqueId",
       })}
@@ -446,7 +446,9 @@ export function MyComponent(): ReactElement {
 
 - Use `useIntl()` hook to get the `intl` object
 - Use `intl.formatMessage({ description, defaultMessage, id })` for all visible strings
-- **`description`**: Context for translators — format as `"ComponentName - What this string is"`
+- **`description`**: Context for translators — format as `"ComponentName: <kind> - <what it is>"`, e.g.
+  `"RecipeCard: button - save to my recipes"`, `"WeekSwitcher: aria-label - previous week"`. All 600+ existing
+  call sites follow this shape; keep the component name in PascalCase so it still names the file it lives in.
 - **`defaultMessage`**: The English fallback text shown to users
 - **`id`**: A unique identifier for the message (use a short hash or descriptive key)
 - This applies to: labels, placeholders, button text, headings, error messages, tooltips, aria-labels, validation messages, and any other user-facing text
