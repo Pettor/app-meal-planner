@@ -21,10 +21,7 @@ export function WeekDayCard({ day }: WeekDayCardProps): ReactElement {
       )}
     >
       <div
-        className={clsx(
-          "border-separator flex items-center gap-2.5 border-b px-3.5 py-3",
-          day.isToday ? "bg-accent/12" : "bg-surface-secondary"
-        )}
+        className={clsx("flex items-center gap-2.5 px-3.5 py-3", day.isToday ? "bg-accent/12" : "bg-surface-secondary")}
       >
         <span className="flex min-w-7.5 flex-col items-center leading-none">
           <span className={clsx("text-xl font-bold", day.isToday ? "text-accent" : "text-foreground")}>
@@ -45,13 +42,13 @@ export function WeekDayCard({ day }: WeekDayCardProps): ReactElement {
         )}
       </div>
 
-      <div className="flex flex-1 flex-col gap-2.5 p-3">
+      <div className="flex flex-1 flex-col">
         {day.meals.map((meal, index) => (
           <WeekMealCard key={`${meal.mealLabel}-${index}`} meal={meal} />
         ))}
 
         {day.meals.length === 0 && (
-          <span className="bg-surface-secondary text-default-500 flex flex-1 items-center justify-center rounded-md [background-image:radial-gradient(color-mix(in_oklch,var(--muted)_30%,transparent)_1px,transparent_1px)] [background-size:12px_12px] px-2.5 py-5.5 text-xs">
+          <span className="border-separator bg-surface-secondary text-default-500 flex flex-1 items-center justify-center border-t [background-image:radial-gradient(color-mix(in_oklch,var(--muted)_30%,transparent)_1px,transparent_1px)] [background-size:12px_12px] px-3.5 py-6.5 text-xs">
             {intl.formatMessage({
               description: "WeekDayCard: body - nothing planned",
               defaultMessage: "Nothing planned",

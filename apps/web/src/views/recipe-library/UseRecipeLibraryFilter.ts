@@ -25,7 +25,10 @@ export function useRecipeLibraryFilter(recipes: Recipe[], initialScope: RecipeSc
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
   const inScope = useMemo(
-    () => (scope === "mine" ? recipes.filter((recipe) => recipe.isSaved) : recipes),
+    () =>
+      scope === "mine"
+        ? recipes.filter((recipe) => recipe.isSaved)
+        : recipes.filter((recipe) => recipe.author.id !== "me"),
     [recipes, scope]
   );
 

@@ -14,8 +14,8 @@ export function WeekMealCard({ meal }: WeekMealCardProps): ReactElement {
   const intl = useIntl();
 
   return (
-    <div className="border-border bg-surface-secondary hover:border-accent/40 relative flex flex-1 flex-col overflow-hidden rounded-lg border transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg">
-      <div className="flex items-baseline justify-between gap-2 px-3 pt-2.5 pb-2">
+    <div className="border-separator hover:bg-surface-secondary relative flex flex-1 cursor-pointer flex-col border-t transition-colors duration-200">
+      <div className="flex items-baseline justify-between gap-2 px-3.5 pt-2.75 pb-2.25">
         <span
           className={clsx(
             "flex items-center gap-1.5 text-[10px] font-bold tracking-[0.09em] uppercase",
@@ -28,10 +28,10 @@ export function WeekMealCard({ meal }: WeekMealCardProps): ReactElement {
         <span className="text-default-500 text-xs">{meal.peopleLabel}</span>
       </div>
 
-      <RecipePhoto photoUrl={meal.photoUrl} alt={meal.title} className="h-22" placeholderClassName="h-22" />
+      <RecipePhoto photoUrl={meal.photoUrl} alt={meal.title} className="h-26" placeholderClassName="h-26" />
 
-      <div className="px-3 pt-2.5 text-base leading-snug font-semibold text-pretty">{meal.title}</div>
-      <div className="flex flex-1 flex-wrap content-start gap-1 px-3 pt-2.5 pb-3">
+      <div className="px-3.5 pt-3 text-lg leading-tight font-semibold text-pretty">{meal.title}</div>
+      <div className="flex flex-1 flex-wrap content-start gap-1.25 px-3.5 pt-2.5 pb-3.5">
         {meal.tags.map((tag) => (
           <TagChip key={tag} tag={tag} />
         ))}

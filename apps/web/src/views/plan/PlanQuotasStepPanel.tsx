@@ -1,8 +1,7 @@
 import type { ReactElement } from "react";
 import { MinusIcon, PlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { Button, Card, Separator } from "@heroui/react";
+import { Button, Card, Chip, Separator } from "@heroui/react";
 import { useIntl } from "react-intl";
-import { TagChip } from "~/components/display/tag-chip/TagChip";
 import { SearchField } from "~/components/input/input-field/SearchField";
 import { ToggleChip } from "~/components/input/toggle-chip/ToggleChip";
 import type { PlanQuotaRowViewModel, PlanTagPickViewModel } from "~/views/plan/UsePlanWizard";
@@ -30,6 +29,7 @@ function TagPickChip({ chip }: { chip: PlanTagPickViewModel }): ReactElement {
       isSelected={false}
       onChange={chip.onAdd}
       endContent={<span className="font-mono text-[11px] tabular-nums opacity-60">{chip.countLabel}</span>}
+      className="border-border bg-surface border"
     />
   );
 }
@@ -60,7 +60,7 @@ export function PlanQuotasStepPanel({
 
   return (
     <div className="grid grid-cols-1 gap-4.5 md:grid-cols-2">
-      <Card>
+      <Card variant="secondary">
         <Card.Header>
           <Card.Title>
             {intl.formatMessage({
@@ -80,8 +80,18 @@ export function PlanQuotasStepPanel({
         <Card.Content className="flex flex-col gap-0">
           {quotaRows.map((row) => (
             <div key={row.tag} className="border-separator flex items-center gap-3 border-b py-2.5 last:border-b-0">
-              <TagChip tag={row.tag} className="mr-auto" />
-              <Button variant="outline" size="sm" className="min-w-26 justify-center" onPress={row.onCycleMode}>
+              <Chip
+                variant="secondary"
+                className="border-border bg-surface mr-auto rounded-full border px-2.5 py-1 text-sm"
+              >
+                {row.tag}
+              </Chip>
+              <Button
+                variant="outline"
+                size="sm"
+                className="bg-surface min-w-26 justify-center"
+                onPress={row.onCycleMode}
+              >
                 {row.modeLabel}
               </Button>
               <div className="border-border bg-surface flex items-center gap-1 rounded-md border p-0.5">
@@ -191,7 +201,7 @@ export function PlanQuotasStepPanel({
                       id: "Ojopgv",
                     })}
                   </p>
-                  <Button variant="outline" size="sm" onPress={onCreateQuotaTag}>
+                  <Button variant="outline" size="sm" className="bg-surface" onPress={onCreateQuotaTag}>
                     {createQuotaTagLabel}
                   </Button>
                 </div>

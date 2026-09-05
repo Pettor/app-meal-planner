@@ -9,7 +9,7 @@
 /** The colour a tag is rendered with. Mirrors the HeroUI `Chip` colours. */
 export type RecipeTagTone = "accent" | "success" | "warning" | "danger" | "default";
 
-/** Whose recipes the library is showing. */
+/** Whose recipes the library is showing: the cook's own pool, or everyone else's. */
 export type RecipeScope = "mine" | "everyone";
 
 export interface RecipeAuthor {

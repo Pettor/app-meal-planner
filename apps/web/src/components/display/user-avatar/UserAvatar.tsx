@@ -14,11 +14,24 @@ export interface UserAvatarProps {
   className?: string;
 }
 
+/**
+ * The disc and its initials are styled separately: HeroUI's `.avatar__fallback`
+ * declares its own `font-size`, `color` and `background-color`, so anything set
+ * on the root never reaches the initials — at the small sizes that left
+ * two-letter monograms rendering at 14px and overflowing the disc.
+ */
 const SIZE_CLASSES: Record<UserAvatarSize, string> = {
-  xs: "h-5 w-5 text-[8px]",
-  sm: "h-7 w-7 text-[10px]",
-  md: "h-9 w-9 text-xs",
-  lg: "h-12 w-12 text-sm",
+  xs: "h-5 w-5",
+  sm: "h-7 w-7",
+  md: "h-9 w-9",
+  lg: "h-12 w-12",
+};
+
+const FALLBACK_TEXT_CLASSES: Record<UserAvatarSize, string> = {
+  xs: "text-[8px]",
+  sm: "text-[11px]",
+  md: "text-sm",
+  lg: "text-base",
 };
 
 /**
@@ -29,10 +42,14 @@ const SIZE_CLASSES: Record<UserAvatarSize, string> = {
  */
 export function UserAvatar({ name, avatarUrl, color, size = "sm", className }: UserAvatarProps): ReactElement {
   return (
-    <Avatar className={clsx("shrink-0 font-bold", !color && "bg-accent/15 text-accent", SIZE_CLASSES[size], className)}>
+    <Avatar className={clsx("shrink-0", SIZE_CLASSES[size], className)}>
       {avatarUrl && <Avatar.Image src={avatarUrl} alt={name} />}
       <Avatar.Fallback
-        className={clsx("font-bold", color ? "text-white" : undefined)}
+        className={clsx(
+          "font-bold tracking-tight",
+          FALLBACK_TEXT_CLASSES[size],
+          color ? "text-white" : "bg-accent/15 text-accent"
+        )}
         style={color ? { backgroundColor: color } : undefined}
       >
         {authorInitials(name)}
