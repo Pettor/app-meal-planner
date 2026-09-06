@@ -1,0 +1,60 @@
+import{i as e,s as t}from"./preload-helper-CT_b8DTk.js";import{G as n,i as r,n as i,r as a}from"./iframe-BxGJe6Y9.js";import{A as o,E as s,O as c,S as l,b as u,c as d,f,g as p,i as m,m as h,n as g,t as _,u as v}from"./esm-W7Cmtxen.js";import{F as y,L as b,R as x,d as S,j as C,st as w,t as T}from"./dist-DFOu2y8R.js";function E(){if(typeof navigator>`u`)return!1;let e=navigator.platform??``,t=navigator.userAgent??``;return/Mac|iPhone|iPad|iPod/.test(e)||/Mac|iPhone|iPad|iPod/.test(t)}var D=e((()=>{}));function O({isOpen:e,filtered:t,activeId:n,commands:r,onClose:i,setActiveId:a}){let o=(0,k.useRef)(t);o.current=t;let s=(0,k.useRef)(n);s.current=n;let c=(0,k.useRef)(r);c.current=r;let l=(0,k.useRef)(i);l.current=i,(0,k.useEffect)(()=>{if(!e)return;function t(e){let t=o.current;switch(e.key){case`ArrowDown`:{if(t.length===0)return;e.preventDefault(),e.stopPropagation();let n=s.current;a(t[((n?t.findIndex(e=>e.id===n):-1)+1+t.length)%t.length].id);return}case`ArrowUp`:{if(t.length===0)return;e.preventDefault(),e.stopPropagation();let n=s.current;a(t[((n?t.findIndex(e=>e.id===n):0)-1+t.length)%t.length].id);return}case`Home`:if(t.length===0)return;e.preventDefault(),e.stopPropagation(),a(t[0].id);return;case`End`:if(t.length===0)return;e.preventDefault(),e.stopPropagation(),a(t[t.length-1].id);return;case`Enter`:{let t=s.current;if(!t)return;e.preventDefault(),e.stopPropagation();let n=c.current.find(e=>e.id===t);if(!n)return;l.current(),queueMicrotask(()=>n.perform());return}case`Escape`:e.preventDefault(),e.stopPropagation(),l.current();return;default:return}}return document.addEventListener(`keydown`,t,!0),()=>document.removeEventListener(`keydown`,t,!0)},[e,a])}var k,A=e((()=>{k=t(n(),1)}));function j(e,t){let n=t.trim().toLowerCase();return n?e.filter(e=>[e.label,e.description??``,...e.keywords??[],e.group??``].join(` `).toLowerCase().includes(n)):e}function M(e){let t=new Map;for(let n of e){let e=n.group??L,r=t.get(e);r?r.push(n):t.set(e,[n])}return Array.from(t.entries()).map(([e,t])=>({name:e,commands:t}))}function N({shortcut:e}){let t=E();return(0,I.jsxs)(w,{className:`text-[10px]`,children:[e.mod&&(t?(0,I.jsx)(w.Abbr,{keyValue:`command`}):(0,I.jsx)(w.Content,{children:`Ctrl`})),e.alt&&(t?(0,I.jsx)(w.Abbr,{keyValue:`option`}):(0,I.jsx)(w.Content,{children:`Alt`})),e.shift&&(t?(0,I.jsx)(w.Abbr,{keyValue:`shift`}):(0,I.jsx)(w.Content,{children:`Shift`})),(0,I.jsx)(w.Content,{children:e.key.toUpperCase()})]})}function P({isOpen:e,commands:t,onClose:n}){let r=a(),[i,o]=(0,F.useState)(``),[s,c]=(0,F.useState)(void 0),l=(0,F.useRef)(null);(0,F.useEffect)(()=>{e&&o(``)},[e]);let u=(0,F.useMemo)(()=>j(t,i),[t,i]),d=(0,F.useMemo)(()=>M(u),[u]);(0,F.useEffect)(()=>{if(u.length===0){c(void 0);return}c(e=>e&&u.some(t=>t.id===e)?e:u[0].id)},[u]),(0,F.useEffect)(()=>{!s||!l.current||l.current.querySelector(`[data-command-id="${s}"]`)?.scrollIntoView({block:`nearest`})},[s]);function f(e){let r=t.find(t=>t.id===e);r&&(n(),queueMicrotask(()=>r.perform()))}return O({isOpen:e,filtered:u,activeId:s,commands:t,onClose:n,setActiveId:c}),(0,I.jsx)(S,{isOpen:e,onOpenChange:e=>!e&&n(),children:(0,I.jsx)(S.Backdrop,{variant:`blur`,children:(0,I.jsx)(S.Container,{size:`md`,children:(0,I.jsxs)(S.Dialog,{"aria-label":r.formatMessage({description:`CommandPalette: aria-label - dialog`,defaultMessage:`Command palette`,id:`dgEdHD`}),className:`flex h-[480px] flex-col overflow-hidden shadow-2xl`,children:[(0,I.jsx)(S.Header,{className:`shrink-0 border-b p-0`,children:(0,I.jsx)(C,{"aria-label":`command-palette-search`,className:`w-full`,children:(0,I.jsxs)(y,{fullWidth:!0,className:`border-0 shadow-none`,children:[(0,I.jsx)(x,{children:(0,I.jsx)(p,{className:`text-default-500 h-5 w-5`})}),(0,I.jsx)(b,{autoFocus:!0,value:i,onChange:e=>o(e.target.value),placeholder:r.formatMessage({description:`CommandPalette: placeholder - search`,defaultMessage:`Type a command or search…`,id:`jzHua/`}),"aria-activedescendant":s?`command-palette__option-${s}`:void 0,"data-testid":`command-palette__search`})]})})}),(0,I.jsx)(S.Body,{tabIndex:0,className:`min-h-0 flex-1 overflow-y-auto p-2`,children:(0,I.jsx)(`div`,{ref:l,className:`h-full`,children:u.length===0?(0,I.jsx)(`div`,{className:`text-default-500 flex h-full items-center justify-center p-6 text-sm`,children:r.formatMessage({description:`CommandPalette: empty-state - no commands found`,defaultMessage:`No commands found`,id:`TtuPpt`})}):(0,I.jsx)(`div`,{role:`listbox`,"aria-label":`Commands`,className:`flex flex-col gap-3`,children:d.map(e=>(0,I.jsxs)(`div`,{children:[e.name!==L&&(0,I.jsx)(`div`,{className:`text-default-500 px-2 pb-1 text-xs font-medium uppercase`,children:e.name}),(0,I.jsx)(`div`,{className:`flex flex-col`,children:e.commands.map(e=>{let t=e.id===s;return(0,I.jsxs)(`div`,{id:`command-palette__option-${e.id}`,role:`option`,"aria-selected":t,"data-command-id":e.id,"data-testid":`command-palette__item-${e.id}`,onMouseEnter:()=>c(e.id),onMouseDown:t=>{t.preventDefault(),f(e.id)},className:`flex cursor-pointer items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors ${t?`border-accent bg-accent/10 text-default-900 font-medium`:`text-default-700 border-transparent`}`,children:[e.icon&&(0,I.jsx)(`span`,{className:`text-default-600 flex h-5 w-5 items-center justify-center`,children:e.icon}),(0,I.jsxs)(`div`,{className:`flex min-w-0 flex-1 flex-col`,children:[(0,I.jsx)(`span`,{className:`truncate`,children:e.label}),e.description&&(0,I.jsx)(`span`,{className:`text-default-500 truncate text-xs`,children:e.description})]}),e.shortcut&&(0,I.jsx)(N,{shortcut:e.shortcut})]},e.id)})})]},e.name))})})})]})})})})}var F,I,L,R=e((()=>{F=t(n(),1),_(),T(),i(),D(),A(),I=r(),L=`__default__`,P.__docgenInfo={description:``,methods:[],displayName:`CommandPalette`,props:{isOpen:{required:!0,tsType:{name:`boolean`},description:``},commands:{required:!0,tsType:{name:`Array`,elements:[{name:`Command`}],raw:`Command[]`},description:``},onClose:{required:!0,tsType:{name:`signature`,type:`function`,raw:`() => void`,signature:{arguments:[],return:{name:`void`}}},description:``}}}}));function z(e){return e}var B,V,H,U,W,G,K,q,J,Y,X,Z,Q;e((()=>{_(),R(),B=r(),{expect:V,within:H}=__STORYBOOK_MODULE_TEST__,U={component:P,title:`Actions/Command Palette`,parameters:{layout:`fullscreen`}},W={isOpen:!0,commands:[{id:`goto-recipes`,label:`Go to Recipes`,group:`Navigation`,keywords:[`home`,`start`,`library`,`cookbook`],icon:z((0,B.jsx)(c,{className:`h-4 w-4`})),shortcut:{mod:!0,shift:!0,key:`h`},perform:()=>console.log(`goto recipes`)},{id:`goto-plan`,label:`Go to Plan`,group:`Navigation`,keywords:[`planner`,`meals`,`menu`],icon:z((0,B.jsx)(v,{className:`h-4 w-4`})),perform:()=>console.log(`goto plan`)},{id:`goto-week`,label:`Go to This week`,group:`Navigation`,keywords:[`schedule`,`calendar`,`days`],icon:z((0,B.jsx)(s,{className:`h-4 w-4`})),perform:()=>console.log(`goto week`)},{id:`goto-shop`,label:`Go to Shopping`,group:`Navigation`,keywords:[`groceries`,`list`,`cart`],icon:z((0,B.jsx)(f,{className:`h-4 w-4`})),perform:()=>console.log(`goto shopping`)},{id:`goto-community`,label:`Go to Community`,group:`Navigation`,keywords:[`friends`,`people`,`feed`],icon:z((0,B.jsx)(g,{className:`h-4 w-4`})),perform:()=>console.log(`goto community`)},{id:`goto-inbox`,label:`Go to Inbox`,description:`Recommendations shared with you`,group:`Navigation`,keywords:[`inbox`,`shared`,`notifications`],icon:z((0,B.jsx)(u,{className:`h-4 w-4`})),perform:()=>console.log(`goto inbox`)},{id:`goto-profile`,label:`Go to My Profile`,description:`Your recipes and shared weeks`,group:`Navigation`,keywords:[`profile`,`me`,`account`],icon:z((0,B.jsx)(m,{className:`h-4 w-4`})),perform:()=>console.log(`goto profile`)},{id:`theme-auto`,label:`Theme: System`,group:`Appearance`,keywords:[`auto`,`system`],icon:z((0,B.jsx)(l,{className:`h-4 w-4`})),perform:()=>console.log(`theme auto`)},{id:`theme-light`,label:`Theme: Light`,group:`Appearance`,icon:z((0,B.jsx)(d,{className:`h-4 w-4`})),shortcut:{mod:!0,shift:!0,key:`l`},perform:()=>console.log(`theme light`)},{id:`theme-dark`,label:`Theme: Dark`,group:`Appearance`,icon:z((0,B.jsx)(h,{className:`h-4 w-4`})),shortcut:{mod:!0,shift:!0,key:`k`},perform:()=>console.log(`theme dark`)},{id:`logout`,label:`Log out`,description:`End the current session`,group:`Account`,icon:z((0,B.jsx)(o,{className:`h-4 w-4`})),perform:()=>console.log(`logout`)}],onClose:()=>console.log(`onClose`)},G={args:W},K={args:{...W,commands:[]}},q={args:W,globals:{viewport:{value:`iphonex`}}},J={args:W,play:async({userEvent:e})=>{let t=H(document.body),n=t.getByTestId(`command-palette__search`);await e.type(n,`home`),await V(t.getByTestId(`command-palette__item-goto-recipes`)).toBeInTheDocument(),await V(t.queryByTestId(`command-palette__item-logout`)).not.toBeInTheDocument()}},Y={args:W,play:async({userEvent:e})=>{let t=H(document.body),n=t.getByTestId(`command-palette__search`);await e.type(n,`zzz`),await V(t.getByText(`No commands found`)).toBeInTheDocument()}},X={args:W,play:async({userEvent:e})=>{let t=H(document.body).getByTestId(`command-palette__item-goto-week`);await V(t).toBeInTheDocument(),await e.click(t)}},Z={args:W,play:async({userEvent:e})=>{let t=H(document.body).getByTestId(`command-palette__search`);await e.click(t),await e.keyboard(`{ArrowDown}`),await e.keyboard(`{ArrowUp}`),await e.keyboard(`{Home}`),await e.keyboard(`{End}`),await e.keyboard(`{Enter}`)}},G.parameters={...G.parameters,docs:{...G.parameters?.docs,source:{originalSource:`{
+  args: defaultArgs
+}`,...G.parameters?.docs?.source}}},K.parameters={...K.parameters,docs:{...K.parameters?.docs,source:{originalSource:`{
+  args: {
+    ...defaultArgs,
+    commands: []
+  }
+}`,...K.parameters?.docs?.source}}},q.parameters={...q.parameters,docs:{...q.parameters?.docs,source:{originalSource:`{
+  args: defaultArgs,
+  globals: {
+    viewport: {
+      value: "iphonex"
+    }
+  }
+}`,...q.parameters?.docs?.source}}},J.parameters={...J.parameters,docs:{...J.parameters?.docs,source:{originalSource:`{
+  args: defaultArgs,
+  play: async ({
+    userEvent
+  }) => {
+    const body = within(document.body);
+    const input = body.getByTestId("command-palette__search");
+    await userEvent.type(input, "home");
+    await expect(body.getByTestId("command-palette__item-goto-recipes")).toBeInTheDocument();
+    await expect(body.queryByTestId("command-palette__item-logout")).not.toBeInTheDocument();
+  }
+}`,...J.parameters?.docs?.source}}},Y.parameters={...Y.parameters,docs:{...Y.parameters?.docs,source:{originalSource:`{
+  args: defaultArgs,
+  play: async ({
+    userEvent
+  }) => {
+    const body = within(document.body);
+    const input = body.getByTestId("command-palette__search");
+    await userEvent.type(input, "zzz");
+    await expect(body.getByText("No commands found")).toBeInTheDocument();
+  }
+}`,...Y.parameters?.docs?.source}}},X.parameters={...X.parameters,docs:{...X.parameters?.docs,source:{originalSource:`{
+  args: defaultArgs,
+  play: async ({
+    userEvent
+  }) => {
+    const body = within(document.body);
+    const item = body.getByTestId("command-palette__item-goto-week");
+    await expect(item).toBeInTheDocument();
+    await userEvent.click(item);
+  }
+}`,...X.parameters?.docs?.source}}},Z.parameters={...Z.parameters,docs:{...Z.parameters?.docs,source:{originalSource:`{
+  args: defaultArgs,
+  play: async ({
+    userEvent
+  }) => {
+    const body = within(document.body);
+    const input = body.getByTestId("command-palette__search");
+    await userEvent.click(input);
+    await userEvent.keyboard("{ArrowDown}");
+    await userEvent.keyboard("{ArrowUp}");
+    await userEvent.keyboard("{Home}");
+    await userEvent.keyboard("{End}");
+    await userEvent.keyboard("{Enter}");
+  }
+}`,...Z.parameters?.docs?.source}}},Q=[`Default`,`Empty`,`Phone`,`Search`,`EmptySearch`,`ClickCommand`,`KeyboardNavigation`]}))();export{X as ClickCommand,G as Default,K as Empty,Y as EmptySearch,Z as KeyboardNavigation,q as Phone,J as Search,Q as __namedExportsOrder,U as default};

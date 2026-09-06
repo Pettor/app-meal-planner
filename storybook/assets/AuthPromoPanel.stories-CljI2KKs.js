@@ -1,0 +1,3 @@
+import{i as e}from"./preload-helper-CT_b8DTk.js";import{n as t,t as n}from"./AuthPromoPanel-13oqzrtw.js";var r,i,a,o;e((()=>{t(),r={title:`Display/Auth Promo Panel`,component:n,tags:[`autodocs`]},i={appName:`Meal Planner`},a={args:i},a.parameters={...a.parameters,docs:{...a.parameters?.docs,source:{originalSource:`{
+  args: defaultArgs
+}`,...a.parameters?.docs?.source}}},o=[`Default`]}))();export{a as Default,o as __namedExportsOrder,r as default};

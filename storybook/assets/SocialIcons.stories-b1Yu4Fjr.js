@@ -1,0 +1,5 @@
+import{i as e}from"./preload-helper-CT_b8DTk.js";import{i as t}from"./iframe-BxGJe6Y9.js";import{n,t as r}from"./GithubIcon-CIUk81sE.js";import{n as i,t as a}from"./LinkedInIcon-DNG7U29z.js";function o(e){return(0,s.jsx)(`div`,{className:`h-8 w-8`,children:e})}var s,c,l,u,d;e((()=>{n(),i(),s=t(),c={title:`Shared/Icons/Social`,tags:[`autodocs`]},l={render:e=>o((0,s.jsx)(r,{...e}))},u={render:e=>o((0,s.jsx)(a,{...e}))},l.parameters={...l.parameters,docs:{...l.parameters?.docs,source:{originalSource:`{
+  render: args => render(<GithubIcon {...args} />)
+}`,...l.parameters?.docs?.source}}},u.parameters={...u.parameters,docs:{...u.parameters?.docs,source:{originalSource:`{
+  render: args => render(<LinkedInIcon {...args} />)
+}`,...u.parameters?.docs?.source}}},d=[`Github`,`Linkedin`]}))();export{l as Github,u as Linkedin,d as __namedExportsOrder,c as default};
