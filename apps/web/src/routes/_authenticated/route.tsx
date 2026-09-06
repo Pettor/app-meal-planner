@@ -1,5 +1,6 @@
 import type { ReactElement } from "react";
 import { Suspense } from "react";
+import { HomeIcon } from "@heroicons/react/24/outline";
 import { Button } from "@heroui/react";
 import { GithubIcon, LinkedInIcon, NavbarLayout } from "@package/ui";
 import { Outlet, createFileRoute, redirect } from "@tanstack/react-router";
@@ -56,6 +57,18 @@ function AuthenticatedLayout(): ReactElement {
       }
       footerContent={
         <div className="flex items-center gap-3">
+          <Button
+            isIconOnly
+            variant="secondary"
+            onPress={socialLinks.onHomepageClick}
+            aria-label={intl.formatMessage({
+              description: "AuthenticatedLayout: aria-label - homepage link",
+              defaultMessage: "Homepage",
+              id: "sP6/O4",
+            })}
+          >
+            <HomeIcon className="h-5 w-5" />
+          </Button>
           <Button
             isIconOnly
             variant="secondary"

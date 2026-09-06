@@ -22,7 +22,7 @@ export function ToggleChip({ label, isSelected, onChange, endContent, className 
       variant="default"
       isSelected={isSelected}
       onChange={onChange}
-      className={clsx("gap-1.5 rounded-full", className)}
+      className={clsx("toggle-selected-accent gap-1.5 rounded-full", className)}
     >
       {label}
       {endContent}

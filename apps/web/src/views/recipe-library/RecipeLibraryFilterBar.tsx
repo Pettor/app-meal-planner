@@ -1,7 +1,9 @@
 import type { ReactElement } from "react";
+import { PlusIcon } from "@heroicons/react/24/outline";
+import { Button } from "@heroui/react";
 import { useIntl } from "react-intl";
+import { TagChip } from "~/components/display/tag-chip/TagChip";
 import { SearchField } from "~/components/input/input-field/SearchField";
-import { ToggleChip } from "~/components/input/toggle-chip/ToggleChip";
 
 export interface RecipeLibraryFilterBarProps {
   query: string;
@@ -9,6 +11,10 @@ export interface RecipeLibraryFilterBarProps {
   availableTags: string[];
   selectedTags: string[];
   onToggleTag: (tag: string) => void;
+  /** Opens the full catalogue, for tags no recipe in the pool carries yet. */
+  onOpenTagBrowser: () => void;
+  hasTagFilter: boolean;
+  onClearTags: () => void;
 }
 
 export function RecipeLibraryFilterBar({
@@ -17,6 +23,9 @@ export function RecipeLibraryFilterBar({
   availableTags,
   selectedTags,
   onToggleTag,
+  onOpenTagBrowser,
+  hasTagFilter,
+  onClearTags,
 }: RecipeLibraryFilterBarProps): ReactElement {
   const intl = useIntl();
 
@@ -37,10 +46,31 @@ export function RecipeLibraryFilterBar({
           id: "BSVHvm",
         })}
       />
-      <div className="flex flex-wrap gap-1.5">
+      <div className="flex flex-wrap items-center gap-1.5">
         {availableTags.map((tag) => (
-          <ToggleChip key={tag} label={tag} isSelected={selectedTags.includes(tag)} onChange={() => onToggleTag(tag)} />
+          <TagChip key={tag} tag={tag} isSelected={selectedTags.includes(tag)} onPress={() => onToggleTag(tag)} />
         ))}
+
+        <TagChip
+          tag={intl.formatMessage({
+            description: "RecipeLibraryFilterBar: button - browse the full tag catalogue",
+            defaultMessage: "More tags",
+            id: "AcHbon",
+          })}
+          onPress={onOpenTagBrowser}
+          startContent={<PlusIcon className="h-3.5 w-3.5 shrink-0" />}
+          className="text-accent border-dashed"
+        />
+
+        {hasTagFilter && (
+          <Button variant="ghost" size="sm" className="text-accent" onPress={onClearTags}>
+            {intl.formatMessage({
+              description: "RecipeLibraryFilterBar: button - clear the tag filters",
+              defaultMessage: "Clear filters",
+              id: "F5XChG",
+            })}
+          </Button>
+        )}
       </div>
     </div>
   );

@@ -2,8 +2,8 @@ import type { ReactElement } from "react";
 import { Button, Modal } from "@heroui/react";
 import { useIntl } from "react-intl";
 import { useTagBrowser } from "./UseTagBrowser";
+import { TagChip } from "~/components/display/tag-chip/TagChip";
 import { SearchField } from "~/components/input/input-field/SearchField";
-import { ToggleChip } from "~/components/input/toggle-chip/ToggleChip";
 import type { RecipeTagCategory } from "~/core/recipes/RecipeTypes";
 
 export interface TagBrowserDialogProps {
@@ -95,16 +95,12 @@ export function TagBrowserDialog({
                   </div>
                   <div className="flex flex-wrap gap-1.5">
                     {group.tags.map((tag) => (
-                      <ToggleChip
+                      <TagChip
                         key={tag.name}
-                        label={tag.name}
+                        tag={tag.name}
                         isSelected={selectedTags.includes(tag.name)}
-                        onChange={() => onToggleTag(tag.name)}
-                        endContent={
-                          <span className="font-mono text-[11px] tabular-nums opacity-60">
-                            {tag.count.toLocaleString()}
-                          </span>
-                        }
+                        onPress={() => onToggleTag(tag.name)}
+                        endContent={tag.count.toLocaleString()}
                       />
                     ))}
                   </div>

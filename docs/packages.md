@@ -35,7 +35,6 @@ API client, authentication, and endpoint services. All API calls are delegated t
 packages/api/src/
 ├── Api/                 # One folder per endpoint
 │   ├── ApplicationInfo/
-│   ├── Dashboard/
 │   ├── ForgotPassword/
 │   ├── Login/
 │   ├── Logout/

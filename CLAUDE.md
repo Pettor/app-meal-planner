@@ -162,7 +162,7 @@ apps/web/src/
 
 - **`core/`** — app shell (`App.tsx`, `AppProviders.tsx`, `AppLocales.tsx`, `AppTheme.tsx`) plus domain modules (`auth/`, `theme/`, `settings/`, `pwa/`, `session/`, `config/`, `social-links/`, `routes/`). No rendered UI components except domain-inseparable ones (`AuthInitializer`, `PwaLifecycle`).
 - **`components/`** — reusable UI in categorised folders: `actions/`, `display/`, `feedback/`, `forms/`, `input/`, `navigation/`. Each component lives in its own `kebab-case` folder with a co-located `.stories.tsx`.
-- **`views/`** — page-level compositions (`LoginView`, `DashboardView`, etc.). Pure presentational — never calls hooks from `core/`. Consumed only by routes.
+- **`views/`** — page-level compositions (`LoginView`, `PlanView`, etc.). Pure presentational — never calls hooks from `core/`. Consumed only by routes.
 - **`routes/`** — TanStack file-based routes. Each leaf has `route.tsx` (the binding) and `-UseXxxRoute.ts` (the route hook). Layout segments (`_authenticated`, `_public`) apply guards.
 
 **Full detail:** see [`docs/structure.md`](./docs/structure.md) for the complete directory tree and [`docs/architecture.md`](./docs/architecture.md) for layer rules and data flow.
@@ -256,7 +256,7 @@ Files prefixed with `-` are ignored by TanStack Router. Detail: [`docs/patterns.
 | Utilities / classes | PascalCase                                                     | `TokenStorage.ts`, `JwtToken.ts`        |
 | Jotai atom files    | `PascalCaseAtoms.ts`                                           | `ThemeAtoms.ts`, `AuthAtoms.ts`         |
 | Jotai atom exports  | `camelCase + Atom` suffix                                      | `themeModeAtom`                         |
-| Views               | `<Name>View.tsx` under `views/<name>/`                         | `LoginView.tsx`, `DashboardView.tsx`    |
+| Views               | `<Name>View.tsx` under `views/<name>/`                         | `LoginView.tsx`, `PlanView.tsx`         |
 | Stories             | Co-located `<Component>.stories.tsx`                           | `Logo.stories.tsx`                      |
 | Props interfaces    | `<ComponentName>Props`                                         | `NavbarProps`                           |
 

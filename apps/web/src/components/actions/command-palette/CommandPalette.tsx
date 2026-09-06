@@ -132,7 +132,8 @@ export function CommandPalette({ isOpen, commands, onClose }: CommandPaletteProp
                 </InputGroup>
               </TextField>
             </Modal.Header>
-            <Modal.Body className="min-h-0 flex-1 overflow-y-auto p-2">
+            {/* Focusable so the command list can be scrolled by keyboard once it overflows. */}
+            <Modal.Body tabIndex={0} className="min-h-0 flex-1 overflow-y-auto p-2">
               <div ref={listRef} className="h-full">
                 {filtered.length === 0 ? (
                   <div className="text-default-500 flex h-full items-center justify-center p-6 text-sm">

@@ -29,6 +29,7 @@ export function useRecipeLibraryRoute(): UseRecipeLibraryRouteResult {
   return {
     library: {
       recipes,
+      tagCatalogue: SampleTagCatalogue,
       onOpenRecipe: (recipeId) => void navigate({ to: "/recipes/$recipeId", params: { recipeId } }),
       onAddRecipe: () => setIsAddRecipeOpen(true),
       onSaveRecipe: saveRecipe,

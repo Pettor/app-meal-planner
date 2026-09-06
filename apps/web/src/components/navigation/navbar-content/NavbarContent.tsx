@@ -82,7 +82,7 @@ export function NavbarContent({
 
   return (
     <>
-      <header className="bg-background/70 border-border sticky top-0 z-40 border-b backdrop-blur-lg">
+      <header className="bg-background/70 border-border sticky top-0 z-40 border-b backdrop-blur-lg dark:shadow-[0_1px_0_rgba(0,0,0,0.5)]">
         <div className="mx-auto flex h-16 max-w-[1240px] items-center justify-between gap-4 px-4 sm:px-6">
           <button
             type="button"

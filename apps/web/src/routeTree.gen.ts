@@ -13,7 +13,6 @@ import { Route as SplatRouteRouteImport } from './routes/$/route'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as PublicRouteRouteImport } from './routes/_public/route'
 import { Route as AuthenticatedIndexRouteRouteImport } from './routes/_authenticated/index/route'
-import { Route as AuthenticatedDashboardRouteRouteImport } from './routes/_authenticated/dashboard/route'
 import { Route as AuthenticatedPlanRouteRouteImport } from './routes/_authenticated/plan/route'
 import { Route as AuthenticatedShoppingRouteRouteImport } from './routes/_authenticated/shopping/route'
 import { Route as AuthenticatedWeekRouteRouteImport } from './routes/_authenticated/week/route'
@@ -44,12 +43,6 @@ const AuthenticatedIndexRouteRoute = AuthenticatedIndexRouteRouteImport.update({
   path: '',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
-const AuthenticatedDashboardRouteRoute =
-  AuthenticatedDashboardRouteRouteImport.update({
-    id: '/dashboard',
-    path: '/dashboard',
-    getParentRoute: () => AuthenticatedRouteRoute,
-  } as any)
 const AuthenticatedPlanRouteRoute = AuthenticatedPlanRouteRouteImport.update({
   id: '/plan',
   path: '/plan',
@@ -116,7 +109,6 @@ const AuthenticatedRecipesEditRecipeIdRouteRoute =
 export interface FileRoutesByFullPath {
   '/$': typeof SplatRouteRoute
   '/': typeof AuthenticatedIndexRouteRoute
-  '/dashboard': typeof AuthenticatedDashboardRouteRoute
   '/plan': typeof AuthenticatedPlanRouteRoute
   '/shopping': typeof AuthenticatedShoppingRouteRoute
   '/week': typeof AuthenticatedWeekRouteRoute
@@ -132,7 +124,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/$': typeof SplatRouteRoute
   '/': typeof AuthenticatedIndexRouteRoute
-  '/dashboard': typeof AuthenticatedDashboardRouteRoute
   '/plan': typeof AuthenticatedPlanRouteRoute
   '/shopping': typeof AuthenticatedShoppingRouteRoute
   '/week': typeof AuthenticatedWeekRouteRoute
@@ -151,7 +142,6 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/_public': typeof PublicRouteRouteWithChildren
   '/_authenticated/': typeof AuthenticatedIndexRouteRoute
-  '/_authenticated/dashboard': typeof AuthenticatedDashboardRouteRoute
   '/_authenticated/plan': typeof AuthenticatedPlanRouteRoute
   '/_authenticated/shopping': typeof AuthenticatedShoppingRouteRoute
   '/_authenticated/week': typeof AuthenticatedWeekRouteRoute
@@ -169,7 +159,6 @@ export interface FileRouteTypes {
   fullPaths:
     | '/$'
     | '/'
-    | '/dashboard'
     | '/plan'
     | '/shopping'
     | '/week'
@@ -185,7 +174,6 @@ export interface FileRouteTypes {
   to:
     | '/$'
     | '/'
-    | '/dashboard'
     | '/plan'
     | '/shopping'
     | '/week'
@@ -203,7 +191,6 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/_public'
     | '/_authenticated/'
-    | '/_authenticated/dashboard'
     | '/_authenticated/plan'
     | '/_authenticated/shopping'
     | '/_authenticated/week'
@@ -251,13 +238,6 @@ declare module '@tanstack/react-router' {
       path: ''
       fullPath: '/'
       preLoaderRoute: typeof AuthenticatedIndexRouteRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/dashboard': {
-      id: '/_authenticated/dashboard'
-      path: '/dashboard'
-      fullPath: '/dashboard'
-      preLoaderRoute: typeof AuthenticatedDashboardRouteRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/plan': {
@@ -342,7 +322,6 @@ declare module '@tanstack/react-router' {
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedIndexRouteRoute: typeof AuthenticatedIndexRouteRoute
-  AuthenticatedDashboardRouteRoute: typeof AuthenticatedDashboardRouteRoute
   AuthenticatedPlanRouteRoute: typeof AuthenticatedPlanRouteRoute
   AuthenticatedShoppingRouteRoute: typeof AuthenticatedShoppingRouteRoute
   AuthenticatedWeekRouteRoute: typeof AuthenticatedWeekRouteRoute
@@ -355,7 +334,6 @@ interface AuthenticatedRouteRouteChildren {
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedIndexRouteRoute: AuthenticatedIndexRouteRoute,
-  AuthenticatedDashboardRouteRoute: AuthenticatedDashboardRouteRoute,
   AuthenticatedPlanRouteRoute: AuthenticatedPlanRouteRoute,
   AuthenticatedShoppingRouteRoute: AuthenticatedShoppingRouteRoute,
   AuthenticatedWeekRouteRoute: AuthenticatedWeekRouteRoute,

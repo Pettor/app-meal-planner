@@ -74,15 +74,29 @@ export function PlanDaysStepPanel({
         {dayRows.map((row, index) => (
           <div
             key={row.day}
-            className={clsx("flex flex-wrap items-center gap-4.5 px-6 py-4", index > 0 && "border-separator border-t")}
+            className={clsx(
+              "grid grid-cols-[1fr_auto] gap-2.5 px-3.5 py-3",
+              "sm:flex sm:flex-wrap sm:items-center sm:gap-4.5 sm:px-6 sm:py-4",
+              index > 0 && "border-separator border-t"
+            )}
           >
-            <div className="w-28 font-medium">{row.day}</div>
-            <div className="flex gap-2">
-              <ToggleChip label={lunchLabel} isSelected={row.isLunchOn} onChange={row.onToggleLunch} />
-              <ToggleChip label={dinnerLabel} isSelected={row.isDinnerOn} onChange={row.onToggleDinner} />
+            <div className="col-start-1 row-start-1 self-center font-medium sm:w-28">{row.day}</div>
+            <div className="col-span-2 col-start-1 row-start-2 flex gap-2">
+              <ToggleChip
+                label={lunchLabel}
+                isSelected={row.isLunchOn}
+                onChange={row.onToggleLunch}
+                className="h-9.5 flex-1 justify-center sm:h-8 sm:flex-none"
+              />
+              <ToggleChip
+                label={dinnerLabel}
+                isSelected={row.isDinnerOn}
+                onChange={row.onToggleDinner}
+                className="h-9.5 flex-1 justify-center sm:h-8 sm:flex-none"
+              />
             </div>
-            <div className="ml-auto flex items-center gap-2.5">
-              <span className="text-default-500 text-xs">{peopleLabel}</span>
+            <div className="col-start-2 row-start-1 flex items-center gap-2.5 justify-self-end sm:ml-auto">
+              <span className="text-default-500 hidden text-xs sm:inline">{peopleLabel}</span>
               <Button
                 variant="outline"
                 size="sm"

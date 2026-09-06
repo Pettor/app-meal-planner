@@ -67,7 +67,7 @@ Feedback/Settings Modal
 Feedback/PWA Offline
 Forms/Login
 Input/Input Field
-Views/Dashboard
+Views/Plan
 Core/Route Loading
 Shared/Branding/Logo/Full
 Shared/Layout/Basic

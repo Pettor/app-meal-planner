@@ -7,6 +7,7 @@ import { useAppSocialLinks } from "~/core/social-links/UseAppSocialLinks";
 
 const GITHUB_LINK = "https://github.com/Pettor/template-web-app-react";
 const LINKEDIN_LINK = "https://www.linkedin.com/in/petter-hancock/";
+const HOMEPAGE_LINK = "https://petter.madebyhancock.com";
 
 export interface UseAuthenticatedRouteResult {
   activeTab: string;
@@ -41,7 +42,7 @@ export function useAuthenticatedRoute(): UseAuthenticatedRouteResult {
   const navigate = useNavigate();
   const pathname = useLocation({ select: (state) => state.pathname });
   const sessionContent = useAppSessionContent();
-  const socialLinks = useAppSocialLinks(GITHUB_LINK, LINKEDIN_LINK);
+  const socialLinks = useAppSocialLinks(GITHUB_LINK, LINKEDIN_LINK, HOMEPAGE_LINK);
   const { me, unreadCount } = useCommunity();
 
   const activeTab = TAB_ROUTES.find((route) => route.matches(pathname))?.id ?? "";

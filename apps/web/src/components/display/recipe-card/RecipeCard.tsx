@@ -24,10 +24,10 @@ export function RecipeCard({ recipe, showSaveAction, onOpen, onSave, onRemove }:
 
   return (
     <Card
-      className="hover:border-accent/40 relative gap-0 overflow-hidden border border-transparent p-0 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_14px_24px_-12px_color-mix(in_oklch,var(--foreground)_26%,transparent)]"
+      className="card-raise relative gap-0 overflow-hidden border border-transparent p-0 transition-all duration-200 hover:-translate-y-0.5"
       data-testid={`recipe-card__${recipe.id}`}
     >
-      <RecipePhoto photoUrl={recipe.photoUrl} alt={recipe.title} className="h-34" />
+      <RecipePhoto photoUrl={recipe.photoUrl} alt={recipe.title} className="h-44" />
       <Card.Content className="flex flex-col gap-2.5 p-4">
         <div className="text-base leading-snug font-semibold text-pretty">{recipe.title}</div>
 

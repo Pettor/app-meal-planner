@@ -3,7 +3,6 @@ import { Modal } from "@heroui/react";
 import { useIntl } from "react-intl";
 import { TagChip } from "~/components/display/tag-chip/TagChip";
 import { SearchField } from "~/components/input/input-field/SearchField";
-import { ToggleChip } from "~/components/input/toggle-chip/ToggleChip";
 
 export interface PlanRecipeSwapDialogProps {
   isOpen: boolean;
@@ -54,7 +53,7 @@ export function PlanRecipeSwapDialog({
               {tagChips.length > 0 && (
                 <div className="flex flex-wrap gap-1.5">
                   {tagChips.map((chip) => (
-                    <ToggleChip key={chip.tag} label={chip.tag} isSelected={chip.isSelected} onChange={chip.onToggle} />
+                    <TagChip key={chip.tag} tag={chip.tag} isSelected={chip.isSelected} onPress={chip.onToggle} />
                   ))}
                 </div>
               )}

@@ -9,6 +9,7 @@ import { PlanGenerateStepPanel } from "~/views/plan/PlanGenerateStepPanel";
 import { PlanQuotasStepPanel } from "~/views/plan/PlanQuotasStepPanel";
 import { PlanRecipeSwapDialog } from "~/views/plan/PlanRecipeSwapDialog";
 import { PlanResultsStepPanel } from "~/views/plan/PlanResultsStepPanel";
+import { PlanWizardActionBar } from "~/views/plan/PlanWizardActionBar";
 import { PlanWizardHeader } from "~/views/plan/PlanWizardHeader";
 import { usePlanWizard } from "~/views/plan/UsePlanWizard";
 
@@ -110,6 +111,18 @@ export function PlanView({
           gridDays={wizard.gridDays}
         />
       )}
+
+      {/* Keeps the docked mobile action bar from covering the end of a step's content. */}
+      <div className="h-24 sm:hidden" />
+
+      <PlanWizardActionBar
+        canGoBack={wizard.canGoBack}
+        onBack={wizard.onBack}
+        nextLabel={wizard.nextLabel}
+        onNext={wizard.onNext}
+        showSaveDraft={wizard.showSaveDraft}
+        onSaveDraft={wizard.onSaveDraft}
+      />
 
       <WeekPickerDialog {...wizard.weekPicker} />
 

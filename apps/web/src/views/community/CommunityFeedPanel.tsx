@@ -4,6 +4,7 @@ import { useIntl } from "react-intl";
 import { CommunityCardHeader } from "~/components/display/community-card-header/CommunityCardHeader";
 import { CommunityRecipeCard } from "~/components/display/community-recipe-card/CommunityRecipeCard";
 import { SharedWeekCard } from "~/components/display/shared-week-card/SharedWeekCard";
+import { TagChip } from "~/components/display/tag-chip/TagChip";
 import { ToggleChip } from "~/components/input/toggle-chip/ToggleChip";
 import type { CommunityPerson, SharedWeek } from "~/core/community/CommunityTypes";
 import { findRecipe } from "~/core/community/CommunityUtils";
@@ -74,12 +75,12 @@ export function CommunityFeedPanel({
 
         <div className="flex flex-wrap justify-center gap-1.5">
           {feed.tagChips.map((tag) => (
-            <ToggleChip
+            <TagChip
               key={tag.name}
-              label={tag.name}
+              tag={tag.name}
               isSelected={feed.selectedTags.includes(tag.name)}
-              onChange={() => feed.toggleTag(tag.name)}
-              endContent={<span className="text-xs font-normal tabular-nums opacity-70">{tag.count}</span>}
+              onPress={() => feed.toggleTag(tag.name)}
+              endContent={tag.count}
             />
           ))}
 

@@ -58,7 +58,7 @@ test.describe("general.commandpalette", () => {
     await mocksClient.restoreRouteVariants();
   });
 
-  test("navigates to dashboard using command palette", async ({ page }) => {
+  test("navigates to this week using command palette", async ({ page }) => {
     await page.goto("/");
 
     await expect(async () => {
@@ -72,14 +72,14 @@ test.describe("general.commandpalette", () => {
     const search = page.getByTestId("command-palette__search");
     await expect(search).toBeVisible();
 
-    // Search for the dashboard command and execute it
-    await search.fill("dashboard");
-    const dashboardItem = page.getByTestId("command-palette__item-goto-dashboard");
-    await expect(dashboardItem).toBeVisible();
-    await dashboardItem.click();
+    // Search for the week command and execute it
+    await search.fill("this week");
+    const weekItem = page.getByTestId("command-palette__item-goto-week");
+    await expect(weekItem).toBeVisible();
+    await weekItem.click();
 
     await expect(async () => {
-      expect(await page.title()).toBe("Dashboard");
+      expect(await page.title()).toBe("This week");
     }).toPass();
   });
 
