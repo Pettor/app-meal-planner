@@ -121,8 +121,8 @@ components/
 
 ```
 views/
-├── dashboard/
-│   └── DashboardView.tsx
+├── plan/
+│   └── PlanView.tsx
 ├── forgot-password/
 │   └── ForgotPasswordView.tsx
 ├── home/
@@ -167,15 +167,15 @@ routes/
     ├── -UseAuthenticatedRoute.ts
     ├── index/
     │   └── route.tsx                       # "/" (home)
-    └── dashboard/
+    └── week/
         ├── route.tsx
-        └── -DashboardLoader.ts             # React Query prefetch loader
+        └── -UseWeekRoute.ts                 # Route hook: data + callbacks
 ```
 
 **Conventions for a route folder:**
 
 - `route.tsx` is the only file TanStack Router reads as a route. It exports `Route = createFileRoute(...)({ component, loader, ... })`.
-- Files prefixed with `-` (e.g. `-UseLoginRoute.ts`, `-DashboardLoader.ts`) are ignored by TanStack Router and are **private to the route**.
+- Files prefixed with `-` (e.g. `-UseLoginRoute.ts`, `-UseWeekRoute.ts`) are ignored by TanStack Router and are **private to the route**.
 - The route component is a thin wrapper: it calls the route hook and renders the view.
 - Layout routes (`_authenticated`, `_public`) apply guards and shared UI via `<Outlet />`.
 

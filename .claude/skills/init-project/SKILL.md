@@ -21,7 +21,7 @@ Ask, in order, via `AskUserQuestion`:
 3. **Initial version** — semver, default `0.1.0`.
 4. **Dev server port** — default `5173`, or randomize (picks a port between 5000-5400), or let the user set one manually. The script derives the e2e test port as `devPort - 1000` (matching the template's existing convention, e.g. `5173` → `4173`) and updates every e2e config/script that references it — only relevant when backend is kept, since `apps/e2e` is deleted otherwise.
 5. **Does this project need a backend?**
-   - **No backend** — purely a frontend project. The script deletes the API client, auth, authenticated/public route guards, login/sign-up/forgot-password, dashboard, mock server, and e2e tests, and replaces the home route with a minimal `HomeView`. PWA support and the general app shell (theme, i18n, settings, command palette) are kept.
+   - **No backend** — purely a frontend project. The script deletes the API client, auth, authenticated/public route guards, login/sign-up/forgot-password, mock server, and e2e tests, and replaces the home route with a minimal `HomeView`. PWA support and the general app shell (theme, i18n, settings, command palette) are kept.
    - **Has backend** — ask two follow-ups: backend host (default `http://localhost`) and backend port (default `5000`). Nothing is deleted; the script just writes those into `apps/web/.env`.
 
 Once you have all the answers, run:

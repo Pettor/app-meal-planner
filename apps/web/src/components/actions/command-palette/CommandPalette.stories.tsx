@@ -1,11 +1,16 @@
 import type { ReactElement } from "react";
 import {
   ArrowLeftStartOnRectangleIcon,
+  BookOpenIcon,
+  CalendarIcon,
   ComputerDesktopIcon,
-  HomeIcon,
+  InboxIcon,
   MoonIcon,
-  Squares2X2Icon,
+  ShoppingCartIcon,
+  SparklesIcon,
   SunIcon,
+  UserCircleIcon,
+  UsersIcon,
 } from "@heroicons/react/20/solid";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, within } from "storybook/test";
@@ -28,24 +33,66 @@ function iconEl(node: ReactElement): ReactElement {
   return node;
 }
 
+/** Mirrors the command set the app builds in `UseCommandPaletteController`. */
 const commands: Command[] = [
   {
-    id: "goto-home",
-    label: "Go to Home",
-    description: "Navigate to the home view",
+    id: "goto-recipes",
+    label: "Go to Recipes",
     group: "Navigation",
-    keywords: ["start", "index"],
-    icon: iconEl(<HomeIcon className="h-4 w-4" />),
+    keywords: ["home", "start", "library", "cookbook"],
+    icon: iconEl(<BookOpenIcon className="h-4 w-4" />),
     shortcut: { mod: true, shift: true, key: "h" },
-    perform: () => console.log("goto home"),
+    perform: () => console.log("goto recipes"),
   },
   {
-    id: "goto-dashboard",
-    label: "Go to Dashboard",
-    description: "Open the dashboard view",
+    id: "goto-plan",
+    label: "Go to Plan",
     group: "Navigation",
-    icon: iconEl(<Squares2X2Icon className="h-4 w-4" />),
-    perform: () => console.log("goto dashboard"),
+    keywords: ["planner", "meals", "menu"],
+    icon: iconEl(<SparklesIcon className="h-4 w-4" />),
+    perform: () => console.log("goto plan"),
+  },
+  {
+    id: "goto-week",
+    label: "Go to This week",
+    group: "Navigation",
+    keywords: ["schedule", "calendar", "days"],
+    icon: iconEl(<CalendarIcon className="h-4 w-4" />),
+    perform: () => console.log("goto week"),
+  },
+  {
+    id: "goto-shop",
+    label: "Go to Shopping",
+    group: "Navigation",
+    keywords: ["groceries", "list", "cart"],
+    icon: iconEl(<ShoppingCartIcon className="h-4 w-4" />),
+    perform: () => console.log("goto shopping"),
+  },
+  {
+    id: "goto-community",
+    label: "Go to Community",
+    group: "Navigation",
+    keywords: ["friends", "people", "feed"],
+    icon: iconEl(<UsersIcon className="h-4 w-4" />),
+    perform: () => console.log("goto community"),
+  },
+  {
+    id: "goto-inbox",
+    label: "Go to Inbox",
+    description: "Recommendations shared with you",
+    group: "Navigation",
+    keywords: ["inbox", "shared", "notifications"],
+    icon: iconEl(<InboxIcon className="h-4 w-4" />),
+    perform: () => console.log("goto inbox"),
+  },
+  {
+    id: "goto-profile",
+    label: "Go to My Profile",
+    description: "Your recipes and shared weeks",
+    group: "Navigation",
+    keywords: ["profile", "me", "account"],
+    icon: iconEl(<UserCircleIcon className="h-4 w-4" />),
+    perform: () => console.log("goto profile"),
   },
   {
     id: "theme-auto",
@@ -60,7 +107,7 @@ const commands: Command[] = [
     label: "Theme: Light",
     group: "Appearance",
     icon: iconEl(<SunIcon className="h-4 w-4" />),
-    shortcut: { mod: true, alt: true, key: "l" },
+    shortcut: { mod: true, shift: true, key: "l" },
     perform: () => console.log("theme light"),
   },
   {
@@ -68,6 +115,7 @@ const commands: Command[] = [
     label: "Theme: Dark",
     group: "Appearance",
     icon: iconEl(<MoonIcon className="h-4 w-4" />),
+    shortcut: { mod: true, shift: true, key: "k" },
     perform: () => console.log("theme dark"),
   },
   {
@@ -108,7 +156,7 @@ export const Search: Story = {
     const body = within(document.body);
     const input = body.getByTestId("command-palette__search");
     await userEvent.type(input, "home");
-    await expect(body.getByTestId("command-palette__item-goto-home")).toBeInTheDocument();
+    await expect(body.getByTestId("command-palette__item-goto-recipes")).toBeInTheDocument();
     await expect(body.queryByTestId("command-palette__item-logout")).not.toBeInTheDocument();
   },
 };
@@ -127,7 +175,7 @@ export const ClickCommand: Story = {
   args: defaultArgs,
   play: async ({ userEvent }) => {
     const body = within(document.body);
-    const item = body.getByTestId("command-palette__item-goto-dashboard");
+    const item = body.getByTestId("command-palette__item-goto-week");
     await expect(item).toBeInTheDocument();
     await userEvent.click(item);
   },

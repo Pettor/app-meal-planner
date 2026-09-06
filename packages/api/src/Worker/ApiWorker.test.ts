@@ -237,12 +237,7 @@ describe("demo mode", () => {
     expect(response.data?.email).toBe("demo@example.com");
   });
 
-  it("has canned data for the dashboard and the app info", async () => {
-    const dashboard = (await send(handler, { type: "request/get", url: "/api/dashboard" })) as ApiResponse<{
-      stats: unknown;
-    }>;
-    expect(dashboard.data?.stats).toBeDefined();
-
+  it("has canned data for the app info", async () => {
     const info = (await send(handler, { type: "request/get", url: "/api/application/info" })) as ApiResponse<{
       version: string;
     }>;
