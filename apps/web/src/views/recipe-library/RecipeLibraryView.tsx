@@ -1,7 +1,8 @@
 import type { ReactElement } from "react";
 import { useIntl } from "react-intl";
 import { ConfirmDialog } from "~/components/feedback/confirm-dialog/ConfirmDialog";
-import type { Recipe, RecipeScope } from "~/core/recipes/RecipeTypes";
+import { TagBrowserDialog } from "~/components/feedback/tag-browser-dialog/TagBrowserDialog";
+import type { Recipe, RecipeScope, RecipeTagCategory } from "~/core/recipes/RecipeTypes";
 import { RecipeLibraryFilterBar } from "~/views/recipe-library/RecipeLibraryFilterBar";
 import { RecipeLibraryGrid } from "~/views/recipe-library/RecipeLibraryGrid";
 import { RecipeLibraryPageHeader } from "~/views/recipe-library/RecipeLibraryPageHeader";
@@ -10,6 +11,8 @@ import { useRecipeRemoval } from "~/views/recipe-library/UseRecipeRemoval";
 
 export interface RecipeLibraryViewProps {
   recipes: Recipe[];
+  /** The full community catalogue, so the pool can be filtered by any tag. */
+  tagCatalogue: RecipeTagCategory[];
   initialScope?: RecipeScope;
   onOpenRecipe: (recipeId: string) => void;
   onAddRecipe: () => void;
@@ -20,6 +23,7 @@ export interface RecipeLibraryViewProps {
 /** The recipe pool — everything the planner can draw from. */
 export function RecipeLibraryView({
   recipes,
+  tagCatalogue,
   initialScope = "mine",
   onOpenRecipe,
   onAddRecipe,
@@ -27,10 +31,8 @@ export function RecipeLibraryView({
   onRemoveRecipe,
 }: RecipeLibraryViewProps): ReactElement {
   const intl = useIntl();
-  const { scope, setScope, query, setQuery, selectedTags, toggleTag, availableTags, filtered } = useRecipeLibraryFilter(
-    recipes,
-    initialScope
-  );
+  const filter = useRecipeLibraryFilter(recipes, initialScope);
+  const { scope, setScope, query, setQuery, selectedTags, toggleTag, availableTags, filtered } = filter;
   const { pendingRecipe, askToRemove, cancelRemoval, confirmRemoval } = useRecipeRemoval(recipes, onRemoveRecipe);
 
   return (
@@ -43,6 +45,9 @@ export function RecipeLibraryView({
         availableTags={availableTags}
         selectedTags={selectedTags}
         onToggleTag={toggleTag}
+        onOpenTagBrowser={filter.openTagBrowser}
+        hasTagFilter={filter.hasTagFilter}
+        onClearTags={filter.clearTags}
       />
 
       <RecipeLibraryGrid
@@ -51,6 +56,19 @@ export function RecipeLibraryView({
         onOpenRecipe={onOpenRecipe}
         onSaveRecipe={onSaveRecipe}
         onRemoveRecipe={askToRemove}
+      />
+
+      <TagBrowserDialog
+        isOpen={filter.isTagBrowserOpen}
+        description={intl.formatMessage({
+          description: "RecipeLibraryView: body - filter tag browser description",
+          defaultMessage: "Pick the tags to filter the pool by.",
+          id: "v8xfAl",
+        })}
+        catalogue={tagCatalogue}
+        selectedTags={selectedTags}
+        onToggleTag={toggleTag}
+        onClose={filter.closeTagBrowser}
       />
 
       <ConfirmDialog

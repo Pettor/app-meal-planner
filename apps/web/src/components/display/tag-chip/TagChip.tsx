@@ -14,6 +14,11 @@ export interface TagChipProps {
   isSelected?: boolean;
   /** Trailing detail, e.g. a usage count or a remove affordance. */
   endContent?: ReactNode;
+  /**
+   * Replaces the family dot. Only for affordances shaped like a tag but that are
+   * not one — "More tags", say — so they line up with the tags beside them.
+   */
+  startContent?: ReactNode;
   className?: string;
 }
 
@@ -31,27 +36,38 @@ const DOT_BY_FAMILY: Record<RecipeTagFamily, string> = {
  * rather than a scatter of colours; only the leading dot distinguishes diet from
  * main ingredient from method.
  */
-export function TagChip({ tag, onPress, isSelected = false, endContent, className }: TagChipProps): ReactElement {
+export function TagChip({
+  tag,
+  onPress,
+  isSelected = false,
+  endContent,
+  startContent,
+  className,
+}: TagChipProps): ReactElement {
   const base = clsx(
     "border-border inline-flex items-center gap-1.5 rounded-full border leading-none font-medium whitespace-nowrap",
     onPress
       ? "h-8 cursor-pointer px-3 text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
       : "bg-surface-secondary text-foreground h-6 px-2.25 text-xs",
+    // The unselected colour is inherited rather than set, so `className` can
+    // recolour a tag-shaped affordance without fighting a utility of equal weight.
     onPress &&
       (isSelected
         ? "bg-accent border-accent text-accent-foreground hover:brightness-105"
-        : "bg-surface text-foreground hover:bg-surface-secondary hover:border-accent"),
+        : "bg-surface hover:bg-surface-secondary hover:border-accent"),
     className
   );
 
   const content = (
     <>
-      <span
-        className={clsx(
-          "h-1.5 w-1.5 shrink-0 rounded-full",
-          isSelected ? "bg-accent-foreground/85" : DOT_BY_FAMILY[tagFamily(tag)]
-        )}
-      />
+      {startContent ?? (
+        <span
+          className={clsx(
+            "h-1.5 w-1.5 shrink-0 rounded-full",
+            isSelected ? "bg-accent-foreground/85" : DOT_BY_FAMILY[tagFamily(tag)]
+          )}
+        />
+      )}
       {tag}
       {endContent && (
         <span className={clsx("text-xs font-normal tabular-nums", isSelected ? "opacity-70" : "text-muted")}>

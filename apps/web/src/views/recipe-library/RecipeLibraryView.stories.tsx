@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { fn } from "storybook/test";
 import { RecipeLibraryView as Component } from "./RecipeLibraryView";
 import type { RecipeLibraryViewProps as Props } from "./RecipeLibraryView";
-import { SampleRecipes } from "~/core/recipes/RecipeSampleData";
+import { SampleRecipes, SampleTagCatalogue } from "~/core/recipes/RecipeSampleData";
 import { NavbarLayoutDecorator } from "~/storybook/decorators/NavbarLayoutDecorator";
 
 const meta: Meta<typeof Component> = {
@@ -20,6 +20,7 @@ type Story = StoryObj<typeof meta>;
 
 const defaultArgs = {
   recipes: SampleRecipes,
+  tagCatalogue: SampleTagCatalogue,
   onOpenRecipe: fn(),
   onAddRecipe: fn(),
   onSaveRecipe: fn(),

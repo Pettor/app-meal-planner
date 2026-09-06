@@ -9,8 +9,18 @@ export interface UseRecipeLibraryFilterResult {
   setQuery: (query: string) => void;
   selectedTags: string[];
   toggleTag: (tag: string) => void;
-  /** Every tag in scope, offered as filter chips. */
+  /**
+   * The chips the filter bar offers: every tag in scope, plus any tag picked
+   * from the full catalogue that no recipe in scope carries — otherwise a filter
+   * that narrows the pool to nothing would have no chip to switch back off.
+   */
   availableTags: string[];
+  hasTagFilter: boolean;
+  clearTags: () => void;
+  /** The catalogue browser, for filtering by a tag beyond the ones in scope. */
+  isTagBrowserOpen: boolean;
+  openTagBrowser: () => void;
+  closeTagBrowser: () => void;
   /** The recipes left after scope, search and tag filters. */
   filtered: Recipe[];
 }
@@ -23,6 +33,7 @@ export function useRecipeLibraryFilter(recipes: Recipe[], initialScope: RecipeSc
   const [scope, setScope] = useState<RecipeScope>(initialScope);
   const [query, setQuery] = useState("");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [isTagBrowserOpen, setIsTagBrowserOpen] = useState(false);
 
   const inScope = useMemo(
     () =>
@@ -32,7 +43,10 @@ export function useRecipeLibraryFilter(recipes: Recipe[], initialScope: RecipeSc
     [recipes, scope]
   );
 
-  const availableTags = useMemo(() => collectTags(inScope), [inScope]);
+  const availableTags = useMemo(() => {
+    const inPool = collectTags(inScope);
+    return [...inPool, ...selectedTags.filter((tag) => !inPool.includes(tag))];
+  }, [inScope, selectedTags]);
 
   const filtered = useMemo(() => {
     const needle = query.trim().toLowerCase();
@@ -47,5 +61,19 @@ export function useRecipeLibraryFilter(recipes: Recipe[], initialScope: RecipeSc
     setSelectedTags((current) => (current.includes(tag) ? current.filter((t) => t !== tag) : [...current, tag]));
   }
 
-  return { scope, setScope, query, setQuery, selectedTags, toggleTag, availableTags, filtered };
+  return {
+    scope,
+    setScope,
+    query,
+    setQuery,
+    selectedTags,
+    toggleTag,
+    availableTags,
+    hasTagFilter: selectedTags.length > 0,
+    clearTags: () => setSelectedTags([]),
+    isTagBrowserOpen,
+    openTagBrowser: () => setIsTagBrowserOpen(true),
+    closeTagBrowser: () => setIsTagBrowserOpen(false),
+    filtered,
+  };
 }
