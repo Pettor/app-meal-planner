@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { Recipe, RecipeIngredient } from "./RecipeTypes";
-import { authorInitials, collectTags, formatAmount, scaleIngredients, tagTone } from "./RecipeUtils";
+import { authorInitials, collectTags, formatAmount, scaleIngredients, tagFamily } from "./RecipeUtils";
 
 function makeRecipe(id: string, tags: string[]): Recipe {
   return {
@@ -17,19 +17,30 @@ function makeRecipe(id: string, tags: string[]): Recipe {
   };
 }
 
-describe("tagTone", () => {
-  it("reads diet tags as green", () => {
-    expect(tagTone("vegetarian")).toBe("success");
-    expect(tagTone("vegan")).toBe("success");
+describe("tagFamily", () => {
+  it("reads tags from the Diet group as the diet family", () => {
+    expect(tagFamily("vegetarian")).toBe("diet");
+    expect(tagFamily("gluten-free")).toBe("diet");
   });
 
-  it("reads meat as red and fish as accent", () => {
-    expect(tagTone("meat")).toBe("danger");
-    expect(tagTone("fish")).toBe("accent");
+  it("reads tags from the Main ingredient group as the ingredient family", () => {
+    expect(tagFamily("meat")).toBe("ing");
+    expect(tagFamily("fish")).toBe("ing");
   });
 
-  it("falls back to neutral for anything unrecognised", () => {
-    expect(tagTone("something-else")).toBe("default");
+  it("reads tags from the Method group as the method family", () => {
+    expect(tagFamily("bbq")).toBe("method");
+    expect(tagFamily("sheet-pan")).toBe("method");
+  });
+
+  it("reads every other group as neutral, so only three families carry colour", () => {
+    expect(tagFamily("quick")).toBe("other");
+    expect(tagFamily("comfort")).toBe("other");
+    expect(tagFamily("italian")).toBe("other");
+  });
+
+  it("falls back to neutral for a tag the cook invented", () => {
+    expect(tagFamily("something-else")).toBe("other");
   });
 });
 

@@ -1,7 +1,7 @@
 import type { ReactElement } from "react";
 import { useIntl } from "react-intl";
+import { TagChip } from "~/components/display/tag-chip/TagChip";
 import { SearchField } from "~/components/input/input-field/SearchField";
-import { ToggleChip } from "~/components/input/toggle-chip/ToggleChip";
 
 export interface RecipeLibraryFilterBarProps {
   query: string;
@@ -39,7 +39,7 @@ export function RecipeLibraryFilterBar({
       />
       <div className="flex flex-wrap gap-1.5">
         {availableTags.map((tag) => (
-          <ToggleChip key={tag} label={tag} isSelected={selectedTags.includes(tag)} onChange={() => onToggleTag(tag)} />
+          <TagChip key={tag} tag={tag} isSelected={selectedTags.includes(tag)} onPress={() => onToggleTag(tag)} />
         ))}
       </div>
     </div>

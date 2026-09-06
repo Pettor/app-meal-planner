@@ -6,8 +6,11 @@
  * wiring them to a service later is a converter change, not a view change.
  */
 
-/** The colour a tag is rendered with. Mirrors the HeroUI `Chip` colours. */
-export type RecipeTagTone = "accent" | "success" | "warning" | "danger" | "default";
+/**
+ * Which family a tag belongs to. Tags all look alike now — only the leading dot
+ * differs — so the family is the one thing colour still encodes.
+ */
+export type RecipeTagFamily = "diet" | "ing" | "method" | "other";
 
 /** Whose recipes the library is showing: the cook's own pool, or everyone else's. */
 export type RecipeScope = "mine" | "everyone";

@@ -2,8 +2,8 @@ import { useState } from "react";
 import type { ReactElement } from "react";
 import { Button, Label } from "@heroui/react";
 import { useIntl } from "react-intl";
+import { TagChip } from "~/components/display/tag-chip/TagChip";
 import { TextInputField } from "~/components/input/input-field/TextInputField";
-import { ToggleChip } from "~/components/input/toggle-chip/ToggleChip";
 
 export interface RecipeEditTagsPanelProps {
   /** Tags offered as chips: the recipe's own plus a handful of popular ones. */
@@ -50,7 +50,7 @@ export function RecipeEditTagsPanel({
 
       <div className="flex flex-wrap gap-1.5">
         {offeredTags.map((tag) => (
-          <ToggleChip key={tag} label={tag} isSelected={selectedTags.includes(tag)} onChange={() => onToggleTag(tag)} />
+          <TagChip key={tag} tag={tag} isSelected={selectedTags.includes(tag)} onPress={() => onToggleTag(tag)} />
         ))}
       </div>
 

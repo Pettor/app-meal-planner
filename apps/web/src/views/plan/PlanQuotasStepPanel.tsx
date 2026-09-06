@@ -1,9 +1,9 @@
 import type { ReactElement } from "react";
 import { MinusIcon, PlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { Button, Card, Chip, Separator } from "@heroui/react";
+import { Button, Card, Separator } from "@heroui/react";
 import { useIntl } from "react-intl";
+import { TagChip } from "~/components/display/tag-chip/TagChip";
 import { SearchField } from "~/components/input/input-field/SearchField";
-import { ToggleChip } from "~/components/input/toggle-chip/ToggleChip";
 import type { PlanQuotaRowViewModel, PlanTagPickViewModel } from "~/views/plan/UsePlanWizard";
 
 export interface PlanQuotasStepPanelProps {
@@ -23,15 +23,7 @@ export interface PlanQuotasStepPanelProps {
 }
 
 function TagPickChip({ chip }: { chip: PlanTagPickViewModel }): ReactElement {
-  return (
-    <ToggleChip
-      label={chip.tag}
-      isSelected={false}
-      onChange={chip.onAdd}
-      endContent={<span className="font-mono text-[11px] tabular-nums opacity-60">{chip.countLabel}</span>}
-      className="border-border bg-surface border"
-    />
-  );
+  return <TagChip tag={chip.tag} onPress={chip.onAdd} endContent={chip.countLabel} />;
 }
 
 /** Step 2: quotas the randomizer respects when it fills the week. */
@@ -83,12 +75,9 @@ export function PlanQuotasStepPanel({
               key={row.tag}
               className="border-separator grid grid-cols-[1fr_auto] items-center gap-x-2.5 gap-y-2 border-b py-2.5 last:border-b-0 sm:flex sm:gap-3"
             >
-              <Chip
-                variant="secondary"
-                className="border-border bg-surface col-start-1 row-start-1 justify-self-start rounded-full border px-2.5 py-1 text-sm sm:mr-auto"
-              >
-                {row.tag}
-              </Chip>
+              <span className="col-start-1 row-start-1 justify-self-start sm:mr-auto">
+                <TagChip tag={row.tag} />
+              </span>
               <Button
                 variant="outline"
                 size="sm"

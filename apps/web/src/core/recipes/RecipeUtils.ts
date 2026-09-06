@@ -1,26 +1,33 @@
-import type { Recipe, RecipeIngredient, RecipeTagTone } from "~/core/recipes/RecipeTypes";
+import { SampleTagCatalogue } from "~/core/recipes/RecipeSampleData";
+import type { Recipe, RecipeIngredient, RecipeTagFamily } from "~/core/recipes/RecipeTypes";
 
 /**
- * Tags carry meaning, so a handful of them get a fixed colour: diet tags read
- * green, meat reads red, and so on. Anything else falls back to neutral.
+ * Tags are drawn identically everywhere; only a leading dot carries meaning, and
+ * it encodes the tag's *family* rather than the tag itself. The family comes from
+ * the group the tag sits under in the catalogue, so a tag added to "Diet" reads
+ * as a diet tag without anyone maintaining a second list.
  */
-const TAG_TONES: Record<string, RecipeTagTone> = {
-  vegetarian: "success",
-  vegan: "success",
-  cheap: "success",
-  meat: "danger",
-  beef: "danger",
-  fish: "accent",
-  seafood: "accent",
-  quick: "accent",
-  bbq: "warning",
-  expensive: "warning",
-  spicy: "warning",
-  comfort: "default",
+const FAMILY_BY_GROUP: Record<string, RecipeTagFamily> = {
+  Diet: "diet",
+  "Main ingredient": "ing",
+  Method: "method",
 };
 
-export function tagTone(tag: string): RecipeTagTone {
-  return TAG_TONES[tag] ?? "default";
+let familyByTag: Map<string, RecipeTagFamily> | null = null;
+
+/** Effort and cost, mood, cuisine and the cook's own tags all read neutral. */
+export function tagFamily(tag: string): RecipeTagFamily {
+  if (!familyByTag) {
+    familyByTag = new Map(
+      SampleTagCatalogue.flatMap((category) =>
+        category.tags.map((usage): [string, RecipeTagFamily] => [
+          usage.name,
+          FAMILY_BY_GROUP[category.group] ?? "other",
+        ])
+      )
+    );
+  }
+  return familyByTag.get(tag) ?? "other";
 }
 
 /**
