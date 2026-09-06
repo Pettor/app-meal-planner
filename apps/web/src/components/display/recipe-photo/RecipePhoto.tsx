@@ -5,7 +5,7 @@ import clsx from "clsx";
 export interface RecipePhotoProps {
   photoUrl: string | null;
   alt: string;
-  /** Tailwind box for the photo band, e.g. `h-34` on cards, `h-10 w-13` for a row thumbnail. */
+  /** Tailwind box for the photo band, e.g. `h-44` on cards, `h-10 w-13` for a row thumbnail. */
   className?: string;
   /** Height used when there is no photo — placeholders are usually shorter. */
   placeholderClassName?: string;

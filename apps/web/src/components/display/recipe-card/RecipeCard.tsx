@@ -27,7 +27,7 @@ export function RecipeCard({ recipe, showSaveAction, onOpen, onSave, onRemove }:
       className="card-raise relative gap-0 overflow-hidden border border-transparent p-0 transition-all duration-200 hover:-translate-y-0.5"
       data-testid={`recipe-card__${recipe.id}`}
     >
-      <RecipePhoto photoUrl={recipe.photoUrl} alt={recipe.title} className="h-34" />
+      <RecipePhoto photoUrl={recipe.photoUrl} alt={recipe.title} className="h-44" />
       <Card.Content className="flex flex-col gap-2.5 p-4">
         <div className="text-base leading-snug font-semibold text-pretty">{recipe.title}</div>
 
