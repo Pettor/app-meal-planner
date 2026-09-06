@@ -20,7 +20,7 @@ export function PlanGenerateStepPanel({
   const intl = useIntl();
 
   return (
-    <Card className="items-center gap-3.5 px-8 py-16 text-center">
+    <Card className="items-center gap-3.5 px-4.5 py-9 text-center sm:px-8 sm:py-16">
       <SparklesIcon className="text-accent h-8.5 w-8.5" />
       <h3 className="text-2xl">
         {intl.formatMessage(

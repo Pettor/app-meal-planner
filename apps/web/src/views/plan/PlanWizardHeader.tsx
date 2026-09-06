@@ -51,7 +51,7 @@ export function PlanWizardHeader({
           <p className="text-default-500 max-w-[54ch] text-base">{stepSubtitle}</p>
         </div>
 
-        <div className="flex gap-2">
+        <div className="hidden gap-2 sm:flex">
           {canGoBack && (
             <Button variant="outline" onPress={onBack} data-testid="plan__back">
               {intl.formatMessage({
@@ -76,18 +76,23 @@ export function PlanWizardHeader({
         </div>
       </div>
 
-      <div className="border-border bg-surface mt-7 mb-6 flex overflow-hidden rounded-lg border">
+      <div className="border-border bg-surface mt-4.5 mb-4 flex overflow-hidden rounded-lg border sm:mt-7 sm:mb-6">
         {stepTabs.map((tab, index) => (
           <div
             key={tab.label}
             className={clsx(
-              "flex-1 px-4.5 py-3",
+              "min-w-0 flex-1 px-2 py-2.25 text-center sm:px-4.5 sm:py-3 sm:text-left",
               index > 0 && "border-separator border-l",
-              tab.isActive && "bg-accent/10"
+              tab.isActive && "bg-accent/10 flex-[2.6] text-left sm:flex-1"
             )}
           >
             <div className="text-default-500 text-xs">{tab.label}</div>
-            <div className={clsx("text-sm font-medium", tab.isActive ? "text-accent" : "text-foreground")}>
+            <div
+              className={clsx(
+                "truncate text-sm font-medium",
+                tab.isActive ? "text-accent block" : "text-foreground hidden sm:block"
+              )}
+            >
               {tab.name}
             </div>
           </div>

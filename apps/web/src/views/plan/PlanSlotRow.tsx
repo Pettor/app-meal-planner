@@ -17,15 +17,21 @@ export function PlanSlotRow({ slot, isFirst }: PlanSlotRowProps): ReactElement {
   const intl = useIntl();
 
   return (
-    <div className={clsx("flex flex-wrap items-center gap-4 px-6 py-3.5", !isFirst && "border-separator border-t")}>
-      <div className="w-40 shrink-0">
+    <div
+      className={clsx(
+        "grid grid-cols-1 gap-2.5 px-3.5 py-3",
+        "sm:flex sm:flex-wrap sm:items-center sm:gap-4 sm:px-6 sm:py-3.5",
+        !isFirst && "border-separator border-t"
+      )}
+    >
+      <div className="sm:w-40 sm:shrink-0">
         <div className="text-sm font-medium">{slot.dayLabel}</div>
         <div className="text-default-500 text-xs">{slot.mealLine}</div>
       </div>
 
       {slot.isFilled ? (
         <>
-          <div className="flex min-w-50 flex-1 flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3 sm:min-w-50 sm:flex-1">
             <RecipePhoto
               photoUrl={slot.photoUrl}
               alt={slot.title}
@@ -39,18 +45,23 @@ export function PlanSlotRow({ slot, isFirst }: PlanSlotRowProps): ReactElement {
               ))}
             </div>
           </div>
-          <div className="ml-auto flex gap-1.5">
-            <Button variant="ghost" size="sm" onPress={slot.onReroll}>
+          <div className="flex gap-1.5 sm:ml-auto">
+            <Button variant="ghost" size="sm" className="flex-1 justify-center sm:flex-none" onPress={slot.onReroll}>
               {intl.formatMessage({
                 description: "PlanSlotRow: button - reroll",
                 defaultMessage: "Reroll",
                 id: "RzwTtP",
               })}
             </Button>
-            <Button variant="outline" size="sm" onPress={slot.onSwap}>
+            <Button variant="outline" size="sm" className="flex-1 justify-center sm:flex-none" onPress={slot.onSwap}>
               {intl.formatMessage({ description: "PlanSlotRow: button - swap", defaultMessage: "Swap", id: "ju3tYb" })}
             </Button>
-            <Button variant="ghost" size="sm" className="text-danger" onPress={slot.onClear}>
+            <Button
+              variant="ghost"
+              size="sm"
+              className="text-danger flex-1 justify-center sm:flex-none"
+              onPress={slot.onClear}
+            >
               {intl.formatMessage({
                 description: "PlanSlotRow: button - clear",
                 defaultMessage: "Clear",
@@ -63,7 +74,7 @@ export function PlanSlotRow({ slot, isFirst }: PlanSlotRowProps): ReactElement {
         <>
           <button
             type="button"
-            className="border-border text-default-500 hover:border-accent hover:text-accent flex min-w-50 flex-1 items-center gap-2 rounded-md border border-dashed px-3.5 py-2 text-sm transition-colors"
+            className="border-border text-default-500 hover:border-accent hover:text-accent flex items-center gap-2 rounded-md border border-dashed px-3.5 py-2 text-sm transition-colors sm:min-w-50 sm:flex-1"
             onClick={slot.onSwap}
           >
             <PlusIcon className="h-4 w-4" />
@@ -73,8 +84,8 @@ export function PlanSlotRow({ slot, isFirst }: PlanSlotRowProps): ReactElement {
               id: "wbfNwW",
             })}
           </button>
-          <div className="ml-auto">
-            <Button variant="ghost" size="sm" onPress={slot.onReroll}>
+          <div className="flex sm:ml-auto">
+            <Button variant="ghost" size="sm" className="flex-1 justify-center sm:flex-none" onPress={slot.onReroll}>
               {intl.formatMessage({
                 description: "PlanSlotRow: button - random",
                 defaultMessage: "Random",

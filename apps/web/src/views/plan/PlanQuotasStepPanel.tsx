@@ -79,22 +79,25 @@ export function PlanQuotasStepPanel({
         </Card.Header>
         <Card.Content className="flex flex-col gap-0">
           {quotaRows.map((row) => (
-            <div key={row.tag} className="border-separator flex items-center gap-3 border-b py-2.5 last:border-b-0">
+            <div
+              key={row.tag}
+              className="border-separator grid grid-cols-[1fr_auto] items-center gap-x-2.5 gap-y-2 border-b py-2.5 last:border-b-0 sm:flex sm:gap-3"
+            >
               <Chip
                 variant="secondary"
-                className="border-border bg-surface mr-auto rounded-full border px-2.5 py-1 text-sm"
+                className="border-border bg-surface col-start-1 row-start-1 justify-self-start rounded-full border px-2.5 py-1 text-sm sm:mr-auto"
               >
                 {row.tag}
               </Chip>
               <Button
                 variant="outline"
                 size="sm"
-                className="bg-surface min-w-26 justify-center"
+                className="bg-surface col-start-1 row-start-2 w-full min-w-0 justify-center sm:w-auto sm:min-w-26"
                 onPress={row.onCycleMode}
               >
                 {row.modeLabel}
               </Button>
-              <div className="border-border bg-surface flex items-center gap-1 rounded-md border p-0.5">
+              <div className="border-border bg-surface col-start-2 row-start-2 flex items-center gap-1 justify-self-end rounded-md border p-0.5">
                 <Button
                   variant="ghost"
                   size="sm"
@@ -133,7 +136,7 @@ export function PlanQuotasStepPanel({
                 variant="ghost"
                 size="sm"
                 isIconOnly
-                className="text-danger"
+                className="text-danger col-start-2 row-start-1 justify-self-end"
                 onPress={row.onRemove}
                 aria-label={intl.formatMessage(
                   {
