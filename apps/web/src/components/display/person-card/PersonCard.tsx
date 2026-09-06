@@ -24,7 +24,7 @@ export function PersonCard({
   const intl = useIntl();
 
   return (
-    <Card className="hover:border-accent/40 flex flex-col gap-3.5 border border-transparent transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_14px_24px_-12px_color-mix(in_oklch,var(--foreground)_26%,transparent)]">
+    <Card className="card-raise flex flex-col gap-3.5 border border-transparent transition-all duration-200 hover:-translate-y-0.5">
       <div className="flex items-center gap-3">
         <UserAvatar name={person.name} avatarUrl={person.avatarUrl} color={person.color} size="lg" />
         <span className="flex min-w-0 flex-col gap-0.5">

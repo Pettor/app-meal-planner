@@ -1,5 +1,4 @@
 import type { ReactElement, ReactNode } from "react";
-import { Surface } from "@heroui/react";
 import clsx from "clsx";
 import { Logo } from "../../Branding/Logo/Logo";
 
@@ -26,12 +25,18 @@ export function NavbarLayout({
   children,
 }: NavbarLayoutProps): ReactElement {
   return (
-    <Surface
+    /*
+     * Deliberately transparent so the page reads on the theme's `--background`
+     * (set on `html`), which is the ground raised surfaces are meant to sit on.
+     * Painting `--surface` here would give the page the same colour as every
+     * card on it — and it also has to stay unpainted for `backgroundElement`,
+     * which renders at `z-[-2]` and would be covered by a background of our own.
+     */
+    <div
       className={clsx(
-        "relative flex min-h-screen flex-col",
+        "text-foreground relative flex min-h-screen flex-col",
         reserveMobileNavSpace && "pb-[calc(62px+env(safe-area-inset-bottom))] sm:pb-0"
       )}
-      variant="default"
     >
       {backgroundElement}
       {navbarElement}
@@ -46,6 +51,6 @@ export function NavbarLayout({
           </div>
         </footer>
       )}
-    </Surface>
+    </div>
   );
 }

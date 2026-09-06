@@ -105,6 +105,33 @@
     --field-placeholder: var(--color-theme-dark-field-placeholder);
 
     --disabled-opacity: var(--layout-disabled-opacity);
+
+    /*
+     * Elevation. HeroUI ships no surface shadow in dark, which leaves cards
+     * flat against the ground. The page ground is deep enough here that raised
+     * surfaces need a real drop shadow plus a top highlight to read as raised,
+     * and fields need an inset shadow to read as sunk.
+     */
+    --surface-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 2px 4px rgba(0, 0, 0, 0.45), 0 10px 22px -14px rgba(0, 0, 0, 0.65);
+    --field-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) inset;
+
+    /*
+     * Soft fills need more of the base colour against a dark surface to stay
+     * legible, and the neutral soft fill reads better as a solid tertiary
+     * surface than as a translucent wash.
+     */
+    --accent-soft: color-mix(in oklch, var(--accent) 20%, transparent);
+    --accent-soft-hover: color-mix(in oklch, var(--accent) 24%, transparent);
+    --success-soft: color-mix(in oklch, var(--success) 20%, transparent);
+    --success-soft-hover: color-mix(in oklch, var(--success) 24%, transparent);
+    --warning-soft: color-mix(in oklch, var(--warning) 20%, transparent);
+    --warning-soft-hover: color-mix(in oklch, var(--warning) 24%, transparent);
+    --danger-soft: color-mix(in oklch, var(--danger) 22%, transparent);
+    --danger-soft-hover: color-mix(in oklch, var(--danger) 26%, transparent);
+    --default-soft: var(--surface-tertiary);
+    --default-soft-hover: var(--surface-tertiary);
+    --default-soft-foreground: var(--foreground);
   }
 
   /*

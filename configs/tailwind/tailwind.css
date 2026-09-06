@@ -10,8 +10,16 @@
 /* Tailwind plugins */
 @plugin "@tailwindcss/typography";
 
-/* HeroUI base styles */
-@import "@heroui/styles/base";
+/*
+ * HeroUI base styles.
+ *
+ * Imported into the base layer on purpose: unlayered, its
+ * `*, ::before, ::after { border-color: var(--border) }` reset outranks every
+ * layered rule, so Tailwind's `border-*` colour utilities (and any hover border
+ * built on them) silently do nothing. In `base` the reset still wins over
+ * Tailwind's preflight but loses to utilities, which is what both expect.
+ */
+@import "@heroui/styles/base" layer(base);
 
 /* HeroUI component styles */
 @import "@heroui/styles/components/index.css" layer(components);
@@ -27,7 +35,6 @@
 @import "@heroui/styles/variants";
 @custom-variant dark (&:is(.dark *));
 
-
 /* Theme extensions from design tokens */
 @theme {
   /* Brand gradient stops — exposed so `bg-brand-*` / `text-brand-*` utilities exist */
@@ -38,7 +45,7 @@
   /* Typography */
   --font-family-primary: var(--typography-font-family-primary);
   --font-family-display: var(--typography-font-family-display);
-  
+
   --font-weight-light: var(--typography-font-weight-light);
   --font-weight-regular: var(--typography-font-weight-regular);
   --font-weight-medium: var(--typography-font-weight-medium);
@@ -69,6 +76,43 @@ body {
   background-image: var(--brand-gradient);
   background-clip: text;
   color: transparent;
+}
+
+/*
+ * `card-raise` is the hover lift shared by every card the reader can pick out
+ * of a pool — a warm drop shadow plus an accent-tinted border. Dark mode sits
+ * on a much deeper ground, so it swaps in a darker shadow with a top highlight
+ * and blends the border further toward the accent to stay visible.
+ *
+ * Pair it with `border` (HeroUI's `.card` is borderless, so a border colour
+ * alone renders nothing) and whatever transform/transition the card wants.
+ */
+@utility card-raise {
+  &:hover {
+    box-shadow: 0 14px 24px -12px color-mix(in oklch, var(--foreground) 26%, transparent);
+    border-color: color-mix(in oklch, var(--accent) 40%, transparent);
+  }
+
+  @variant dark {
+    &:hover {
+      box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.06) inset,
+        0 18px 30px -14px rgba(0, 0, 0, 0.75);
+      border-color: color-mix(in oklch, var(--accent) 45%, var(--border));
+    }
+  }
+}
+
+/*
+ * `toggle-selected-accent` makes a selected HeroUI `ToggleButton` read as a
+ * solid accent pill rather than the soft tint it ships with — the filter and
+ * scope pills in this design are fully filled when on.
+ */
+@utility toggle-selected-accent {
+  --toggle-button-bg-selected: var(--accent);
+  --toggle-button-fg-selected: var(--accent-foreground);
+  --toggle-button-bg-selected-hover: color-mix(in oklab, var(--accent) 90%, var(--accent-foreground) 10%);
+  --toggle-button-bg-selected-pressed: color-mix(in oklab, var(--accent) 90%, var(--accent-foreground) 10%);
 }
 
 /*
