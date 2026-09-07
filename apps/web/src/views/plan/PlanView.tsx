@@ -17,8 +17,10 @@ export interface PlanViewProps {
   /** The cook's own recipe pool — what the planner draws from. */
   recipes: Recipe[];
   tagCatalogue: RecipeTagCategory[];
-  /** Tags offered first when setting quotas for a week. */
+  /** Tags offered first when setting quotas for a week, owned by settings. */
   pinnedTags: string[];
+  /** Pins or unpins a default tag, so an edit here shows up in settings too. */
+  onTogglePinnedTag: (tag: string) => void;
   /** Weeks already saved, so reopening one edits it instead of starting over. */
   plans: Record<string, SavedPlan>;
   /** The week the wizard opens on — the one the rest of the app is looking at. */
@@ -33,6 +35,7 @@ export function PlanView({
   recipes,
   tagCatalogue,
   pinnedTags,
+  onTogglePinnedTag,
   plans,
   initialWeekKey,
   initialDraft,
@@ -43,6 +46,7 @@ export function PlanView({
     recipes,
     tagCatalogue,
     pinnedTags,
+    onTogglePinnedTag,
     plans,
     initialWeekKey,
     initialDraft,

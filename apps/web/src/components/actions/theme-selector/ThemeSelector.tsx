@@ -32,7 +32,7 @@ function ThemeOption({ value, label, icon, preview }: ThemeOptionProps): ReactEl
         <Radio.Indicator />
       </Radio.Control>
       <Radio.Content className="flex flex-col items-center gap-1.5">
-        <div className="h-14 w-18 overflow-hidden rounded-md">{preview}</div>
+        <div className="border-border h-14 w-18 overflow-hidden rounded-md border">{preview}</div>
         <div className="text-default-500 group-data-[selected=true]:text-accent flex items-center gap-1 text-xs">
           {icon}
           <span>{label}</span>

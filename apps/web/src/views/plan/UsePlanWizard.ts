@@ -192,8 +192,10 @@ export interface UsePlanWizardOptions {
   /** The cook's own recipe pool — what the planner draws from. */
   recipes: Recipe[];
   tagCatalogue: RecipeTagCategory[];
-  /** Tags offered first when setting quotas for a week. */
+  /** Tags offered first when setting quotas for a week, owned by settings. */
   pinnedTags: string[];
+  /** Pins or unpins a default tag, so an edit here shows up in settings too. */
+  onTogglePinnedTag: (tag: string) => void;
   /** Weeks already saved, so the wizard can reopen one instead of starting over. */
   plans: Record<string, SavedPlan>;
   /** The week the wizard opens on — the one the rest of the app is looking at. */
@@ -211,7 +213,8 @@ export interface UsePlanWizardOptions {
 export function usePlanWizard({
   recipes,
   tagCatalogue,
-  pinnedTags: initialPinnedTags,
+  pinnedTags,
+  onTogglePinnedTag,
   plans,
   initialWeekKey,
   initialDraft = null,
@@ -228,7 +231,6 @@ export function usePlanWizard({
     return saved ? clonePlanDraft(saved.draft) : emptyPlanDraft();
   });
   const [layout, setLayout] = useState<PlanLayout>("rows");
-  const [pinnedTags, setPinnedTags] = useState<string[]>(initialPinnedTags);
 
   const [swapSlotIndex, setSwapSlotIndex] = useState<number | null>(null);
   const [pickerQuery, setPickerQuery] = useState("");
@@ -428,7 +430,8 @@ export function usePlanWizard({
         ? current
         : { ...current, quotas: [...current.quotas, { tag: trimmed, mode: "atleast", n: 1 }] }
     );
-    setPinnedTags((current) => (current.includes(trimmed) ? current : [...current, trimmed]));
+    // A tag the cook invents here is worth keeping, so it is offered next week too.
+    if (!pinnedTags.includes(trimmed)) onTogglePinnedTag(trimmed);
     setQuotaQuery("");
   }
 
@@ -684,8 +687,7 @@ export function usePlanWizard({
     onOpenEditDefaultTags: () => setIsEditDefaultTagsOpen(true),
     onCloseEditDefaultTags: () => setIsEditDefaultTagsOpen(false),
     pinnedTags,
-    onTogglePinnedTag: (tag) =>
-      setPinnedTags((current) => (current.includes(tag) ? current.filter((t) => t !== tag) : [...current, tag])),
+    onTogglePinnedTag,
 
     isBrowseQuotaTagsOpen,
     onOpenBrowseQuotaTags: () => setIsBrowseQuotaTagsOpen(true),

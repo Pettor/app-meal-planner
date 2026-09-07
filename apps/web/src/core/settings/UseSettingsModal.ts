@@ -17,10 +17,12 @@ export function useSettingsModal(): UseSettingsModalResult {
   const authStatus = getAuthStatus();
 
   const sections = useMemo<SettingsSection[]>(() => {
+    // Default tags and Data are the cook's own; before signing in there is
+    // nothing behind them, so only the preferences that apply to anyone show.
     if (authStatus === "authenticated") {
-      return ["account", "appearance", "about"];
+      return ["account", "appearance", "language", "tags", "data", "about"];
     }
-    return ["appearance", "about"];
+    return ["appearance", "language", "about"];
   }, [authStatus]);
 
   const open = useCallback(

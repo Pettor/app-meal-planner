@@ -23,6 +23,7 @@ const defaultArgs = {
   recipes: SampleRecipes.filter((recipe) => recipe.isSaved),
   tagCatalogue: SampleTagCatalogue,
   pinnedTags: DefaultPinnedTags,
+  onTogglePinnedTag: fn(),
   plans: {},
   initialWeekKey: thisWeekKey(),
   onWeekSaved: fn(),
