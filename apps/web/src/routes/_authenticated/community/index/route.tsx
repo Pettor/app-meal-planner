@@ -1,6 +1,7 @@
 import type { ReactElement } from "react";
 import { useDocumentTitle } from "@package/react";
 import { createFileRoute } from "@tanstack/react-router";
+import { useIntl } from "react-intl";
 import { useCommunityRoute } from "./-UseCommunityRoute";
 import { CommandPaletteController } from "~/components/actions/command-palette/CommandPaletteController";
 import { LoadWeekDialogController } from "~/components/feedback/load-week-dialog/LoadWeekDialogController";
@@ -15,7 +16,14 @@ export const Route = createFileRoute("/_authenticated/community/")({
 });
 
 function CommunityPageRoute(): ReactElement {
-  useDocumentTitle("Community");
+  const intl = useIntl();
+  useDocumentTitle(
+    intl.formatMessage({
+      description: "CommunityPageRoute: title - browser tab",
+      defaultMessage: "Community",
+      id: "FXgFP3",
+    })
+  );
   const props = useCommunityRoute();
 
   return (

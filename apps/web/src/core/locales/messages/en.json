@@ -235,6 +235,10 @@
     "defaultMessage": "You've used all 3 scans for today. They reset at midnight.",
     "description": "RecipeScanDialog: body - no scans left"
   },
+  "5M8Wpq": {
+    "defaultMessage": "Login",
+    "description": "LoginPageRoute: title - browser tab"
+  },
   "5OPS8l": {
     "defaultMessage": "The shopping list builds itself",
     "description": "AuthPromoPanel: heading - shopping list feature"
@@ -250,6 +254,10 @@
   "5Vzqiv": {
     "defaultMessage": "The details you signed in with.",
     "description": "SettingsModal: body - account section purpose"
+  },
+  "5XKaTO": {
+    "defaultMessage": "This week",
+    "description": "WeekPageRoute: title - browser tab"
   },
   "5atL0P": {
     "defaultMessage": "+ Add step",
@@ -395,6 +403,10 @@
     "defaultMessage": "Saturday",
     "description": "PlanDayLabels: day - Saturday"
   },
+  "9xyQWi": {
+    "defaultMessage": "Inbox",
+    "description": "InboxPageRoute: title - browser tab"
+  },
   "A1+Pu1": {
     "defaultMessage": "Take or choose a photo",
     "description": "RecipeScanDialog: label - take a photo"
@@ -463,6 +475,10 @@
     "defaultMessage": "Week saved.",
     "description": "UsePlanRoute: toast - week saved"
   },
+  "DEcf5/": {
+    "defaultMessage": "Profile",
+    "description": "ProfilePageRoute: title - browser tab"
+  },
   "DIddlg": {
     "defaultMessage": "Email",
     "description": "SignUpForm: label - email input"
@@ -515,6 +531,10 @@
     "defaultMessage": "Fair",
     "description": "PasswordStrength: label - fair password"
   },
+  "FXgFP3": {
+    "defaultMessage": "Community",
+    "description": "CommunityPageRoute: title - browser tab"
+  },
   "FYdcTe": {
     "defaultMessage": "Reset to sample data",
     "description": "SettingsDataSection: button - reset to sample data"
@@ -534,6 +554,10 @@
   "G5fY3n": {
     "defaultMessage": "Following",
     "description": "ProfileView: button - already following, press to unfollow"
+  },
+  "GEina4": {
+    "defaultMessage": "Edit recipe",
+    "description": "EditRecipePageRoute: title - browser tab"
   },
   "GOl4iB": {
     "defaultMessage": "week",
@@ -742,6 +766,10 @@
   "NJTHyd": {
     "defaultMessage": "Follow",
     "description": "ProfileView: button - start following"
+  },
+  "NWkWOT": {
+    "defaultMessage": "Sign Up",
+    "description": "SignUpPageRoute: title - browser tab"
   },
   "Ndk+G7": {
     "defaultMessage": "Swap",
@@ -994,6 +1022,10 @@
   "V4eYMP": {
     "defaultMessage": "Remove",
     "description": "RecipeDetailToolbar: button - remove"
+  },
+  "VI9oEr": {
+    "defaultMessage": "Recipe",
+    "description": "RecipeDetailPageRoute: title - browser tab"
   },
   "VN7uxx": {
     "defaultMessage": "Recommendations shared with you",
@@ -1503,6 +1535,10 @@
     "defaultMessage": "Something went wrong",
     "description": "RouteError: heading - error title"
   },
+  "lYZm3u": {
+    "defaultMessage": "Forgot Password",
+    "description": "ForgotPasswordPageRoute: title - browser tab"
+  },
   "lbZ1KO": {
     "defaultMessage": "Describe this step",
     "description": "RecipeEditStepsPanel: placeholder - step text"
@@ -1651,6 +1687,10 @@
     "defaultMessage": "About",
     "description": "SettingsModal: tab - about"
   },
+  "piJxzj": {
+    "defaultMessage": "Recipes",
+    "description": "RecipeLibraryPageRoute: title - browser tab"
+  },
   "q+utlS": {
     "defaultMessage": "Clear",
     "description": "PlanSlotCard: button - clear"
@@ -1763,6 +1803,10 @@
     "defaultMessage": "Remove step {number}",
     "description": "RecipeEditStepsPanel: aria-label - remove step"
   },
+  "vW2JQR": {
+    "defaultMessage": "Shopping list",
+    "description": "ShoppingPageRoute: title - browser tab"
+  },
   "vWoN3+": {
     "defaultMessage": "Appearance",
     "description": "CommandPaletteController: label - appearance group"
@@ -1786,6 +1830,10 @@
   "wv66GT": {
     "defaultMessage": "Search",
     "description": "QuickMenu: menu-item - search"
+  },
+  "x/eR7i": {
+    "defaultMessage": "Plan",
+    "description": "PlanPageRoute: title - browser tab"
   },
   "x0NC5P": {
     "defaultMessage": "Wed",

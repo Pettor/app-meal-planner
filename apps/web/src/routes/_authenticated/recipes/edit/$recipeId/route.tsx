@@ -1,6 +1,7 @@
 import type { ReactElement } from "react";
 import { useDocumentTitle } from "@package/react";
 import { createFileRoute } from "@tanstack/react-router";
+import { useIntl } from "react-intl";
 import { useRecipeEditRoute } from "./-UseRecipeEditRoute";
 import { CommandPaletteController } from "~/components/actions/command-palette/CommandPaletteController";
 import { SettingsModalController } from "~/components/feedback/settings-modal/SettingsModalController";
@@ -13,10 +14,17 @@ export const Route = createFileRoute("/_authenticated/recipes/edit/$recipeId")({
 });
 
 function EditRecipePageRoute(): ReactElement {
+  const intl = useIntl();
   const { recipeId } = Route.useParams();
   const props = useRecipeEditRoute(recipeId);
 
-  useDocumentTitle("Edit recipe");
+  useDocumentTitle(
+    intl.formatMessage({
+      description: "EditRecipePageRoute: title - browser tab",
+      defaultMessage: "Edit recipe",
+      id: "GEina4",
+    })
+  );
 
   // Remounting on the id keeps the draft in step when moving between recipes.
   return (

@@ -1,6 +1,7 @@
 import type { ReactElement } from "react";
 import { useDocumentTitle } from "@package/react";
 import { createFileRoute } from "@tanstack/react-router";
+import { useIntl } from "react-intl";
 import { useLoginRoute } from "./-UseLoginRoute";
 import { SettingsModalController } from "~/components/feedback/settings-modal/SettingsModalController";
 import { RouteError } from "~/core/routes/logic/RouteError";
@@ -12,7 +13,14 @@ export const Route = createFileRoute("/_public/login")({
 });
 
 function LoginPageRoute(): ReactElement {
-  useDocumentTitle("Login");
+  const intl = useIntl();
+  useDocumentTitle(
+    intl.formatMessage({
+      description: "LoginPageRoute: title - browser tab",
+      defaultMessage: "Login",
+      id: "5M8Wpq",
+    })
+  );
   const loginProps = useLoginRoute();
 
   return (
