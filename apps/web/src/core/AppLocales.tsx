@@ -1,7 +1,7 @@
 import type { ComponentProps, ReactElement } from "react";
-import type { MessageFormatElement } from "react-intl";
 import { IntlProvider, ReactIntlErrorCode } from "react-intl";
 import type { AppLocale } from "~/core/locales/AppLocale";
+import svMessages from "~/core/locales/messages/sv.json";
 import { useAppLocale } from "~/core/locales/UseAppLocale";
 
 interface Props {
@@ -9,23 +9,24 @@ interface Props {
 }
 
 /**
- * Compiled translations per interface language.
+ * Translations per interface language, keyed by message id.
  *
- * Only English is extracted so far; the other languages fall back to each
- * message's `defaultMessage`, while dates, numbers and plurals already format
- * in the chosen locale.
+ * English is the source language and lives in the `defaultMessage` of every
+ * call site, so it needs no catalogue of its own; every other language ships
+ * one and falls back to `defaultMessage` for anything not translated yet.
+ * Regenerate the English side with `pnpm --filter=@app/web intl:extract`.
  */
-const Messages: Record<AppLocale, Record<string, MessageFormatElement[]>> = {
+const Messages: Record<AppLocale, Record<string, string>> = {
   en: {},
-  sv: {},
+  sv: svMessages,
 };
 
 /** Exactly what `IntlProvider` hands `onError`, without naming its internals. */
 type IntlProviderError = Parameters<NonNullable<ComponentProps<typeof IntlProvider>["onError"]>>[0];
 
 function handleIntlError(error: IntlProviderError): void {
-  // Falling back to `defaultMessage` is the expected state for every language
-  // without a compiled catalogue yet, so it is not worth reporting.
+  // Falling back to `defaultMessage` is the expected state for every message a
+  // catalogue has not caught up with yet, so it is not worth reporting.
   if (error.code === ReactIntlErrorCode.MISSING_TRANSLATION) return;
   console.error(error);
 }
