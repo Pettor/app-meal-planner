@@ -23,7 +23,10 @@ function ThemeOption({ value, label, icon, preview }: ThemeOptionProps): ReactEl
       value={value}
       aria-label={label}
       className={clsx(
-        "group relative flex-col items-center gap-1.5 rounded-xl border-2 border-transparent p-1 transition-all",
+        // A hairline of its own so an unpicked theme still reads as a card, and the
+        // border only changes colour on selection rather than appearing from nothing.
+        "group border-border relative flex-col items-center gap-1.5 rounded-xl border-2 p-1 transition-all",
+        "hover:border-accent/40",
         "data-[selected=true]:border-accent data-[selected=true]:bg-accent/10",
         "data-[focus-visible=true]:border-accent data-[focus-visible=true]:bg-accent/10"
       )}
@@ -32,7 +35,7 @@ function ThemeOption({ value, label, icon, preview }: ThemeOptionProps): ReactEl
         <Radio.Indicator />
       </Radio.Control>
       <Radio.Content className="flex flex-col items-center gap-1.5">
-        <div className="border-border h-14 w-18 overflow-hidden rounded-md border">{preview}</div>
+        <div className="border-border/70 h-14 w-18 overflow-hidden rounded-md border">{preview}</div>
         <div className="text-default-500 group-data-[selected=true]:text-accent flex items-center gap-1 text-xs">
           {icon}
           <span>{label}</span>

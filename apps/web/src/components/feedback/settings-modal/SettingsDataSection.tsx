@@ -61,32 +61,38 @@ export function SettingsDataSection({
         />
       </TextField>
 
+      {/*
+       * The two actions on the blob in front of you share a row; resetting throws
+       * it away, so it sits apart — pushed to the far end with room to spare, and
+       * on its own full-width line once the row runs out of it.
+       */}
       <div className="flex flex-wrap items-center gap-2">
-        <Button variant="primary" onPress={onApply}>
+        <Button size="sm" variant="primary" className="flex-1 sm:flex-none" onPress={onApply}>
           {intl.formatMessage({
             description: "SettingsDataSection: button - apply json",
             defaultMessage: "Apply JSON",
             id: "1DeDF/",
           })}
         </Button>
-        <Button variant="outline" onPress={onDownload}>
+        <Button size="sm" variant="outline" className="flex-1 sm:flex-none" onPress={onDownload}>
           {intl.formatMessage({
             description: "SettingsDataSection: button - download data",
             defaultMessage: "Download",
             id: "6xk6VQ",
           })}
         </Button>
-        <Button variant="danger-soft" onPress={onReset}>
+        <Button size="sm" variant="danger-soft" className="w-full sm:ms-auto sm:w-auto" onPress={onReset}>
           {intl.formatMessage({
             description: "SettingsDataSection: button - reset to sample data",
             defaultMessage: "Reset to sample data",
             id: "FYdcTe",
           })}
         </Button>
-        <span aria-live="polite" className="text-muted text-sm">
-          {statusMessages[status]}
-        </span>
       </div>
+
+      <span aria-live="polite" className="text-muted min-h-5 text-sm">
+        {statusMessages[status]}
+      </span>
     </>
   );
 }

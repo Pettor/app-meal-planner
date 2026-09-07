@@ -95,8 +95,15 @@ export const SignedOut: Story = {
   },
 };
 
+/** Below `sm` there is no rail: every section stacks into one scrolling page. */
 export const Phone: Story = {
   args: defaultArgs,
+  globals: { viewport: { value: "iphonex" } },
+};
+
+/** Opening on a section scrolls the stack to it rather than selecting a tab. */
+export const PhoneOpenedOnData: Story = {
+  args: { ...defaultArgs, initialSection: "data" },
   globals: { viewport: { value: "iphonex" } },
 };
 
