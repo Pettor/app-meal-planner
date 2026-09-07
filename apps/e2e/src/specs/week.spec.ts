@@ -121,9 +121,10 @@ test.describe("week.planned", () => {
   test("picks another week from the calendar", async ({ page }) => {
     await planThisWeek(page);
 
+    // The week chip lives in the navbar and reads "W14" — the calendar it opens is app-wide.
     await page
-      .locator("main")
-      .getByRole("button", { name: /^This week$/ })
+      .getByTestId("navbar__week-picker")
+      .getByRole("button", { name: /^W\d+$/ })
       .click();
     const dialog = page.getByRole("dialog", { name: "Schedule" });
     await expect(dialog).toBeVisible();

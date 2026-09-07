@@ -1,5 +1,4 @@
 import { useIntl } from "react-intl";
-import type { IntlShape } from "react-intl";
 import { planDayName, planMealName, planPeopleLabel } from "~/core/plan/PlanDayLabels";
 import { PLAN_DAY_ORDER } from "~/core/plan/PlanTypes";
 import type { PlanDayId, SavedPlan } from "~/core/plan/PlanTypes";
@@ -42,36 +41,10 @@ export interface UseWeekOverviewResult {
   headingAccent: string;
   /** "week 14 · 3 Apr – 9 Apr · 7 meals · 28 plates · planned 2026-09-05" */
   subtitle: string;
-  /** Short relative name for the week switcher, e.g. "This week". */
-  switcherLabel: string;
-  /** "week 14 · 3 Apr – 9 Apr" — the switcher's hover hint. */
-  weekRange: string;
-  statusDotClassName: string;
   hasPlan: boolean;
   isDraft: boolean;
   stats: WeekStatViewModel[];
   days: WeekDayViewModel[];
-  previousWeekKey: string;
-  nextWeekKey: string;
-}
-
-function relativeWeekLabel(intl: IntlShape, offset: number, weekNumber: number): string {
-  if (offset === 0)
-    return intl.formatMessage({
-      description: "UseWeekOverview: week - this week",
-      defaultMessage: "This week",
-      id: "VH4+fJ",
-    });
-  if (offset === 1)
-    return intl.formatMessage({
-      description: "UseWeekOverview: week - next week",
-      defaultMessage: "Next week",
-      id: "RM/2hE",
-    });
-  return intl.formatMessage(
-    { description: "UseWeekOverview: week - week number", defaultMessage: "Week {number}", id: "Zra8aV" },
-    { number: weekNumber }
-  );
 }
 
 /** Everything the "This week" page renders, derived from the week in view and its saved plan. */
@@ -231,14 +204,9 @@ export function useWeekOverview(
     headingLead,
     headingAccent,
     subtitle,
-    switcherLabel: relativeWeekLabel(intl, offset, weekNumber),
-    weekRange,
-    statusDotClassName: !plan ? "bg-default-300" : plan.status === "final" ? "bg-success" : "bg-warning",
     hasPlan: !!plan,
     isDraft: plan?.status === "draft",
     stats,
     days,
-    previousWeekKey: weekKeyOf(addDays(monday, -7)),
-    nextWeekKey: weekKeyOf(addDays(monday, 7)),
   };
 }

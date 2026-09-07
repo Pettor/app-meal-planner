@@ -1,4 +1,4 @@
-import { useMemo, useState, type ReactElement } from "react";
+import { useMemo, useState, type ReactElement, type ReactNode } from "react";
 import { InboxIcon, UserCircleIcon } from "@heroicons/react/24/outline";
 import { Popover } from "@heroui/react";
 import clsx from "clsx";
@@ -14,6 +14,8 @@ export interface NavbarContentProps {
   avatarEmail?: string;
   activeTab?: string;
   onTabChange?: (id: string) => void;
+  /** The week picker that sits left of the account chip — mounted by the route as a controller. */
+  weekPicker?: ReactNode;
   /** Community entries in the account dropdown, with the inbox's unread count. */
   accountMenu?: {
     unreadCount: number;
@@ -49,6 +51,7 @@ export function NavbarContent({
   avatarEmail,
   activeTab = "recipes",
   onTabChange,
+  weekPicker,
   accountMenu,
 }: NavbarContentProps): ReactElement {
   const intl = useIntl();
@@ -130,7 +133,8 @@ export function NavbarContent({
             })}
           </nav>
 
-          <div className="flex shrink-0 items-center">
+          <div className="flex shrink-0 items-center gap-2.5">
+            {weekPicker}
             <Popover isOpen={isAccountOpen} onOpenChange={setIsAccountOpen}>
               <Popover.Trigger data-testid="home-page__menu-button">
                 <div className="border-border bg-surface flex cursor-pointer items-center gap-2 rounded-full border py-0.5 pr-2.5 pl-0.5">

@@ -5,7 +5,6 @@ import type { WeekViewProps as Props } from "./WeekView";
 import { PLAN_DAY_ORDER } from "~/core/plan/PlanTypes";
 import type { PlanSlot, SavedPlan } from "~/core/plan/PlanTypes";
 import { emptyPlanDraft, thisWeekKey, weekKeyOf } from "~/core/plan/PlanUtils";
-import type { UseWeekPickerResult } from "~/core/plan/UseWeekPicker";
 import { SampleRecipes } from "~/core/recipes/RecipeSampleData";
 import { NavbarLayoutDecorator } from "~/storybook/decorators/NavbarLayoutDecorator";
 
@@ -33,19 +32,6 @@ const plannedWeek: SavedPlan = {
   draft: { ...emptyPlanDraft(), slots },
 };
 
-/** The picker is closed in every story, so a stub stands in for the live calendar. */
-const weekPicker: UseWeekPickerResult = {
-  isOpen: false,
-  onOpen: fn(),
-  onClose: fn(),
-  title: "March 2026",
-  dayNames: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-  weeks: [],
-  onPrevMonth: fn(),
-  onNextMonth: fn(),
-  onToday: fn(),
-};
-
 const meta: Meta<typeof Component> = {
   component: Component,
   title: "Views/Week",
@@ -62,9 +48,7 @@ type Story = StoryObj<typeof meta>;
 const defaultArgs = {
   weekKey,
   plan: plannedWeek,
-  weekPicker,
   recipes: SampleRecipes,
-  onSelectWeek: fn(),
   onOpenRecipe: fn(),
   onEditWeek: fn(),
   onPlanWeek: fn(),

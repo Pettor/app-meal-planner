@@ -2,36 +2,23 @@ import type { ReactElement } from "react";
 import { PencilSquareIcon, PrinterIcon, SparklesIcon } from "@heroicons/react/24/outline";
 import { Button } from "@heroui/react";
 import { useIntl } from "react-intl";
-import { WeekSwitcher } from "~/components/navigation/week-switcher/WeekSwitcher";
 
 export interface WeekPageHeaderProps {
   headingLead: string;
   headingAccent: string;
   subtitle: string;
-  switcherLabel: string;
-  weekRange: string;
-  statusDotClassName: string;
   hasPlan: boolean;
-  onPreviousWeek: () => void;
-  onNextWeek: () => void;
-  onOpenWeekPicker: () => void;
   onPrint: () => void;
   onEditWeek: () => void;
   onPlanWeek: () => void;
 }
 
-/** Title, week switcher and the actions available for the week in view. */
+/** Title and the actions available for the week in view — the week itself is switched from the navbar. */
 export function WeekPageHeader({
   headingLead,
   headingAccent,
   subtitle,
-  switcherLabel,
-  weekRange,
-  statusDotClassName,
   hasPlan,
-  onPreviousWeek,
-  onNextWeek,
-  onOpenWeekPicker,
   onPrint,
   onEditWeek,
   onPlanWeek,
@@ -55,15 +42,6 @@ export function WeekPageHeader({
       </div>
 
       <div className="flex flex-wrap items-center gap-2">
-        <WeekSwitcher
-          label={switcherLabel}
-          hint={weekRange}
-          statusDotClassName={statusDotClassName}
-          onPrevious={onPreviousWeek}
-          onNext={onNextWeek}
-          onOpenPicker={onOpenWeekPicker}
-        />
-
         {hasPlan && (
           <>
             <Button variant="outline" onPress={onPrint}>

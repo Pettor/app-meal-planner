@@ -11,6 +11,7 @@ import {
   thisWeekKey,
   weekKeyOf,
   shiftMonth,
+  weekStatusDotClassName,
 } from "~/core/plan/PlanUtils";
 
 export interface UseWeekPickerResult {
@@ -91,7 +92,7 @@ function buildCalendarWeekViewModel(
   const plannedDays = new Set(saved ? saved.draft.slots.filter((slot) => slot.recipeId).map((slot) => slot.day) : []);
   return {
     weekNumber: row.weekNumber,
-    statusDotClassName: !saved ? "bg-default-300" : saved.status === "final" ? "bg-success" : "bg-warning",
+    statusDotClassName: weekStatusDotClassName(saved),
     mealsLabel: filled ? `${filled} ${filledWord}` : "",
     isSelected: row.weekKey === selectedWeekKey,
     // `row.days[i]` was built from `PLAN_DAY_ORDER[i]` in buildCalendarWeeks, so the indices line up.

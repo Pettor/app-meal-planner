@@ -1,9 +1,7 @@
 import type { ReactElement } from "react";
 import { Card } from "@heroui/react";
 import { useIntl } from "react-intl";
-import { WeekPickerDialog } from "~/components/feedback/week-picker-dialog/WeekPickerDialog";
 import type { SavedPlan } from "~/core/plan/PlanTypes";
-import type { UseWeekPickerResult } from "~/core/plan/UseWeekPicker";
 import type { Recipe } from "~/core/recipes/RecipeTypes";
 import { useWeekOverview } from "~/views/week/UseWeekOverview";
 import { WeekDayCard } from "~/views/week/WeekDayCard";
@@ -16,11 +14,8 @@ export interface WeekViewProps {
   weekKey: string;
   /** The saved plan for that week, or `null` when it has never been planned. */
   plan: SavedPlan | null;
-  /** The "pick a week" calendar, assembled by the route. */
-  weekPicker: UseWeekPickerResult;
   /** The cook's own recipe pool — what the planned meals resolve against. */
   recipes: Recipe[];
-  onSelectWeek: (weekKey: string) => void;
   onOpenRecipe: (recipeId: string) => void;
   onEditWeek: () => void;
   onPlanWeek: () => void;
@@ -32,9 +27,7 @@ export interface WeekViewProps {
 export function WeekView({
   weekKey,
   plan,
-  weekPicker,
   recipes,
-  onSelectWeek,
   onOpenRecipe,
   onEditWeek,
   onPlanWeek,
@@ -50,13 +43,7 @@ export function WeekView({
         headingLead={week.headingLead}
         headingAccent={week.headingAccent}
         subtitle={week.subtitle}
-        switcherLabel={week.switcherLabel}
-        weekRange={week.weekRange}
-        statusDotClassName={week.statusDotClassName}
         hasPlan={week.hasPlan}
-        onPreviousWeek={() => onSelectWeek(week.previousWeekKey)}
-        onNextWeek={() => onSelectWeek(week.nextWeekKey)}
-        onOpenWeekPicker={weekPicker.onOpen}
         onPrint={onPrint}
         onEditWeek={onEditWeek}
         onPlanWeek={onPlanWeek}
@@ -106,8 +93,6 @@ export function WeekView({
           </div>
         </>
       )}
-
-      <WeekPickerDialog {...weekPicker} />
     </div>
   );
 }
