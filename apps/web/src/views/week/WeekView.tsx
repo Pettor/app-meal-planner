@@ -7,7 +7,7 @@ import { useWeekOverview } from "~/views/week/UseWeekOverview";
 import { WeekDayCard } from "~/views/week/WeekDayCard";
 import { WeekDraftBanner } from "~/views/week/WeekDraftBanner";
 import { WeekPageHeader } from "~/views/week/WeekPageHeader";
-import { WeekStatCard } from "~/views/week/WeekStatCard";
+import { WeekStatsBar } from "~/views/week/WeekStatsBar";
 
 export interface WeekViewProps {
   /** The week in view, keyed by its Monday (`YYYY-MM-DD`). */
@@ -74,16 +74,8 @@ export function WeekView({
 
       {week.hasPlan && (
         <>
-          <div className="mt-6.5 grid grid-cols-[repeat(auto-fit,minmax(12.5rem,1fr))] gap-3.5">
-            {week.stats.map((stat) => (
-              <WeekStatCard
-                key={stat.label}
-                label={stat.label}
-                value={stat.value}
-                note={stat.note}
-                accent={stat.accent}
-              />
-            ))}
+          <div className="mt-6.5">
+            <WeekStatsBar stats={week.stats} />
           </div>
 
           <div className="mt-4.5 grid grid-cols-[repeat(auto-fit,minmax(13.25rem,1fr))] gap-3.5">

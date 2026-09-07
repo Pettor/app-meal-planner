@@ -4,7 +4,8 @@ import { PLAN_DAY_ORDER } from "~/core/plan/PlanTypes";
 import type { PlanDayId, SavedPlan } from "~/core/plan/PlanTypes";
 import { addDays, formatWeekRange, isoWeekNumber, parseWeekKey, weekKeyOf, weekOffset } from "~/core/plan/PlanUtils";
 import type { Recipe } from "~/core/recipes/RecipeTypes";
-import type { WeekStatAccent } from "~/views/week/WeekStatCard";
+import { buildShoppingList } from "~/core/shopping/ShoppingUtils";
+import type { WeekStatTone } from "~/views/week/WeekStatsBar";
 
 export interface WeekMealViewModel {
   mealLabel: string;
@@ -29,9 +30,9 @@ export interface WeekDayViewModel {
 
 export interface WeekStatViewModel {
   label: string;
+  /** Already formatted for display, e.g. `"28"`, `"43%"` or `"35 min"`. */
   value: string;
-  note: string;
-  accent: WeekStatAccent;
+  tone: WeekStatTone;
 }
 
 export interface UseWeekOverviewResult {
@@ -85,10 +86,19 @@ export function useWeekOverview(
       : String(weekNumber);
 
   const filledSlots = plan ? plan.draft.slots.filter((slot) => slot.recipeId) : [];
+  /** The recipe behind every filled slot — one entry per meal, so repeats count twice. */
+  const plannedRecipes = filledSlots.flatMap((slot) => {
+    const recipe = recipes.find((candidate) => candidate.id === slot.recipeId);
+    return recipe ? [recipe] : [];
+  });
   const plateCount = filledSlots.reduce((total, slot) => total + slot.people, 0);
-  const vegetarianCount = filledSlots.filter((slot) =>
-    recipes.find((recipe) => recipe.id === slot.recipeId)?.tags.includes("vegetarian")
-  ).length;
+  const vegetarianCount = plannedRecipes.filter((recipe) => recipe.tags.includes("vegetarian")).length;
+  const distinctRecipeCount = new Set(plannedRecipes.map((recipe) => recipe.id)).size;
+  const averageCookMinutes = plannedRecipes.length
+    ? Math.round(plannedRecipes.reduce((total, recipe) => total + recipe.timeMinutes, 0) / plannedRecipes.length)
+    : 0;
+  /** Same roll-up the shopping list shows, so the two pages never disagree. */
+  const ingredientCount = buildShoppingList(plan, recipes).length;
 
   const mealsWord = intl.formatMessage({
     description: "UseWeekOverview: label - meals (lowercase)",
@@ -131,12 +141,7 @@ export function useWeekOverview(
             id: "wF9nyw",
           }),
           value: String(filledSlots.length),
-          note: intl.formatMessage({
-            description: "UseWeekOverview: stat note - meals",
-            defaultMessage: "across the week",
-            id: "QTJfGJ",
-          }),
-          accent: "accent",
+          tone: "accent",
         },
         {
           label: intl.formatMessage({
@@ -145,12 +150,7 @@ export function useWeekOverview(
             id: "KQh2NF",
           }),
           value: String(plateCount),
-          note: intl.formatMessage({
-            description: "UseWeekOverview: stat note - plates",
-            defaultMessage: "portions in total",
-            id: "vwEhWA",
-          }),
-          accent: "success",
+          tone: "sky",
         },
         {
           label: intl.formatMessage({
@@ -159,12 +159,41 @@ export function useWeekOverview(
             id: "xcITGP",
           }),
           value: filledSlots.length ? `${Math.round((vegetarianCount / filledSlots.length) * 100)}%` : "0%",
-          note: intl.formatMessage({
-            description: "UseWeekOverview: stat note - vegetarian",
-            defaultMessage: "of all meals",
-            id: "zIZybl",
+          tone: "success",
+        },
+        {
+          label: intl.formatMessage({
+            description: "UseWeekOverview: stat - cook time",
+            defaultMessage: "Cook time",
+            id: "KAsFW6",
           }),
-          accent: "violet",
+          value: intl.formatMessage(
+            {
+              description: "UseWeekOverview: stat value - average cook time in minutes",
+              defaultMessage: "{minutes} min",
+              id: "hzXPa0",
+            },
+            { minutes: averageCookMinutes }
+          ),
+          tone: "warning",
+        },
+        {
+          label: intl.formatMessage({
+            description: "UseWeekOverview: stat - distinct recipes",
+            defaultMessage: "Recipes",
+            id: "2tYNPg",
+          }),
+          value: String(distinctRecipeCount),
+          tone: "violet",
+        },
+        {
+          label: intl.formatMessage({
+            description: "UseWeekOverview: stat - ingredients",
+            defaultMessage: "Ingredients",
+            id: "ySpw27",
+          }),
+          value: String(ingredientCount),
+          tone: "danger",
         },
       ]
     : [];
