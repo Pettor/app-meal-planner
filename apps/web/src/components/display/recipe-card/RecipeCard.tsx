@@ -1,5 +1,5 @@
 import type { ReactElement } from "react";
-import { ClockIcon, PlusCircleIcon, TrashIcon, UserGroupIcon } from "@heroicons/react/24/outline";
+import { PlusCircleIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { Button, Card, Chip } from "@heroui/react";
 import { useIntl } from "react-intl";
 import { RecipePhoto } from "~/components/display/recipe-photo/RecipePhoto";
@@ -27,9 +27,26 @@ export function RecipeCard({ recipe, showSaveAction, onOpen, onSave, onRemove }:
       className="card-raise relative gap-0 overflow-hidden border border-transparent p-0 transition-all duration-200 hover:-translate-y-0.5"
       data-testid={`recipe-card__${recipe.id}`}
     >
-      <RecipePhoto photoUrl={recipe.photoUrl} alt={recipe.title} className="h-44" />
-      <Card.Content className="flex flex-col gap-2.5 p-4">
-        <div className="text-base leading-snug font-semibold text-pretty">{recipe.title}</div>
+      <RecipePhoto photoUrl={recipe.photoUrl} alt={recipe.title} className="h-49" />
+      <Card.Content className="flex flex-col gap-2.25 p-4">
+        <div className="text-lg leading-[1.25] font-semibold text-pretty">{recipe.title}</div>
+
+        <div className="text-default-500 text-sm">
+          {intl.formatMessage(
+            {
+              description: "RecipeCard: label - time, ingredient count and servings",
+              defaultMessage: "{minutes} minutes · {ingredients} ingredients · {servings} people",
+              id: "QEK0P4",
+            },
+            { minutes: recipe.timeMinutes, ingredients: recipe.ingredients.length, servings: recipe.servings }
+          )}
+        </div>
+
+        <div className="flex flex-wrap gap-1.5">
+          {recipe.tags.map((tag) => (
+            <TagChip key={tag} tag={tag} />
+          ))}
+        </div>
 
         <div className="flex items-center gap-2">
           <UserAvatar
@@ -39,37 +56,6 @@ export function RecipeCard({ recipe, showSaveAction, onOpen, onSave, onRemove }:
             size="xs"
           />
           <span className="text-default-500 text-xs">{recipe.author.name}</span>
-        </div>
-
-        <div className="flex flex-wrap gap-1.5">
-          {recipe.tags.map((tag) => (
-            <TagChip key={tag} tag={tag} />
-          ))}
-        </div>
-
-        <div className="text-default-500 flex items-center gap-3.5 text-xs">
-          <span className="inline-flex items-center gap-1.5">
-            <ClockIcon className="h-3.5 w-3.5" />
-            {intl.formatMessage(
-              {
-                description: "RecipeCard: label - cooking time",
-                defaultMessage: "{minutes} min",
-                id: "R3XziU",
-              },
-              { minutes: recipe.timeMinutes }
-            )}
-          </span>
-          <span className="inline-flex items-center gap-1.5">
-            <UserGroupIcon className="h-3.5 w-3.5" />
-            {intl.formatMessage(
-              {
-                description: "RecipeCard: label - servings",
-                defaultMessage: "{count} people",
-                id: "V1yKMr",
-              },
-              { count: recipe.servings }
-            )}
-          </span>
         </div>
       </Card.Content>
 

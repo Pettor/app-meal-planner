@@ -2,23 +2,39 @@ import type { ReactElement } from "react";
 import { useIntl } from "react-intl";
 import type { RecipeIngredient } from "~/core/recipes/RecipeTypes";
 import { formatAmount } from "~/core/recipes/RecipeUtils";
+import { RecipeDetailServingsStepper } from "~/views/recipe-detail/RecipeDetailServingsStepper";
 
 export interface RecipeDetailIngredientsProps {
   ingredients: RecipeIngredient[];
+  servings: number;
+  onIncreaseServings: () => void;
+  onDecreaseServings: () => void;
 }
 
-export function RecipeDetailIngredients({ ingredients }: RecipeDetailIngredientsProps): ReactElement {
+export function RecipeDetailIngredients({
+  ingredients,
+  servings,
+  onIncreaseServings,
+  onDecreaseServings,
+}: RecipeDetailIngredientsProps): ReactElement {
   const intl = useIntl();
 
   return (
     <div>
-      <h2 className="text-default-500 mb-3.5 text-xs font-semibold tracking-[0.09em] uppercase">
-        {intl.formatMessage({
-          description: "RecipeDetailIngredients: heading - ingredients",
-          defaultMessage: "Ingredients",
-          id: "+RhAgE",
-        })}
-      </h2>
+      <div className="mb-3.5 flex flex-wrap items-center justify-between gap-3">
+        <h2 className="text-xl font-semibold tracking-[-0.01em]">
+          {intl.formatMessage({
+            description: "RecipeDetailIngredients: heading - ingredients",
+            defaultMessage: "Ingredients",
+            id: "+RhAgE",
+          })}
+        </h2>
+        <RecipeDetailServingsStepper
+          servings={servings}
+          onIncrease={onIncreaseServings}
+          onDecrease={onDecreaseServings}
+        />
+      </div>
       <ul className="flex flex-col overflow-hidden rounded-lg">
         {ingredients.map((ingredient) => (
           <li

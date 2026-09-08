@@ -18,6 +18,7 @@ export interface RecipeStepDraft {
 
 export interface RecipeDraft {
   title: string;
+  description: string;
   servings: string;
   timeMinutes: string;
   photoUrl: string | null;
@@ -45,6 +46,7 @@ export function emptyStepDraft(): RecipeStepDraft {
 export function emptyRecipeDraft(): RecipeDraft {
   return {
     title: "",
+    description: "",
     servings: "4",
     timeMinutes: "30",
     photoUrl: null,
@@ -57,6 +59,7 @@ export function emptyRecipeDraft(): RecipeDraft {
 export function recipeToDraft(recipe: Recipe): RecipeDraft {
   return {
     title: recipe.title,
+    description: recipe.description ?? "",
     servings: String(recipe.servings),
     timeMinutes: String(recipe.timeMinutes),
     photoUrl: recipe.photoUrl,
@@ -69,6 +72,7 @@ export function recipeToDraft(recipe: Recipe): RecipeDraft {
 export function scannedRecipeToDraft(scanned: ScannedRecipe): RecipeDraft {
   return {
     title: scanned.title,
+    description: "",
     servings: String(scanned.servings),
     timeMinutes: String(scanned.timeMinutes),
     photoUrl: scanned.photoUrl,
@@ -90,6 +94,7 @@ function toIngredientDraft(ingredient: RecipeIngredient): RecipeIngredientDraft 
 /** Turns the edited draft back into the domain shape, dropping blank rows. */
 export function draftToRecipeFields(draft: RecipeDraft): {
   title: string;
+  description: string;
   servings: number;
   timeMinutes: number;
   photoUrl: string | null;
@@ -99,6 +104,7 @@ export function draftToRecipeFields(draft: RecipeDraft): {
 } {
   return {
     title: draft.title.trim(),
+    description: draft.description.trim(),
     servings: Number(draft.servings) || 1,
     timeMinutes: Number(draft.timeMinutes) || 0,
     photoUrl: draft.photoUrl,

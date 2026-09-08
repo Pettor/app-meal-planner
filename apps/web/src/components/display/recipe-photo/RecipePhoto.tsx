@@ -11,6 +11,8 @@ export interface RecipePhotoProps {
   placeholderClassName?: string;
   /** Rendered under the icon when there is no photo, e.g. an "Add a photo" prompt. */
   placeholderContent?: ReactNode;
+  /** Size of the placeholder icon. Bigger bands want a bigger glyph. */
+  iconClassName?: string;
 }
 
 /**
@@ -23,6 +25,7 @@ export function RecipePhoto({
   className,
   placeholderClassName,
   placeholderContent,
+  iconClassName,
 }: RecipePhotoProps): ReactElement {
   if (photoUrl) {
     return (
@@ -40,7 +43,7 @@ export function RecipePhoto({
         placeholderClassName ?? className
       )}
     >
-      <PhotoIcon className="h-7 w-7 opacity-55" />
+      <PhotoIcon className={clsx("opacity-55", iconClassName ?? "h-7 w-7")} />
       {placeholderContent}
     </div>
   );

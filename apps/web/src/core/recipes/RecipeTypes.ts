@@ -35,6 +35,8 @@ export interface RecipeIngredient {
 export interface Recipe {
   id: string;
   title: string;
+  /** A line or two on why the recipe is worth cooking. Optional — older recipes have none. */
+  description?: string;
   tags: string[];
   /** The number of people the ingredient amounts are written for. */
   servings: number;

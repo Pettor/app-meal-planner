@@ -35,7 +35,7 @@ export const Fullscreen: Story = {
 };
 
 export const WithoutPhoto: Story = {
-  args: { ...defaultArgs, recipe: SampleRecipes[1]! },
+  args: { ...defaultArgs, recipe: SampleRecipes[5]! },
   parameters: { viewport: { value: "full" } },
 };
 

@@ -263,10 +263,6 @@
     "defaultMessage": "+ Add step",
     "description": "RecipeEditStepsPanel: button - add step"
   },
-  "5gOH4I": {
-    "defaultMessage": "Cook for fewer people",
-    "description": "RecipeDetailToolbar: aria-label - fewer servings"
-  },
   "5onq0U": {
     "defaultMessage": "Tags",
     "description": "RecipeEditTagsPanel: label - tags"
@@ -290,10 +286,6 @@
   "6LEZuD": {
     "defaultMessage": "Random",
     "description": "PlanSlotRow: button - random"
-  },
-  "6Ln0VO": {
-    "defaultMessage": "written for {writtenFor}, scaled to {scaledTo}",
-    "description": "RecipeDetailHeader: label - written for and scaled to"
   },
   "6U5ByL": {
     "defaultMessage": "200",
@@ -334,6 +326,10 @@
   "8KSqzJ": {
     "defaultMessage": "Scan photo",
     "description": "RecipeEditScanBanner: button - scan photo"
+  },
+  "8QWH/2": {
+    "defaultMessage": "Edit",
+    "description": "RecipeDetailActions: button - edit"
   },
   "8bCmcG": {
     "defaultMessage": "Back",
@@ -446,10 +442,6 @@
   "BYRWhm": {
     "defaultMessage": "planned {date}",
     "description": "UseWeekOverview: status - planned on date"
-  },
-  "Bj+Y5j": {
-    "defaultMessage": "Cook for more people",
-    "description": "RecipeDetailToolbar: aria-label - more servings"
   },
   "BpvAE5": {
     "defaultMessage": "Recipes",
@@ -735,14 +727,6 @@
     "defaultMessage": "Theme: Light",
     "description": "CommandPaletteController: label - theme light command"
   },
-  "MpB6Zq": {
-    "defaultMessage": "Print",
-    "description": "RecipeDetailToolbar: button - print"
-  },
-  "MqxgNq": {
-    "defaultMessage": "{minutes} minutes",
-    "description": "RecipeDetailHeader: label - cooking time"
-  },
   "MvPzec": {
     "defaultMessage": "Cancel",
     "description": "LoadWeekDialog: button - cancel"
@@ -767,6 +751,10 @@
     "defaultMessage": "Follow",
     "description": "ProfileView: button - start following"
   },
+  "NNM8UP": {
+    "defaultMessage": "Remove",
+    "description": "RecipeDetailActions: button - remove"
+  },
   "NWkWOT": {
     "defaultMessage": "Sign Up",
     "description": "SignUpPageRoute: title - browser tab"
@@ -778,6 +766,14 @@
   "NiU4SE": {
     "defaultMessage": "Your own recipes. These are what the planner draws from.",
     "description": "RecipeLibraryPageHeader: body - own recipes subtitle"
+  },
+  "NnC3fA": {
+    "defaultMessage": "{count} ingredients",
+    "description": "RecipeDetailStats: label - ingredient count"
+  },
+  "NwfLZa": {
+    "defaultMessage": "{count} people",
+    "description": "RecipeDetailServingsStepper: label - servings"
   },
   "NxEir8": {
     "defaultMessage": "Good",
@@ -835,6 +831,10 @@
     "defaultMessage": "Ready to work offline",
     "description": "PwaOfflineDialog: toast - ready to work offline"
   },
+  "QEK0P4": {
+    "defaultMessage": "{minutes} minutes · {ingredients} ingredients · {servings} people",
+    "description": "RecipeCard: label - time, ingredient count and servings"
+  },
   "QJ8Qdm": {
     "defaultMessage": "Settings navigation",
     "description": "SettingsModal: aria-label - settings navigation"
@@ -858,10 +858,6 @@
   "R366Cn": {
     "defaultMessage": "This",
     "description": "UseWeekOverview: heading - this"
-  },
-  "R3XziU": {
-    "defaultMessage": "{minutes} min",
-    "description": "RecipeCard: label - cooking time"
   },
   "RCtY7O": {
     "defaultMessage": "Navigation",
@@ -903,6 +899,10 @@
     "defaultMessage": "Reroll",
     "description": "PlanSlotRow: button - reroll"
   },
+  "S3t+X9": {
+    "defaultMessage": "Cook for more people",
+    "description": "RecipeDetailServingsStepper: aria-label - more servings"
+  },
   "S6tf2s": {
     "defaultMessage": "Light, dark, or follow the operating system.",
     "description": "SettingsModal: body - appearance section purpose"
@@ -931,13 +931,13 @@
     "defaultMessage": "Incorrect username or password.",
     "description": "LoginRoute: error - invalid credentials (401/403)"
   },
+  "SsaGTQ": {
+    "defaultMessage": "Print",
+    "description": "RecipeDetailActions: button - print"
+  },
   "T8YZ5k": {
     "defaultMessage": "Something went wrong. Please try again.",
     "description": "ForgotPasswordRoute: toast - generic error"
-  },
-  "TGoMEm": {
-    "defaultMessage": "Save to my recipes",
-    "description": "RecipeDetailToolbar: button - save to my recipes"
   },
   "TLMnF1": {
     "defaultMessage": "Search recipes",
@@ -1015,14 +1015,6 @@
     "defaultMessage": "In your recipes",
     "description": "RecipeCard: chip - already saved"
   },
-  "V1yKMr": {
-    "defaultMessage": "{count} people",
-    "description": "RecipeCard: label - servings"
-  },
-  "V4eYMP": {
-    "defaultMessage": "Remove",
-    "description": "RecipeDetailToolbar: button - remove"
-  },
   "VI9oEr": {
     "defaultMessage": "Recipe",
     "description": "RecipeDetailPageRoute: title - browser tab"
@@ -1070,10 +1062,6 @@
   "WMIsMz": {
     "defaultMessage": "A new version of {appName} is available",
     "description": "PwaUpdateDialog: toast - update available"
-  },
-  "WMX+ul": {
-    "defaultMessage": "Edit",
-    "description": "RecipeDetailToolbar: button - edit"
   },
   "WNIGvz": {
     "defaultMessage": "Search recipes",
@@ -1151,6 +1139,10 @@
     "defaultMessage": "The service is temporarily unavailable. Please try again later.",
     "description": "ForgotPasswordRoute: toast - server error (5xx)"
   },
+  "YSAQxA": {
+    "defaultMessage": "One or two lines on what makes this one worth cooking",
+    "description": "RecipeEditDetailsPanel: placeholder - short description"
+  },
   "YfA5jn": {
     "defaultMessage": "Friends",
     "description": "NavMenuItems: menu-item - community (short, mobile tab bar)"
@@ -1174,6 +1166,10 @@
   "ZO5hxq": {
     "defaultMessage": "recommended a week",
     "description": "UseCommunityCards: label - they recommended a week"
+  },
+  "ZQbRf4": {
+    "defaultMessage": "Short description",
+    "description": "RecipeEditDetailsPanel: label - short description"
   },
   "Zi72Eh": {
     "defaultMessage": "Thu",
@@ -1222,6 +1218,10 @@
   "bMWNs+": {
     "defaultMessage": "Mark as planned",
     "description": "WeekDraftBanner: button - mark as planned"
+  },
+  "bR5/Qd": {
+    "defaultMessage": "{minutes} minutes",
+    "description": "RecipeDetailStats: label - cooking time"
   },
   "bVSFFb": {
     "defaultMessage": "The service is temporarily unavailable. Please try again later.",
@@ -1382,10 +1382,6 @@
   "hladjf": {
     "defaultMessage": "You wrote this one, so removing it deletes it for good. It will also be cleared from any planned day that used it.",
     "description": "RecipeLibraryView: body - delete confirmation"
-  },
-  "hoOxHk": {
-    "defaultMessage": "Back",
-    "description": "RecipeDetailToolbar: button - back"
   },
   "hr8Rbe": {
     "defaultMessage": "Create \"{tag}\"",
@@ -1683,6 +1679,10 @@
     "defaultMessage": "Previous month",
     "description": "WeekPickerDialog: aria-label - previous month"
   },
+  "pKTw06": {
+    "defaultMessage": "Save to my recipes",
+    "description": "RecipeDetailActions: button - save to my recipes"
+  },
   "pPj4qN": {
     "defaultMessage": "About",
     "description": "SettingsModal: tab - about"
@@ -1699,6 +1699,10 @@
     "defaultMessage": "Use this recipe",
     "description": "RecipeScanDialog: button - use this recipe"
   },
+  "qH944z": {
+    "defaultMessage": "Recommend",
+    "description": "RecipeDetailActions: button - recommend"
+  },
   "qOKlGC": {
     "defaultMessage": "The link only works once, so open it on the device you want to sign in on.",
     "description": "ForgotPasswordView: body - reset link sent"
@@ -1710,10 +1714,6 @@
   "r+2Y3i": {
     "defaultMessage": "Saved to your recipes.",
     "description": "UseInboxRoute: toast - recipe saved from a recommendation"
-  },
-  "r5KedM": {
-    "defaultMessage": "Recommend",
-    "description": "RecipeDetailToolbar: button - recommend"
   },
   "rFAApu": {
     "defaultMessage": "required",
@@ -1746,6 +1746,10 @@
   "sHH80Y": {
     "defaultMessage": "exactly",
     "description": "UsePlanWizard: quota mode - exactly"
+  },
+  "sHelF7": {
+    "defaultMessage": "Cook for fewer people",
+    "description": "RecipeDetailServingsStepper: aria-label - fewer servings"
   },
   "sP6/O4": {
     "defaultMessage": "Homepage",
@@ -1963,6 +1967,10 @@
     "defaultMessage": "Recipe",
     "description": "RecipeLibraryPageHeader: heading - title prefix"
   },
+  "zMq0kL": {
+    "defaultMessage": "Back",
+    "description": "RecipeDetailView: button - back"
+  },
   "zRyd/9": {
     "defaultMessage": "Reroll",
     "description": "PlanSlotCard: button - reroll"
@@ -1978,9 +1986,5 @@
   "ztO1kU": {
     "defaultMessage": "Pick the tags this week should be built around.",
     "description": "PlanView: body - browse quota tags dialog description"
-  },
-  "zyHIai": {
-    "defaultMessage": "{count} people",
-    "description": "RecipeDetailToolbar: label - servings"
   }
 }
