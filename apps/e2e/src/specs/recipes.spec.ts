@@ -17,7 +17,7 @@ test.describe("recipes.library", () => {
   test("filters the cook's own pool by search and by tag", async ({ page }) => {
     await gotoLibrary(page);
 
-    // The library opens on "Mine" — the recipes the planner draws from.
+    // The library shows the cook's own pool — the recipes the planner draws from.
     await expect(page.getByTestId("recipe-card__r1")).toBeVisible();
     await expect(page.getByTestId("recipe-card__r3")).toBeVisible();
 
@@ -46,7 +46,9 @@ test.describe("recipes.library", () => {
   test("saves a community recipe into the cook's own pool", async ({ page }) => {
     await gotoLibrary(page);
 
-    await page.getByRole("button", { name: "Everyone", exact: true }).click();
+    // The pool holds only the cook's own recipes — everyone else's live in the community.
+    await expect(page.getByTestId("recipe-card__c1")).toBeHidden();
+    await page.getByTestId("recipe-library__browse-community").click();
 
     // Someone else's recipe is offered with a save action rather than a remove one.
     const save = page.getByTestId("recipe-card__save--c1");
@@ -57,7 +59,7 @@ test.describe("recipes.library", () => {
     await expect(page.getByTestId("recipe-card__c1").getByText("In your recipes")).toBeVisible();
 
     // And it is now part of the cook's own pool.
-    await page.getByRole("button", { name: "Mine", exact: true }).click();
+    await page.goBack();
     await expect(page.getByTestId("recipe-card__c1")).toBeVisible();
   });
 

@@ -43,6 +43,10 @@
     "defaultMessage": "Start planning",
     "description": "SignUpView: heading - start planning"
   },
+  "/GllmQ": {
+    "defaultMessage": "Edit default tags",
+    "description": "RecipeLibraryTagFilterRow: button - edit default tags"
+  },
   "/IQZ4I": {
     "defaultMessage": "Shared weeks ({count})",
     "description": "ProfileView: tab - shared weeks, with a count"
@@ -151,10 +155,6 @@
     "defaultMessage": "Still a draft. Nothing is locked in and it stays out of the way until you mark it planned.",
     "description": "WeekDraftBanner: body - draft note"
   },
-  "2fRQMt": {
-    "defaultMessage": "Every recipe shared in the community. Save the ones you want into your own pool.",
-    "description": "RecipeLibraryPageHeader: body - community recipes subtitle"
-  },
   "2tYNPg": {
     "defaultMessage": "Recipes",
     "description": "UseWeekOverview: stat - distinct recipes"
@@ -198,6 +198,10 @@
   "40q1ez": {
     "defaultMessage": "filled",
     "description": "UseWeekPicker: label - filled"
+  },
+  "41F/St": {
+    "defaultMessage": "Recipes",
+    "description": "CommunityView: tab - every recipe shared in the community"
   },
   "4HkS5l": {
     "defaultMessage": "{stepPrefix} {step} / 4 · {relative}",
@@ -291,6 +295,10 @@
     "defaultMessage": "Random",
     "description": "PlanSlotRow: button - random"
   },
+  "6T71vw": {
+    "defaultMessage": "{shown} of {total, plural, one {# recipe} other {# recipes}}",
+    "description": "RecipeLibraryFindPanel: label - how many recipes are showing"
+  },
   "6U5ByL": {
     "defaultMessage": "200",
     "description": "RecipeEditIngredientsPanel: placeholder - quantity example"
@@ -347,6 +355,10 @@
     "defaultMessage": "Follow",
     "description": "PersonCard: button - start following this person"
   },
+  "8ntRnK": {
+    "defaultMessage": "Clear",
+    "description": "RecipeLibraryTagFilterRow: button - clear the tag filters"
+  },
   "9/X3Xw": {
     "defaultMessage": "Log out",
     "description": "CommandPaletteController: label - logout command"
@@ -358,6 +370,10 @@
   "9HQ90e": {
     "defaultMessage": "I agree to the terms and privacy policy.",
     "description": "SignUpForm: label - terms and privacy consent checkbox"
+  },
+  "9IUKsT": {
+    "defaultMessage": "No recipes match that search.",
+    "description": "CommunityRecipesPanel: body - no recipes match"
   },
   "9Kzw2T": {
     "defaultMessage": "Method",
@@ -415,6 +431,10 @@
     "defaultMessage": "Settings",
     "description": "SettingsModal: heading - title"
   },
+  "AAO1tx": {
+    "defaultMessage": "e.g. lasagna, soup, pancakes",
+    "description": "RecipeLibraryFindPanel: placeholder - search recipes"
+  },
   "AJfD1x": {
     "defaultMessage": "Fewer {tag}",
     "description": "PlanQuotasStepPanel: aria-label - decrease quota"
@@ -423,25 +443,25 @@
     "defaultMessage": "the week",
     "description": "PlanWizardHeader: heading - title accent"
   },
-  "AcHbon": {
-    "defaultMessage": "More tags",
-    "description": "RecipeLibraryFilterBar: button - browse the full tag catalogue"
-  },
   "AfOV1V": {
     "defaultMessage": "Strong",
     "description": "PasswordStrength: label - strong password"
+  },
+  "Ar+C9+": {
+    "defaultMessage": "Looking for more recipes?",
+    "description": "RecipeLibraryFindPanel: label - looking for more recipes"
   },
   "AtUxS4": {
     "defaultMessage": "Set quotas — at least two vegetarian, fish once, nothing over 40 minutes — and let the planner fill the week around them.",
     "description": "AuthPromoPanel: body - tag quotas feature"
   },
+  "Au7aoJ": {
+    "defaultMessage": "Search by recipe name, or narrow it down by tag below.",
+    "description": "RecipeLibraryFindPanel: body - how to find a recipe"
+  },
   "BCD2Qy": {
     "defaultMessage": "Could not parse that JSON.",
     "description": "SettingsDataSection: status - json could not be parsed"
-  },
-  "BSVHvm": {
-    "defaultMessage": "Search recipes",
-    "description": "RecipeLibraryFilterBar: aria-label - search recipes"
   },
   "BYRWhm": {
     "defaultMessage": "planned {date}",
@@ -514,10 +534,6 @@
   "Eb7+KN": {
     "defaultMessage": "People",
     "description": "CommunityView: tab - the people in the community"
-  },
-  "F5XChG": {
-    "defaultMessage": "Clear filters",
-    "description": "RecipeLibraryFilterBar: button - clear the tag filters"
   },
   "FA/Y+P": {
     "defaultMessage": "This week",
@@ -595,6 +611,10 @@
     "defaultMessage": "Remove {tag} quota",
     "description": "PlanQuotasStepPanel: aria-label - remove quota"
   },
+  "HMSbos": {
+    "defaultMessage": "No default tags yet.",
+    "description": "RecipeLibraryTagFilterRow: label - no default tags yet"
+  },
   "HW3ERD": {
     "defaultMessage": "Tags do the deciding",
     "description": "AuthPromoPanel: heading - tag quotas feature"
@@ -626,6 +646,10 @@
   "IdCF39": {
     "defaultMessage": "Recommendations sent straight to you.",
     "description": "InboxView: subtitle - what the inbox holds"
+  },
+  "JM61kV": {
+    "defaultMessage": "Filter by tag",
+    "description": "RecipeLibraryTagFilterRow: heading - filter by tag"
   },
   "JN4eco": {
     "defaultMessage": "{count, plural, one {# week} other {# weeks}}",
@@ -695,6 +719,14 @@
     "defaultMessage": "Check your inbox",
     "description": "ForgotPasswordView: heading - check your inbox"
   },
+  "KqGSN8": {
+    "defaultMessage": "e.g. lasagna, soup, pancakes",
+    "description": "CommunityRecipesPanel: placeholder - search recipes"
+  },
+  "Kx3M+D": {
+    "defaultMessage": "Your own recipes. These are what the planner draws from.",
+    "description": "RecipeLibraryPageHeader: body - subtitle"
+  },
   "L8K0gq": {
     "defaultMessage": "list",
     "description": "UseShoppingOverview: heading accent - list"
@@ -722,6 +754,10 @@
   "MXHPQd": {
     "defaultMessage": "Tags and quotas",
     "description": "UsePlanWizard: step name - tags and quotas"
+  },
+  "MXh8Tp": {
+    "defaultMessage": "Browse the community",
+    "description": "RecipeLibraryFindPanel: button - browse the community"
   },
   "MXiQP4": {
     "defaultMessage": "GitHub",
@@ -770,10 +806,6 @@
   "Ndk+G7": {
     "defaultMessage": "Swap",
     "description": "PlanSlotCard: button - swap"
-  },
-  "NiU4SE": {
-    "defaultMessage": "Your own recipes. These are what the planner draws from.",
-    "description": "RecipeLibraryPageHeader: body - own recipes subtitle"
   },
   "NwfLZa": {
     "defaultMessage": "{count} people",
@@ -927,6 +959,10 @@
     "defaultMessage": "Shared weeks",
     "description": "CommunityView: tab - every shared week"
   },
+  "SVpXlA": {
+    "defaultMessage": "Search recipes",
+    "description": "RecipeLibraryFindPanel: aria-label - search recipes"
+  },
   "SoG8FD": {
     "defaultMessage": "Incorrect username or password.",
     "description": "LoginRoute: error - invalid credentials (401/403)"
@@ -938,10 +974,6 @@
   "T8YZ5k": {
     "defaultMessage": "Something went wrong. Please try again.",
     "description": "ForgotPasswordRoute: toast - generic error"
-  },
-  "TLMnF1": {
-    "defaultMessage": "Search recipes",
-    "description": "RecipeLibraryFilterBar: placeholder - search recipes"
   },
   "TMVAnA": {
     "defaultMessage": "Method",
@@ -970,6 +1002,10 @@
   "TsXLmk": {
     "defaultMessage": "Inbox",
     "description": "NavbarContent: menu-item - open the recommendations inbox"
+  },
+  "TszJF4": {
+    "defaultMessage": "Search community recipes",
+    "description": "CommunityRecipesPanel: aria-label - search recipes"
   },
   "TtuPpt": {
     "defaultMessage": "No commands found",
@@ -1138,6 +1174,10 @@
   "YH/zTJ": {
     "defaultMessage": "The service is temporarily unavailable. Please try again later.",
     "description": "ForgotPasswordRoute: toast - server error (5xx)"
+  },
+  "YR8Z0n": {
+    "defaultMessage": "· No tag filter active",
+    "description": "RecipeLibraryFindPanel: label - no tag filter active"
   },
   "YSAQxA": {
     "defaultMessage": "One or two lines on what makes this one worth cooking",
@@ -1310,6 +1350,10 @@
   "ebGwkW": {
     "defaultMessage": "Scan a recipe with AI",
     "description": "RecipeEditScanBanner: heading - scan a recipe"
+  },
+  "enU9AY": {
+    "defaultMessage": "Every recipe shared in the community",
+    "description": "CommunityRecipesPanel: heading - community recipes"
   },
   "euXWAB": {
     "defaultMessage": "Print list",
@@ -1507,6 +1551,10 @@
     "defaultMessage": "Save week",
     "description": "UsePlanWizard: button - save week"
   },
+  "l/VXob": {
+    "defaultMessage": "Save the ones you want into your own pool. Only your own pool feeds the planner.",
+    "description": "CommunityRecipesPanel: body - community recipes"
+  },
   "lARzdN": {
     "defaultMessage": "Choose a recipe photo",
     "description": "RecipeEditPhotoField: aria-label - choose a photo"
@@ -1542,10 +1590,6 @@
   "lnYkRl": {
     "defaultMessage": "Dinner",
     "description": "PlanDayLabels: meal - dinner"
-  },
-  "lpl1YV": {
-    "defaultMessage": "Mine",
-    "description": "RecipeLibraryPageHeader: scope - mine"
   },
   "ly8KEp": {
     "defaultMessage": "Load this week?",
@@ -1707,6 +1751,10 @@
     "defaultMessage": "showing {shown} of {total} recipes",
     "description": "UsePlanWizard: label - showing n of m recipes"
   },
+  "qyOrax": {
+    "defaultMessage": "What are you looking for?",
+    "description": "RecipeLibraryFindPanel: heading - find a recipe"
+  },
   "r+2Y3i": {
     "defaultMessage": "Saved to your recipes.",
     "description": "UseInboxRoute: toast - recipe saved from a recommendation"
@@ -1718,6 +1766,10 @@
   "rFtjCS": {
     "defaultMessage": "Create an account",
     "description": "LoginView: link - create an account"
+  },
+  "rSPz2r": {
+    "defaultMessage": "Pick the tags you filter by most. They stay on the pool as quick filters.",
+    "description": "RecipeLibraryView: body - default tag browser description"
   },
   "riNe1w": {
     "defaultMessage": "{days}d ago",
@@ -1751,6 +1803,10 @@
     "defaultMessage": "Homepage",
     "description": "AuthenticatedLayout: aria-label - homepage link"
   },
+  "sVjIK5": {
+    "defaultMessage": "Your default tags. A recipe must carry every tag you pick.",
+    "description": "RecipeLibraryTagFilterRow: body - filter by tag"
+  },
   "seJTd5": {
     "defaultMessage": "Saved as a draft.",
     "description": "UsePlanRoute: toast - week saved as draft"
@@ -1758,6 +1814,10 @@
   "sscg0N": {
     "defaultMessage": "Demo build. Any valid email and a password of at least 8 characters will get you in.",
     "description": "LoginView: body - demo mode banner"
+  },
+  "sudj29": {
+    "defaultMessage": "· {count, plural, one {# tag filter} other {# tag filters}} active",
+    "description": "RecipeLibraryFindPanel: label - tag filters active"
   },
   "tGl7PF": {
     "defaultMessage": "Sign in",
@@ -1891,9 +1951,9 @@
     "defaultMessage": "you@example.com",
     "description": "LoginForm: placeholder - email input"
   },
-  "yEYGFQ": {
-    "defaultMessage": "Everyone",
-    "description": "RecipeLibraryPageHeader: scope - everyone"
+  "y5xhNU": {
+    "defaultMessage": "More tags",
+    "description": "RecipeLibraryTagFilterRow: button - browse the full tag catalogue"
   },
   "yJcQt1": {
     "defaultMessage": "Time (minutes)",

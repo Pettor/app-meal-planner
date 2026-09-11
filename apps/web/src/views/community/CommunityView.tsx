@@ -6,6 +6,7 @@ import type { Recipe } from "~/core/recipes/RecipeTypes";
 import { CommunityFeedPanel } from "~/views/community/CommunityFeedPanel";
 import { CommunityPageHeader } from "~/views/community/CommunityPageHeader";
 import { CommunityPeoplePanel } from "~/views/community/CommunityPeoplePanel";
+import { CommunityRecipesPanel } from "~/views/community/CommunityRecipesPanel";
 import { CommunityWeeksPanel } from "~/views/community/CommunityWeeksPanel";
 
 export interface CommunityViewProps {
@@ -20,6 +21,7 @@ export interface CommunityViewProps {
   onToggleFollow: (personId: string) => void;
   onOpenProfile: (personId: string) => void;
   onOpenRecipe: (recipeId: string) => void;
+  onSaveRecipe: (recipeId: string) => void;
   onOpenInbox: () => void;
   onRecommendWeek: (week: SharedWeek) => void;
   onRecommendRecipe: (recipe: Recipe) => void;
@@ -38,6 +40,7 @@ export function CommunityView({
   onToggleFollow,
   onOpenProfile,
   onOpenRecipe,
+  onSaveRecipe,
   onOpenInbox,
   onRecommendWeek,
   onRecommendRecipe,
@@ -52,6 +55,14 @@ export function CommunityView({
         description: "CommunityView: tab - the activity feed",
         defaultMessage: "Feed",
         id: "0L52dg",
+      }),
+    },
+    {
+      id: "recipes",
+      label: intl.formatMessage({
+        description: "CommunityView: tab - every recipe shared in the community",
+        defaultMessage: "Recipes",
+        id: "41F/St",
       }),
     },
     {
@@ -99,6 +110,10 @@ export function CommunityView({
           onRecommendRecipe={onRecommendRecipe}
           onUseWeek={onUseWeek}
         />
+      )}
+
+      {tab === "recipes" && (
+        <CommunityRecipesPanel recipes={recipes} onOpenRecipe={onOpenRecipe} onSaveRecipe={onSaveRecipe} />
       )}
 
       {tab === "people" && (

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { SampleScannedRecipe, SampleTagCatalogue, SuggestedTags } from "~/core/recipes/RecipeSampleData";
 import { useRecipes } from "~/core/recipes/UseRecipes";
+import { useDefaultTags } from "~/core/settings/UseDefaultTags";
 import { emptyRecipeDraft } from "~/views/recipe-edit/RecipeDraft";
 import type { RecipeEditViewProps } from "~/views/recipe-edit/RecipeEditView";
 import type { RecipeLibraryViewProps } from "~/views/recipe-library/RecipeLibraryView";
@@ -20,20 +21,26 @@ export interface UseRecipeLibraryRouteResult {
  *
  * "Add recipe" opens as a modal over the library (matching the design)
  * rather than navigating to a separate page, so its open state lives here.
+ *
+ * The pool is only the cook's own recipes; everyone else's are reached through
+ * the community, which is where saving one into the pool happens.
  */
 export function useRecipeLibraryRoute(): UseRecipeLibraryRouteResult {
   const navigate = useNavigate();
   const [isAddRecipeOpen, setIsAddRecipeOpen] = useState(false);
-  const { recipes, saveRecipe, removeRecipe } = useRecipes();
+  const { recipes, removeRecipe } = useRecipes();
+  const { pinnedTags, togglePinnedTag } = useDefaultTags();
 
   return {
     library: {
       recipes,
       tagCatalogue: SampleTagCatalogue,
+      pinnedTags,
+      onTogglePinnedTag: togglePinnedTag,
       onOpenRecipe: (recipeId) => void navigate({ to: "/recipes/$recipeId", params: { recipeId } }),
       onAddRecipe: () => setIsAddRecipeOpen(true),
-      onSaveRecipe: saveRecipe,
       onRemoveRecipe: removeRecipe,
+      onBrowseCommunity: () => void navigate({ to: "/community", search: { tab: "recipes" } }),
     },
     addRecipeModal: {
       isOpen: isAddRecipeOpen,

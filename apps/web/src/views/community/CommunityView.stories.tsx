@@ -34,6 +34,7 @@ const defaultArgs = {
   onToggleFollow: fn(),
   onOpenProfile: fn(),
   onOpenRecipe: fn(),
+  onSaveRecipe: fn(),
   onOpenInbox: fn(),
   onRecommendWeek: fn(),
   onRecommendRecipe: fn(),
@@ -44,12 +45,24 @@ export const Feed: Story = {
   args: defaultArgs,
 };
 
+export const Recipes: Story = {
+  args: { ...defaultArgs, tab: "recipes" },
+};
+
 export const People: Story = {
   args: { ...defaultArgs, tab: "people" },
 };
 
 export const SharedWeeks: Story = {
   args: { ...defaultArgs, tab: "weeks" },
+};
+
+export const SavesCommunityRecipe: Story = {
+  args: { ...defaultArgs, tab: "recipes" },
+  play: async ({ args, canvas, userEvent }) => {
+    await userEvent.click(canvas.getAllByRole("button", { name: "Save to my recipes" })[0]!);
+    await expect(args.onSaveRecipe).toHaveBeenCalled();
+  },
 };
 
 export const OpensInbox: Story = {

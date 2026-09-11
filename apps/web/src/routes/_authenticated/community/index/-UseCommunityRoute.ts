@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "@tanstack/react-router";
+import { getRouteApi, useNavigate } from "@tanstack/react-router";
 import { useSetAtom } from "jotai";
 import { loadWeekTargetAtom, recommendTargetAtom } from "~/core/community/CommunityAtoms";
 import type { CommunityTab, SharedWeek } from "~/core/community/CommunityTypes";
@@ -7,6 +7,8 @@ import { useCommunity } from "~/core/community/UseCommunity";
 import type { Recipe } from "~/core/recipes/RecipeTypes";
 import { useRecipes } from "~/core/recipes/UseRecipes";
 import type { CommunityViewProps } from "~/views/community/CommunityView";
+
+const route = getRouteApi("/_authenticated/community/");
 
 /**
  * Wires the community page to the follow list and to navigation.
@@ -20,9 +22,11 @@ export function useCommunityRoute(): CommunityViewProps {
   const { people, weeks, following, toggleFollow, personById } = useCommunity();
   const setRecommendTarget = useSetAtom(recommendTargetAtom);
   const setLoadWeekTarget = useSetAtom(loadWeekTargetAtom);
-  const { recipes } = useRecipes();
+  const { recipes, saveRecipe } = useRecipes();
 
-  const [tab, setTab] = useState<CommunityTab>("feed");
+  // `?tab=` picks the opening section; after that the choice is local to the visit.
+  const { tab: initialTab } = route.useSearch();
+  const [tab, setTab] = useState<CommunityTab>(initialTab ?? "feed");
 
   return {
     tab,
@@ -35,6 +39,7 @@ export function useCommunityRoute(): CommunityViewProps {
     onToggleFollow: toggleFollow,
     onOpenProfile: (personId: string) => void navigate({ to: "/community/$personId", params: { personId } }),
     onOpenRecipe: (recipeId: string) => void navigate({ to: "/recipes/$recipeId", params: { recipeId } }),
+    onSaveRecipe: saveRecipe,
     onOpenInbox: () => void navigate({ to: "/community/inbox" }),
     onRecommendWeek: (week: SharedWeek) => setRecommendTarget({ kind: "week", refId: week.id, title: week.title }),
     onRecommendRecipe: (recipe: Recipe) =>
