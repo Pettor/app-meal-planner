@@ -1,10 +1,10 @@
 import type { ReactElement } from "react";
 import { Chip, Link } from "@heroui/react";
 import { useIntl } from "react-intl";
+import { RecipeStatStrip } from "~/components/display/recipe-stat-strip/RecipeStatStrip";
 import { TagChip } from "~/components/display/tag-chip/TagChip";
 import { UserAvatar } from "~/components/display/user-avatar/UserAvatar";
 import type { Recipe } from "~/core/recipes/RecipeTypes";
-import { RecipeDetailStats } from "~/views/recipe-detail/RecipeDetailStats";
 
 export interface RecipeDetailHeaderProps {
   recipe: Recipe;
@@ -48,7 +48,7 @@ export function RecipeDetailHeader({ recipe, onOpenAuthor }: RecipeDetailHeaderP
       </div>
 
       <div className="mb-5.5">
-        <RecipeDetailStats timeMinutes={recipe.timeMinutes} ingredientCount={recipe.ingredients.length} />
+        <RecipeStatStrip timeMinutes={recipe.timeMinutes} ingredientCount={recipe.ingredients.length} />
       </div>
 
       {recipe.description && (

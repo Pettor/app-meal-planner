@@ -3,6 +3,7 @@ import { PlusCircleIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { Button, Card, Chip } from "@heroui/react";
 import { useIntl } from "react-intl";
 import { RecipePhoto } from "~/components/display/recipe-photo/RecipePhoto";
+import { RecipeStatStrip } from "~/components/display/recipe-stat-strip/RecipeStatStrip";
 import { TagChip } from "~/components/display/tag-chip/TagChip";
 import { UserAvatar } from "~/components/display/user-avatar/UserAvatar";
 import type { Recipe } from "~/core/recipes/RecipeTypes";
@@ -29,33 +30,29 @@ export function RecipeCard({ recipe, showSaveAction, onOpen, onSave, onRemove }:
     >
       <RecipePhoto photoUrl={recipe.photoUrl} alt={recipe.title} className="h-49" />
       <Card.Content className="flex flex-col gap-2.25 p-4">
-        <div className="text-lg leading-[1.25] font-semibold text-pretty">{recipe.title}</div>
+        <div className="text-lg leading-[1.2] font-bold tracking-[-0.02em] text-pretty">{recipe.title}</div>
 
-        <div className="text-default-500 text-sm">
-          {intl.formatMessage(
-            {
-              description: "RecipeCard: label - time, ingredient count and servings",
-              defaultMessage: "{minutes} minutes · {ingredients} ingredients · {servings} people",
-              id: "QEK0P4",
-            },
-            { minutes: recipe.timeMinutes, ingredients: recipe.ingredients.length, servings: recipe.servings }
-          )}
-        </div>
-
-        <div className="flex flex-wrap gap-1.5">
-          {recipe.tags.map((tag) => (
-            <TagChip key={tag} tag={tag} />
-          ))}
-        </div>
-
-        <div className="flex items-center gap-2">
+        <div className="flex min-w-0 items-center gap-2 text-sm">
           <UserAvatar
             name={recipe.author.name}
             avatarUrl={recipe.author.avatarUrl}
             color={recipe.author.color}
             size="xs"
           />
-          <span className="text-default-500 text-xs">{recipe.author.name}</span>
+          <span className="truncate font-medium">{recipe.author.name}</span>
+          <span className="text-default-500 truncate">{recipe.author.handle}</span>
+        </div>
+
+        {recipe.description && (
+          <p className="text-default-500 line-clamp-2 text-sm leading-[1.55] text-pretty">{recipe.description}</p>
+        )}
+
+        <RecipeStatStrip timeMinutes={recipe.timeMinutes} ingredientCount={recipe.ingredients.length} layout="inline" />
+
+        <div className="flex flex-wrap gap-1.5">
+          {recipe.tags.map((tag) => (
+            <TagChip key={tag} tag={tag} />
+          ))}
         </div>
       </Card.Content>
 
@@ -114,7 +111,8 @@ export function RecipeCard({ recipe, showSaveAction, onOpen, onSave, onRemove }:
             <Button
               variant="ghost"
               size="sm"
-              className="text-danger -ml-3"
+              fullWidth
+              className="text-danger border-danger/40 border"
               onPress={() => onRemove?.(recipe.id)}
               data-testid={`recipe-card__remove--${recipe.id}`}
             >

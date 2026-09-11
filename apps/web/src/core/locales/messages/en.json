@@ -119,6 +119,10 @@
     "defaultMessage": ",",
     "description": "UsePlanWizard: separator - list join"
   },
+  "1slQ/g": {
+    "defaultMessage": "{count} ingredients",
+    "description": "RecipeStatStrip: label - ingredient count"
+  },
   "1vJ1Jw": {
     "defaultMessage": "Next month",
     "description": "WeekPickerDialog: aria-label - next month"
@@ -503,6 +507,10 @@
     "defaultMessage": "More people on {day}",
     "description": "PlanDaysStepPanel: aria-label - more people"
   },
+  "ESAh3g": {
+    "defaultMessage": "{minutes} minutes",
+    "description": "RecipeStatStrip: label - cooking time"
+  },
   "Eb7+KN": {
     "defaultMessage": "People",
     "description": "CommunityView: tab - the people in the community"
@@ -767,10 +775,6 @@
     "defaultMessage": "Your own recipes. These are what the planner draws from.",
     "description": "RecipeLibraryPageHeader: body - own recipes subtitle"
   },
-  "NnC3fA": {
-    "defaultMessage": "{count} ingredients",
-    "description": "RecipeDetailStats: label - ingredient count"
-  },
   "NwfLZa": {
     "defaultMessage": "{count} people",
     "description": "RecipeDetailServingsStepper: label - servings"
@@ -830,10 +834,6 @@
   "Q9Hkx1": {
     "defaultMessage": "Ready to work offline",
     "description": "PwaOfflineDialog: toast - ready to work offline"
-  },
-  "QEK0P4": {
-    "defaultMessage": "{minutes} minutes · {ingredients} ingredients · {servings} people",
-    "description": "RecipeCard: label - time, ingredient count and servings"
   },
   "QJ8Qdm": {
     "defaultMessage": "Settings navigation",
@@ -1218,10 +1218,6 @@
   "bMWNs+": {
     "defaultMessage": "Mark as planned",
     "description": "WeekDraftBanner: button - mark as planned"
-  },
-  "bR5/Qd": {
-    "defaultMessage": "{minutes} minutes",
-    "description": "RecipeDetailStats: label - cooking time"
   },
   "bVSFFb": {
     "defaultMessage": "The service is temporarily unavailable. Please try again later.",
