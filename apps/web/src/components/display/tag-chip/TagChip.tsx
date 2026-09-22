@@ -6,6 +6,11 @@ import { tagFamily } from "~/core/recipes/RecipeUtils";
 export interface TagChipProps {
   tag: string;
   /**
+   * `"sm"` is for grids tight enough that a full-size tag would wrap on its own
+   * — the timetable's cells. Only meaningful on a plain, non-interactive tag.
+   */
+  size?: "sm" | "md";
+  /**
    * Makes the tag interactive — same identity, larger hit area. Omit it and the
    * tag renders as a plain label.
    */
@@ -38,6 +43,7 @@ const DOT_BY_FAMILY: Record<RecipeTagFamily, string> = {
  */
 export function TagChip({
   tag,
+  size = "md",
   onPress,
   isSelected = false,
   endContent,
@@ -48,7 +54,7 @@ export function TagChip({
     "border-border inline-flex items-center gap-1.5 rounded-full border leading-none font-medium whitespace-nowrap",
     onPress
       ? "h-8 cursor-pointer px-3 text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
-      : "bg-surface-secondary text-foreground h-6 px-2.25 text-xs",
+      : clsx("bg-surface-secondary text-foreground", size === "sm" ? "h-5 px-1.75 text-[10px]" : "h-6 px-2.25 text-xs"),
     // The unselected colour is inherited rather than set, so `className` can
     // recolour a tag-shaped affordance without fighting a utility of equal weight.
     onPress &&

@@ -3,7 +3,8 @@ import { ArrowPathIcon } from "@heroicons/react/24/outline";
 import { Button, Card } from "@heroui/react";
 import { useIntl } from "react-intl";
 import { DayColumn } from "~/components/display/day-column/DayColumn";
-import { ToggleChip } from "~/components/input/toggle-chip/ToggleChip";
+import { EmptySlot } from "~/components/display/empty-slot/EmptySlot";
+import { LayoutToggle } from "~/components/input/layout-toggle/LayoutToggle";
 import type { PlanLayout } from "~/core/plan/PlanTypes";
 import { PlanSlotCard } from "~/views/plan/PlanSlotCard";
 import { PlanSlotRow } from "~/views/plan/PlanSlotRow";
@@ -32,33 +33,28 @@ export function PlanResultsStepPanel({
   return (
     <>
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-        <div className="flex items-center gap-1.5">
-          <span className="text-default-500 mr-1 text-xs">
-            {intl.formatMessage({
-              description: "PlanResultsStepPanel: label - layout",
-              defaultMessage: "Layout",
-              id: "5Tns1u",
-            })}
-          </span>
-          <ToggleChip
-            label={intl.formatMessage({
-              description: "PlanResultsStepPanel: toggle - list layout",
-              defaultMessage: "List",
-              id: "523qrq",
-            })}
-            isSelected={layout === "rows"}
-            onChange={() => onLayoutChange("rows")}
-          />
-          <ToggleChip
-            label={intl.formatMessage({
-              description: "PlanResultsStepPanel: toggle - week grid layout",
-              defaultMessage: "Week grid",
-              id: "xNJoth",
-            })}
-            isSelected={layout === "grid"}
-            onChange={() => onLayoutChange("grid")}
-          />
-        </div>
+        <LayoutToggle
+          options={[
+            {
+              value: "rows",
+              label: intl.formatMessage({
+                description: "PlanResultsStepPanel: toggle - list layout",
+                defaultMessage: "List",
+                id: "523qrq",
+              }),
+            },
+            {
+              value: "grid",
+              label: intl.formatMessage({
+                description: "PlanResultsStepPanel: toggle - week grid layout",
+                defaultMessage: "Week grid",
+                id: "xNJoth",
+              }),
+            },
+          ]}
+          value={layout}
+          onChange={onLayoutChange}
+        />
         <div className="flex items-center gap-2.5">
           <span className="text-default-500 text-sm">{quotaStatus}</span>
           <Button variant="outline" onPress={onRerollAll} data-testid="plan__reroll-all">
@@ -94,13 +90,13 @@ export function PlanResultsStepPanel({
               ))}
 
               {day.slots.length === 0 && (
-                <span className="border-separator bg-surface-secondary text-default-500 flex flex-1 items-center justify-center border-t [background-image:radial-gradient(color-mix(in_oklch,var(--muted)_30%,transparent)_1px,transparent_1px)] [background-size:12px_12px] px-3.5 py-6.5 text-xs">
-                  {intl.formatMessage({
+                <EmptySlot
+                  label={intl.formatMessage({
                     description: "PlanResultsStepPanel: body - no meals",
                     defaultMessage: "No meals",
                     id: "+qTdy8",
                   })}
-                </span>
+                />
               )}
             </DayColumn>
           ))}

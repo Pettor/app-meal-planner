@@ -1,6 +1,7 @@
 import type { ReactElement } from "react";
 import { useIntl } from "react-intl";
 import { DayColumn } from "~/components/display/day-column/DayColumn";
+import { EmptySlot } from "~/components/display/empty-slot/EmptySlot";
 import type { WeekDayViewModel } from "~/views/week/UseWeekOverview";
 import { WeekMealCard } from "~/views/week/WeekMealCard";
 
@@ -14,6 +15,7 @@ export function WeekDayCard({ day }: WeekDayCardProps): ReactElement {
 
   return (
     <DayColumn
+      isFlush
       dayLabel={day.dayLabel}
       dateNumber={day.dateNumber}
       monthLabel={day.monthLabel}
@@ -21,17 +23,18 @@ export function WeekDayCard({ day }: WeekDayCardProps): ReactElement {
       isToday={day.isToday}
     >
       {day.meals.map((meal, index) => (
-        <WeekMealCard key={`${meal.mealLabel}-${index}`} meal={meal} />
+        <WeekMealCard key={`${meal.mealLabel}-${index}`} meal={meal} isFirst={index === 0} />
       ))}
 
       {day.meals.length === 0 && (
-        <span className="border-separator bg-surface-secondary text-default-500 flex flex-1 items-center justify-center border-t [background-image:radial-gradient(color-mix(in_oklch,var(--muted)_30%,transparent)_1px,transparent_1px)] [background-size:12px_12px] px-3.5 py-6.5 text-xs">
-          {intl.formatMessage({
+        <EmptySlot
+          className="m-2.5"
+          label={intl.formatMessage({
             description: "WeekDayCard: body - nothing planned",
             defaultMessage: "Nothing planned",
             id: "GTO7xa",
           })}
-        </span>
+        />
       )}
     </DayColumn>
   );

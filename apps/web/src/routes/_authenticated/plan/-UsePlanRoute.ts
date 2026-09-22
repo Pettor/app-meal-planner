@@ -5,10 +5,10 @@ import { useAtom } from "jotai";
 import { useIntl } from "react-intl";
 import { pendingSharedPlanAtom } from "~/core/community/CommunityAtoms";
 import type { PlanDraft, PlanStatus } from "~/core/plan/PlanTypes";
-import { DefaultPinnedTags } from "~/core/plan/PlanUtils";
 import { usePlans } from "~/core/plan/UsePlans";
 import { SampleTagCatalogue } from "~/core/recipes/RecipeSampleData";
 import { useRecipes } from "~/core/recipes/UseRecipes";
+import { useDefaultTags } from "~/core/settings/UseDefaultTags";
 import type { PlanViewProps } from "~/views/plan/PlanView";
 
 /**
@@ -35,6 +35,7 @@ export function usePlanRoute(): PlanViewProps {
   }, [pendingSharedPlan, setPendingSharedPlan]);
 
   const { savedRecipes } = useRecipes();
+  const { pinnedTags, togglePinnedTag } = useDefaultTags();
 
   function handleWeekSaved(weekKey: string, status: PlanStatus, draft: PlanDraft): void {
     savePlan(weekKey, status, draft);
@@ -58,7 +59,8 @@ export function usePlanRoute(): PlanViewProps {
   return {
     recipes: savedRecipes,
     tagCatalogue: SampleTagCatalogue,
-    pinnedTags: DefaultPinnedTags,
+    pinnedTags,
+    onTogglePinnedTag: togglePinnedTag,
     plans,
     initialWeekKey: selectedWeekKey,
     initialDraft,

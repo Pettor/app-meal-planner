@@ -1,5 +1,5 @@
 import { PLAN_DAY_ORDER } from "~/core/plan/PlanTypes";
-import type { PlanDay, PlanDraft, PlanQuota, PlanSlot } from "~/core/plan/PlanTypes";
+import type { PlanDay, PlanDraft, PlanQuota, PlanSlot, SavedPlan } from "~/core/plan/PlanTypes";
 import type { Recipe } from "~/core/recipes/RecipeTypes";
 
 export interface PlanCalendarDay {
@@ -226,4 +226,10 @@ export function buildCalendarWeeks(monthFirst: Date): PlanCalendarWeekRow[] {
     if (cursor.getMonth() !== monthFirst.getMonth() && cursor > monthFirst) break;
   }
   return rows;
+}
+
+/** Colour of a week's status dot — grey when unplanned, amber for a draft, green once final. */
+export function weekStatusDotClassName(plan: SavedPlan | null | undefined): string {
+  if (!plan) return "bg-default-300";
+  return plan.status === "final" ? "bg-success" : "bg-warning";
 }

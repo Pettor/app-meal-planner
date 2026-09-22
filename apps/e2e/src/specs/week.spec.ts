@@ -58,9 +58,11 @@ test.describe("week.planned", () => {
   test("shows the planned week, its figures and its meals", async ({ page }) => {
     await planThisWeek(page);
 
-    await expect(page.getByText("across the week")).toBeVisible();
-    await expect(page.getByText("portions in total")).toBeVisible();
-    await expect(page.getByText("of all meals")).toBeVisible();
+    // The stat strip: six figures, labelled, over the day grid.
+    const stats = page.getByTestId("week-page__stats");
+    for (const label of ["Meals", "Plates", "Vegetarian", "Cook time", "Recipes", "Ingredients"]) {
+      await expect(stats.getByText(label, { exact: true })).toBeVisible();
+    }
     await expect(page.getByText(/· 7 meals · 28 plates · planned /)).toBeVisible();
 
     // Every day of the week is on the page, with its meals under it.
@@ -121,9 +123,10 @@ test.describe("week.planned", () => {
   test("picks another week from the calendar", async ({ page }) => {
     await planThisWeek(page);
 
+    // The week chip lives in the navbar and reads "W14" — the calendar it opens is app-wide.
     await page
-      .locator("main")
-      .getByRole("button", { name: /^This week$/ })
+      .getByTestId("navbar__week-picker")
+      .getByRole("button", { name: /^W\d+$/ })
       .click();
     const dialog = page.getByRole("dialog", { name: "Schedule" });
     await expect(dialog).toBeVisible();

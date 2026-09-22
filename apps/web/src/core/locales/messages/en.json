@@ -1,0 +1,2078 @@
+{
+  "+A3Jo2": {
+    "defaultMessage": "Go to Inbox",
+    "description": "CommandPaletteController: label - go to inbox command"
+  },
+  "+BASUr": {
+    "defaultMessage": "Wednesday",
+    "description": "PlanDayLabels: day - Wednesday"
+  },
+  "+E4hKk": {
+    "defaultMessage": "Too many requests. Please wait a moment and try again.",
+    "description": "ForgotPasswordRoute: toast - too many requests (429)"
+  },
+  "+KgBP8": {
+    "defaultMessage": "Clear",
+    "description": "CommunityFeedPanel: button - clear the tag filter"
+  },
+  "+RhAgE": {
+    "defaultMessage": "Ingredients",
+    "description": "RecipeDetailIngredients: heading - ingredients"
+  },
+  "+ZerUA": {
+    "defaultMessage": "Create \"{tag}\"",
+    "description": "UsePlanWizard: label - create tag"
+  },
+  "+aNmSE": {
+    "defaultMessage": "Popular in the community",
+    "description": "PlanQuotasStepPanel: label - popular in the community"
+  },
+  "+cqj1Q": {
+    "defaultMessage": "Recipe library",
+    "description": "RecipeLibraryPageHeader: eyebrow - recipe library"
+  },
+  "+qTdy8": {
+    "defaultMessage": "No meals",
+    "description": "PlanResultsStepPanel: body - no meals"
+  },
+  "/4Y51F": {
+    "defaultMessage": "Week",
+    "description": "NavMenuItems: menu-item - this week (short, mobile tab bar)"
+  },
+  "/BF4g+": {
+    "defaultMessage": "Start planning",
+    "description": "SignUpView: heading - start planning"
+  },
+  "/GllmQ": {
+    "defaultMessage": "Edit default tags",
+    "description": "RecipeLibraryTagFilterRow: button - edit default tags"
+  },
+  "/IQZ4I": {
+    "defaultMessage": "Shared weeks ({count})",
+    "description": "ProfileView: tab - shared weeks, with a count"
+  },
+  "/KFX20": {
+    "defaultMessage": "{count} of 3 left",
+    "description": "RecipeScanDialog: chip - scan quota"
+  },
+  "/Xd7fi": {
+    "defaultMessage": "Cancel",
+    "description": "RecipeScanDialog: button - cancel"
+  },
+  "/nm29K": {
+    "defaultMessage": "Edit your default tags",
+    "description": "PlanQuotasStepPanel: button - edit default tags"
+  },
+  "/oH5pZ": {
+    "defaultMessage": "Nothing in your inbox.",
+    "description": "InboxView: body - nothing waiting"
+  },
+  "/rOIp3": {
+    "defaultMessage": "Shared cooking",
+    "description": "InboxView: eyebrow - section name"
+  },
+  "/ya1sX": {
+    "defaultMessage": "No quotas yet, the week will be filled at random.",
+    "description": "PlanQuotasStepPanel: body - no quotas yet"
+  },
+  "07uOqY": {
+    "defaultMessage": "Recommend",
+    "description": "SharedWeekCard: button - send this week to someone"
+  },
+  "0L52dg": {
+    "defaultMessage": "Feed",
+    "description": "CommunityView: tab - the activity feed"
+  },
+  "0PDyPk": {
+    "defaultMessage": "week",
+    "description": "UseShoppingOverview: label - week (lowercase)"
+  },
+  "0mjKNh": {
+    "defaultMessage": "New tag, e.g. leftovers",
+    "description": "RecipeEditTagsPanel: placeholder - new tag"
+  },
+  "0nOfE7": {
+    "defaultMessage": "Auto",
+    "description": "ThemeSelector: label - auto option"
+  },
+  "0ohn0Z": {
+    "defaultMessage": "Week {number} · {relative}",
+    "description": "UseHeaderWeekPickerController: tooltip - week number and how it reads relative to today"
+  },
+  "15TlUz": {
+    "defaultMessage": "Why they should cook this",
+    "description": "RecommendDialog: placeholder - note field"
+  },
+  "15aR48": {
+    "defaultMessage": "Add a photo",
+    "description": "RecipeEditPhotoField: label - add a photo"
+  },
+  "1DeDF/": {
+    "defaultMessage": "Apply JSON",
+    "description": "SettingsDataSection: button - apply json"
+  },
+  "1LATBW": {
+    "defaultMessage": "Randomize from the pool, or start from an empty week.",
+    "description": "UsePlanWizard: step subtitle - fill the week"
+  },
+  "1Q/zEs": {
+    "defaultMessage": "Earlier week",
+    "description": "UsePlanWizard: week - earlier week"
+  },
+  "1ZQvte": {
+    "defaultMessage": "No lunch planned",
+    "description": "UseWeekTimetable: body - no lunch planned"
+  },
+  "1iDozp": {
+    "defaultMessage": ",",
+    "description": "UsePlanWizard: separator - list join"
+  },
+  "1slQ/g": {
+    "defaultMessage": "{count} ingredients",
+    "description": "RecipeStatStrip: label - ingredient count"
+  },
+  "1vJ1Jw": {
+    "defaultMessage": "Next month",
+    "description": "WeekPickerDialog: aria-label - next month"
+  },
+  "1wtnNI": {
+    "defaultMessage": "Shopping",
+    "description": "UseShoppingOverview: heading - shopping"
+  },
+  "27ddR2": {
+    "defaultMessage": "Search community tags",
+    "description": "PlanQuotasStepPanel: placeholder - search community tags"
+  },
+  "2DNYri": {
+    "defaultMessage": "Back",
+    "description": "PlanWizardActionBar: aria-label - back to the previous step"
+  },
+  "2GlLoE": {
+    "defaultMessage": "Ingredients scale from this number.",
+    "description": "RecipeEditDetailsPanel: body - servings hint"
+  },
+  "2Id9Xy": {
+    "defaultMessage": "Mon",
+    "description": "PlanDayLabels: day short - Monday"
+  },
+  "2Vv5Q8": {
+    "defaultMessage": "Still a draft. Nothing is locked in and it stays out of the way until you mark it planned.",
+    "description": "WeekDraftBanner: body - draft note"
+  },
+  "2tYNPg": {
+    "defaultMessage": "Recipes",
+    "description": "UseWeekOverview: stat - distinct recipes"
+  },
+  "34xMGO": {
+    "defaultMessage": "Light",
+    "description": "ThemeSelector: label - light option"
+  },
+  "3Emciz": {
+    "defaultMessage": "Pick a recipe",
+    "description": "PlanSlotCard: button - pick a recipe"
+  },
+  "3Ib+Vj": {
+    "defaultMessage": "{count, plural, =0 {No scans left today} one {# scan left today} other {# scans left today}}",
+    "description": "RecipeEditScanBanner: body - scans left today"
+  },
+  "3R8Sia": {
+    "defaultMessage": "Navigation",
+    "description": "NavbarContent: aria-label - navigation tabs"
+  },
+  "3Z+0jz": {
+    "defaultMessage": "Inbox",
+    "description": "InboxView: heading - page title"
+  },
+  "3didM4": {
+    "defaultMessage": "A week of dinners, <accent>decided</accent> in a few minutes.",
+    "description": "AuthPromoPanel: heading - marketing headline. <accent> wraps the emphasised word."
+  },
+  "3rWi7W": {
+    "defaultMessage": "Coming soon",
+    "description": "NavbarContent: tooltip - disabled nav item not built yet"
+  },
+  "3x91xH": {
+    "defaultMessage": "filled",
+    "description": "UsePlanWizard: label - filled"
+  },
+  "3ytiPV": {
+    "defaultMessage": "{weekRange} · No week planned",
+    "description": "UseShoppingOverview: subtitle - no week planned"
+  },
+  "40q1ez": {
+    "defaultMessage": "filled",
+    "description": "UseWeekPicker: label - filled"
+  },
+  "41F/St": {
+    "defaultMessage": "Recipes",
+    "description": "CommunityView: tab - every recipe shared in the community"
+  },
+  "4HkS5l": {
+    "defaultMessage": "{stepPrefix} {step} / 4 · {relative}",
+    "description": "UsePlanWizard: eyebrow - step x of 4"
+  },
+  "4QBuuw": {
+    "defaultMessage": "meals",
+    "description": "UsePlanWizard: label - meals (lowercase)"
+  },
+  "4hHbCd": {
+    "defaultMessage": "More {tag}",
+    "description": "PlanQuotasStepPanel: aria-label - increase quota"
+  },
+  "4iHlTO": {
+    "defaultMessage": "An unexpected error occurred. Please try again.",
+    "description": "LoginRoute: error - unknown error"
+  },
+  "4kR9M3": {
+    "defaultMessage": "Browse all tags",
+    "description": "SettingsDefaultTagsSection: button - browse all tags"
+  },
+  "4pleys": {
+    "defaultMessage": "Pick at least one tag. The planner needs them.",
+    "description": "RecipeEditTagsPanel: error - at least one tag required"
+  },
+  "523qrq": {
+    "defaultMessage": "List",
+    "description": "PlanResultsStepPanel: toggle - list layout"
+  },
+  "56W5uG": {
+    "defaultMessage": "Optional, sits on top of the recipe",
+    "description": "RecipeEditPhotoField: body - photo hint"
+  },
+  "5Ahx+5": {
+    "defaultMessage": "Delete it",
+    "description": "RecipeLibraryView: button - confirm delete"
+  },
+  "5D7oPh": {
+    "defaultMessage": "You've used all 3 scans for today. They reset at midnight.",
+    "description": "RecipeScanDialog: body - no scans left"
+  },
+  "5M8Wpq": {
+    "defaultMessage": "Login",
+    "description": "LoginPageRoute: title - browser tab"
+  },
+  "5OPS8l": {
+    "defaultMessage": "The shopping list builds itself",
+    "description": "AuthPromoPanel: heading - shopping list feature"
+  },
+  "5TOztL": {
+    "defaultMessage": "meals",
+    "description": "UseWeekOverview: label - meals (lowercase)"
+  },
+  "5Vzqiv": {
+    "defaultMessage": "The details you signed in with.",
+    "description": "SettingsModal: body - account section purpose"
+  },
+  "5XKaTO": {
+    "defaultMessage": "This week",
+    "description": "WeekPageRoute: title - browser tab"
+  },
+  "5atL0P": {
+    "defaultMessage": "+ Add step",
+    "description": "RecipeEditStepsPanel: button - add step"
+  },
+  "5onq0U": {
+    "defaultMessage": "Tags",
+    "description": "RecipeEditTagsPanel: label - tags"
+  },
+  "5rT67q": {
+    "defaultMessage": "{minutes} min",
+    "description": "UsePlanWizard: label - recipe time in swap list"
+  },
+  "5ywSOX": {
+    "defaultMessage": "Theme: Dark",
+    "description": "CommandPaletteController: label - theme dark command"
+  },
+  "6BClx2": {
+    "defaultMessage": "{count, plural, one {# recipe} other {# recipes}}",
+    "description": "UseCommunityCards: label - how many recipes someone has shared"
+  },
+  "6Dll0M": {
+    "defaultMessage": "Clear",
+    "description": "PlanSlotRow: button - clear"
+  },
+  "6LEZuD": {
+    "defaultMessage": "Random",
+    "description": "PlanSlotRow: button - random"
+  },
+  "6T71vw": {
+    "defaultMessage": "{shown} of {total, plural, one {# recipe} other {# recipes}}",
+    "description": "RecipeLibraryFindPanel: label - how many recipes are showing"
+  },
+  "6U5ByL": {
+    "defaultMessage": "200",
+    "description": "RecipeEditIngredientsPanel: placeholder - quantity example"
+  },
+  "6WmLIf": {
+    "defaultMessage": "Next",
+    "description": "UseWeekOverview: heading - next"
+  },
+  "6cFNrk": {
+    "defaultMessage": "Something off?",
+    "description": "RecipeScanDialog: label - correction"
+  },
+  "6t3goo": {
+    "defaultMessage": "Swedish",
+    "description": "SettingsLanguageSection: note - swedish named in the interface language"
+  },
+  "6v8Bhx": {
+    "defaultMessage": "Save recipe",
+    "description": "RecipeEditView: button - save recipe"
+  },
+  "6xk6VQ": {
+    "defaultMessage": "Download",
+    "description": "SettingsDataSection: button - download data"
+  },
+  "6zcG8Y": {
+    "defaultMessage": "Ingredient {number} quantity",
+    "description": "RecipeEditIngredientsPanel: aria-label - quantity"
+  },
+  "7+S5V5": {
+    "defaultMessage": "Create account",
+    "description": "SignUpForm: button - submit sign up"
+  },
+  "7pX/p/": {
+    "defaultMessage": "you@example.com",
+    "description": "ForgotPasswordForm: placeholder - email input"
+  },
+  "8KSqzJ": {
+    "defaultMessage": "Scan photo",
+    "description": "RecipeEditScanBanner: button - scan photo"
+  },
+  "8QWH/2": {
+    "defaultMessage": "Edit",
+    "description": "RecipeDetailActions: button - edit"
+  },
+  "8bCmcG": {
+    "defaultMessage": "Back",
+    "description": "PlanWizardHeader: button - back"
+  },
+  "8kQmVT": {
+    "defaultMessage": "Search community tags",
+    "description": "TagBrowserDialog: aria-label - search tags"
+  },
+  "8ko/LM": {
+    "defaultMessage": "Follow",
+    "description": "PersonCard: button - start following this person"
+  },
+  "8ntRnK": {
+    "defaultMessage": "Clear",
+    "description": "RecipeLibraryTagFilterRow: button - clear the tag filters"
+  },
+  "9/X3Xw": {
+    "defaultMessage": "Log out",
+    "description": "CommandPaletteController: label - logout command"
+  },
+  "9DagLC": {
+    "defaultMessage": "today",
+    "description": "UseCommunityCards: label - shared today"
+  },
+  "9HQ90e": {
+    "defaultMessage": "I agree to the terms and privacy policy.",
+    "description": "SignUpForm: label - terms and privacy consent checkbox"
+  },
+  "9IUKsT": {
+    "defaultMessage": "No recipes match that search.",
+    "description": "CommunityRecipesPanel: body - no recipes match"
+  },
+  "9Kzw2T": {
+    "defaultMessage": "Method",
+    "description": "RecipeScanDialog: heading - method"
+  },
+  "9Nktev": {
+    "defaultMessage": "Password strength",
+    "description": "PasswordStrength: aria-label - strength meter"
+  },
+  "9PLzJJ": {
+    "defaultMessage": "Remove",
+    "description": "RecipeCard: button - remove from my recipes"
+  },
+  "9Up6OS": {
+    "defaultMessage": "e.g. it's 400g mushrooms, not 40",
+    "description": "RecipeScanDialog: placeholder - correction"
+  },
+  "9btTru": {
+    "defaultMessage": "Start empty and pick manually",
+    "description": "PlanGenerateStepPanel: button - start empty"
+  },
+  "9cU9e3": {
+    "defaultMessage": "Account",
+    "description": "CommandPaletteController: label - account group"
+  },
+  "9mPCU7": {
+    "defaultMessage": "Copyright © 2024 - All rights reserved",
+    "description": "AuthenticatedLayout: footer - copyright"
+  },
+  "9qzGTG": {
+    "defaultMessage": "Ingredient {number}",
+    "description": "RecipeEditIngredientsPanel: aria-label - ingredient name"
+  },
+  "9tHMp1": {
+    "defaultMessage": "Ingredients",
+    "description": "RecipeScanDialog: heading - ingredients"
+  },
+  "9w1UOC": {
+    "defaultMessage": "Randomize the week",
+    "description": "PlanGenerateStepPanel: button - randomize the week"
+  },
+  "9wO0Nr": {
+    "defaultMessage": "Saturday",
+    "description": "PlanDayLabels: day - Saturday"
+  },
+  "9xyQWi": {
+    "defaultMessage": "Inbox",
+    "description": "InboxPageRoute: title - browser tab"
+  },
+  "A1+Pu1": {
+    "defaultMessage": "Take or choose a photo",
+    "description": "RecipeScanDialog: label - take a photo"
+  },
+  "A5kccO": {
+    "defaultMessage": "Settings",
+    "description": "SettingsModal: heading - title"
+  },
+  "AAO1tx": {
+    "defaultMessage": "e.g. lasagna, soup, pancakes",
+    "description": "RecipeLibraryFindPanel: placeholder - search recipes"
+  },
+  "AJfD1x": {
+    "defaultMessage": "Fewer {tag}",
+    "description": "PlanQuotasStepPanel: aria-label - decrease quota"
+  },
+  "AbThIQ": {
+    "defaultMessage": "the week",
+    "description": "PlanWizardHeader: heading - title accent"
+  },
+  "AfOV1V": {
+    "defaultMessage": "Strong",
+    "description": "PasswordStrength: label - strong password"
+  },
+  "Ar+C9+": {
+    "defaultMessage": "Looking for more recipes?",
+    "description": "RecipeLibraryFindPanel: label - looking for more recipes"
+  },
+  "AtUxS4": {
+    "defaultMessage": "Set quotas — at least two vegetarian, fish once, nothing over 40 minutes — and let the planner fill the week around them.",
+    "description": "AuthPromoPanel: body - tag quotas feature"
+  },
+  "Au7aoJ": {
+    "defaultMessage": "Search by recipe name, or narrow it down by tag below.",
+    "description": "RecipeLibraryFindPanel: body - how to find a recipe"
+  },
+  "BCD2Qy": {
+    "defaultMessage": "Could not parse that JSON.",
+    "description": "SettingsDataSection: status - json could not be parsed"
+  },
+  "BYRWhm": {
+    "defaultMessage": "planned {date}",
+    "description": "UseWeekOverview: status - planned on date"
+  },
+  "BpvAE5": {
+    "defaultMessage": "Recipes",
+    "description": "NavMenuItems: menu-item - recipes"
+  },
+  "BwAKKu": {
+    "defaultMessage": "Plan a week first and the list builds itself.",
+    "description": "ShoppingView: body - nothing to shop for"
+  },
+  "BxkWlB": {
+    "defaultMessage": "View profile",
+    "description": "PersonCard: button - open this person's profile"
+  },
+  "C56IiA": {
+    "defaultMessage": "No community tag matches that.",
+    "description": "TagBrowserDialog: body - no tag matches"
+  },
+  "D6MFbP": {
+    "defaultMessage": "week",
+    "description": "UsePlanWizard: label - week (lowercase)"
+  },
+  "DAg4rT": {
+    "defaultMessage": "Week saved.",
+    "description": "UsePlanRoute: toast - week saved"
+  },
+  "DEcf5/": {
+    "defaultMessage": "Profile",
+    "description": "ProfilePageRoute: title - browser tab"
+  },
+  "DIddlg": {
+    "defaultMessage": "Email",
+    "description": "SignUpForm: label - email input"
+  },
+  "Dg5sp1": {
+    "defaultMessage": "Send reset link",
+    "description": "ForgotPasswordForm: aria-label - submit button"
+  },
+  "DmSF9w": {
+    "defaultMessage": "Plan",
+    "description": "NavMenuItems: menu-item - plan (short, mobile tab bar)"
+  },
+  "Dr2bxg": {
+    "defaultMessage": "In {count} weeks",
+    "description": "UsePlanWizard: week - in n weeks"
+  },
+  "E3S4Ka": {
+    "defaultMessage": "Everyone",
+    "description": "CommunityFeedPanel: toggle - show everyone's activity"
+  },
+  "E3bD/N": {
+    "defaultMessage": "Remove ingredient {number}",
+    "description": "RecipeEditIngredientsPanel: aria-label - remove ingredient"
+  },
+  "E72JXP": {
+    "defaultMessage": "Edit recipe",
+    "description": "RecipeEditView: heading - edit recipe"
+  },
+  "E7ka2J": {
+    "defaultMessage": "More people on {day}",
+    "description": "PlanDaysStepPanel: aria-label - more people"
+  },
+  "ESAh3g": {
+    "defaultMessage": "{minutes} minutes",
+    "description": "RecipeStatStrip: label - cooking time"
+  },
+  "Eb7+KN": {
+    "defaultMessage": "People",
+    "description": "CommunityView: tab - the people in the community"
+  },
+  "FA/Y+P": {
+    "defaultMessage": "This week",
+    "description": "PlanWeekLabels: week - this week"
+  },
+  "FLEOYa": {
+    "defaultMessage": "shared a week",
+    "description": "UseCommunityCards: label - they shared a week"
+  },
+  "FOXdqo": {
+    "defaultMessage": "Fair",
+    "description": "PasswordStrength: label - fair password"
+  },
+  "FXgFP3": {
+    "defaultMessage": "Community",
+    "description": "CommunityPageRoute: title - browser tab"
+  },
+  "FYdcTe": {
+    "defaultMessage": "Reset to sample data",
+    "description": "SettingsDataSection: button - reset to sample data"
+  },
+  "Fs1B/V": {
+    "defaultMessage": "Following",
+    "description": "PersonCard: button - already following, press to unfollow"
+  },
+  "FxEBSy": {
+    "defaultMessage": "Following only",
+    "description": "CommunityFeedPanel: toggle - show only people you follow"
+  },
+  "Fxu7cS": {
+    "defaultMessage": "Print week",
+    "description": "WeekPageHeader: button - print week"
+  },
+  "G5fY3n": {
+    "defaultMessage": "Following",
+    "description": "ProfileView: button - already following, press to unfollow"
+  },
+  "GEina4": {
+    "defaultMessage": "Edit recipe",
+    "description": "EditRecipePageRoute: title - browser tab"
+  },
+  "GOl4iB": {
+    "defaultMessage": "week",
+    "description": "UseWeekOverview: heading accent - week"
+  },
+  "GTO7xa": {
+    "defaultMessage": "Nothing planned",
+    "description": "WeekDayCard: body - nothing planned"
+  },
+  "GV0nrT": {
+    "defaultMessage": "Delete recipe",
+    "description": "RecipeEditView: button - delete recipe"
+  },
+  "GkSHmr": {
+    "defaultMessage": "Go to login",
+    "description": "NotFoundRoute: button - go to login"
+  },
+  "GlMb2D": {
+    "defaultMessage": "Weeks and recipes from the people you follow, and everyone else worth following.",
+    "description": "CommunityPageHeader: subtitle - what the community page is for"
+  },
+  "Gn/PPZ": {
+    "defaultMessage": "Keep your recipes in one pool, tag them, and let the planner fill the week around the rules you set.",
+    "description": "AuthPromoPanel: body - marketing tagline"
+  },
+  "GuxalG": {
+    "defaultMessage": "Pick the tags offered first every time you plan a week.",
+    "description": "PlanView: body - edit default tags dialog description"
+  },
+  "H8obuS": {
+    "defaultMessage": "Enter the email you signed up with and we'll send a link to set a new password.",
+    "description": "ForgotPasswordView: body - reset instructions"
+  },
+  "HFY8EB": {
+    "defaultMessage": "Remove {tag} quota",
+    "description": "PlanQuotasStepPanel: aria-label - remove quota"
+  },
+  "HMSbos": {
+    "defaultMessage": "No default tags yet.",
+    "description": "RecipeLibraryTagFilterRow: label - no default tags yet"
+  },
+  "HW3ERD": {
+    "defaultMessage": "Tags do the deciding",
+    "description": "AuthPromoPanel: heading - tag quotas feature"
+  },
+  "Hfzkvj": {
+    "defaultMessage": "Back to sign in",
+    "description": "ForgotPasswordView: button - back to sign in"
+  },
+  "I58VNp": {
+    "defaultMessage": "Which build of the app you are looking at.",
+    "description": "SettingsModal: body - about section purpose"
+  },
+  "I8uzDd": {
+    "defaultMessage": "Quick menu",
+    "description": "QuickMenu: aria-label - menu"
+  },
+  "ICh02C": {
+    "defaultMessage": "Offered first when you set quotas for a week. Click one to remove it.",
+    "description": "SettingsModal: body - default tags section purpose"
+  },
+  "INr4Gn": {
+    "defaultMessage": "Sign in",
+    "description": "LoginForm: button - submit login"
+  },
+  "IYe/An": {
+    "defaultMessage": "Follows you",
+    "description": "PersonCard: chip - this person already follows you"
+  },
+  "IdCF39": {
+    "defaultMessage": "Recommendations sent straight to you.",
+    "description": "InboxView: subtitle - what the inbox holds"
+  },
+  "JM61kV": {
+    "defaultMessage": "Filter by tag",
+    "description": "RecipeLibraryTagFilterRow: heading - filter by tag"
+  },
+  "JN4eco": {
+    "defaultMessage": "{count, plural, one {# week} other {# weeks}}",
+    "description": "UseCommunityCards: label - how many weeks someone has shared"
+  },
+  "JR/fbW": {
+    "defaultMessage": "Reset your password",
+    "description": "ForgotPasswordView: heading - reset your password"
+  },
+  "JYLpGe": {
+    "defaultMessage": "Your tags",
+    "description": "PlanQuotasStepPanel: label - your tags"
+  },
+  "Jbc39/": {
+    "defaultMessage": "Set the days, people and tags, then let the planner fill it in.",
+    "description": "WeekView: body - no week planned"
+  },
+  "JczMej": {
+    "defaultMessage": "Open {title}",
+    "description": "WeekTimetableDayCard: aria-label - open recipe"
+  },
+  "JeUYrQ": {
+    "defaultMessage": "If {email} has an account, a reset link is on its way. It expires in an hour.",
+    "description": "ForgotPasswordView: body - reset link confirmation"
+  },
+  "JpnP8y": {
+    "defaultMessage": "Already cooking with us?",
+    "description": "SignUpView: body - sign-in prompt"
+  },
+  "Jy8iNC": {
+    "defaultMessage": "Made with ☕ by Petter Hancock",
+    "description": "AuthenticatedLayout: footer - attribution"
+  },
+  "JzUN6D": {
+    "defaultMessage": "Follows you",
+    "description": "ProfileView: chip - this person follows you"
+  },
+  "K1+XLU": {
+    "defaultMessage": "recommended a recipe",
+    "description": "UseCommunityCards: label - they recommended a recipe"
+  },
+  "K588Vq": {
+    "defaultMessage": "Sunday",
+    "description": "PlanDayLabels: day - Sunday"
+  },
+  "K92okP": {
+    "defaultMessage": "{count} selected",
+    "description": "TagBrowserDialog: footer - selected count"
+  },
+  "KAsFW6": {
+    "defaultMessage": "Cook time",
+    "description": "UseWeekOverview: stat - cook time"
+  },
+  "KF8ZUM": {
+    "defaultMessage": "Email",
+    "description": "LoginForm: label - email input"
+  },
+  "KK6cUB": {
+    "defaultMessage": "Cancel",
+    "description": "RecommendDialog: button - cancel"
+  },
+  "KQh2NF": {
+    "defaultMessage": "Plates",
+    "description": "UseWeekOverview: stat - plates"
+  },
+  "KcgMms": {
+    "defaultMessage": "Plan this week",
+    "description": "WeekPageHeader: button - plan this week"
+  },
+  "KcvnhR": {
+    "defaultMessage": "Check your inbox",
+    "description": "ForgotPasswordView: heading - check your inbox"
+  },
+  "KqGSN8": {
+    "defaultMessage": "e.g. lasagna, soup, pancakes",
+    "description": "CommunityRecipesPanel: placeholder - search recipes"
+  },
+  "Kx3M+D": {
+    "defaultMessage": "Your own recipes. These are what the planner draws from.",
+    "description": "RecipeLibraryPageHeader: body - subtitle"
+  },
+  "L8K0gq": {
+    "defaultMessage": "list",
+    "description": "UseShoppingOverview: heading accent - list"
+  },
+  "LS5BYx": {
+    "defaultMessage": "Shopping",
+    "description": "NavMenuItems: menu-item - shopping"
+  },
+  "LXNFEL": {
+    "defaultMessage": "This week already has a plan. Continuing edits it.",
+    "description": "PlanDaysStepPanel: body - editing an existing plan"
+  },
+  "LisaTx": {
+    "defaultMessage": "Timetable",
+    "description": "WeekView: toggle - timetable layout"
+  },
+  "Lrqv+D": {
+    "defaultMessage": "Follow someone and they show up here.",
+    "description": "RecommendDialog: body - nobody to send to yet"
+  },
+  "Lvl0Gx": {
+    "defaultMessage": "Nothing planned",
+    "description": "UseWeekTimetable: body - nothing planned"
+  },
+  "M9C79w": {
+    "defaultMessage": "Title",
+    "description": "RecipeEditDetailsPanel: label - title"
+  },
+  "MQeEmO": {
+    "defaultMessage": "Grid item image",
+    "description": "GridItem: aria-label - item image"
+  },
+  "MXHPQd": {
+    "defaultMessage": "Tags and quotas",
+    "description": "UsePlanWizard: step name - tags and quotas"
+  },
+  "MXh8Tp": {
+    "defaultMessage": "Browse the community",
+    "description": "RecipeLibraryFindPanel: button - browse the community"
+  },
+  "MXiQP4": {
+    "defaultMessage": "GitHub",
+    "description": "AuthenticatedLayout: aria-label - GitHub social link"
+  },
+  "MbFwnp": {
+    "defaultMessage": "Name:",
+    "description": "AboutDetails: label - app name"
+  },
+  "MibXHq": {
+    "defaultMessage": "Theme: Light",
+    "description": "CommandPaletteController: label - theme light command"
+  },
+  "MvPzec": {
+    "defaultMessage": "Cancel",
+    "description": "LoadWeekDialog: button - cancel"
+  },
+  "MwZQf8": {
+    "defaultMessage": "Meal Planner",
+    "description": "NavbarContent: heading - app title in navbar"
+  },
+  "N/tUeR": {
+    "defaultMessage": "An empty week, one row per meal. Click any row to pick a recipe from the library.",
+    "description": "PlanGenerateStepPanel: body - start empty hint"
+  },
+  "N7+yLP": {
+    "defaultMessage": "Password",
+    "description": "SignUpForm: label - password input"
+  },
+  "NJ6Rr+": {
+    "defaultMessage": "Lunch",
+    "description": "PlanDayLabels: meal - lunch"
+  },
+  "NJTHyd": {
+    "defaultMessage": "Follow",
+    "description": "ProfileView: button - start following"
+  },
+  "NNM8UP": {
+    "defaultMessage": "Remove",
+    "description": "RecipeDetailActions: button - remove"
+  },
+  "NWkWOT": {
+    "defaultMessage": "Sign Up",
+    "description": "SignUpPageRoute: title - browser tab"
+  },
+  "Ndk+G7": {
+    "defaultMessage": "Swap",
+    "description": "PlanSlotCard: button - swap"
+  },
+  "NwfLZa": {
+    "defaultMessage": "{count} people",
+    "description": "RecipeDetailServingsStepper: label - servings"
+  },
+  "NxEir8": {
+    "defaultMessage": "Good",
+    "description": "PasswordStrength: label - good password"
+  },
+  "O+ukwO": {
+    "defaultMessage": "An unexpected error occurred. Please try again.",
+    "description": "RouteError: body - error description"
+  },
+  "O8JbUn": {
+    "defaultMessage": "Cook with other people",
+    "description": "AuthPromoPanel: heading - sharing feature"
+  },
+  "OFKSs2": {
+    "defaultMessage": "Swap, reroll or clear anything before you save.",
+    "description": "UsePlanWizard: step subtitle - refine and save"
+  },
+  "OgUG4B": {
+    "defaultMessage": "Ingredients",
+    "description": "RecipeEditIngredientsPanel: label - ingredients"
+  },
+  "OiZbQh": {
+    "defaultMessage": "Dinner",
+    "description": "PlanDaysStepPanel: toggle - dinner"
+  },
+  "Ojopgv": {
+    "defaultMessage": "No community tag matches that.",
+    "description": "PlanQuotasStepPanel: body - no tag matches"
+  },
+  "P8mG5X": {
+    "defaultMessage": "Step {number}",
+    "description": "RecipeEditStepsPanel: aria-label - step text"
+  },
+  "PbLvJV": {
+    "defaultMessage": "added a recipe",
+    "description": "UseCommunityCards: label - they added a recipe"
+  },
+  "Pe3N6t": {
+    "defaultMessage": "Send reset link",
+    "description": "ForgotPasswordForm: button - submit send"
+  },
+  "PkMrnj": {
+    "defaultMessage": "The page you're looking for doesn't exist or has been moved.",
+    "description": "NotFoundRoute: body - page-not-found description"
+  },
+  "PllmBT": {
+    "defaultMessage": "Shared cooking",
+    "description": "CommunityPageHeader: eyebrow - section name"
+  },
+  "Pvto38": {
+    "defaultMessage": "Previous week",
+    "description": "WeekSwitcher: aria-label - previous week"
+  },
+  "PzlF5k": {
+    "defaultMessage": "Cards",
+    "description": "WeekView: toggle - cards layout"
+  },
+  "Q9Hkx1": {
+    "defaultMessage": "Ready to work offline",
+    "description": "PwaOfflineDialog: toast - ready to work offline"
+  },
+  "QJ8Qdm": {
+    "defaultMessage": "Settings navigation",
+    "description": "SettingsModal: aria-label - settings navigation"
+  },
+  "QJTLd8": {
+    "defaultMessage": "Plan a new week",
+    "description": "WeekPageHeader: button - plan a new week"
+  },
+  "QbsjKw": {
+    "defaultMessage": "Back",
+    "description": "AuthLayout: aria-label - back button"
+  },
+  "QoAEuc": {
+    "defaultMessage": "This is you",
+    "description": "ProfileView: chip - this is your own profile"
+  },
+  "QwECCi": {
+    "defaultMessage": "Toggle password visibility",
+    "description": "SignUpForm: aria-label - toggle password visibility button"
+  },
+  "R366Cn": {
+    "defaultMessage": "This",
+    "description": "UseWeekOverview: heading - this"
+  },
+  "RCtY7O": {
+    "defaultMessage": "Navigation",
+    "description": "CommandPaletteController: label - navigation group"
+  },
+  "RXoxJ3": {
+    "defaultMessage": "Continue",
+    "description": "UsePlanWizard: button - continue"
+  },
+  "Ra9U50": {
+    "defaultMessage": "{count} people",
+    "description": "PlanDayLabels: label - n people"
+  },
+  "RdW41j": {
+    "defaultMessage": "Reset to sample data.",
+    "description": "SettingsDataSection: status - reset to sample data"
+  },
+  "RjKbi8": {
+    "defaultMessage": "not planned",
+    "description": "UseWeekOverview: status - not planned"
+  },
+  "Rk6Lk7": {
+    "defaultMessage": "Remembered it?",
+    "description": "ForgotPasswordView: body - sign-in prompt"
+  },
+  "Rlu2gI": {
+    "defaultMessage": "Draft",
+    "description": "WeekDraftBanner: chip - draft"
+  },
+  "RqxI1B": {
+    "defaultMessage": "Refine and save",
+    "description": "UsePlanWizard: step name - refine and save"
+  },
+  "RsRJ5U": {
+    "defaultMessage": "Email",
+    "description": "SettingsAccountSection: label - email"
+  },
+  "RzwTtP": {
+    "defaultMessage": "Reroll",
+    "description": "PlanSlotRow: button - reroll"
+  },
+  "S3t+X9": {
+    "defaultMessage": "Cook for more people",
+    "description": "RecipeDetailServingsStepper: aria-label - more servings"
+  },
+  "S6tf2s": {
+    "defaultMessage": "Light, dark, or follow the operating system.",
+    "description": "SettingsModal: body - appearance section purpose"
+  },
+  "S7GRjF": {
+    "defaultMessage": "at least",
+    "description": "UsePlanWizard: quota mode - at least"
+  },
+  "SGd0FW": {
+    "defaultMessage": "e.g. Mushroom risotto",
+    "description": "RecipeEditDetailsPanel: placeholder - title"
+  },
+  "SIwWzu": {
+    "defaultMessage": "Plan",
+    "description": "NavMenuItems: menu-item - plan"
+  },
+  "SQ05Nm": {
+    "defaultMessage": "Add",
+    "description": "RecipeEditTagsPanel: button - add tag"
+  },
+  "SQbBch": {
+    "defaultMessage": "Shared weeks",
+    "description": "CommunityView: tab - every shared week"
+  },
+  "SVpXlA": {
+    "defaultMessage": "Search recipes",
+    "description": "RecipeLibraryFindPanel: aria-label - search recipes"
+  },
+  "SoG8FD": {
+    "defaultMessage": "Incorrect username or password.",
+    "description": "LoginRoute: error - invalid credentials (401/403)"
+  },
+  "SsaGTQ": {
+    "defaultMessage": "Print",
+    "description": "RecipeDetailActions: button - print"
+  },
+  "T8YZ5k": {
+    "defaultMessage": "Something went wrong. Please try again.",
+    "description": "ForgotPasswordRoute: toast - generic error"
+  },
+  "TMVAnA": {
+    "defaultMessage": "Method",
+    "description": "RecipeDetailMethod: heading - method"
+  },
+  "TOJijj": {
+    "defaultMessage": "Password",
+    "description": "LoginForm: label - password input"
+  },
+  "TSlaTm": {
+    "defaultMessage": "plates",
+    "description": "UsePlanWizard: label - plates (lowercase)"
+  },
+  "TaspoA": {
+    "defaultMessage": "Community",
+    "description": "InboxView: button - back to the community"
+  },
+  "TassCS": {
+    "defaultMessage": "Go to {section}",
+    "description": "CommandPaletteController: label - go to a navbar section"
+  },
+  "Tij9Hh": {
+    "defaultMessage": "What should we call you?",
+    "description": "SignUpForm: placeholder - username input"
+  },
+  "TsXLmk": {
+    "defaultMessage": "Inbox",
+    "description": "NavbarContent: menu-item - open the recommendations inbox"
+  },
+  "TszJF4": {
+    "defaultMessage": "Search community recipes",
+    "description": "CommunityRecipesPanel: aria-label - search recipes"
+  },
+  "TtuPpt": {
+    "defaultMessage": "No commands found",
+    "description": "CommandPalette: empty-state - no commands found"
+  },
+  "Tw7Dfl": {
+    "defaultMessage": "Reading the photo…",
+    "description": "RecipeScanDialog: body - reading the photo"
+  },
+  "TxTse1": {
+    "defaultMessage": "No recipes shared yet.",
+    "description": "ProfileView: body - this person has shared no recipes"
+  },
+  "U0rbx1": {
+    "defaultMessage": "No week planned yet",
+    "description": "WeekView: heading - no week planned"
+  },
+  "U3f1k3": {
+    "defaultMessage": "New here?",
+    "description": "LoginView: body - sign-up prompt"
+  },
+  "U4rYpd": {
+    "defaultMessage": "You can still edit everything after inserting.",
+    "description": "RecipeScanDialog: footer - editable later"
+  },
+  "UMr38c": {
+    "defaultMessage": "Set up an account, add a few recipes, and the first week plans itself.",
+    "description": "SignUpView: body - sign-up description"
+  },
+  "UTq19g": {
+    "defaultMessage": "Add a note",
+    "description": "RecommendDialog: label - note field"
+  },
+  "UdDyl7": {
+    "defaultMessage": "Layout",
+    "description": "LayoutToggle: label - layout"
+  },
+  "UfBkks": {
+    "defaultMessage": "Scan a recipe",
+    "description": "RecipeScanDialog: heading - title"
+  },
+  "Uw9myv": {
+    "defaultMessage": "Schedule",
+    "description": "WeekPickerDialog: heading - schedule"
+  },
+  "UxbWXU": {
+    "defaultMessage": "In your recipes",
+    "description": "RecipeCard: chip - already saved"
+  },
+  "VI9oEr": {
+    "defaultMessage": "Recipe",
+    "description": "RecipeDetailPageRoute: title - browser tab"
+  },
+  "VN7uxx": {
+    "defaultMessage": "Recommendations shared with you",
+    "description": "CommandPaletteController: caption - go to inbox command"
+  },
+  "VQH5s+": {
+    "defaultMessage": "Monday",
+    "description": "PlanDayLabels: day - Monday"
+  },
+  "VWTjY2": {
+    "defaultMessage": "Pick a week",
+    "description": "PlanDaysStepPanel: button - pick a week"
+  },
+  "Vz+Sn5": {
+    "defaultMessage": "Community tags",
+    "description": "TagBrowserDialog: heading - title"
+  },
+  "VzuGmp": {
+    "defaultMessage": "{count, plural, one {# meal to fill} other {# meals to fill}}",
+    "description": "PlanGenerateStepPanel: heading - meals to fill"
+  },
+  "WApZzH": {
+    "defaultMessage": "Choose a photo to scan",
+    "description": "RecipeScanDialog: aria-label - choose a photo"
+  },
+  "WB/jZK": {
+    "defaultMessage": "Load into planner",
+    "description": "InboxCard: button - load the recommended week"
+  },
+  "WEd/gz": {
+    "defaultMessage": "Settings",
+    "description": "QuickMenu: menu-item - settings"
+  },
+  "WJko8Q": {
+    "defaultMessage": "Passwords must match",
+    "description": "FormValidation: error - passwords must match"
+  },
+  "WLQOem": {
+    "defaultMessage": "Base servings",
+    "description": "RecipeEditDetailsPanel: label - base servings"
+  },
+  "WMIsMz": {
+    "defaultMessage": "A new version of {appName} is available",
+    "description": "PwaUpdateDialog: toast - update available"
+  },
+  "WNIGvz": {
+    "defaultMessage": "Search recipes",
+    "description": "PlanRecipeSwapDialog: placeholder - search recipes"
+  },
+  "WX9zeL": {
+    "defaultMessage": "Steer the week with tags before anything is picked.",
+    "description": "UsePlanWizard: step subtitle - tags and quotas"
+  },
+  "WYAsZQ": {
+    "defaultMessage": "Settings",
+    "description": "LoginView: aria-label - settings button"
+  },
+  "WbEq0X": {
+    "defaultMessage": "Filter by tag",
+    "description": "CommunityFeedPanel: label - tag filter"
+  },
+  "WoU2bE": {
+    "defaultMessage": "Days and people",
+    "description": "UsePlanWizard: step name - days and people"
+  },
+  "X4ZvvE": {
+    "defaultMessage": "No default tags yet.",
+    "description": "SettingsDefaultTagsSection: body - no default tags yet"
+  },
+  "XDzdRz": {
+    "defaultMessage": "An account with this email already exists.",
+    "description": "SignUpRoute: toast - email already registered (409)"
+  },
+  "XGqzGF": {
+    "defaultMessage": "Recipes ({count})",
+    "description": "ProfileView: tab - recipes, with a count"
+  },
+  "XIlzTf": {
+    "defaultMessage": "Browse all tags",
+    "description": "RecipeEditTagsPanel: button - browse all tags"
+  },
+  "XO5mvo": {
+    "defaultMessage": "Every recipe in it is already in your pool.",
+    "description": "LoadWeekDialog: body - nothing new to import"
+  },
+  "XPZa3R": {
+    "defaultMessage": "Plan",
+    "description": "PlanWizardHeader: heading - title prefix"
+  },
+  "XdjdbR": {
+    "defaultMessage": "Your default tags",
+    "description": "SettingsModal: tab - default tags"
+  },
+  "XkyoEZ": {
+    "defaultMessage": "Every planned meal, scaled to the number of plates, collapsed into one list you can print.",
+    "description": "AuthPromoPanel: body - shopping list feature"
+  },
+  "XvNWOi": {
+    "defaultMessage": "Name",
+    "description": "SignUpForm: label - username input"
+  },
+  "Xwc7HV": {
+    "defaultMessage": "Save as draft",
+    "description": "PlanWizardActionBar: button - save as draft"
+  },
+  "Xx19Uc": {
+    "defaultMessage": "at most",
+    "description": "UsePlanWizard: quota mode - at most"
+  },
+  "Y342si": {
+    "defaultMessage": "Password must be confirmed",
+    "description": "FormValidation: error - password confirmation required"
+  },
+  "YD4gLf": {
+    "defaultMessage": "A re-read costs one scan.",
+    "description": "RecipeScanDialog: body - correction cost"
+  },
+  "YH/zTJ": {
+    "defaultMessage": "The service is temporarily unavailable. Please try again later.",
+    "description": "ForgotPasswordRoute: toast - server error (5xx)"
+  },
+  "YR8Z0n": {
+    "defaultMessage": "· No tag filter active",
+    "description": "RecipeLibraryFindPanel: label - no tag filter active"
+  },
+  "YSAQxA": {
+    "defaultMessage": "One or two lines on what makes this one worth cooking",
+    "description": "RecipeEditDetailsPanel: placeholder - short description"
+  },
+  "Yb4Te3": {
+    "defaultMessage": "{filled} of {total} days",
+    "description": "UseWeekTimetable: label - days filled in a meal row"
+  },
+  "YfA5jn": {
+    "defaultMessage": "Friends",
+    "description": "NavMenuItems: menu-item - community (short, mobile tab bar)"
+  },
+  "YqgzbB": {
+    "defaultMessage": "you@example.com",
+    "description": "SignUpForm: placeholder - email input"
+  },
+  "Z0zFp+": {
+    "defaultMessage": "Send recommendation",
+    "description": "RecommendDialog: button - send the recommendation"
+  },
+  "ZG5n7V": {
+    "defaultMessage": "Forgot password?",
+    "description": "LoginForm: link - forgot password"
+  },
+  "ZL6m5e": {
+    "defaultMessage": "Inbox",
+    "description": "CommunityPageHeader: button - open the inbox"
+  },
+  "ZMCogn": {
+    "defaultMessage": "Shopping",
+    "description": "WeekPageHeader: button - shopping list"
+  },
+  "ZO5hxq": {
+    "defaultMessage": "recommended a week",
+    "description": "UseCommunityCards: label - they recommended a week"
+  },
+  "ZQbRf4": {
+    "defaultMessage": "Short description",
+    "description": "RecipeEditDetailsPanel: label - short description"
+  },
+  "Zi72Eh": {
+    "defaultMessage": "Thu",
+    "description": "PlanDayLabels: day short - Thursday"
+  },
+  "ZpHKaX": {
+    "defaultMessage": "Your password",
+    "description": "LoginForm: placeholder - password input"
+  },
+  "a87mY9": {
+    "defaultMessage": "Pick the tags offered first every time you plan a week.",
+    "description": "SettingsDefaultTagsSection: body - tag browser purpose"
+  },
+  "aAqsh5": {
+    "defaultMessage": "Shopping",
+    "description": "NavMenuItems: menu-item - shopping (short, mobile tab bar)"
+  },
+  "aKrb75": {
+    "defaultMessage": "Lunch",
+    "description": "PlanDaysStepPanel: toggle - lunch"
+  },
+  "aM82tP": {
+    "defaultMessage": "LinkedIn",
+    "description": "AuthenticatedLayout: aria-label - LinkedIn social link"
+  },
+  "aTH1qx": {
+    "defaultMessage": "Theme",
+    "description": "ThemeSelector: aria-label - theme radio group"
+  },
+  "aV5f1p": {
+    "defaultMessage": "New recipe",
+    "description": "RecipeEditView: heading - new recipe"
+  },
+  "aVp3eg": {
+    "defaultMessage": "Open {title}",
+    "description": "WeekTimetableCell: aria-label - open recipe"
+  },
+  "b10tP/": {
+    "defaultMessage": "Today",
+    "description": "DayColumn: chip - today"
+  },
+  "b6ZYZt": {
+    "defaultMessage": "Community",
+    "description": "NavMenuItems: menu-item - community"
+  },
+  "bCfApS": {
+    "defaultMessage": "View recipe",
+    "description": "CommunityRecipeCard: button - open the recipe"
+  },
+  "bMWNs+": {
+    "defaultMessage": "Mark as planned",
+    "description": "WeekDraftBanner: button - mark as planned"
+  },
+  "bVSFFb": {
+    "defaultMessage": "The service is temporarily unavailable. Please try again later.",
+    "description": "LoginRoute: error - server error (5xx)"
+  },
+  "boUY+d": {
+    "defaultMessage": "This week",
+    "description": "UsePlanWizard: week - this week"
+  },
+  "bpMpOA": {
+    "defaultMessage": "together",
+    "description": "CommunityPageHeader: heading - second half, emphasised"
+  },
+  "bwDv6A": {
+    "defaultMessage": "Search the community tag pool, or start from the popular ones.",
+    "description": "PlanQuotasStepPanel: body - add a quota description"
+  },
+  "bwm17/": {
+    "defaultMessage": "Thursday",
+    "description": "PlanDayLabels: day - Thursday"
+  },
+  "c/1GxV": {
+    "defaultMessage": "Plan on your own, or share weeks with the people you cook with.",
+    "description": "AuthPromoPanel: body - shared planning footnote"
+  },
+  "c9E280": {
+    "defaultMessage": "Your recipes and shared weeks",
+    "description": "CommandPaletteController: caption - go to my profile command"
+  },
+  "cF1Cxm": {
+    "defaultMessage": "Search community tags",
+    "description": "TagBrowserDialog: placeholder - search tags"
+  },
+  "cN5bny": {
+    "defaultMessage": "{minutes} min",
+    "description": "CommunityRecipeCard: label - cooking time"
+  },
+  "ciI966": {
+    "defaultMessage": "Welcome back",
+    "description": "LoginView: heading - welcome back"
+  },
+  "cmZL1N": {
+    "defaultMessage": "Photograph a cookbook page, a printout, or a handwritten card. The text is read and turned into a recipe you can check before saving.",
+    "description": "RecipeScanDialog: body - intro"
+  },
+  "co8SjV": {
+    "defaultMessage": "{count} new",
+    "description": "NavbarContent: badge - unread recommendations"
+  },
+  "cutHCN": {
+    "defaultMessage": "Delete this recipe?",
+    "description": "RecipeLibraryView: heading - delete confirmation"
+  },
+  "d1juT6": {
+    "defaultMessage": "Cancel",
+    "description": "ConfirmDialog: button - cancel"
+  },
+  "d2RFeo": {
+    "defaultMessage": "Week",
+    "description": "UseWeekOverview: heading - week"
+  },
+  "dYKklw": {
+    "defaultMessage": "Quotas for the week",
+    "description": "PlanQuotasStepPanel: heading - quotas for the week"
+  },
+  "dgEdHD": {
+    "defaultMessage": "Command palette",
+    "description": "CommandPalette: aria-label - dialog"
+  },
+  "dxC6lJ": {
+    "defaultMessage": "Logout",
+    "description": "QuickMenu: menu-item - logout"
+  },
+  "eFOzv1": {
+    "defaultMessage": "Edit avatar and name",
+    "description": "ProfileView: button - edit your own profile"
+  },
+  "eJNm3b": {
+    "defaultMessage": "Tags are how the planner reasons about a week. Add your own if none of these fit.",
+    "description": "RecipeEditTagsPanel: body - tags hint"
+  },
+  "eJW9+3": {
+    "defaultMessage": "week",
+    "description": "UseWeekOverview: label - week (lowercase)"
+  },
+  "eTM4MF": {
+    "defaultMessage": "App Version",
+    "description": "AboutDetails: label - app version"
+  },
+  "ebGwkW": {
+    "defaultMessage": "Scan a recipe with AI",
+    "description": "RecipeEditScanBanner: heading - scan a recipe"
+  },
+  "enU9AY": {
+    "defaultMessage": "Every recipe shared in the community",
+    "description": "CommunityRecipesPanel: heading - community recipes"
+  },
+  "euXWAB": {
+    "defaultMessage": "Print list",
+    "description": "ShoppingPageHeader: button - print list"
+  },
+  "fPc6KK": {
+    "defaultMessage": "Data",
+    "description": "SettingsModal: tab - data"
+  },
+  "fUk986": {
+    "defaultMessage": "One page at a time, as flat and well lit as you can get it",
+    "description": "RecipeScanDialog: body - photo hint"
+  },
+  "fYTB6G": {
+    "defaultMessage": "Recommendation sent.",
+    "description": "UseRecommendDialogController: toast - recommendation sent"
+  },
+  "fbfEha": {
+    "defaultMessage": "Follow friends, borrow a week you like, and send recipes straight to their inbox.",
+    "description": "AuthPromoPanel: body - sharing feature"
+  },
+  "flp4b9": {
+    "defaultMessage": "Too many login attempts. Please wait a moment and try again.",
+    "description": "LoginRoute: error - too many attempts (429)"
+  },
+  "fqTqiW": {
+    "defaultMessage": "Sat",
+    "description": "PlanDayLabels: day short - Saturday"
+  },
+  "g/QbwD": {
+    "defaultMessage": "Sign in",
+    "description": "SignUpView: link - sign in"
+  },
+  "gLixRp": {
+    "defaultMessage": "No quotas set, this will be a straight random draw.",
+    "description": "UsePlanWizard: body - no quotas set"
+  },
+  "gTtb6e": {
+    "defaultMessage": "Something went wrong. Please try again.",
+    "description": "SignUpRoute: toast - generic sign-up error"
+  },
+  "gbsl0Q": {
+    "defaultMessage": "plates",
+    "description": "UseWeekOverview: label - plates (lowercase)"
+  },
+  "go3tLf": {
+    "defaultMessage": "Tuesday",
+    "description": "PlanDayLabels: day - Tuesday"
+  },
+  "gwNSqb": {
+    "defaultMessage": "Toggle password visibility",
+    "description": "LoginForm: aria-label - toggle password visibility button"
+  },
+  "hQzv4A": {
+    "defaultMessage": "draft",
+    "description": "UseWeekOverview: status - draft"
+  },
+  "hYfjyQ": {
+    "defaultMessage": "Password is too short - should be 8 chars minimum",
+    "description": "FormValidation: error - password too short (min 8 chars)"
+  },
+  "hhAIJL": {
+    "defaultMessage": "Save to my recipes",
+    "description": "InboxCard: button - save the recommended recipe"
+  },
+  "hladjf": {
+    "defaultMessage": "You wrote this one, so removing it deletes it for good. It will also be cleared from any planned day that used it.",
+    "description": "RecipeLibraryView: body - delete confirmation"
+  },
+  "hr8Rbe": {
+    "defaultMessage": "Create \"{tag}\"",
+    "description": "TagBrowserDialog: button - create tag"
+  },
+  "htLdoI": {
+    "defaultMessage": "Recommend",
+    "description": "RecommendDialog: heading - title"
+  },
+  "htdWfe": {
+    "defaultMessage": "In your recipes",
+    "description": "RecipeDetailHeader: chip - already saved"
+  },
+  "hzXPa0": {
+    "defaultMessage": "{minutes} min",
+    "description": "UseWeekOverview: stat value - average cook time in minutes"
+  },
+  "i7u08p": {
+    "defaultMessage": "Load into planner",
+    "description": "LoadWeekDialog: button - load the week into the planner"
+  },
+  "iEYJNS": {
+    "defaultMessage": "Re-read",
+    "description": "RecipeScanDialog: button - re-read"
+  },
+  "iVc5xo": {
+    "defaultMessage": "Open {title}",
+    "description": "WeekMealCard: aria-label - open recipe"
+  },
+  "itKwWQ": {
+    "defaultMessage": "Account",
+    "description": "SettingsModal: tab - account"
+  },
+  "iwYia1": {
+    "defaultMessage": "Open {title}",
+    "description": "RecipeCard: aria-label - open recipe"
+  },
+  "iwi9zd": {
+    "defaultMessage": "Cooking",
+    "description": "CommunityPageHeader: heading - first half, plain"
+  },
+  "izLyKM": {
+    "defaultMessage": "My profile",
+    "description": "NavbarContent: menu-item - open your own community profile"
+  },
+  "j5W0QR": {
+    "defaultMessage": "Arborio rice",
+    "description": "RecipeEditIngredientsPanel: placeholder - ingredient name"
+  },
+  "jgOXMo": {
+    "defaultMessage": "Friday",
+    "description": "PlanDayLabels: day - Friday"
+  },
+  "jrlJwD": {
+    "defaultMessage": "Recipe",
+    "description": "CommunityBadge: label - card holds a single recipe"
+  },
+  "jtywGX": {
+    "defaultMessage": "Send to",
+    "description": "RecommendDialog: label - who to send to"
+  },
+  "ju3tYb": {
+    "defaultMessage": "Swap",
+    "description": "PlanSlotRow: button - swap"
+  },
+  "jzHua/": {
+    "defaultMessage": "Type a command or search…",
+    "description": "CommandPalette: placeholder - search"
+  },
+  "k1d8X/": {
+    "defaultMessage": "Fill the week",
+    "description": "UsePlanWizard: step name - fill the week"
+  },
+  "kAOhT+": {
+    "defaultMessage": "Name",
+    "description": "SettingsAccountSection: label - name"
+  },
+  "kBIiR8": {
+    "defaultMessage": "Back to this week",
+    "description": "WeekPickerDialog: button - back to this week"
+  },
+  "kJRKid": {
+    "defaultMessage": "Recipes, tags and the current week live in one JSON blob. Paste to replace, download to back up.",
+    "description": "SettingsModal: body - data section purpose"
+  },
+  "kMdtRQ": {
+    "defaultMessage": "Search",
+    "description": "QuickMenu: aria-label - search menu item"
+  },
+  "kaheVZ": {
+    "defaultMessage": "Update",
+    "description": "PwaUpdateDialog: button - update"
+  },
+  "kgmJa8": {
+    "defaultMessage": "Nothing from the people you follow yet.",
+    "description": "CommunityFeedPanel: body - nothing in the feed yet"
+  },
+  "kjKYVp": {
+    "defaultMessage": "{minutes} minutes · serves {servings}",
+    "description": "RecipeScanDialog: body - scanned recipe meta"
+  },
+  "kjNUNf": {
+    "defaultMessage": "No recipes match that search.",
+    "description": "PlanRecipeSwapDialog: body - no recipes match"
+  },
+  "knHoNi": {
+    "defaultMessage": "Pick a recipe",
+    "description": "UsePlanWizard: heading - pick a recipe"
+  },
+  "ksLKLG": {
+    "defaultMessage": "Read from your photo",
+    "description": "RecipeScanDialog: label - read from photo"
+  },
+  "ksnurK": {
+    "defaultMessage": "The planner respects these when it fills the week.",
+    "description": "PlanQuotasStepPanel: body - quotas description"
+  },
+  "kt4sjG": {
+    "defaultMessage": "Dismiss",
+    "description": "InboxCard: button - dismiss the recommendation"
+  },
+  "kwyvR6": {
+    "defaultMessage": "Week {number}",
+    "description": "PlanWeekLabels: week - week number"
+  },
+  "kzQS0T": {
+    "defaultMessage": "Save week",
+    "description": "UsePlanWizard: button - save week"
+  },
+  "l/VXob": {
+    "defaultMessage": "Save the ones you want into your own pool. Only your own pool feeds the planner.",
+    "description": "CommunityRecipesPanel: body - community recipes"
+  },
+  "lARzdN": {
+    "defaultMessage": "Choose a recipe photo",
+    "description": "RecipeEditPhotoField: aria-label - choose a photo"
+  },
+  "lDoaIM": {
+    "defaultMessage": "+ Add ingredient",
+    "description": "RecipeEditIngredientsPanel: button - add ingredient"
+  },
+  "lGtcPb": {
+    "defaultMessage": "Add recipe",
+    "description": "RecipeLibraryPageHeader: button - add recipe"
+  },
+  "lTDBlr": {
+    "defaultMessage": "Copy Monday's setup to all days",
+    "description": "PlanDaysStepPanel: button - copy first day to all"
+  },
+  "lY27zk": {
+    "defaultMessage": "Something went wrong",
+    "description": "RouteError: heading - error title"
+  },
+  "lYZm3u": {
+    "defaultMessage": "Forgot Password",
+    "description": "ForgotPasswordPageRoute: title - browser tab"
+  },
+  "lbZ1KO": {
+    "defaultMessage": "Describe this step",
+    "description": "RecipeEditStepsPanel: placeholder - step text"
+  },
+  "lmWyK9": {
+    "defaultMessage": "Current plan",
+    "description": "WeekPageHeader: eyebrow - current plan"
+  },
+  "lnYkRl": {
+    "defaultMessage": "Dinner",
+    "description": "PlanDayLabels: meal - dinner"
+  },
+  "ly8KEp": {
+    "defaultMessage": "Load this week?",
+    "description": "LoadWeekDialog: heading - title"
+  },
+  "lzH6R6": {
+    "defaultMessage": "Recipes",
+    "description": "NavMenuItems: menu-item - recipes (short, mobile tab bar)"
+  },
+  "m+a4+W": {
+    "defaultMessage": "Keep me signed in",
+    "description": "LoginForm: label - remember me checkbox"
+  },
+  "m0nnwJ": {
+    "defaultMessage": "Browse all tags",
+    "description": "PlanQuotasStepPanel: button - browse all tags"
+  },
+  "mHHZp7": {
+    "defaultMessage": "Copied into week {week} as a draft. Nothing is saved until you say so.",
+    "description": "LoadWeekDialog: body - where the week lands"
+  },
+  "mJwDf8": {
+    "defaultMessage": "Weak",
+    "description": "PasswordStrength: label - weak password"
+  },
+  "mUIrxo": {
+    "defaultMessage": "Recommend",
+    "description": "CommunityRecipeCard: button - send this recipe to someone"
+  },
+  "me57gH": {
+    "defaultMessage": "At most is a ceiling, good for expensive or heavy meals. At least is a floor the randomizer fills first.",
+    "description": "PlanQuotasStepPanel: body - quota hint"
+  },
+  "miFRsV": {
+    "defaultMessage": "Appearance",
+    "description": "SettingsModal: tab - appearance"
+  },
+  "msjRYe": {
+    "defaultMessage": "Quotas: {summary}.",
+    "description": "UsePlanWizard: body - quotas summary"
+  },
+  "myl/z5": {
+    "defaultMessage": "This week",
+    "description": "NavMenuItems: menu-item - this week"
+  },
+  "n+07H2": {
+    "defaultMessage": "Planning",
+    "description": "UsePlanWizard: label - planning"
+  },
+  "n+a27x": {
+    "defaultMessage": "At least 8 characters",
+    "description": "SignUpForm: placeholder - password input"
+  },
+  "n2Pgec": {
+    "defaultMessage": "Reroll all",
+    "description": "PlanResultsStepPanel: button - reroll all"
+  },
+  "n6xojA": {
+    "defaultMessage": "Interface language. Recipe text stays as you wrote it.",
+    "description": "SettingsModal: body - language section purpose"
+  },
+  "ndqj0F": {
+    "defaultMessage": "Fri",
+    "description": "PlanDayLabels: day short - Friday"
+  },
+  "njMWxp": {
+    "defaultMessage": "Page could not be found",
+    "description": "NotFoundRoute: heading - page could not be found"
+  },
+  "npl4Um": {
+    "defaultMessage": "g",
+    "description": "RecipeEditIngredientsPanel: placeholder - unit example"
+  },
+  "nyDt+o": {
+    "defaultMessage": "Ingredient {number} unit",
+    "description": "RecipeEditIngredientsPanel: aria-label - unit"
+  },
+  "nzoJuD": {
+    "defaultMessage": "Cancel",
+    "description": "RecipeEditView: button - cancel"
+  },
+  "o9sAtj": {
+    "defaultMessage": "Adds {count, plural, one {# recipe} other {# recipes}} you don't have yet to your own pool.",
+    "description": "LoadWeekDialog: body - recipes that come with the week"
+  },
+  "oDtj7L": {
+    "defaultMessage": "Go to My Profile",
+    "description": "CommandPaletteController: label - go to my profile command"
+  },
+  "oGNxvn": {
+    "defaultMessage": "Please check your details and try again.",
+    "description": "SignUpRoute: toast - validation error (422)"
+  },
+  "oJDoLK": {
+    "defaultMessage": "Sign in and pick up where the week left off.",
+    "description": "LoginView: body - sign in tagline"
+  },
+  "oUdMPU": {
+    "defaultMessage": "End the current session",
+    "description": "CommandPaletteController: caption - logout command"
+  },
+  "obJ2Hk": {
+    "defaultMessage": "Week",
+    "description": "CommunityBadge: label - card holds a shared week"
+  },
+  "ofu1c3": {
+    "defaultMessage": "Loaded. Refine it and save.",
+    "description": "UseLoadWeekDialogController: toast - week loaded into the planner"
+  },
+  "oqInO0": {
+    "defaultMessage": "Logout",
+    "description": "QuickMenu: aria-label - logout menu item"
+  },
+  "oulMCV": {
+    "defaultMessage": "Fewer people on {day}",
+    "description": "PlanDaysStepPanel: aria-label - fewer people"
+  },
+  "ow22r/": {
+    "defaultMessage": "Sun",
+    "description": "PlanDayLabels: day short - Sunday"
+  },
+  "oyHEdk": {
+    "defaultMessage": "Please accept the terms to continue",
+    "description": "SignUpForm: error - terms must be accepted"
+  },
+  "pH5X6L": {
+    "defaultMessage": "Previous month",
+    "description": "WeekPickerDialog: aria-label - previous month"
+  },
+  "pKTw06": {
+    "defaultMessage": "Save to my recipes",
+    "description": "RecipeDetailActions: button - save to my recipes"
+  },
+  "pPj4qN": {
+    "defaultMessage": "About",
+    "description": "SettingsModal: tab - about"
+  },
+  "piJxzj": {
+    "defaultMessage": "Recipes",
+    "description": "RecipeLibraryPageRoute: title - browser tab"
+  },
+  "q+utlS": {
+    "defaultMessage": "Clear",
+    "description": "PlanSlotCard: button - clear"
+  },
+  "qH1HNj": {
+    "defaultMessage": "Use this recipe",
+    "description": "RecipeScanDialog: button - use this recipe"
+  },
+  "qH944z": {
+    "defaultMessage": "Recommend",
+    "description": "RecipeDetailActions: button - recommend"
+  },
+  "qOKlGC": {
+    "defaultMessage": "The link only works once, so open it on the device you want to sign in on.",
+    "description": "ForgotPasswordView: body - reset link sent"
+  },
+  "qw1WTq": {
+    "defaultMessage": "showing {shown} of {total} recipes",
+    "description": "UsePlanWizard: label - showing n of m recipes"
+  },
+  "qyOrax": {
+    "defaultMessage": "What are you looking for?",
+    "description": "RecipeLibraryFindPanel: heading - find a recipe"
+  },
+  "r+2Y3i": {
+    "defaultMessage": "Saved to your recipes.",
+    "description": "UseInboxRoute: toast - recipe saved from a recommendation"
+  },
+  "rFAApu": {
+    "defaultMessage": "required",
+    "description": "RecipeEditTagsPanel: label - required marker"
+  },
+  "rFtjCS": {
+    "defaultMessage": "Create an account",
+    "description": "LoginView: link - create an account"
+  },
+  "rSPz2r": {
+    "defaultMessage": "Pick the tags you filter by most. They stay on the pool as quick filters.",
+    "description": "RecipeLibraryView: body - default tag browser description"
+  },
+  "riNe1w": {
+    "defaultMessage": "{days}d ago",
+    "description": "UseCommunityCards: label - how many days ago something was shared"
+  },
+  "ricuZW": {
+    "defaultMessage": "Settings",
+    "description": "QuickMenu: aria-label - settings menu item"
+  },
+  "roDpsD": {
+    "defaultMessage": "Pick a recipe: {day} {meal}",
+    "description": "UsePlanWizard: heading - swap for day meal"
+  },
+  "s+cEGl": {
+    "defaultMessage": "Next week",
+    "description": "WeekSwitcher: aria-label - next week"
+  },
+  "s7lnsz": {
+    "defaultMessage": "Email must be valid",
+    "description": "FormValidation: error - email must be valid"
+  },
+  "sHH80Y": {
+    "defaultMessage": "exactly",
+    "description": "UsePlanWizard: quota mode - exactly"
+  },
+  "sHelF7": {
+    "defaultMessage": "Cook for fewer people",
+    "description": "RecipeDetailServingsStepper: aria-label - fewer servings"
+  },
+  "sP6/O4": {
+    "defaultMessage": "Homepage",
+    "description": "AuthenticatedLayout: aria-label - homepage link"
+  },
+  "sVjIK5": {
+    "defaultMessage": "Your default tags. A recipe must carry every tag you pick.",
+    "description": "RecipeLibraryTagFilterRow: body - filter by tag"
+  },
+  "seJTd5": {
+    "defaultMessage": "Saved as a draft.",
+    "description": "UsePlanRoute: toast - week saved as draft"
+  },
+  "sscg0N": {
+    "defaultMessage": "Demo build. Any valid email and a password of at least 8 characters will get you in.",
+    "description": "LoginView: body - demo mode banner"
+  },
+  "sudj29": {
+    "defaultMessage": "· {count, plural, one {# tag filter} other {# tag filters}} active",
+    "description": "RecipeLibraryFindPanel: label - tag filters active"
+  },
+  "tGl7PF": {
+    "defaultMessage": "Sign in",
+    "description": "ForgotPasswordView: link - sign in"
+  },
+  "tJarrN": {
+    "defaultMessage": "People",
+    "description": "PlanDaysStepPanel: label - people"
+  },
+  "tOiWmt": {
+    "defaultMessage": "From the plan",
+    "description": "ShoppingPageHeader: eyebrow - from the plan"
+  },
+  "ttpFqW": {
+    "defaultMessage": "The service is temporarily unavailable. Please try again later.",
+    "description": "SignUpRoute: toast - server error (5xx)"
+  },
+  "uLnlfH": {
+    "defaultMessage": "Tue",
+    "description": "PlanDayLabels: day short - Tuesday"
+  },
+  "utwxNU": {
+    "defaultMessage": "Done",
+    "description": "TagBrowserDialog: button - done"
+  },
+  "v8xfAl": {
+    "defaultMessage": "Pick the tags to filter the pool by.",
+    "description": "RecipeLibraryView: body - filter tag browser description"
+  },
+  "v9CBj7": {
+    "defaultMessage": "Edit week",
+    "description": "WeekPageHeader: button - edit week"
+  },
+  "vJpQgE": {
+    "defaultMessage": "Next week",
+    "description": "UsePlanWizard: week - next week"
+  },
+  "vOxjkr": {
+    "defaultMessage": "Next week",
+    "description": "PlanWeekLabels: week - next week"
+  },
+  "vVwnor": {
+    "defaultMessage": "Remove step {number}",
+    "description": "RecipeEditStepsPanel: aria-label - remove step"
+  },
+  "vW2JQR": {
+    "defaultMessage": "Shopping list",
+    "description": "ShoppingPageRoute: title - browser tab"
+  },
+  "vWoN3+": {
+    "defaultMessage": "Appearance",
+    "description": "CommandPaletteController: label - appearance group"
+  },
+  "vYFPb/": {
+    "defaultMessage": "pool",
+    "description": "RecipeLibraryPageHeader: heading - title accent"
+  },
+  "wF9nyw": {
+    "defaultMessage": "Meals",
+    "description": "UseWeekOverview: stat - meals"
+  },
+  "wbfNwW": {
+    "defaultMessage": "Pick a recipe",
+    "description": "PlanSlotRow: button - pick a recipe"
+  },
+  "wtGubL": {
+    "defaultMessage": "New tag",
+    "description": "RecipeEditTagsPanel: aria-label - new tag"
+  },
+  "wv66GT": {
+    "defaultMessage": "Search",
+    "description": "QuickMenu: menu-item - search"
+  },
+  "x/eR7i": {
+    "defaultMessage": "Plan",
+    "description": "PlanPageRoute: title - browser tab"
+  },
+  "x0NC5P": {
+    "defaultMessage": "Wed",
+    "description": "PlanDayLabels: day short - Wednesday"
+  },
+  "xBAyfF": {
+    "defaultMessage": "Server version",
+    "description": "AboutDetails: label - server version"
+  },
+  "xK01El": {
+    "defaultMessage": "Which meals you need, and for how many.",
+    "description": "UsePlanWizard: step subtitle - days and people"
+  },
+  "xNJoth": {
+    "defaultMessage": "Week grid",
+    "description": "PlanResultsStepPanel: toggle - week grid layout"
+  },
+  "xTTsxs": {
+    "defaultMessage": "Steps",
+    "description": "RecipeEditStepsPanel: label - steps"
+  },
+  "xUgKrt": {
+    "defaultMessage": "Try again",
+    "description": "RouteError: button - retry"
+  },
+  "xcITGP": {
+    "defaultMessage": "Vegetarian",
+    "description": "UseWeekOverview: stat - vegetarian"
+  },
+  "xdYQG7": {
+    "defaultMessage": "Everything already planned, at a glance. Click a week to work on it.",
+    "description": "WeekPickerDialog: body - schedule description"
+  },
+  "xjYoqG": {
+    "defaultMessage": "Save as draft",
+    "description": "PlanWizardHeader: button - save as draft"
+  },
+  "xpo7+y": {
+    "defaultMessage": "We need to call you something",
+    "description": "SignUpForm: error - username required"
+  },
+  "xr2NN2": {
+    "defaultMessage": "Theme: System",
+    "description": "CommandPaletteController: label - theme system command"
+  },
+  "xwjsAy": {
+    "defaultMessage": "Pick the tags that describe this recipe.",
+    "description": "RecipeEditView: body - tag browser description"
+  },
+  "xxU9J8": {
+    "defaultMessage": "{weekRange} · {count} lines for the planned week",
+    "description": "UseShoppingOverview: subtitle - line count for the planned week"
+  },
+  "y/G/gt": {
+    "defaultMessage": "you@example.com",
+    "description": "LoginForm: placeholder - email input"
+  },
+  "y5xhNU": {
+    "defaultMessage": "More tags",
+    "description": "RecipeLibraryTagFilterRow: button - browse the full tag catalogue"
+  },
+  "yJcQt1": {
+    "defaultMessage": "Time (minutes)",
+    "description": "RecipeEditDetailsPanel: label - time in minutes"
+  },
+  "ySpw27": {
+    "defaultMessage": "Ingredients",
+    "description": "UseWeekOverview: stat - ingredients"
+  },
+  "yaLARc": {
+    "defaultMessage": "{count, plural, one {# use} other {# uses}}",
+    "description": "UseCommunityCards: label - how many cooks used a shared week"
+  },
+  "ybpi8H": {
+    "defaultMessage": "Your data as JSON",
+    "description": "SettingsDataSection: label - json editor"
+  },
+  "ydH/Rp": {
+    "defaultMessage": "Step",
+    "description": "UsePlanWizard: label - step prefix"
+  },
+  "yerfN2": {
+    "defaultMessage": "Community",
+    "description": "ProfileView: button - back to the community"
+  },
+  "yj75TH": {
+    "defaultMessage": "Add a quota",
+    "description": "PlanQuotasStepPanel: heading - add a quota"
+  },
+  "yjaIrt": {
+    "defaultMessage": "Skip",
+    "description": "UsePlanWizard: button - skip"
+  },
+  "ylSJdv": {
+    "defaultMessage": "No shared weeks yet.",
+    "description": "ProfileView: body - this person has shared no weeks"
+  },
+  "ypOlkq": {
+    "defaultMessage": "Language",
+    "description": "SettingsModal: tab - language"
+  },
+  "yqsqER": {
+    "defaultMessage": "Dark",
+    "description": "ThemeSelector: label - dark option"
+  },
+  "yv8skB": {
+    "defaultMessage": "Use this week",
+    "description": "SharedWeekCard: button - load this week into the planner"
+  },
+  "z+Hjxf": {
+    "defaultMessage": "empty",
+    "description": "UsePlanWizard: label - empty slot"
+  },
+  "z8a3ox": {
+    "defaultMessage": "Save to my recipes",
+    "description": "RecipeCard: button - save to my recipes"
+  },
+  "zEtRE9": {
+    "defaultMessage": "No recipes match that search.",
+    "description": "RecipeLibraryGrid: body - no recipes match"
+  },
+  "zI4Y8l": {
+    "defaultMessage": "Applied.",
+    "description": "SettingsDataSection: status - json applied"
+  },
+  "zJ1sl6": {
+    "defaultMessage": "Recipe",
+    "description": "RecipeLibraryPageHeader: heading - title prefix"
+  },
+  "zMq0kL": {
+    "defaultMessage": "Back",
+    "description": "RecipeDetailView: button - back"
+  },
+  "zRyd/9": {
+    "defaultMessage": "Reroll",
+    "description": "PlanSlotCard: button - reroll"
+  },
+  "zWLji4": {
+    "defaultMessage": "W{number}",
+    "description": "UseHeaderWeekPickerController: chip - abbreviated week number"
+  },
+  "zoMR5Z": {
+    "defaultMessage": "Email",
+    "description": "ForgotPasswordForm: label - email input"
+  },
+  "ztO1kU": {
+    "defaultMessage": "Pick the tags this week should be built around.",
+    "description": "PlanView: body - browse quota tags dialog description"
+  }
+}

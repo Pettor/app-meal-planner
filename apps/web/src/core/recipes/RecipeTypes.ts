@@ -12,9 +12,6 @@
  */
 export type RecipeTagFamily = "diet" | "ing" | "method" | "other";
 
-/** Whose recipes the library is showing: the cook's own pool, or everyone else's. */
-export type RecipeScope = "mine" | "everyone";
-
 export interface RecipeAuthor {
   id: string;
   name: string;
@@ -35,6 +32,8 @@ export interface RecipeIngredient {
 export interface Recipe {
   id: string;
   title: string;
+  /** A line or two on why the recipe is worth cooking. Optional — older recipes have none. */
+  description?: string;
   tags: string[];
   /** The number of people the ingredient amounts are written for. */
   servings: number;

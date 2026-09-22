@@ -1,6 +1,7 @@
 import type { ReactElement } from "react";
 import { useDocumentTitle } from "@package/react";
 import { createFileRoute, notFound } from "@tanstack/react-router";
+import { useIntl } from "react-intl";
 import { useProfileRoute } from "./-UseProfileRoute";
 import { CommandPaletteController } from "~/components/actions/command-palette/CommandPaletteController";
 import { LoadWeekDialogController } from "~/components/feedback/load-week-dialog/LoadWeekDialogController";
@@ -15,10 +16,18 @@ export const Route = createFileRoute("/_authenticated/community/$personId")({
 });
 
 function ProfilePageRoute(): ReactElement {
+  const intl = useIntl();
   const { personId } = Route.useParams();
   const props = useProfileRoute(personId);
 
-  useDocumentTitle(props?.person.name ?? "Profile");
+  useDocumentTitle(
+    props?.person.name ??
+      intl.formatMessage({
+        description: "ProfilePageRoute: title - browser tab",
+        defaultMessage: "Profile",
+        id: "DEcf5/",
+      })
+  );
 
   if (!props) throw notFound();
 

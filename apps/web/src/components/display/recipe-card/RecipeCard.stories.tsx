@@ -34,7 +34,7 @@ export const Default: Story = {
 };
 
 export const WithoutPhoto: Story = {
-  args: { ...defaultArgs, recipe: SampleRecipes[1]! },
+  args: { ...defaultArgs, recipe: SampleRecipes[5]! },
 };
 
 export const FromTheCommunity: Story = {

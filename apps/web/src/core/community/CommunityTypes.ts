@@ -10,7 +10,9 @@ import type { RecipeAuthor } from "~/core/recipes/RecipeTypes";
  */
 
 /** Which section of the community page is showing. */
-export type CommunityTab = "feed" | "people" | "weeks";
+export const CommunityTabs = ["feed", "recipes", "people", "weeks"] as const;
+
+export type CommunityTab = (typeof CommunityTabs)[number];
 
 /** Which half of someone's profile is showing. */
 export type ProfileTab = "weeks" | "recipes";

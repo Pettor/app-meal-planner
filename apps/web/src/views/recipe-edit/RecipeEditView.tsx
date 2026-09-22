@@ -112,9 +112,11 @@ export function RecipeEditView({
                 <div className="flex flex-col gap-6 px-6 pt-7 pb-9 md:px-8">
                   <RecipeEditDetailsPanel
                     title={form.draft.title}
+                    description={form.draft.description}
                     servings={form.draft.servings}
                     timeMinutes={form.draft.timeMinutes}
                     onTitleChange={(title) => form.setField("title", title)}
+                    onDescriptionChange={(description) => form.setField("description", description)}
                     onServingsChange={(servings) => form.setField("servings", servings)}
                     onTimeChange={(timeMinutes) => form.setField("timeMinutes", timeMinutes)}
                   />

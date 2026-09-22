@@ -2,23 +2,15 @@ import type { ReactElement } from "react";
 import { Card } from "@heroui/react";
 import { useIntl } from "react-intl";
 import { RecipeCard } from "~/components/display/recipe-card/RecipeCard";
-import type { Recipe, RecipeScope } from "~/core/recipes/RecipeTypes";
+import type { Recipe } from "~/core/recipes/RecipeTypes";
 
 export interface RecipeLibraryGridProps {
   recipes: Recipe[];
-  scope: RecipeScope;
   onOpenRecipe: (recipeId: string) => void;
-  onSaveRecipe: (recipeId: string) => void;
   onRemoveRecipe: (recipeId: string) => void;
 }
 
-export function RecipeLibraryGrid({
-  recipes,
-  scope,
-  onOpenRecipe,
-  onSaveRecipe,
-  onRemoveRecipe,
-}: RecipeLibraryGridProps): ReactElement {
+export function RecipeLibraryGrid({ recipes, onOpenRecipe, onRemoveRecipe }: RecipeLibraryGridProps): ReactElement {
   const intl = useIntl();
 
   if (recipes.length === 0) {
@@ -36,16 +28,9 @@ export function RecipeLibraryGrid({
   }
 
   return (
-    <div className="mt-6 grid grid-cols-[repeat(auto-fill,minmax(15.75rem,1fr))] gap-4.5">
+    <div className="mt-5 grid grid-cols-[repeat(auto-fill,minmax(15.75rem,1fr))] gap-4.5">
       {recipes.map((recipe) => (
-        <RecipeCard
-          key={recipe.id}
-          recipe={recipe}
-          showSaveAction={scope === "everyone"}
-          onOpen={onOpenRecipe}
-          onSave={onSaveRecipe}
-          onRemove={onRemoveRecipe}
-        />
+        <RecipeCard key={recipe.id} recipe={recipe} onOpen={onOpenRecipe} onRemove={onRemoveRecipe} />
       ))}
     </div>
   );

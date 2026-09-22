@@ -6,6 +6,7 @@ import { GithubIcon, LinkedInIcon, NavbarLayout } from "@package/ui";
 import { Outlet, createFileRoute, redirect } from "@tanstack/react-router";
 import { useIntl } from "react-intl";
 import { useAuthenticatedRoute } from "./-UseAuthenticatedRoute";
+import { HeaderWeekPickerController } from "~/components/navigation/header-week-picker/HeaderWeekPickerController";
 import { NavbarContent } from "~/components/navigation/navbar-content/NavbarContent";
 import { RouteLoading } from "~/core/routes/logic/RouteLoading";
 
@@ -52,6 +53,7 @@ function AuthenticatedLayout(): ReactElement {
           avatarEmail={sessionContent.email}
           activeTab={activeTab}
           onTabChange={onTabChange}
+          weekPicker={<HeaderWeekPickerController />}
           accountMenu={accountMenu}
         />
       }

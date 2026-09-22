@@ -1,37 +1,26 @@
 import type { ReactElement } from "react";
-import { PencilSquareIcon, PrinterIcon, SparklesIcon } from "@heroicons/react/24/outline";
+import { PencilSquareIcon, PrinterIcon, ShoppingCartIcon, SparklesIcon } from "@heroicons/react/24/outline";
 import { Button } from "@heroui/react";
 import { useIntl } from "react-intl";
-import { WeekSwitcher } from "~/components/navigation/week-switcher/WeekSwitcher";
 
 export interface WeekPageHeaderProps {
   headingLead: string;
   headingAccent: string;
   subtitle: string;
-  switcherLabel: string;
-  weekRange: string;
-  statusDotClassName: string;
   hasPlan: boolean;
-  onPreviousWeek: () => void;
-  onNextWeek: () => void;
-  onOpenWeekPicker: () => void;
+  onOpenShoppingList: () => void;
   onPrint: () => void;
   onEditWeek: () => void;
   onPlanWeek: () => void;
 }
 
-/** Title, week switcher and the actions available for the week in view. */
+/** Title and the actions available for the week in view — the week itself is switched from the navbar. */
 export function WeekPageHeader({
   headingLead,
   headingAccent,
   subtitle,
-  switcherLabel,
-  weekRange,
-  statusDotClassName,
   hasPlan,
-  onPreviousWeek,
-  onNextWeek,
-  onOpenWeekPicker,
+  onOpenShoppingList,
   onPrint,
   onEditWeek,
   onPlanWeek,
@@ -39,7 +28,7 @@ export function WeekPageHeader({
   const intl = useIntl();
 
   return (
-    <div className="flex flex-wrap items-end justify-between gap-5 print:hidden">
+    <div className="flex flex-wrap items-end justify-between gap-x-5 gap-y-4 print:hidden">
       <div>
         <div className="text-default-500 mb-2 text-xs font-medium tracking-[0.09em] uppercase">
           {intl.formatMessage({
@@ -55,17 +44,16 @@ export function WeekPageHeader({
       </div>
 
       <div className="flex flex-wrap items-center gap-2">
-        <WeekSwitcher
-          label={switcherLabel}
-          hint={weekRange}
-          statusDotClassName={statusDotClassName}
-          onPrevious={onPreviousWeek}
-          onNext={onNextWeek}
-          onOpenPicker={onOpenWeekPicker}
-        />
-
         {hasPlan && (
           <>
+            <Button variant="outline" onPress={onOpenShoppingList} data-testid="week-page__shopping-list">
+              <ShoppingCartIcon className="mr-1.5 h-4 w-4" />
+              {intl.formatMessage({
+                description: "WeekPageHeader: button - shopping list",
+                defaultMessage: "Shopping",
+                id: "ZMCogn",
+              })}
+            </Button>
             <Button variant="outline" onPress={onPrint}>
               <PrinterIcon className="mr-1.5 h-4 w-4" />
               {intl.formatMessage({

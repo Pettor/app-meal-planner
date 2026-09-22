@@ -11,6 +11,7 @@
     "dev": "vite --open",
     "dev:mocks": "vite --mode mocks",
     "lint": "eslint ./src",
+    "intl:extract": "formatjs extract 'src/**/*.{ts,tsx}' --ignore='src/**/*.d.ts' --ignore='src/**/*.stories.tsx' --out-file src/core/locales/messages/en.json",
     "lint:fix": "pnpm lint --fix",
     "generate:assets": "generate-assets public",
     "build": "pnpm generate:assets && tsc && vite build",

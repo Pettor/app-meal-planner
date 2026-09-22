@@ -1,6 +1,7 @@
 import type { ReactElement } from "react";
 import { useDocumentTitle } from "@package/react";
 import { createFileRoute } from "@tanstack/react-router";
+import { useIntl } from "react-intl";
 import { useInboxRoute } from "./-UseInboxRoute";
 import { CommandPaletteController } from "~/components/actions/command-palette/CommandPaletteController";
 import { LoadWeekDialogController } from "~/components/feedback/load-week-dialog/LoadWeekDialogController";
@@ -14,7 +15,14 @@ export const Route = createFileRoute("/_authenticated/community/inbox")({
 });
 
 function InboxPageRoute(): ReactElement {
-  useDocumentTitle("Inbox");
+  const intl = useIntl();
+  useDocumentTitle(
+    intl.formatMessage({
+      description: "InboxPageRoute: title - browser tab",
+      defaultMessage: "Inbox",
+      id: "9xyQWi",
+    })
+  );
   const props = useInboxRoute();
 
   return (

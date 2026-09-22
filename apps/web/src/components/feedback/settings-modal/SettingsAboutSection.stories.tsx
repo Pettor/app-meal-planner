@@ -21,7 +21,7 @@ const defaultArgs = {
 export const Default: Story = {
   args: defaultArgs,
   play: async ({ canvas }) => {
-    await expect(canvas.getByText("About")).toBeInTheDocument();
+    await expect(canvas.getByText("My App")).toBeInTheDocument();
     await expect(canvas.getByText("1.0.0")).toBeInTheDocument();
   },
 };

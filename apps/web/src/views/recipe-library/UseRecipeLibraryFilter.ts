@@ -1,79 +1,73 @@
 import { useMemo, useState } from "react";
-import type { Recipe, RecipeScope } from "~/core/recipes/RecipeTypes";
-import { collectTags } from "~/core/recipes/RecipeUtils";
+import type { Recipe } from "~/core/recipes/RecipeTypes";
 
 export interface UseRecipeLibraryFilterResult {
-  scope: RecipeScope;
-  setScope: (scope: RecipeScope) => void;
   query: string;
   setQuery: (query: string) => void;
   selectedTags: string[];
   toggleTag: (tag: string) => void;
   /**
-   * The chips the filter bar offers: every tag in scope, plus any tag picked
-   * from the full catalogue that no recipe in scope carries — otherwise a filter
+   * The chips the filter row offers: the cook's default tags, plus any tag
+   * picked from the full catalogue that isn't one of them — otherwise a filter
    * that narrows the pool to nothing would have no chip to switch back off.
    */
-  availableTags: string[];
+  quickTags: string[];
   hasTagFilter: boolean;
   clearTags: () => void;
-  /** The catalogue browser, for filtering by a tag beyond the ones in scope. */
+  /** The catalogue browser, for filtering by a tag beyond the default ones. */
   isTagBrowserOpen: boolean;
   openTagBrowser: () => void;
   closeTagBrowser: () => void;
-  /** The recipes left after scope, search and tag filters. */
+  /** The cook's own pool, before search and tag filters narrow it. */
+  pool: Recipe[];
+  /** The recipes left after search and tag filters. */
   filtered: Recipe[];
 }
 
 /**
- * Filter state for the recipe library: which pool you are looking at, the
- * search box, and the tag chips. All three narrow the same list.
+ * Filter state for the recipe library: the search box and the tag chips, both
+ * narrowing the same list.
+ *
+ * The pool is only ever the cook's own recipes — everyone else's live in the
+ * community, which the panel links out to.
  */
-export function useRecipeLibraryFilter(recipes: Recipe[], initialScope: RecipeScope): UseRecipeLibraryFilterResult {
-  const [scope, setScope] = useState<RecipeScope>(initialScope);
+export function useRecipeLibraryFilter(recipes: Recipe[], pinnedTags: string[]): UseRecipeLibraryFilterResult {
   const [query, setQuery] = useState("");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [isTagBrowserOpen, setIsTagBrowserOpen] = useState(false);
 
-  const inScope = useMemo(
-    () =>
-      scope === "mine"
-        ? recipes.filter((recipe) => recipe.isSaved)
-        : recipes.filter((recipe) => recipe.author.id !== "me"),
-    [recipes, scope]
-  );
+  const pool = useMemo(() => recipes.filter((recipe) => recipe.isSaved), [recipes]);
 
-  const availableTags = useMemo(() => {
-    const inPool = collectTags(inScope);
-    return [...inPool, ...selectedTags.filter((tag) => !inPool.includes(tag))];
-  }, [inScope, selectedTags]);
+  const quickTags = useMemo(
+    () => [...pinnedTags, ...selectedTags.filter((tag) => !pinnedTags.includes(tag))],
+    [pinnedTags, selectedTags]
+  );
 
   const filtered = useMemo(() => {
     const needle = query.trim().toLowerCase();
-    return inScope.filter(
+    return pool.filter(
       (recipe) =>
         (!needle || recipe.title.toLowerCase().includes(needle)) &&
         selectedTags.every((tag) => recipe.tags.includes(tag))
     );
-  }, [inScope, query, selectedTags]);
+  }, [pool, query, selectedTags]);
 
   function toggleTag(tag: string): void {
     setSelectedTags((current) => (current.includes(tag) ? current.filter((t) => t !== tag) : [...current, tag]));
   }
 
   return {
-    scope,
-    setScope,
     query,
     setQuery,
     selectedTags,
     toggleTag,
-    availableTags,
+    quickTags,
     hasTagFilter: selectedTags.length > 0,
     clearTags: () => setSelectedTags([]),
     isTagBrowserOpen,
     openTagBrowser: () => setIsTagBrowserOpen(true),
     closeTagBrowser: () => setIsTagBrowserOpen(false),
+    pool,
     filtered,
   };
 }

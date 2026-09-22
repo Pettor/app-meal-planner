@@ -125,3 +125,69 @@ test.describe("general.commandpalette", () => {
     await expect(page.getByText("No commands found")).toBeVisible();
   });
 });
+
+test.describe("general.language", () => {
+  test.beforeEach(async () => {
+    await mocksClient.restoreRouteVariants();
+  });
+
+  test("switches the interface to Swedish and back to English", async ({ page }) => {
+    await page.goto("/");
+
+    await expect(async () => {
+      expect(await page.title()).toBe("Recipes");
+    }).toPass();
+
+    // Open quick menu via avatar button, then open settings
+    await page.getByTestId("home-page__menu-button").click();
+    await page.getByTestId("quick-menu__settings-button").click();
+
+    await expect(page.getByRole("dialog", { name: "Settings" })).toBeVisible();
+
+    // Pick Swedish from the Language section
+    await page.getByRole("tab", { name: "Language" }).click();
+    await page.getByRole("button", { name: "Svenska" }).click();
+
+    // The modal around the toggle re-renders in Swedish
+    await expect(page.getByRole("dialog", { name: "Inställningar" })).toBeVisible();
+    await expect(page.getByRole("tab", { name: "Språk" })).toBeVisible();
+    await expect(page.getByRole("tab", { name: "Utseende" })).toBeVisible();
+
+    await page.keyboard.press("Escape");
+
+    // …and so does the app behind it, including the document title
+    await expect(async () => {
+      expect(await page.title()).toBe("Recept");
+    }).toPass();
+
+    const nav = page.getByRole("navigation", { name: "Navigering" });
+    await expect(nav.getByRole("button", { name: "Recept" })).toBeVisible();
+    await expect(nav.getByRole("button", { name: "Planera" })).toBeVisible();
+    await expect(nav.getByRole("button", { name: "Denna vecka" })).toBeVisible();
+    await expect(nav.getByRole("button", { name: "Inköp" })).toBeVisible();
+
+    // Swedish compounds the two-part page heading, so it must not read "Recept samling"
+    await expect(page.getByRole("heading", { name: "Samlade recept" })).toBeVisible();
+
+    // The choice is persisted, so it survives a reload
+    await page.reload();
+    await expect(async () => {
+      expect(await page.title()).toBe("Recept");
+    }).toPass();
+    await expect(page.getByRole("heading", { name: "Samlade recept" })).toBeVisible();
+
+    // Switching back leaves the app in English again
+    await page.getByTestId("home-page__menu-button").click();
+    await page.getByTestId("quick-menu__settings-button").click();
+    await page.getByRole("tab", { name: "Språk" }).click();
+    await page.getByRole("button", { name: "English" }).click();
+
+    await expect(page.getByRole("dialog", { name: "Settings" })).toBeVisible();
+    await page.keyboard.press("Escape");
+
+    await expect(async () => {
+      expect(await page.title()).toBe("Recipes");
+    }).toPass();
+    await expect(page.getByRole("heading", { name: "Recipe pool" })).toBeVisible();
+  });
+});

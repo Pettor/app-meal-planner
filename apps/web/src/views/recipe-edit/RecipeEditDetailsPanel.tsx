@@ -1,21 +1,26 @@
-import type { ReactElement } from "react";
+import type { ChangeEvent, ReactElement } from "react";
+import { Label, TextArea, TextField } from "@heroui/react";
 import { useIntl } from "react-intl";
 import { TextInputField } from "~/components/input/input-field/TextInputField";
 
 export interface RecipeEditDetailsPanelProps {
   title: string;
+  description: string;
   servings: string;
   timeMinutes: string;
   onTitleChange: (title: string) => void;
+  onDescriptionChange: (description: string) => void;
   onServingsChange: (servings: string) => void;
   onTimeChange: (timeMinutes: string) => void;
 }
 
 export function RecipeEditDetailsPanel({
   title,
+  description,
   servings,
   timeMinutes,
   onTitleChange,
+  onDescriptionChange,
   onServingsChange,
   onTimeChange,
 }: RecipeEditDetailsPanelProps): ReactElement {
@@ -38,6 +43,25 @@ export function RecipeEditDetailsPanel({
           id: "SGd0FW",
         })}
       />
+      <TextField className="col-span-full">
+        <Label>
+          {intl.formatMessage({
+            description: "RecipeEditDetailsPanel: label - short description",
+            defaultMessage: "Short description",
+            id: "ZQbRf4",
+          })}
+        </Label>
+        <TextArea
+          rows={2}
+          value={description}
+          onChange={(event: ChangeEvent<HTMLTextAreaElement>) => onDescriptionChange(event.target.value)}
+          placeholder={intl.formatMessage({
+            description: "RecipeEditDetailsPanel: placeholder - short description",
+            defaultMessage: "One or two lines on what makes this one worth cooking",
+            id: "YSAQxA",
+          })}
+        />
+      </TextField>
       <TextInputField
         type="number"
         min={1}

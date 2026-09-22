@@ -67,6 +67,8 @@ export const SampleRecipes: Recipe[] = [
   {
     id: "r1",
     title: "Red lentil dal",
+    description:
+      "Cheap, forgiving and mostly hands-off. The lentils thicken the sauce themselves, so it needs nothing but rice and a bit of patience.",
     tags: ["vegetarian", "cheap", "quick"],
     servings: 4,
     timeMinutes: 30,
@@ -90,6 +92,7 @@ export const SampleRecipes: Recipe[] = [
   {
     id: "r2",
     title: "Lamb skewers on the grill",
+    description: "A short marinade does most of the work. Best over coals, but a hot grill pan gets you close.",
     tags: ["meat", "bbq", "expensive"],
     servings: 4,
     timeMinutes: 45,
@@ -113,6 +116,8 @@ export const SampleRecipes: Recipe[] = [
   {
     id: "r3",
     title: "Mushroom risotto",
+    description:
+      "Frying the mushrooms hard and separately is what keeps them from going grey. Everything else is stirring.",
     tags: ["vegetarian", "comfort"],
     servings: 4,
     timeMinutes: 40,
@@ -136,6 +141,7 @@ export const SampleRecipes: Recipe[] = [
   {
     id: "r4",
     title: "Sheet-pan chicken and root veg",
+    description: "One tray, one temperature. The veg roast in the fat from the thighs above them.",
     tags: ["meat", "cheap", "sheet-pan"],
     servings: 4,
     timeMinutes: 55,
@@ -159,6 +165,8 @@ export const SampleRecipes: Recipe[] = [
   {
     id: "r5",
     title: "Salmon tacos",
+    description:
+      "Twenty-five minutes from fridge to table. The lime-dressed cabbage is what makes it feel like more than roast fish.",
     tags: ["fish", "quick"],
     servings: 4,
     timeMinutes: 25,
@@ -182,6 +190,7 @@ export const SampleRecipes: Recipe[] = [
   {
     id: "r6",
     title: "Halloumi and chickpea salad",
+    description: "A weeknight salad that eats like a meal. Fry the halloumi until it is properly dark.",
     tags: ["vegetarian", "quick"],
     servings: 2,
     timeMinutes: 20,

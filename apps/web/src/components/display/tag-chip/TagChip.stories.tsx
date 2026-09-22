@@ -32,6 +32,18 @@ export const Families: Story = {
   ),
 };
 
+/** `sm` is for grids too tight for a full-size tag — the week timetable's cells. */
+export const Small: Story = {
+  args: defaultArgs,
+  render: () => (
+    <div className="flex flex-wrap gap-1">
+      {["vegetarian", "meat", "quick"].map((tag) => (
+        <Component key={tag} tag={tag} size="sm" />
+      ))}
+    </div>
+  ),
+};
+
 /** The same primitive with a larger hit area, used wherever tags are picked. */
 export const Interactive: Story = {
   args: defaultArgs,

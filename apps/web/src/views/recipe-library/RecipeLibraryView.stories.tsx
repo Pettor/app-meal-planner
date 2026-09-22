@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { fn } from "storybook/test";
 import { RecipeLibraryView as Component } from "./RecipeLibraryView";
 import type { RecipeLibraryViewProps as Props } from "./RecipeLibraryView";
+import { DefaultPinnedTags } from "~/core/plan/PlanUtils";
 import { SampleRecipes, SampleTagCatalogue } from "~/core/recipes/RecipeSampleData";
 import { NavbarLayoutDecorator } from "~/storybook/decorators/NavbarLayoutDecorator";
 
@@ -21,10 +22,12 @@ type Story = StoryObj<typeof meta>;
 const defaultArgs = {
   recipes: SampleRecipes,
   tagCatalogue: SampleTagCatalogue,
+  pinnedTags: DefaultPinnedTags,
+  onTogglePinnedTag: fn(),
   onOpenRecipe: fn(),
   onAddRecipe: fn(),
-  onSaveRecipe: fn(),
   onRemoveRecipe: fn(),
+  onBrowseCommunity: fn(),
 } satisfies Props;
 
 export const Fullscreen: Story = {
@@ -32,8 +35,8 @@ export const Fullscreen: Story = {
   parameters: { viewport: { value: "full" } },
 };
 
-export const Everyone: Story = {
-  args: { ...defaultArgs, initialScope: "everyone" },
+export const NoDefaultTags: Story = {
+  args: { ...defaultArgs, pinnedTags: [] },
   parameters: { viewport: { value: "full" } },
 };
 

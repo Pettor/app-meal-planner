@@ -1,9 +1,10 @@
+import { useState } from "react";
 import type { ReactElement } from "react";
 import { useIntl } from "react-intl";
 import { ConfirmDialog } from "~/components/feedback/confirm-dialog/ConfirmDialog";
 import { TagBrowserDialog } from "~/components/feedback/tag-browser-dialog/TagBrowserDialog";
-import type { Recipe, RecipeScope, RecipeTagCategory } from "~/core/recipes/RecipeTypes";
-import { RecipeLibraryFilterBar } from "~/views/recipe-library/RecipeLibraryFilterBar";
+import type { Recipe, RecipeTagCategory } from "~/core/recipes/RecipeTypes";
+import { RecipeLibraryFindPanel } from "~/views/recipe-library/RecipeLibraryFindPanel";
 import { RecipeLibraryGrid } from "~/views/recipe-library/RecipeLibraryGrid";
 import { RecipeLibraryPageHeader } from "~/views/recipe-library/RecipeLibraryPageHeader";
 import { useRecipeLibraryFilter } from "~/views/recipe-library/UseRecipeLibraryFilter";
@@ -13,50 +14,52 @@ export interface RecipeLibraryViewProps {
   recipes: Recipe[];
   /** The full community catalogue, so the pool can be filtered by any tag. */
   tagCatalogue: RecipeTagCategory[];
-  initialScope?: RecipeScope;
+  /** The cook's default tags — the quick filters the panel offers. */
+  pinnedTags: string[];
+  onTogglePinnedTag: (tag: string) => void;
   onOpenRecipe: (recipeId: string) => void;
   onAddRecipe: () => void;
-  onSaveRecipe: (recipeId: string) => void;
   onRemoveRecipe: (recipeId: string) => void;
+  onBrowseCommunity: () => void;
 }
 
-/** The recipe pool — everything the planner can draw from. */
+/** The recipe pool — the cook's own recipes, which are what the planner draws from. */
 export function RecipeLibraryView({
   recipes,
   tagCatalogue,
-  initialScope = "mine",
+  pinnedTags,
+  onTogglePinnedTag,
   onOpenRecipe,
   onAddRecipe,
-  onSaveRecipe,
   onRemoveRecipe,
+  onBrowseCommunity,
 }: RecipeLibraryViewProps): ReactElement {
   const intl = useIntl();
-  const filter = useRecipeLibraryFilter(recipes, initialScope);
-  const { scope, setScope, query, setQuery, selectedTags, toggleTag, availableTags, filtered } = filter;
+  const filter = useRecipeLibraryFilter(recipes, pinnedTags);
+  const { query, setQuery, selectedTags, toggleTag, quickTags, filtered, pool } = filter;
   const { pendingRecipe, askToRemove, cancelRemoval, confirmRemoval } = useRecipeRemoval(recipes, onRemoveRecipe);
+  const [isDefaultTagBrowserOpen, setIsDefaultTagBrowserOpen] = useState(false);
 
   return (
     <div className="mx-auto w-full max-w-[77.5rem] px-6 py-9">
-      <RecipeLibraryPageHeader scope={scope} onScopeChange={setScope} onAddRecipe={onAddRecipe} />
+      <RecipeLibraryPageHeader onAddRecipe={onAddRecipe} />
 
-      <RecipeLibraryFilterBar
+      <RecipeLibraryFindPanel
         query={query}
         onQueryChange={setQuery}
-        availableTags={availableTags}
+        shownCount={filtered.length}
+        totalCount={pool.length}
+        onBrowseCommunity={onBrowseCommunity}
+        quickTags={quickTags}
         selectedTags={selectedTags}
         onToggleTag={toggleTag}
         onOpenTagBrowser={filter.openTagBrowser}
+        onEditDefaultTags={() => setIsDefaultTagBrowserOpen(true)}
         hasTagFilter={filter.hasTagFilter}
         onClearTags={filter.clearTags}
       />
 
-      <RecipeLibraryGrid
-        recipes={filtered}
-        scope={scope}
-        onOpenRecipe={onOpenRecipe}
-        onSaveRecipe={onSaveRecipe}
-        onRemoveRecipe={askToRemove}
-      />
+      <RecipeLibraryGrid recipes={filtered} onOpenRecipe={onOpenRecipe} onRemoveRecipe={askToRemove} />
 
       <TagBrowserDialog
         isOpen={filter.isTagBrowserOpen}
@@ -69,6 +72,19 @@ export function RecipeLibraryView({
         selectedTags={selectedTags}
         onToggleTag={toggleTag}
         onClose={filter.closeTagBrowser}
+      />
+
+      <TagBrowserDialog
+        isOpen={isDefaultTagBrowserOpen}
+        description={intl.formatMessage({
+          description: "RecipeLibraryView: body - default tag browser description",
+          defaultMessage: "Pick the tags you filter by most. They stay on the pool as quick filters.",
+          id: "rSPz2r",
+        })}
+        catalogue={tagCatalogue}
+        selectedTags={pinnedTags}
+        onToggleTag={onTogglePinnedTag}
+        onClose={() => setIsDefaultTagBrowserOpen(false)}
       />
 
       <ConfirmDialog
