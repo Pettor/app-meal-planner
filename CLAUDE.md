@@ -53,7 +53,7 @@ This file is the **rules** layer (what you must do); `docs/` is the **reference*
 
 ## Repository Structure
 
-This is a **Turborepo monorepo** managed with **pnpm workspaces** (pnpm 10.33.0, Node 18–<25).
+This is a **Turborepo monorepo** managed with **pnpm workspaces** (pnpm 12.5.1, Node 22.12–<25).
 
 ```
 root/
@@ -84,7 +84,7 @@ root/
 ### `apps/web` — Main React Application
 
 - **URL**: https://localhost:5240 (HTTPS enabled via `vite-plugin-basic-ssl`)
-- **Stack**: React 19, React Router v6, Vite 8, Tailwind CSS 4, HeroUI, React Query 5, Jotai 2, React Intl 10, Zod 4, TanStack Form
+- **Stack**: React 19, React Router v6, Vite 8, Tailwind CSS 4, HeroUI, React Query 5, Jotai 3, React Intl 12, Zod 4, TanStack Form
 - **Features**: PWA (workbox), offline support, dark/light theme, i18n, hash-based routing, lazy-loaded routes
 
 ### `apps/storybook` — Component Documentation
@@ -96,7 +96,7 @@ root/
 
 ### `apps/e2e` — End-to-End Tests
 
-- **Stack**: Playwright 1.58, Chromium, JUnit XML reporter
+- **Stack**: Playwright 1.63, Chromium, JUnit XML reporter
 - **Config**: `apps/e2e/playwright.config.ts`, base URL https://localhost:4240, 1 retry, screenshots/traces on failure
 
 ### `apps/mock` — API Mock Server
