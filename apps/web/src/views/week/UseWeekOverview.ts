@@ -1,16 +1,16 @@
 import { useIntl } from "react-intl";
 import { planDayName, planMealName, planPeopleLabel } from "~/core/plan/PlanDayLabels";
 import { PLAN_DAY_ORDER } from "~/core/plan/PlanTypes";
-import type { PlanDayId, SavedPlan } from "~/core/plan/PlanTypes";
+import type { PlanDayId, PlanMeal, SavedPlan } from "~/core/plan/PlanTypes";
 import { addDays, formatWeekRange, isoWeekNumber, parseWeekKey, weekKeyOf, weekOffset } from "~/core/plan/PlanUtils";
 import type { Recipe } from "~/core/recipes/RecipeTypes";
 import { buildShoppingList } from "~/core/shopping/ShoppingUtils";
 import type { WeekStatTone } from "~/views/week/WeekStatsBar";
 
 export interface WeekMealViewModel {
+  /** Which meal of the day this is — lunch and dinner are colour-coded. */
+  mealType: PlanMeal;
   mealLabel: string;
-  /** Dinner and lunch are colour-coded so a day reads at a glance. */
-  isDinner: boolean;
   peopleLabel: string;
   title: string;
   tags: string[];
@@ -215,8 +215,8 @@ export function useWeekOverview(
               if (!recipe) return [];
               return [
                 {
+                  mealType: slot.meal,
                   mealLabel: planMealName(intl, slot.meal),
-                  isDinner: slot.meal === "dinner",
                   peopleLabel: planPeopleLabel(intl, slot.people),
                   title: recipe.title,
                   tags: recipe.tags,

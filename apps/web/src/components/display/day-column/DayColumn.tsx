@@ -11,7 +11,12 @@ export interface DayColumnProps {
   monthLabel: string;
   peopleLabel: string;
   isToday: boolean;
-  /** The meals on the day — one stacked block per meal. */
+  /**
+   * Lays the meals out flush and hairline-separated instead of as cards on a
+   * recessed ground — one continuous day rather than a tray of meals.
+   */
+  isFlush?: boolean;
+  /** The meals on the day. */
   children: ReactNode;
 }
 
@@ -26,6 +31,7 @@ export function DayColumn({
   monthLabel,
   peopleLabel,
   isToday,
+  isFlush = false,
   children,
 }: DayColumnProps): ReactElement {
   const intl = useIntl();
@@ -53,7 +59,19 @@ export function DayColumn({
         )}
       </div>
 
-      <div className="flex flex-1 flex-col">{children}</div>
+      {/*
+       * Meals either sit on a recessed ground as separated cards — the day as a
+       * container of meals — or run flush on the card's own surface, where the
+       * day reads as one column the meals are stacked into.
+       */}
+      <div
+        className={clsx(
+          "border-separator flex flex-1 flex-col border-t",
+          isFlush ? "bg-surface" : "bg-surface-secondary gap-2.5 p-2.5"
+        )}
+      >
+        {children}
+      </div>
     </div>
   );
 }

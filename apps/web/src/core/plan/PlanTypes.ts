@@ -55,6 +55,12 @@ export type PlanWizardStep = 1 | 2 | 3 | 4;
 /** How the filled week is reviewed on the last step. */
 export type PlanLayout = "rows" | "grid";
 
+/**
+ * How the planned week is laid out on the week page: a timetable of meals
+ * against days, or one card per day.
+ */
+export type WeekLayout = "table" | "cards";
+
 export type PlanStatus = "draft" | "final";
 
 /** A week that has been saved at least once, keyed by its Monday (`YYYY-MM-DD`). */

@@ -119,6 +119,10 @@
     "defaultMessage": "Earlier week",
     "description": "UsePlanWizard: week - earlier week"
   },
+  "1ZQvte": {
+    "defaultMessage": "No lunch planned",
+    "description": "UseWeekTimetable: body - no lunch planned"
+  },
   "1iDozp": {
     "defaultMessage": ",",
     "description": "UsePlanWizard: separator - list join"
@@ -254,10 +258,6 @@
   "5TOztL": {
     "defaultMessage": "meals",
     "description": "UseWeekOverview: label - meals (lowercase)"
-  },
-  "5Tns1u": {
-    "defaultMessage": "Layout",
-    "description": "PlanResultsStepPanel: label - layout"
   },
   "5Vzqiv": {
     "defaultMessage": "The details you signed in with.",
@@ -667,6 +667,10 @@
     "defaultMessage": "Set the days, people and tags, then let the planner fill it in.",
     "description": "WeekView: body - no week planned"
   },
+  "JczMej": {
+    "defaultMessage": "Open {title}",
+    "description": "WeekTimetableDayCard: aria-label - open recipe"
+  },
   "JeUYrQ": {
     "defaultMessage": "If {email} has an account, a reset link is on its way. It expires in an hour.",
     "description": "ForgotPasswordView: body - reset link confirmation"
@@ -739,9 +743,17 @@
     "defaultMessage": "This week already has a plan. Continuing edits it.",
     "description": "PlanDaysStepPanel: body - editing an existing plan"
   },
+  "LisaTx": {
+    "defaultMessage": "Timetable",
+    "description": "WeekView: toggle - timetable layout"
+  },
   "Lrqv+D": {
     "defaultMessage": "Follow someone and they show up here.",
     "description": "RecommendDialog: body - nobody to send to yet"
+  },
+  "Lvl0Gx": {
+    "defaultMessage": "Nothing planned",
+    "description": "UseWeekTimetable: body - nothing planned"
   },
   "M9C79w": {
     "defaultMessage": "Title",
@@ -862,6 +874,10 @@
   "Pvto38": {
     "defaultMessage": "Previous week",
     "description": "WeekSwitcher: aria-label - previous week"
+  },
+  "PzlF5k": {
+    "defaultMessage": "Cards",
+    "description": "WeekView: toggle - cards layout"
   },
   "Q9Hkx1": {
     "defaultMessage": "Ready to work offline",
@@ -1039,6 +1055,10 @@
     "defaultMessage": "Add a note",
     "description": "RecommendDialog: label - note field"
   },
+  "UdDyl7": {
+    "defaultMessage": "Layout",
+    "description": "LayoutToggle: label - layout"
+  },
   "UfBkks": {
     "defaultMessage": "Scan a recipe",
     "description": "RecipeScanDialog: heading - title"
@@ -1183,6 +1203,10 @@
     "defaultMessage": "One or two lines on what makes this one worth cooking",
     "description": "RecipeEditDetailsPanel: placeholder - short description"
   },
+  "Yb4Te3": {
+    "defaultMessage": "{filled} of {total} days",
+    "description": "UseWeekTimetable: label - days filled in a meal row"
+  },
   "YfA5jn": {
     "defaultMessage": "Friends",
     "description": "NavMenuItems: menu-item - community (short, mobile tab bar)"
@@ -1202,6 +1226,10 @@
   "ZL6m5e": {
     "defaultMessage": "Inbox",
     "description": "CommunityPageHeader: button - open the inbox"
+  },
+  "ZMCogn": {
+    "defaultMessage": "Shopping",
+    "description": "WeekPageHeader: button - shopping list"
   },
   "ZO5hxq": {
     "defaultMessage": "recommended a week",
@@ -1242,6 +1270,10 @@
   "aV5f1p": {
     "defaultMessage": "New recipe",
     "description": "RecipeEditView: heading - new recipe"
+  },
+  "aVp3eg": {
+    "defaultMessage": "Open {title}",
+    "description": "WeekTimetableCell: aria-label - open recipe"
   },
   "b10tP/": {
     "defaultMessage": "Today",

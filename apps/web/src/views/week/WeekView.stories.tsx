@@ -49,7 +49,10 @@ const defaultArgs = {
   weekKey,
   plan: plannedWeek,
   recipes: SampleRecipes,
+  layout: "table",
+  onLayoutChange: fn(),
   onOpenRecipe: fn(),
+  onOpenShoppingList: fn(),
   onEditWeek: fn(),
   onPlanWeek: fn(),
   onPublishWeek: fn(),
@@ -58,6 +61,24 @@ const defaultArgs = {
 
 export const Fullscreen: Story = {
   args: defaultArgs,
+  parameters: { viewport: { value: "full" } },
+};
+
+/** The same week as a card per day, the layout the toggle's other half selects. */
+export const Cards: Story = {
+  args: { ...defaultArgs, layout: "cards" },
+  parameters: { viewport: { value: "full" } },
+};
+
+/** A dinner-only week is one row, not two — an empty lunch row says nothing. */
+export const DinnersOnly: Story = {
+  args: {
+    ...defaultArgs,
+    plan: {
+      ...plannedWeek,
+      draft: { ...emptyPlanDraft(), slots: slots.filter((slot) => slot.meal === "dinner") },
+    },
+  },
   parameters: { viewport: { value: "full" } },
 };
 
@@ -74,7 +95,41 @@ export const NotPlanned: Story = {
   parameters: { viewport: { value: "full" } },
 };
 
+/** Still wide enough for seven columns — the timetable scrolls rather than stacks. */
+export const Tablet: Story = {
+  args: defaultArgs,
+  globals: { viewport: { value: "ipad" } },
+};
+
+/** The cards layout steps 4 → 3 → 2 → 1 at 1100px, 760px and 520px. */
+export const CardsTablet: Story = {
+  args: { ...defaultArgs, layout: "cards" },
+  globals: { viewport: { value: "ipad" } },
+};
+
+export const Narrow: Story = {
+  args: defaultArgs,
+  parameters: {
+    viewport: { options: { narrow: { name: "Narrow", styles: { width: "640px", height: "1000px" } } } },
+  },
+  globals: { viewport: { value: "narrow" } },
+};
+
+/** Below 821px the timetable turns on its side: a card per day, meal rail on the left. */
 export const Phone: Story = {
   args: defaultArgs,
   globals: { viewport: { value: "iphonex" } },
+};
+
+/** A day with nothing on it still reads as a day, not a gap. */
+export const DayWithNothingPlanned: Story = {
+  args: {
+    ...defaultArgs,
+    layout: "cards",
+    plan: {
+      ...plannedWeek,
+      draft: { ...emptyPlanDraft(), slots: slots.filter((slot) => slot.day !== "wednesday") },
+    },
+  },
+  parameters: { viewport: { value: "full" } },
 };

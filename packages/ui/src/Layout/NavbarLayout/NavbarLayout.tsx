@@ -34,7 +34,7 @@ export function NavbarLayout({
     <div
       className={clsx(
         "text-foreground relative flex min-h-screen flex-col",
-        reserveMobileNavSpace && "pb-[calc(62px+env(safe-area-inset-bottom))] sm:pb-0"
+        reserveMobileNavSpace && "pb-[calc(62px+env(safe-area-inset-bottom))] min-[760px]:pb-0"
       )}
     >
       {backgroundElement}

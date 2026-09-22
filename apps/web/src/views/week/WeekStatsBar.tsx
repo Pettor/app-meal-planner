@@ -26,7 +26,7 @@ export interface WeekStatsBarProps {
  */
 export function WeekStatsBar({ stats }: WeekStatsBarProps): ReactElement {
   return (
-    <Card className="overflow-hidden">
+    <Card className="overflow-hidden" data-testid="week-page__stats">
       <Card.Content className="p-0">
         <div className="bg-separator grid grid-cols-2 gap-px sm:grid-cols-3 lg:grid-cols-6">
           {stats.map((stat) => (

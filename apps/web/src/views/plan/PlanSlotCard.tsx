@@ -36,15 +36,22 @@ export function PlanSlotCard({ slot }: PlanSlotCardProps): ReactElement {
   });
 
   return (
-    <div className="border-separator flex flex-1 flex-col border-t">
-      <div className="flex items-baseline justify-between gap-2 px-3.5 pt-2.75 pb-2.25">
+    <div
+      className={clsx(
+        // Same shell as the planned week's meal card — the review has to read
+        // like the page it becomes.
+        "bg-surface border-border flex flex-1 flex-col overflow-hidden rounded-lg border border-l-[3px]",
+        "shadow-[0_1px_2px_rgba(0,0,0,0.06)]",
+        slot.isDinner ? "border-l-accent" : "border-l-warning"
+      )}
+    >
+      <div className="flex items-center justify-between gap-2 px-3 pt-2.5 pb-2.25">
         <span
           className={clsx(
-            "flex items-center gap-1.5 text-[10px] font-bold tracking-[0.09em] uppercase",
-            slot.isDinner ? "text-accent" : "text-warning"
+            "inline-flex items-center rounded-full px-2.25 py-0.75 text-[10px] font-bold tracking-[0.09em] uppercase",
+            slot.isDinner ? "bg-accent text-accent-foreground" : "bg-warning text-warning-foreground"
           )}
         >
-          <span className={clsx("h-1.5 w-1.5 rounded-full", slot.isDinner ? "bg-accent" : "bg-warning")} />
           {slot.mealLabel}
         </span>
         <span className="text-default-500 text-xs">{slot.peopleLabel}</span>
@@ -52,9 +59,16 @@ export function PlanSlotCard({ slot }: PlanSlotCardProps): ReactElement {
 
       {slot.isFilled ? (
         <>
-          <RecipePhoto photoUrl={slot.photoUrl} alt={slot.title} className="h-26" placeholderClassName="h-26" />
+          <RecipePhoto
+            photoUrl={slot.photoUrl}
+            alt={slot.title}
+            className="aspect-[4/3] w-full"
+            iconClassName="h-6 w-6"
+          />
 
-          <div className="px-3.5 pt-3 text-lg leading-tight font-semibold text-pretty">{slot.title}</div>
+          <div className="px-3.5 pt-3 text-lg leading-[1.25] font-bold tracking-[-0.01em] text-pretty">
+            {slot.title}
+          </div>
           <div className="flex flex-wrap content-start gap-1.25 px-3.5 pt-2.5">
             {slot.tags.map((tag) => (
               <TagChip key={tag} tag={tag} />

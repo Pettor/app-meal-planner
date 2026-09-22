@@ -86,7 +86,7 @@ export function NavbarContent({
   return (
     <>
       <header className="bg-background/70 border-border sticky top-0 z-40 border-b backdrop-blur-lg dark:shadow-[0_1px_0_rgba(0,0,0,0.5)]">
-        <div className="mx-auto flex h-16 max-w-[1240px] items-center justify-between gap-4 px-4 sm:px-6">
+        <div className="mx-auto flex h-16 max-w-[1240px] items-center justify-between gap-2.5 px-3.5 min-[760px]:gap-4 min-[760px]:px-6">
           <button
             type="button"
             className="flex min-w-0 shrink-0 items-center gap-2"
@@ -100,7 +100,7 @@ export function NavbarContent({
           </button>
 
           <nav
-            className="hidden min-w-0 flex-1 items-center justify-center gap-5 sm:flex"
+            className="hidden min-w-0 flex-1 items-center justify-center gap-5 min-[760px]:flex"
             aria-label={intl.formatMessage({
               description: "NavbarContent: aria-label - navigation tabs",
               defaultMessage: "Navigation",
@@ -118,7 +118,7 @@ export function NavbarContent({
                   aria-disabled={item.disabled}
                   title={item.disabled ? comingSoon : undefined}
                   className={clsx(
-                    "inline-flex items-center gap-1.5 py-2 text-sm whitespace-nowrap transition-colors",
+                    "inline-flex items-center gap-1.5 px-1.5 py-2 text-sm whitespace-nowrap transition-colors min-[1080px]:px-0.5",
                     item.disabled
                       ? "text-muted/50 cursor-default"
                       : isActive
@@ -127,7 +127,7 @@ export function NavbarContent({
                   )}
                 >
                   {item.icon}
-                  {item.name}
+                  <span className="sr-only min-[1080px]:not-sr-only">{item.name}</span>
                 </button>
               );
             })}
@@ -139,7 +139,7 @@ export function NavbarContent({
               <Popover.Trigger data-testid="home-page__menu-button">
                 <div className="border-border bg-surface flex cursor-pointer items-center gap-2 rounded-full border py-0.5 pr-2.5 pl-0.5">
                   <UserAvatar name={avatarName} size="sm" />
-                  {handle && <span className="text-muted hidden text-xs font-medium sm:inline">{handle}</span>}
+                  {handle && <span className="text-muted hidden text-xs font-medium min-[760px]:inline">{handle}</span>}
                 </div>
               </Popover.Trigger>
               <Popover.Content placement="bottom end">
@@ -223,7 +223,7 @@ export function NavbarContent({
       </header>
 
       <nav
-        className="border-border bg-background/85 fixed inset-x-0 bottom-0 z-40 flex h-[62px] items-stretch border-t backdrop-blur-lg sm:hidden"
+        className="border-border bg-background/85 fixed inset-x-0 bottom-0 z-40 flex h-[62px] items-stretch border-t backdrop-blur-lg min-[760px]:hidden"
         style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
         aria-label={appName}
       >

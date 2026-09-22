@@ -1,7 +1,9 @@
 import { useNavigate } from "@tanstack/react-router";
+import { useAtom } from "jotai";
 import { nextUnplannedWeekKey } from "~/core/plan/PlanUtils";
 import { usePlans } from "~/core/plan/UsePlans";
 import { useRecipes } from "~/core/recipes/UseRecipes";
+import { weekLayoutAtom } from "~/views/week/WeekAtoms";
 import type { WeekViewProps } from "~/views/week/WeekView";
 
 /**
@@ -13,6 +15,7 @@ import type { WeekViewProps } from "~/views/week/WeekView";
 export function useWeekRoute(): WeekViewProps {
   const navigate = useNavigate();
   const { plans, selectedWeekKey, selectWeek, publishPlan } = usePlans();
+  const [layout, setLayout] = useAtom(weekLayoutAtom);
 
   const { recipes } = useRecipes();
 
@@ -20,7 +23,10 @@ export function useWeekRoute(): WeekViewProps {
     weekKey: selectedWeekKey,
     plan: plans[selectedWeekKey] ?? null,
     recipes,
+    layout,
+    onLayoutChange: setLayout,
     onOpenRecipe: (recipeId) => void navigate({ to: "/recipes/$recipeId", params: { recipeId } }),
+    onOpenShoppingList: () => void navigate({ to: "/shopping" }),
     onEditWeek: () => void navigate({ to: "/plan" }),
     onPlanWeek: () => {
       // "Edit week" reopens the week in view; "Plan a new week" jumps to the next free one.
