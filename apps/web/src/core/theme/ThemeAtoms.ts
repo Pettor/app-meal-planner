@@ -3,8 +3,9 @@ import { atom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
 import { atomEffect } from "jotai-effect";
 import type { ThemeMode } from "./ThemeMode";
+import { StorageOptions } from "~/core/storage/StorageOptions";
 
-const themeLocalStorageAtom = atomWithStorage<ThemeMode>("theme", "auto");
+const themeLocalStorageAtom = atomWithStorage<ThemeMode>("theme", "auto", undefined, StorageOptions);
 const themeMediaQueryAtom = atom(() => window.matchMedia("(prefers-color-scheme: dark)"));
 
 // Stores the user's preference: "auto", "light", or "dark"
