@@ -1,0 +1,3 @@
+import{i as e}from"./preload-helper-CT_b8DTk.js";import{t,u as n}from"./src-CUjyW1HH.js";import{n as r,t as i}from"./AboutDetails-LHBKo63j.js";var a,o,s,c;e((()=>{t(),r(),a={component:i,title:`Feedback/About`,decorators:[n]},o={appName:`My App`,appVersion:`1.0.0`,serverVersion:`1.0.0`},s={args:o},s.parameters={...s.parameters,docs:{...s.parameters?.docs,source:{originalSource:`{
+  args: defaultArgs
+}`,...s.parameters?.docs?.source}}},c=[`Details`]}))();export{s as Details,c as __namedExportsOrder,a as default};

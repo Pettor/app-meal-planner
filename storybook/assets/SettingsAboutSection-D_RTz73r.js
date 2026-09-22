@@ -1,0 +1,1 @@
+import{i as e}from"./preload-helper-CT_b8DTk.js";import{i as t}from"./iframe-BLBebFNs.js";import{n,t as r}from"./AboutDetails-LHBKo63j.js";function i(e){return(0,a.jsx)(r,{...e})}var a,o=e((()=>{n(),a=t(),i.__docgenInfo={description:``,methods:[],displayName:`SettingsAboutSection`,composes:[`AboutDetailsProps`]}}));export{o as n,i as t};
