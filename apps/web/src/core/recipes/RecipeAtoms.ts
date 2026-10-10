@@ -1,5 +1,6 @@
 import { atomWithStorage } from "jotai/utils";
 import { SampleRecipes } from "~/core/recipes/RecipeSampleData";
+import { StorageOptions } from "~/core/storage/StorageOptions";
 
 /**
  * The ids of the recipes in the cook's own pool.
@@ -12,5 +13,7 @@ import { SampleRecipes } from "~/core/recipes/RecipeSampleData";
  */
 export const savedRecipeIdsAtom = atomWithStorage<string[]>(
   "recipes.saved",
-  SampleRecipes.filter((recipe) => recipe.isSaved).map((recipe) => recipe.id)
+  SampleRecipes.filter((recipe) => recipe.isSaved).map((recipe) => recipe.id),
+  undefined,
+  StorageOptions
 );

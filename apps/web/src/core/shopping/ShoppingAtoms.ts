@@ -1,4 +1,5 @@
 import { atomWithStorage } from "jotai/utils";
+import { StorageOptions } from "~/core/storage/StorageOptions";
 
 /**
  * Which lines have been ticked off, keyed by `item|unit`.
@@ -7,4 +8,9 @@ import { atomWithStorage } from "jotai/utils";
  * ingredient rather than on the week means a re-plan keeps the ticks that still
  * apply, which is what the design does.
  */
-export const checkedShoppingLinesAtom = atomWithStorage<Record<string, boolean>>("shopping-checked", {});
+export const checkedShoppingLinesAtom = atomWithStorage<Record<string, boolean>>(
+  "shopping-checked",
+  {},
+  undefined,
+  StorageOptions
+);

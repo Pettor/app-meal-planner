@@ -2,6 +2,7 @@ import { atom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
 import type { SettingsSection } from "./SettingsSection";
 import { DefaultPinnedTags } from "~/core/plan/PlanUtils";
+import { StorageOptions } from "~/core/storage/StorageOptions";
 
 export interface SettingsModalState {
   isOpen: boolean;
@@ -16,4 +17,9 @@ export const settingsModalAtom = atom<SettingsModalState>({ isOpen: false });
  * Settings owns them — "Your default tags" is where they are curated — and the
  * plan wizard reads from here, so an edit in either place sticks.
  */
-export const pinnedTagsAtom = atomWithStorage<string[]>("settings.pinnedTags", DefaultPinnedTags);
+export const pinnedTagsAtom = atomWithStorage<string[]>(
+  "settings.pinnedTags",
+  DefaultPinnedTags,
+  undefined,
+  StorageOptions
+);
