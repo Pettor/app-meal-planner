@@ -1,0 +1,3 @@
+import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{n as t,t as n}from"./AuthPromoPanel-Cgov4CfI.js";var r,i,a,o;function s(){return(s=e((()=>{t(),r={title:`Display/Auth Promo Panel`,component:n,tags:[`autodocs`]},i={appName:`Meal Planner`},a={args:i},o=[`Default`],a.parameters={...a.parameters,docs:{...a.parameters?.docs,source:{originalSource:`{
+  args: defaultArgs
+}`,...a.parameters?.docs?.source}}}})))()}s();export{a as Default,o as __namedExportsOrder,r as default};

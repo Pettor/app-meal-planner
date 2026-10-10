@@ -1,0 +1,3 @@
+import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{t}from"./jsx-runtime-DeHZSEgm.js";function n(){return(0,r.jsx)(`div`,{className:`bg-ambient-wash pointer-events-none absolute inset-0 z-[-2] h-full w-full dark:opacity-55`})}var r;function i(){return(i=e((()=>{r=t(),n.__docgenInfo={description:`Warm ambient wash used behind full-page layouts. The gradient stops are
+derived from the theme's danger / accent / warning tokens, so it re-tints
+automatically with the active theme.`,methods:[],displayName:`AmbientBackground`}})))()}export{i as n,n as t};

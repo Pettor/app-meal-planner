@@ -1,0 +1,1 @@
+import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{t}from"./jsx-runtime-DeHZSEgm.js";import{n,t as r}from"./AboutDetails-D1HCHRF5.js";function i(e){return(0,a.jsx)(r,{...e})}var a;function o(){return(o=e((()=>{n(),a=t(),i.__docgenInfo={description:``,methods:[],displayName:`SettingsAboutSection`,composes:[`AboutDetailsProps`]}})))()}export{o as n,i as t};

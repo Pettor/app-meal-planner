@@ -1,0 +1,25 @@
+import{a as e,n as t}from"./rolldown-runtime-DkW27tQK.js";import{t as n}from"./react-Q1GcV6wX.js";import{n as r,r as i}from"./react-intl-BjG-Y2l6.js";import{t as a}from"./jsx-runtime-DeHZSEgm.js";import{n as o,t as s}from"./alert-DfTWOO0D.js";import{n as c,t as l}from"./button-CPgUre1k.js";import{i as u,n as d,r as f,t as p}from"./BasicLayoutDecorator--4yO0PA8.js";import{n as m,t as h}from"./AuthSwitchPrompt-CYh-sEoz.js";import{n as g,t as _}from"./LoginForm-B-DhEWvw.js";function v({title:e,titleId:t,...n},r){return y.createElement(`svg`,Object.assign({xmlns:`http://www.w3.org/2000/svg`,fill:`none`,viewBox:`0 0 24 24`,strokeWidth:1.5,stroke:`currentColor`,"aria-hidden":`true`,"data-slot":`icon`,ref:r,"aria-labelledby":t},n),e?y.createElement(`title`,{id:t},e):null,y.createElement(`path`,{strokeLinecap:`round`,strokeLinejoin:`round`,d:`M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z`}),y.createElement(`path`,{strokeLinecap:`round`,strokeLinejoin:`round`,d:`M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z`}))}var y,b;function x(){return(x=t((()=>{y=e(n()),b=y.forwardRef(v)})))()}function S({appName:e,loginForm:t,error:n,onSettings:r,onSignUp:a}){let o=i();return(0,C.jsx)(f,{appName:e,title:o.formatMessage({description:`LoginView: heading - welcome back`,defaultMessage:`Welcome back`,id:`ciI966`}),subtitle:o.formatMessage({description:`LoginView: body - sign in tagline`,defaultMessage:`Sign in and pick up where the week left off.`,id:`oJDoLK`}),headerAction:(0,C.jsx)(l,{isIconOnly:!0,variant:`ghost`,onPress:r,"aria-label":o.formatMessage({description:`LoginView: aria-label - settings button`,defaultMessage:`Settings`,id:`WYAsZQ`}),"data-testid":`login-view__settings-button`,children:(0,C.jsx)(b,{className:`h-5 w-5`})}),banner:(0,C.jsxs)(C.Fragment,{children:[w,n&&(0,C.jsxs)(s,{status:`danger`,"data-testid":`login-view__error`,children:[(0,C.jsx)(s.Indicator,{}),(0,C.jsx)(s.Content,{children:(0,C.jsx)(s.Description,{children:n})})]})]}),footer:(0,C.jsx)(h,{text:o.formatMessage({description:`LoginView: body - sign-up prompt`,defaultMessage:`New here?`,id:`U3f1k3`}),actionLabel:o.formatMessage({description:`LoginView: link - create an account`,defaultMessage:`Create an account`,id:`rFtjCS`}),onPress:a}),children:(0,C.jsx)(_,{...t})})}var C,w;function T(){return(T=t((()=>{x(),o(),c(),r(),u(),m(),g(),C=a(),w=!1,S.__docgenInfo={description:``,methods:[],displayName:`LoginView`,props:{appName:{required:!0,tsType:{name:`string`},description:``},loginForm:{required:!0,tsType:{name:`LoginFormProps`},description:``},error:{required:!1,tsType:{name:`string`},description:``}}}})))()}var E,D,O,k,A,j;function M(){return(M=t((()=>{T(),d(),E={component:S,title:`Views/Login`,tags:[`!test`],parameters:{layout:`fullscreen`},decorators:[p()],argTypes:{loginForm:{table:{disable:!0}}}},D={appName:`Meal Planner`,loginForm:{loading:!1,onForgotPassword:()=>console.log(`handleForgotPassword`),onSubmit:()=>console.log(`onSubmit`)},onSettings:()=>console.log(`onSettings`),onSignUp:()=>console.log(`handleSignUp`)},O={args:D,parameters:{viewport:{value:`full`}}},k={args:{...D,error:`Incorrect username or password.`},parameters:{viewport:{value:`full`}}},A={args:D,globals:{viewport:{value:`iphonex`}}},j=[`Fullscreen`,`WithError`,`Phone`],O.parameters={...O.parameters,docs:{...O.parameters?.docs,source:{originalSource:`{
+  args: defaultArgs,
+  parameters: {
+    viewport: {
+      value: "full"
+    }
+  }
+}`,...O.parameters?.docs?.source}}},k.parameters={...k.parameters,docs:{...k.parameters?.docs,source:{originalSource:`{
+  args: {
+    ...defaultArgs,
+    error: "Incorrect username or password."
+  },
+  parameters: {
+    viewport: {
+      value: "full"
+    }
+  }
+}`,...k.parameters?.docs?.source}}},A.parameters={...A.parameters,docs:{...A.parameters?.docs,source:{originalSource:`{
+  args: defaultArgs,
+  globals: {
+    viewport: {
+      value: "iphonex"
+    }
+  }
+}`,...A.parameters?.docs?.source}}}})))()}M();export{O as Fullscreen,A as Phone,k as WithError,j as __namedExportsOrder,E as default};

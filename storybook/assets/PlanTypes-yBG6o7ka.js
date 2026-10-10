@@ -1,0 +1,1 @@
+import{n as e}from"./rolldown-runtime-DkW27tQK.js";var t;function n(){return(n=e((()=>{t=[`monday`,`tuesday`,`wednesday`,`thursday`,`friday`,`saturday`,`sunday`]})))()}export{n,t};
